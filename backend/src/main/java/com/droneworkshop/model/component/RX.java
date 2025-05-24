@@ -16,9 +16,6 @@ public class RX {
     @Column(nullable = false, length = 50)
     private String manufacturer;
 
-    @Column(nullable = false, length = 50)
-    private String connector;
-
     @Column(nullable = false)
     private double mass;
 

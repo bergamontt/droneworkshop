@@ -22,6 +22,4 @@ public class Propeller {
     @Column(nullable = false)
     private double sizeInches;
 
-    @Column(nullable = false, length = 50)
-    private String sizeMm;
 }
