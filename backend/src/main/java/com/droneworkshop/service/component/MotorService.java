@@ -21,4 +21,8 @@ public class MotorService {
     public List<Motor> getAllMotors() {
         return motorRepository.findAll();
     }
+
+    public List<Motor> getMotorsByModelStartingWith(String modelPrefix) {
+        return motorRepository.findByModelStartingWithIgnoreCase(modelPrefix);
+    }
 }

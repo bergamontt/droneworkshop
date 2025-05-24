@@ -8,7 +8,7 @@ import lombok.Data;
 public class Motor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int motorID;
+    private int motorId;
 
     @Column(nullable = false, length = 50)
     private String model;

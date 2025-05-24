@@ -21,4 +21,8 @@ public class VTXService {
     public List<VTX> getAllVTXs() {
         return vtxRepository.findAll();
     }
+
+    public List<VTX> getVTXsByModelStartingWith(String modelPrefix) {
+        return vtxRepository.findByModelStartingWithIgnoreCase(modelPrefix);
+    }
 }

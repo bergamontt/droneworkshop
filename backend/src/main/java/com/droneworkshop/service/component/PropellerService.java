@@ -21,4 +21,8 @@ public class PropellerService {
     public List<Propeller> getAllPropellers() {
         return propellerRepository.findAll();
     }
+
+    public List<Propeller> getPropellersByModelStartingWith(String modelPrefix) {
+        return propellerRepository.findByModelStartingWithIgnoreCase(modelPrefix);
+    }
 }

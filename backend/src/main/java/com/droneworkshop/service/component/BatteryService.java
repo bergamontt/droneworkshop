@@ -21,4 +21,8 @@ public class BatteryService {
     public List<Battery> getAllBatteries() {
         return batteryRepository.findAll();
     }
+
+    public List<Battery> getBatteriesByModelStartingWith(String modelPrefix) {
+        return batteryRepository.findByModelStartingWithIgnoreCase(modelPrefix);
+    }
 }

@@ -21,4 +21,8 @@ public class AntennaService {
     public List<Antenna> getAllAntennas() {
         return antennaRepository.findAll();
     }
+
+    public List<Antenna> getAntennasByModelStartingWith(String modelPrefix) {
+        return antennaRepository.findByModelStartingWithIgnoreCase(modelPrefix);
+    }
 }

@@ -21,4 +21,8 @@ public class CameraService {
     public List<Camera> getAllCameras() {
         return cameraRepository.findAll();
     }
+
+    public List<Camera> getCamerasByModelStartingWith(String modelPrefix) {
+        return cameraRepository.findByModelStartingWithIgnoreCase(modelPrefix);
+    }
 }

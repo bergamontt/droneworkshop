@@ -21,4 +21,8 @@ public class FrameService {
     public List<Frame> getAllFrames() {
         return frameRepository.findAll();
     }
+
+    public List<Frame> getFramesByModelStartingWith(String modelPrefix) {
+        return frameRepository.findByModelStartingWithIgnoreCase(modelPrefix);
+    }
 }
