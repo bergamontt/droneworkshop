@@ -14,8 +14,8 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User getUserById(int id) {
-        return userRepository.findById(id).orElse(null);
+    public User getUserByUsername(String username) {
+        return userRepository.findById(username).orElse(null);
     }
 
     public List<User> getAllUsers() {

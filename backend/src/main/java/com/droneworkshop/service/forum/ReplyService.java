@@ -18,7 +18,7 @@ public class ReplyService {
         return replyRepository.findById(id).orElse(null);
     }
 
-    public List<Reply> getAllReplies() {
-        return replyRepository.findAll();
+    public List<Reply> getRepliesByPostId(int postId) {
+        return replyRepository.findRepliesByPostPostId(postId);
     }
 }

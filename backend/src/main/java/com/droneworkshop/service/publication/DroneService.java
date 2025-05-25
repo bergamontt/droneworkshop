@@ -4,8 +4,6 @@ import com.droneworkshop.model.publication.Drone;
 import com.droneworkshop.repository.publication.DroneRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class DroneService {
     private final DroneRepository droneRepository;
@@ -16,9 +14,5 @@ public class DroneService {
 
     public Drone getDroneById(int id) {
         return droneRepository.findById(id).orElse(null);
-    }
-
-    public List<Drone> getAllDrones() {
-        return droneRepository.findAll();
     }
 }
