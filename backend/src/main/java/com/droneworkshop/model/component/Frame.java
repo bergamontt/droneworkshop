@@ -10,22 +10,22 @@ public class Frame {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int frameId;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100)
     private String model;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String manufacturer;
 
     @Column(nullable = false)
     private double propellersInches;
 
-    @Column(nullable = false)
+    @Column
     private double mass;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String material;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String sizeMm;
 
     @Column(nullable = false, length = 50)
@@ -33,4 +33,7 @@ public class Frame {
 
     @Column(nullable = false, length = 50)
     private String motorMountSize;
+
+    @Column(length = 100)
+    private String photoLink;
 }

@@ -10,19 +10,22 @@ public class Camera {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cameraId;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100)
     private String model;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String manufacturer;
 
-    @Column(nullable = false)
+    @Column
     private double mass;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String sizeMm;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
+    private String mountSize;
+
+    @Column
     private int tvl;
 
     @Column(nullable = false, length = 50)
@@ -30,4 +33,7 @@ public class Camera {
 
     @Column(nullable = false, length = 50)
     private String videoFormat;
+
+    @Column(length = 100)
+    private String photoLink;
 }

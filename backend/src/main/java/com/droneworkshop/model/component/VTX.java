@@ -10,27 +10,30 @@ public class VTX {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int vtxId;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100)
     private String model;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String manufacturer;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String connector;
 
     @Column(nullable = false)
     private int maxPower;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String videoFormat;
 
-    @Column(nullable = false)
+    @Column
     private double mass;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String sizeMm;
 
     @Column(nullable = false, length = 50)
     private String frequency;
+
+    @Column(length = 100)
+    private String photoLink;
 }

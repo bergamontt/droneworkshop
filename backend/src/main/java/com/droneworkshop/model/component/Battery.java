@@ -10,26 +10,23 @@ public class Battery {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int batteryId;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100)
     private String model;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String manufacturer;
 
-    @Column(nullable = false)
+    @Column
     private double mass;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String sizeMm;
 
     @Column(nullable = false)
     private int numS;
 
-    @Column(nullable = false)
-    private int numP;
-
-    @Column(nullable = false)
-    private int numC;
+    @Column
+    private int dischargeRate;
 
     @Column(nullable = false, length = 50)
     private String batteryType;
@@ -39,4 +36,7 @@ public class Battery {
 
     @Column(nullable = false, length = 50)
     private String cableConnector;
+
+    @Column(length = 100)
+    private String photoLink;
 }

@@ -19,6 +19,6 @@ public class Reply {
     @JoinColumn(name = "username")
     private User user;
 
-    @Column(nullable = false, length = 2000)
+    @Column(nullable = false, length = 5000)
     private String description;
 }

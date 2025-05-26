@@ -10,16 +10,16 @@ public class Stack {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int stackId;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100)
     private String model;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String manufacturer;
 
-    @Column(nullable = false)
+    @Column
     private double mass;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String sizeMm;
 
     @Column(nullable = false, length = 50)
@@ -36,4 +36,7 @@ public class Stack {
 
     @Column(nullable = false, length = 50)
     private String rangeS;
+
+    @Column(length = 100)
+    private String photoLink;
 }

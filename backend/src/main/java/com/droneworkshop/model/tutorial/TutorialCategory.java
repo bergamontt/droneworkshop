@@ -11,9 +11,9 @@ public class TutorialCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int categoryId;
 
-    @Column(nullable = false, length = 24)
+    @Column(nullable = false, length = 50)
     private String categoryName;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 200)
     private String description;
 }

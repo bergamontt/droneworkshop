@@ -10,33 +10,36 @@ public class Antenna {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int antennaId;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100)
     private String model;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String manufacturer;
 
     @Column(nullable = false, length = 50)
     private String connector;
 
-    @Column(nullable = false)
+    @Column
     private double mass;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String sizeMm;
 
     @Column(nullable = false, length = 50)
     private String frequency;
 
-    @Column(nullable = false)
+    @Column
     private double dbi;
 
     @Column(length = 50)
     private String polarization;
 
-    @Column(nullable = false)
+    @Column
     private double swr;
 
-    @Column(nullable = false, length = 3)
+    @Column(nullable = false, length = 50)
     private String antennaType;
+
+    @Column(length = 100)
+    private String photoLink;
 }

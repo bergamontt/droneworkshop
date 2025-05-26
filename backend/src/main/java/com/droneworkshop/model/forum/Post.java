@@ -15,9 +15,9 @@ public class Post {
     @JoinColumn(name = "username")
     private User user;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 300)
     private String topic;
 
-    @Column(nullable = false, length = 2000)
+    @Column(nullable = false, length = 5000)
     private String description;
 }

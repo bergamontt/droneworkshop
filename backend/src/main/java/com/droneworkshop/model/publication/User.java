@@ -21,6 +21,9 @@ public class User {
     @Column(length = 13)
     private String phoneNum;
 
+    @Column(length = 70)
+    private String bio;
+
     @Column(nullable = false)
     private int rating;
 }

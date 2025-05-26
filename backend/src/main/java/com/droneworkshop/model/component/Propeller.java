@@ -10,10 +10,10 @@ public class Propeller {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int propellerId;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100)
     private String model;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String manufacturer;
 
     @Column(nullable = false, length = 50)
@@ -22,4 +22,6 @@ public class Propeller {
     @Column(nullable = false)
     private double sizeInches;
 
+    @Column(length = 100)
+    private String photoLink;
 }

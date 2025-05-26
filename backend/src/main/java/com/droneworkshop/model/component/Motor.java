@@ -10,16 +10,16 @@ public class Motor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int motorId;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100)
     private String model;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String manufacturer;
 
-    @Column(nullable = false)
+    @Column
     private double mass;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String sizeMm;
 
     @Column(nullable = false, length = 50)
@@ -28,8 +28,8 @@ public class Motor {
     @Column(nullable = false)
     private int rotationSpeed;
 
-    @Column(nullable = false)
-    private int numS;
+    @Column(nullable = false, length = 50)
+    private String rangeS;
 
     @Column(nullable = false)
     private double maxCurrent;
@@ -37,9 +37,6 @@ public class Motor {
     @Column(nullable = false)
     private double maxPower;
 
-    @Column(nullable = false)
-    private double shaftDiameter;
-
-    @Column(nullable = false)
-    private double shaftLength;
+    @Column(length = 100)
+    private String photoLink;
 }
