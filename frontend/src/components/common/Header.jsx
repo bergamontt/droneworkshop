@@ -1,6 +1,6 @@
 import logo from '../../assets/droneworkshop.png';
 import login from '../../assets/login.svg'
-import './Header.css';
+import '../../styles/Header.css';
 
 function Header() {
     return(
