@@ -1,0 +1,43 @@
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-logo {
+    height: 140px;
+    width: auto;
+}
+
+.nav-category-container {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0 0 0 1em;
+}
+
+.nav-category {
+    color: #000000;
+    font-size: 1.8em;
+    font-family: 'WDXL Lubrifont TC', Arial, sans-serif;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.nav-category:hover {
+    color: #00b7ff; 
+}
+
+.nav-login {
+    height: 2.5em;
+    cursor: pointer;
+}
+
+.nav-main-container {
+    display: flex;
+    align-items: center;
+}
