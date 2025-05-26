@@ -8,7 +8,7 @@ import lombok.Data;
 public class RX {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int rxId;
+    private Integer rxId;
 
     @Column(nullable = false, length = 100)
     private String model;
@@ -17,7 +17,7 @@ public class RX {
     private String manufacturer;
 
     @Column
-    private double mass;
+    private Double mass;
 
     @Column(length = 50)
     private String sizeMm;

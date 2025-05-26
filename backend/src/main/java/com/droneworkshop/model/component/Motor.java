@@ -8,7 +8,7 @@ import lombok.Data;
 public class Motor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int motorId;
+    private Integer motorId;
 
     @Column(nullable = false, length = 100)
     private String model;
@@ -17,7 +17,7 @@ public class Motor {
     private String manufacturer;
 
     @Column
-    private double mass;
+    private Double mass;
 
     @Column(length = 50)
     private String sizeMm;
@@ -26,16 +26,16 @@ public class Motor {
     private String mountSize;
 
     @Column(nullable = false)
-    private int rotationSpeed;
+    private Integer rotationSpeed;
 
     @Column(nullable = false, length = 50)
     private String rangeS;
 
     @Column(nullable = false)
-    private double maxCurrent;
+    private Double maxCurrent;
 
     @Column(nullable = false)
-    private double maxPower;
+    private Double maxPower;
 
     @Column(length = 100)
     private String photoLink;

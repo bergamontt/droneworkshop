@@ -9,7 +9,7 @@ import lombok.Data;
 public class Drone {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int droneId;
+    private Integer droneId;
 
     @Column(nullable = false, length = 24)
     private String droneName;

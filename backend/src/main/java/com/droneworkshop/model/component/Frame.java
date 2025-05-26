@@ -8,7 +8,7 @@ import lombok.Data;
 public class Frame {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int frameId;
+    private Integer frameId;
 
     @Column(nullable = false, length = 100)
     private String model;
@@ -17,10 +17,10 @@ public class Frame {
     private String manufacturer;
 
     @Column(nullable = false)
-    private double propellersInches;
+    private Double propellersInches;
 
     @Column
-    private double mass;
+    private Double mass;
 
     @Column(length = 50)
     private String material;

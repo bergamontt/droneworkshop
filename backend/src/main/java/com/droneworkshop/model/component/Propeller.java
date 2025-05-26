@@ -8,7 +8,7 @@ import lombok.Data;
 public class Propeller {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int propellerId;
+    private Integer propellerId;
 
     @Column(nullable = false, length = 100)
     private String model;
@@ -20,7 +20,7 @@ public class Propeller {
     private String material;
 
     @Column(nullable = false)
-    private double sizeInches;
+    private Double sizeInches;
 
     @Column(length = 100)
     private String photoLink;

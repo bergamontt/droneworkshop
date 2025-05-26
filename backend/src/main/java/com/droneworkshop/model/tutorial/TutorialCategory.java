@@ -9,7 +9,7 @@ import lombok.Data;
 public class TutorialCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int categoryId;
+    private Integer categoryId;
 
     @Column(nullable = false, length = 50)
     private String categoryName;

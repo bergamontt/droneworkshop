@@ -8,7 +8,7 @@ import lombok.Data;
 public class Stack {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int stackId;
+    private Integer stackId;
 
     @Column(nullable = false, length = 100)
     private String model;
@@ -17,7 +17,7 @@ public class Stack {
     private String manufacturer;
 
     @Column
-    private double mass;
+    private Double mass;
 
     @Column(length = 50)
     private String sizeMm;
@@ -29,10 +29,10 @@ public class Stack {
     private String cableConnector;
 
     @Column(nullable = false)
-    private double workingCurrent;
+    private Double workingCurrent;
 
     @Column(nullable = false)
-    private double maxCurrent;
+    private Double maxCurrent;
 
     @Column(nullable = false, length = 50)
     private String rangeS;

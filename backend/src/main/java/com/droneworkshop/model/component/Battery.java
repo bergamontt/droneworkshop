@@ -17,22 +17,22 @@ public class Battery {
     private String manufacturer;
 
     @Column
-    private double mass;
+    private Double mass;
 
     @Column(length = 50)
     private String sizeMm;
 
     @Column(nullable = false)
-    private int numS;
+    private Integer numS;
 
     @Column
-    private int dischargeRate;
+    private Integer dischargeRate;
 
     @Column(nullable = false, length = 50)
     private String batteryType;
 
     @Column(nullable = false)
-    private double capacity;
+    private Double capacity;
 
     @Column(nullable = false, length = 50)
     private String cableConnector;

@@ -8,7 +8,7 @@ import lombok.Data;
 public class Camera {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int cameraId;
+    private Integer cameraId;
 
     @Column(nullable = false, length = 100)
     private String model;
@@ -17,7 +17,7 @@ public class Camera {
     private String manufacturer;
 
     @Column
-    private double mass;
+    private Double mass;
 
     @Column(length = 50)
     private String sizeMm;
@@ -26,7 +26,7 @@ public class Camera {
     private String mountSize;
 
     @Column
-    private int tvl;
+    private Integer tvl;
 
     @Column(nullable = false, length = 50)
     private String aspectRadio;

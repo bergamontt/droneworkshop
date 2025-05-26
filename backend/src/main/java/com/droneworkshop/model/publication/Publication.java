@@ -8,12 +8,12 @@ import lombok.Data;
 public class Publication {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int publicationId;
+    private Integer publicationId;
 
     @ManyToOne
     @JoinColumn(name = "drone_id", nullable = false)
     private Drone drone;
 
     @Column(nullable = false)
-    private int numOfViews;
+    private Integer numOfViews;
 }

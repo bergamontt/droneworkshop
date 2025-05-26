@@ -8,7 +8,7 @@ import lombok.Data;
 public class Antenna {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int antennaId;
+    private Integer antennaId;
 
     @Column(nullable = false, length = 100)
     private String model;
@@ -20,7 +20,7 @@ public class Antenna {
     private String connector;
 
     @Column
-    private double mass;
+    private Double mass;
 
     @Column(length = 50)
     private String sizeMm;
@@ -29,13 +29,13 @@ public class Antenna {
     private String frequency;
 
     @Column
-    private double dbi;
+    private Double dbi;
 
     @Column(length = 50)
     private String polarization;
 
     @Column
-    private double swr;
+    private Double swr;
 
     @Column(nullable = false, length = 50)
     private String antennaType;

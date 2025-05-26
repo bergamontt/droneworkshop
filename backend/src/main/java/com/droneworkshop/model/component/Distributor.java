@@ -8,7 +8,7 @@ import lombok.Data;
 public class Distributor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int distributorId;
+    private Integer distributorId;
 
     @Column(nullable = false, length = 64)
     private String distributorName;
@@ -17,7 +17,7 @@ public class Distributor {
     private String distributorLink;
 
     @Column(nullable = false)
-    private int price;
+    private Integer price;
 
     @ManyToOne
     @JoinColumn(name = "frame_id")

@@ -8,7 +8,7 @@ import lombok.Data;
 public class VTX {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int vtxId;
+    private Integer vtxId;
 
     @Column(nullable = false, length = 100)
     private String model;
@@ -20,13 +20,13 @@ public class VTX {
     private String connector;
 
     @Column(nullable = false)
-    private int maxPower;
+    private Integer maxPower;
 
     @Column(length = 50)
     private String videoFormat;
 
     @Column
-    private double mass;
+    private Double mass;
 
     @Column(length = 50)
     private String sizeMm;
