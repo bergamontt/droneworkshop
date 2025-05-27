@@ -15,47 +15,47 @@ function DroneComponents() {
     return (
     <dev>
       <NavLink
-        href="#required-for-focus"
+        href="/drone_components/antenna"
         label={<SidebarLabel text="ANTENNAS" />}
         leftSection={<SidebarIcon link={antenna}/>}
       />
       <NavLink
-        href="#required-for-focus"
+        href="/drone_components/battery"
         label={<SidebarLabel text="BATTERIES" />}
         leftSection={<SidebarIcon link={battery}/>}
       />
       <NavLink
-        href="#required-for-focus"
+        href="/drone_components/camera"
         label={<SidebarLabel text="CAMERAS" />}
         leftSection={<SidebarIcon link={camera}/>}
       />
       <NavLink
-        href="#required-for-focus"
+        href="/drone_components/frame"
         label={<SidebarLabel text="FRAMES" />}
         leftSection={<SidebarIcon link={frame}/>}
       />
       <NavLink
-        href="#required-for-focus"
+        href="/drone_components/motor"
         label={<SidebarLabel text="MOTORS" />}
         leftSection={<SidebarIcon link={motor}/>}
       />
       <NavLink
-        href="#required-for-focus"
+        href="/drone_components/propeller"
         label={<SidebarLabel text="PROPELLERS" />}
         leftSection={<SidebarIcon link={propeller}/>}
       />
       <NavLink
-        href="#required-for-focus"
+        href="/drone_components/rx"
         label={<SidebarLabel text="RX" />}
         leftSection={<SidebarIcon link={rx}/>}
       />
       <NavLink
-        href="#required-for-focus"
+        href="/drone_components/stack"
         label={<SidebarLabel text="STACK" />}
         leftSection={<SidebarIcon link={stack}/>}
       />
       <NavLink
-        href="#required-for-focus"
+        href="/drone_components/vtx"
         label={<SidebarLabel text="VTX" />}
         leftSection={<SidebarIcon link={vtx}/>}
       />

@@ -11,7 +11,7 @@ function ComponentsElement(props) {
                     {props.model}
                 </span>
                 <span className="component-element-desc">
-                    Manufacturer: {props.manufacturer ? props.manufacturer : "-"}
+                    Manufacturer: {props.manufacturer ?? "-"}
                 </span>
             </div>
         </div>

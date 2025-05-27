@@ -5,7 +5,7 @@ import ComponentsList from '../components/common/ComponentsList.jsx'
 import Searchbar from '../components/common/Searchbar.jsx';
 import '../styles/DroneComponents.css'
 
-function DroneComponents() {
+function DroneComponents(props) {
     
     const mainContainerStyles = {
         "flex": "content",
@@ -13,9 +13,9 @@ function DroneComponents() {
         "padding": "20px"
     };
 
-    const { data: antennas } = useFetch(getAllAntennas);
+    const { data: components } = useFetch(props?.fetch ?? getAllAntennas);
 
-    if (!antennas) return(<h1>Error Occured!</h1>);
+    if (!components) return(<h1>Error Occurred!</h1>);
 
     return(
 
@@ -27,7 +27,7 @@ function DroneComponents() {
             
             <article className='components-main-container' style={mainContainerStyles}>
                 <Searchbar placeholder="Search"/>
-                <ComponentsList data={antennas}/>
+                <ComponentsList data={components} />
             </article>
             
         </section>
