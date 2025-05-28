@@ -11,12 +11,10 @@ function DroneComponents(props) {
     return(
 
         <section className='components-page-container'>
-            
             <article className='components-main-container'>
                 <Searchbar placeholder="Search"/>
-                <ComponentsList data={components} />
+                <ComponentsList data={components} name={props.name}/>
             </article>
-            
         </section>
 
     );

@@ -8,7 +8,8 @@ import lombok.Data;
 public class Camera {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer cameraId;
+    @Column(name ="camera_id")
+    private Integer id;
 
     @Column(nullable = false, length = 100)
     private String model;

@@ -1,0 +1,53 @@
+.component-page-container {
+    width: 100%;
+    background-color: rgba(109, 128, 125, 0.5);
+}
+
+.component-data-contaner {
+    text-align: center;
+    background-color: white;
+    border-radius: 25px;
+    margin: 3em;
+    display: flex;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.component-main-data {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    padding: 2em;
+}
+
+.component-photo {
+    max-width: 700px;
+    max-height: 700px;
+    margin: 2em;
+    padding: 0em;
+    object-fit: contain;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.component-photo:hover {
+    transform: scale(1.05); 
+}
+
+.component-model-container {
+    margin-top: 2em;
+    width: 100%;
+    text-align: left;
+    word-break: break-all;
+}
+
+.component-model {
+    margin-left: 3em;
+    margin-right: 3em;
+    margin-top: 20px;
+    font-size: 1.5em; 
+    font-weight: 700; 
+    color: #2d3436; 
+    font-family: 'Roboto', sans-serif; 
+    text-transform: uppercase; 
+}

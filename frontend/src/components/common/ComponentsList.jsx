@@ -14,6 +14,8 @@ function ComponentsList(props) {
         >
             {props.data.map((component) => (
                 <ComponentsElement
+                    id={component.id}
+                    name={props.name}
                     photoLink={component.photoLink}
                     model={component.model}
                     manufacturer={component.manufacturer}

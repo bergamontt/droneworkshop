@@ -8,7 +8,8 @@ import lombok.Data;
 public class Antenna {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer antennaId;
+    @Column(name="antenna_id")
+    private Integer id;
 
     @Column(nullable = false, length = 100)
     private String model;

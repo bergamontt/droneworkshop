@@ -8,7 +8,8 @@ import lombok.Data;
 public class Propeller {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer propellerId;
+    @Column(name = "propeller_id")
+    private Integer id;
 
     @Column(nullable = false, length = 100)
     private String model;

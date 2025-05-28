@@ -8,7 +8,8 @@ import lombok.Data;
 public class Stack {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer stackId;
+    @Column(name = "stack_id")
+    private Integer id;
 
     @Column(nullable = false, length = 100)
     private String model;

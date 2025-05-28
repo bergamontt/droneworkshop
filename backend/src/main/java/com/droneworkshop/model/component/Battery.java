@@ -8,7 +8,8 @@ import lombok.Data;
 public class Battery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int batteryId;
+    @Column(name="battery_id")
+    private int id;
 
     @Column(nullable = false, length = 100)
     private String model;
