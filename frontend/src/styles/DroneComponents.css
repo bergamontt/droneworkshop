@@ -1,3 +1,11 @@
 .components-page-container {
     display: flex;
+    width: 100%;
+    background-color: rgba(109, 128, 125, 0.5);
+    overflow: auto;
+}
+
+.components-main-container {
+    flex: content;
+    padding: 20px;
 }

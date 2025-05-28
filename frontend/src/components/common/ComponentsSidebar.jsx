@@ -1,4 +1,5 @@
 import { NavLink } from '@mantine/core';
+import { Outlet, useNavigate } from "react-router-dom";
 import antenna from '../../assets/antenna.svg'
 import battery from '../../assets/battery.svg'
 import camera from '../../assets/camera.svg'
@@ -12,55 +13,65 @@ import SidebarIcon from './SidebarIcon.jsx'
 import SidebarLabel from './SidebarLabel.jsx'
 
 function ComponentsSidebar() {
+    
+    const sidebarContainerStyles = {
+        "display": "flex", "width": "100%", "height": "100%"
+    }
+    
+    const navigate = useNavigate();
+
     return (
-    <dev>
-      <NavLink
-        href="/drone_components/antenna"
-        label={<SidebarLabel text="ANTENNAS" />}
-        leftSection={<SidebarIcon link={antenna}/>}
-      />
-      <NavLink
-        href="/drone_components/battery"
-        label={<SidebarLabel text="BATTERIES" />}
-        leftSection={<SidebarIcon link={battery}/>}
-      />
-      <NavLink
-        href="/drone_components/camera"
-        label={<SidebarLabel text="CAMERAS" />}
-        leftSection={<SidebarIcon link={camera}/>}
-      />
-      <NavLink
-        href="/drone_components/frame"
-        label={<SidebarLabel text="FRAMES" />}
-        leftSection={<SidebarIcon link={frame}/>}
-      />
-      <NavLink
-        href="/drone_components/motor"
-        label={<SidebarLabel text="MOTORS" />}
-        leftSection={<SidebarIcon link={motor}/>}
-      />
-      <NavLink
-        href="/drone_components/propeller"
-        label={<SidebarLabel text="PROPELLERS" />}
-        leftSection={<SidebarIcon link={propeller}/>}
-      />
-      <NavLink
-        href="/drone_components/rx"
-        label={<SidebarLabel text="RX" />}
-        leftSection={<SidebarIcon link={rx}/>}
-      />
-      <NavLink
-        href="/drone_components/stack"
-        label={<SidebarLabel text="STACK" />}
-        leftSection={<SidebarIcon link={stack}/>}
-      />
-      <NavLink
-        href="/drone_components/vtx"
-        label={<SidebarLabel text="VTX" />}
-        leftSection={<SidebarIcon link={vtx}/>}
-      />
-    </dev>
+    <div style={sidebarContainerStyles}>
+        <div>
+            <NavLink
+                label={<SidebarLabel text="ANTENNAS" />}
+                leftSection={<SidebarIcon link={antenna}/>}
+                onClick={() => navigate('/drone_components/antenna')}
+            />
+            <NavLink
+                label={<SidebarLabel text="BATTERIES" />}
+                leftSection={<SidebarIcon link={battery}/>}
+                onClick={() => navigate('/drone_components/battery')}
+            />
+            <NavLink
+                label={<SidebarLabel text="CAMERAS" />}
+                leftSection={<SidebarIcon link={camera}/>}
+                onClick={() => navigate('/drone_components/camera')}
+            />
+            <NavLink
+                label={<SidebarLabel text="FRAMES" />}
+                leftSection={<SidebarIcon link={frame}/>}
+                onClick={() => navigate('/drone_components/frame')}
+            />
+            <NavLink
+                label={<SidebarLabel text="MOTORS" />}
+                leftSection={<SidebarIcon link={motor}/>}
+                onClick={() => navigate('/drone_components/motor')}
+            />
+            <NavLink
+                label={<SidebarLabel text="PROPELLERS" />}
+                leftSection={<SidebarIcon link={propeller}/>}
+                onClick={() => navigate('/drone_components/propeller')}
+            />
+            <NavLink
+                label={<SidebarLabel text="RX" />}
+                leftSection={<SidebarIcon link={rx}/>}
+                onClick={() => navigate('/drone_components/rx')}
+            />
+            <NavLink
+                label={<SidebarLabel text="STACK" />}
+                leftSection={<SidebarIcon link={stack}/>}
+                onClick={() => navigate('/drone_components/stack')}
+            />
+            <NavLink
+                label={<SidebarLabel text="VTX" />}
+                leftSection={<SidebarIcon link={vtx}/>}
+                onClick={() => navigate('/drone_components/vtx')}
+            />
+        </div>
+        <Outlet/>
+    </div>
   );
 }
 
-export default ComponentsSidebar
+export default ComponentsSidebar;
