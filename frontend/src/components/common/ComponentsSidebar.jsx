@@ -11,7 +11,7 @@ import vtx from '../../assets/vtx.svg'
 import SidebarIcon from './SidebarIcon.jsx'
 import SidebarLabel from './SidebarLabel.jsx'
 
-function DroneComponents() {
+function ComponentsSidebar() {
     return (
     <dev>
       <NavLink
@@ -63,4 +63,4 @@ function DroneComponents() {
   );
 }
 
-export default DroneComponents
+export default ComponentsSidebar

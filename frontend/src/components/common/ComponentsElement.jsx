@@ -4,7 +4,7 @@ function ComponentsElement(props) {
     return(
         <div className="component-element-container">
             <figure className='component-photo-container'>
-                <img src={props.photoLink} className="component-element-photo" />
+                <img src={props.photoLink} alt={props.model} className="component-element-photo" />
             </figure>
             <div className='component-text-container'>
                 <span className="component-element-model">

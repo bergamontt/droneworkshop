@@ -4,7 +4,7 @@ function SidebarIcon(props) {
         "height": "3.5em"
     }
     return(
-        <img src={props.link} style={style}/>
+        <img src={props.link} alt={"Component icon"} style={style}/>
     );
 }
 

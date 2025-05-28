@@ -9,11 +9,13 @@ import { getAllPropellers } from '../services/PropellerService.jsx';
 import { getAllRX } from '../services/RXService';
 import { getAllStacks } from '../services/StackService';
 import { getAllVTX } from '../services/VTXService';
+import Tutorials from "./Tutorials.jsx";
 
 function AppRoutes() {
     return(
         <Routes>
             <Route path='/' element={<></>}/>
+
             <Route path="/drone_components" element={<DroneComponents />}/>
             <Route path="/drone_components/antenna" element={<DroneComponents fetch={getAllAntennas}/>}/>
             <Route path="/drone_components/battery" element={<DroneComponents fetch={getAllBatteries}/>}/>
@@ -24,6 +26,8 @@ function AppRoutes() {
             <Route path="/drone_components/rx" element={<DroneComponents fetch={getAllRX}/>}/>
             <Route path="/drone_components/stack" element={<DroneComponents fetch={getAllStacks}/>}/>
             <Route path="/drone_components/vtx" element={<DroneComponents fetch={getAllVTX}/>}/>
+
+            <Route path="/tutorials" element={<Tutorials />}/>
         </Routes>
     );
 }

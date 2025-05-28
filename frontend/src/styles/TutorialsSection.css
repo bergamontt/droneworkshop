@@ -1,0 +1,59 @@
+.tutorial-category-container {
+    width: 100%;
+    padding: 24px;
+    border-radius: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.tutorial-category-container:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+}
+
+.tutorial-category-name {
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+.tutorial-category-desc {
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    color: #6b7280;
+    margin-bottom: 24px;
+}
+
+.tutorial-element-container {
+    background-color: #f9fafb;
+    border-radius: 10px;
+    padding: 12px 16px;
+    transition: background-color 0.2s ease;
+}
+
+.tutorial-element-container:hover {
+    background-color: #f3f4f6;
+}
+
+.tutorial-element-name {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #2563eb;
+    text-decoration: none;
+    margin-bottom: 6px;
+}
+
+.tutorial-element-name:hover {
+    text-decoration: underline;
+}
+
+.tutorial-element-desc {
+    font-size: 0.95rem;
+    color: #4b5563;
+    margin: 0;
+}
