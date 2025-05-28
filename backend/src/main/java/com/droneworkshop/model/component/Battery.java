@@ -22,7 +22,7 @@ public class Battery {
     @Column(length = 50)
     private String sizeMm;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "num_s")
     private Integer numS;
 
     @Column

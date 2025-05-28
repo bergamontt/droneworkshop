@@ -28,7 +28,7 @@ public class Motor {
     @Column(nullable = false)
     private Integer rotationSpeed;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50, name = "range_s")
     private String rangeS;
 
     @Column(nullable = false)

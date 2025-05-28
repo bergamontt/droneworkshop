@@ -34,7 +34,7 @@ public class Stack {
     @Column(nullable = false)
     private Double maxCurrent;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50, name = "range_s")
     private String rangeS;
 
     @Column(length = 100)

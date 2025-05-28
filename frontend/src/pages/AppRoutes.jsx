@@ -13,7 +13,7 @@ import { getAllVTX } from '../services/VTXService';
 function AppRoutes() {
     return(
         <Routes>
-           <Route path='/' element={<></>}/>
+            <Route path='/' element={<></>}/>
             <Route path="/drone_components" element={<DroneComponents />}/>
             <Route path="/drone_components/antenna" element={<DroneComponents fetch={getAllAntennas}/>}/>
             <Route path="/drone_components/battery" element={<DroneComponents fetch={getAllBatteries}/>}/>

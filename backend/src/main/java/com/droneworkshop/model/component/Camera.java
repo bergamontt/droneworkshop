@@ -29,7 +29,7 @@ public class Camera {
     private Integer tvl;
 
     @Column(nullable = false, length = 50)
-    private String aspectRadio;
+    private String aspectRatio;
 
     @Column(nullable = false, length = 50)
     private String videoFormat;
