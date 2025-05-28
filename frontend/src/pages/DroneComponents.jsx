@@ -1,6 +1,5 @@
 import { useFetch } from '../hooks/useFetch.jsx';
 import { getAllAntennas } from '../services/AntennaService';
-import ComponentsSidebar from '../components/common/ComponentsSidebar.jsx'
 import ComponentsList from '../components/common/ComponentsList.jsx'
 import Searchbar from '../components/common/Searchbar.jsx';
 import '../styles/DroneComponents.css'

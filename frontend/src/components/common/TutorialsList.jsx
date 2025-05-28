@@ -1,8 +1,8 @@
 import {Flex} from '@mantine/core';
 import TutorialsSection from "./TutorialsSection.jsx";
 
-function TutorialsList(props) {
-    if (!props.categories && !props.tutorials) return(<></>);
+function TutorialsList({categories, tutorials}) {
+    if (!tutorials || !categories) return(<></>);
     return (
         <Flex
             mih={50}
@@ -12,10 +12,10 @@ function TutorialsList(props) {
             direction="column"
             wrap="wrap"
         >
-            {props.categories.map((category) => (
+            {categories.map((category) => (
                 <TutorialsSection
                     category={category}
-                    tutorials={props.tutorials.filter((tutorial) =>
+                    tutorials={tutorials.filter((tutorial) =>
                         (category.categoryId === tutorial.category.categoryId))}
                 />
             ))}
