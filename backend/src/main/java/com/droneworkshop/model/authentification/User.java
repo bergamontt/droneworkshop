@@ -1,4 +1,4 @@
-package com.droneworkshop.model.publication;
+package com.droneworkshop.model.authentification;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,7 +15,7 @@ public class User {
     @Column(nullable = false, length = 60)
     private String password;
 
-    @Column(nullable = false, length = 254)
+    @Column(nullable = false, length = 254, name="e_mail")
     private String email;
 
     @Column(length = 13)

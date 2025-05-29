@@ -1,6 +1,6 @@
 package com.droneworkshop.model.forum;
 
-import com.droneworkshop.model.publication.User;
+import com.droneworkshop.model.authentification.User;
 import jakarta.persistence.*;
 import lombok.Data;
 
