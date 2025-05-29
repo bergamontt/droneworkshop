@@ -10,6 +10,7 @@ import { getAllStacks, getStackById } from '../services/StackService';
 import { getAllVTX, getVTXById } from '../services/VTXService';
 import Tutorials from "./Tutorials.jsx";
 import LogInPage from './LogInPage.jsx';
+import RegisterPage from './RegisterPage.jsx';
 import DroneComponents from "./DroneComponents.jsx";
 import DroneComponent from './DroneComponent.jsx';
 import ComponentsSidebar from "../components/common/ComponentsSidebar.jsx";
@@ -51,6 +52,7 @@ function AppRoutes() {
             <Route path="/tutorials" element={<Tutorials />}/>
 
             <Route path="/login" element={<LogInPage />}/>
+            <Route path="/register" element={<RegisterPage />}/>
         </Routes>
     );
 }

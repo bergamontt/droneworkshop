@@ -1,20 +1,17 @@
 import {
-    Anchor,
     Button,
-    Group,
     PasswordInput,
     Text,
     TextInput,
 } from '@mantine/core';
-import {useNavigate} from "react-router-dom";
-import {useState} from 'react';
-import '../../styles/authentification/LogInForm.css';
+import { useState } from 'react';
+import '../../styles/authentification/RegisterForm.css';
 
-export default function LogInForm() {
-    const navigate = useNavigate();
-
+export default function RegisterForm() {
     const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
@@ -23,7 +20,12 @@ export default function LogInForm() {
         setLoading(true);
 
         try {
-            throw new Error('Invalid credentials');
+            if (password !== confirmPassword) {
+                throw new Error('Passwords do not match');
+            }
+
+            throw new Error('Registration failed');
+
         } catch (err) {
             setError(err.message || 'Something went wrong');
         } finally {
@@ -32,13 +34,20 @@ export default function LogInForm() {
     };
 
     return (
-        <div className="login-form">
+        <div className="register-form">
             <TextInput
                 label="Username"
                 placeholder="Your username"
                 value={username}
                 onChange={(event) => setUsername(event.currentTarget.value)}
                 required
+                radius="md"
+            />
+            <TextInput
+                label="Email"
+                placeholder="you@your.mail"
+                value={email}
+                onChange={(event) => setEmail(event.currentTarget.value)}
                 radius="md"
             />
             <PasswordInput
@@ -50,6 +59,15 @@ export default function LogInForm() {
                 mt="md"
                 radius="md"
             />
+            <PasswordInput
+                label="Confirm Password"
+                placeholder="Confirm your password"
+                value={confirmPassword}
+                onChange={(event) => setConfirmPassword(event.currentTarget.value)}
+                required
+                mt="md"
+                radius="md"
+            />
 
             {error && (
                 <Text c="red" size="sm" mt="md">
@@ -57,25 +75,15 @@ export default function LogInForm() {
                 </Text>
             )}
 
-            <Group justify="space-between" mt="lg">
-                <Anchor
-                    component="button"
-                    size="sm"
-                    onClick={() => navigate('/restore-password')}
-                >
-                    Forgot password?
-                </Anchor>
-            </Group>
-
             <Button
                 fullWidth
                 mt="xl"
                 radius="md"
                 onClick={handleSubmit}
                 loading={loading}
-                disabled={!username || !password}
+                disabled={!username || !password || !confirmPassword}
             >
-                Sign in
+                Sign up
             </Button>
         </div>
     );

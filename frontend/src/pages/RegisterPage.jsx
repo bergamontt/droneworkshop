@@ -1,29 +1,29 @@
-import LogInForm from "../components/authentification/LogInForm.jsx";
+import RegisterForm from "../components/authentification/RegisterForm.jsx";
 import {Anchor} from "@mantine/core";
 import {useNavigate} from "react-router-dom";
-import '../styles/authentification/LogInPage.css';
+import '../styles/authentification/RegisterPage.css';
 
-export default function LogInPage() {
+export default function RegisterPage() {
     const navigate = useNavigate();
 
     return(
-        <section className="login-page-container">
-            <div className="login-form-container">
-                <span className="login-title">
-                    Welcome back!
+        <section className="register-page-container">
+            <div className="register-form-container">
+                <span className="register-title">
+                    Create an account
                 </span>
 
-                <LogInForm />
+                <RegisterForm />
 
                 <p className="login-subtitle">
                 <span>
-                    Do not have an account yet?
+                    Already have an account?
                 </span>
                     <Anchor
                         component="button"
                         underline="hover"
                         onClick={() => navigate("/register")}
-                    >Create account</Anchor>
+                    >Log in</Anchor>
                 </p>
             </div>
         </section>
