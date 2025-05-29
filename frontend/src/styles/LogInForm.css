@@ -1,0 +1,29 @@
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.login-title {
+    font-family: 'WDXL Lubrifont TC', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 72px;
+}
+
+.login-subtitle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: black;
+    font-size: 18px;
+    text-align: center;
+}
+
+.login-form {
+    background-color: white;
+    padding: 16px;
+    border-radius: 8px;
+    width: 100%;
+}

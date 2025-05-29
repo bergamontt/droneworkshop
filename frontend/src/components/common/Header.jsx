@@ -3,6 +3,7 @@ import login from '../../assets/login.svg'
 import '../../styles/Header.css';
 import {NavLink} from "@mantine/core";
 import { useNavigate } from "react-router-dom";
+import {Link} from "react-router";
 
 function Header() {
     const navigate = useNavigate();
@@ -29,7 +30,13 @@ function Header() {
                     />
                 </ul>
             </article>
-            <img src={login} alt="" className='nav-login'/>
+            <Link to='/login'>
+                <img
+                    src={login}
+                    alt="Log In"
+                    className="nav-login"
+                />
+            </Link>
         </section>
     );
 }
