@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { Divider, Tabs } from '@mantine/core';
 import AttributeTable from '../components/common/AttributeTable.jsx';
 import '../styles/DroneComponent.css'
+import cart from '../assets/cart.svg'
+import list from '../assets/list.svg'
 
 function DroneComponent(props) {
 
@@ -28,10 +30,16 @@ function DroneComponent(props) {
                 <div className="component-attributes">
                     <Tabs defaultValue="attributes">
                         <Tabs.List>
-                            <Tabs.Tab value="attributes">
+                            <Tabs.Tab 
+                                value="attributes"
+                                leftSection={<img src={list} style={{"height" : "1em"}}/>}
+                            >
                                 <span className='tab-label'>Характеристики</span>
                             </Tabs.Tab>
-                            <Tabs.Tab value="shops">
+                            <Tabs.Tab 
+                                value="shops"
+                                leftSection={<img src={cart} style={{"height" : "1em"}}/>}
+                            >
                                 <span className='tab-label'>Магазини</span>
                             </Tabs.Tab>
                         </Tabs.List>

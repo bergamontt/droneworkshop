@@ -1,4 +1,6 @@
-import { Divider, Tabs } from '@mantine/core';
+import { Divider } from '@mantine/core';
+import {getAttributeName} from '../../utils/AttributeNameMapper'
+import {getAttributeMetric} from '../../utils/AttributeMetricMapper'
 import '../../styles/DroneComponent.css'
 
 function AttributeTable(props) {
@@ -13,9 +15,14 @@ function AttributeTable(props) {
                 let key = entry[0];
                 let value = entry[1];
                 if (!isMappedAttribute(key)) return;
-                return (
-                    <><span className='component-attribute'>
-                        {key} : {value}
+                return (<>
+                    <span className='component-attribute'>
+                        <span style={{"font-weight": "700"}}>
+                            {getAttributeName(key)}
+                        </span>
+                        <span>
+                            {getAttributeMetric(key, value)}
+                        </span>
                     </span>
                     <Divider size="sm"/>
                 </>);
