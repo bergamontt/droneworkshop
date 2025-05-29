@@ -1,5 +1,7 @@
 import { useFetch } from '../hooks/useFetch.jsx';
 import { useParams } from 'react-router-dom';
+import { Divider, Tabs } from '@mantine/core';
+import AttributeTable from '../components/common/AttributeTable.jsx';
 import '../styles/DroneComponent.css'
 
 function DroneComponent(props) {
@@ -17,11 +19,32 @@ function DroneComponent(props) {
                 <div className='component-main-data'>
                     <div className='component-model-container'>
                         <span className='component-model'>{component.model}</span>
+                        <Divider size="sm"/>
                     </div>
                     <img src={component.photoLink} className="component-photo" />
                 </div>
+            </article>
+            <article className='component-data-contaner'>
                 <div className="component-attributes">
-        
+                    <Tabs defaultValue="attributes">
+                        <Tabs.List>
+                            <Tabs.Tab value="attributes">
+                                <span className='tab-label'>Характеристики</span>
+                            </Tabs.Tab>
+                            <Tabs.Tab value="shops">
+                                <span className='tab-label'>Магазини</span>
+                            </Tabs.Tab>
+                        </Tabs.List>
+
+                        <Tabs.Panel value="attributes">
+                            <AttributeTable component={component}/>
+                        </Tabs.Panel>
+
+                        <Tabs.Panel value="shops">
+    
+                        </Tabs.Panel>
+
+                    </Tabs>
                 </div>
             </article>
         </section>

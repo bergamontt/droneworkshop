@@ -1,15 +1,20 @@
 .component-page-container {
     width: 100%;
     background-color: rgba(109, 128, 125, 0.5);
+    display: flex;
+    padding: 1em;
 }
 
 .component-data-contaner {
     text-align: center;
     background-color: white;
     border-radius: 25px;
-    margin: 3em;
+    margin: 1em;
+    padding: 1.5em;
     display: flex;
     overflow: hidden;
+    width: 50%;
+    height: fit-content;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -21,8 +26,8 @@
 }
 
 .component-photo {
-    max-width: 700px;
-    max-height: 700px;
+    width: 80%;
+    height: 80%;
     margin: 2em;
     padding: 0em;
     object-fit: contain;
@@ -34,20 +39,52 @@
     transform: scale(1.05); 
 }
 
+.tabs-panel-wrapper {
+    display: grid;
+    padding-top: 1em;
+}
+
 .component-model-container {
-    margin-top: 2em;
     width: 100%;
     text-align: left;
     word-break: break-all;
+    display: grid;
 }
 
 .component-model {
-    margin-left: 3em;
-    margin-right: 3em;
-    margin-top: 20px;
     font-size: 1.5em; 
     font-weight: 700; 
     color: #2d3436; 
     font-family: 'Roboto', sans-serif; 
     text-transform: uppercase; 
+}
+
+.component-id {
+    font-family: 'Roboto', sans-serif;
+    color: #2d34366c; 
+    font-size: 0.8em; 
+}
+
+.component-attributes {
+    width: 100%;
+    display: grid;
+    text-align: left;
+}
+
+.component-attribute {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2em;
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
+    padding-left: 0.5em;
+    transition: background-color 0.3s ease;
+}
+
+.component-attribute:hover {
+    background-color: rgba(109, 128, 125, 0.116);
+}
+
+.tab-label {
+    font-size: 1.2em;
+    font-weight: 700;
 }
