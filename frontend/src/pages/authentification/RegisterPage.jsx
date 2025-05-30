@@ -1,7 +1,7 @@
-import RegisterForm from "../components/authentification/RegisterForm.jsx";
+import RegisterForm from "../../components/authentification/RegisterForm.jsx";
 import {Anchor} from "@mantine/core";
 import {useNavigate} from "react-router-dom";
-import '../styles/authentification/RegisterPage.css';
+import '../../styles/authentification/RegisterPage.css';
 
 export default function RegisterPage() {
     const navigate = useNavigate();

@@ -8,10 +8,10 @@ import {
     Title,
 } from '@mantine/core';
 import {useState} from 'react';
-import {useFetch} from "../hooks/useFetch.jsx";
-import {getCurrentUser, updateUserPassword} from "../services/UserService.jsx";
+import {useFetch} from "../../hooks/useFetch.jsx";
+import {getCurrentUser, updateUserPassword} from "../../services/UserService.jsx";
 import {useNavigate} from "react-router-dom";
-import {jwtService} from "../services/JWTService.jsx";
+import {jwtService} from "../../services/JWTService.jsx";
 
 export default function ChangePasswordPage() {
     const navigate = useNavigate();
@@ -46,7 +46,10 @@ export default function ChangePasswordPage() {
     };
 
     return (
-        <div style={{ backgroundColor: 'rgba(109, 128, 125, 0.5)', padding: '20px' , height: '100%'}}>
+        <div style={{
+            backgroundColor: 'rgba(109, 128, 125, 0.5)',
+            padding: '20px' ,
+            minHeight: '100vh'}}>
             <Container size={520} my={40}>
                 <Title ta="center" style={{
                     fontFamily: "'WDXL Lubrifont TC', Arial, sans-serif",

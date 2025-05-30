@@ -1,8 +1,8 @@
-import LogInForm from "../components/authentification/LogInForm.jsx";
+import LogInForm from "../../components/authentification/LogInForm.jsx";
 import {Anchor} from "@mantine/core";
 import {useNavigate} from "react-router-dom";
-import { jwtService } from "../services/JWTService.jsx"
-import '../styles/authentification/LogInPage.css';
+import { jwtService } from "../../services/JWTService.jsx"
+import '../../styles/authentification/LogInPage.css';
 
 export default function LogInPage() {
     const navigate = useNavigate();

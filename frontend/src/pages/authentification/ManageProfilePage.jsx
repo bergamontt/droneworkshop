@@ -12,9 +12,9 @@ import {
     Grid,
 } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import { updateUserInfo, getCurrentUser } from '../services/UserService.jsx';
-import { useFetch } from '../hooks/useFetch.jsx';
-import { jwtService } from "../services/JWTService.jsx"
+import { updateUserInfo, getCurrentUser } from '../../services/UserService.jsx';
+import { useFetch } from '../../hooks/useFetch.jsx';
+import { jwtService } from "../../services/JWTService.jsx"
 import { useNavigate } from 'react-router-dom';
 
 export default function ManageProfilePage() {
