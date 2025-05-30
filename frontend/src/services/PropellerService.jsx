@@ -1,7 +1,8 @@
 import api from './api.jsx'
+import {elementsPerPage, defaultPage} from './ServiceConfig.jsx'
 
-export const getAllPropellers = async () => {
-    const response = await api.get('/propeller');
+export const getAllPropellers = async (page = defaultPage, size = elementsPerPage) => {
+    const response = await api.get(`/propeller?page=${page}&size=${size}`);
     return response.data;
 }
 

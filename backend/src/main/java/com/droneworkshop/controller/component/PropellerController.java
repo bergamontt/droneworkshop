@@ -2,6 +2,8 @@ package com.droneworkshop.controller.component;
 
 import com.droneworkshop.model.component.Propeller;
 import com.droneworkshop.service.component.PropellerService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,9 +19,11 @@ public class PropellerController {
         this.propellerService = propellerService;
     }
 
-    @GetMapping("/propeller")
-    public List<Propeller> getAllPropellers() {
-        return propellerService.getAllPropellers();
+    @GetMapping(value = "/propeller", params = {"page", "size"})
+    public Page<Propeller> getAllPropellers(
+            Pageable pageable
+    ) {
+        return propellerService.getAllPropellers(pageable);
     }
 
     @GetMapping("/propeller/{id}")

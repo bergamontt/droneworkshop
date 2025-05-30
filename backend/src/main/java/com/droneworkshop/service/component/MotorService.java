@@ -2,6 +2,8 @@ package com.droneworkshop.service.component;
 
 import com.droneworkshop.model.component.Motor;
 import com.droneworkshop.repository.component.MotorRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +20,8 @@ public class MotorService {
         return motorRepository.findById(id).orElse(null);
     }
 
-    public List<Motor> getAllMotors() {
-        return motorRepository.findAll();
+    public Page<Motor> getAllMotors(Pageable pageable) {
+        return motorRepository.findAll(pageable);
     }
 
     public List<Motor> getMotorsByModelStartingWith(String modelPrefix) {

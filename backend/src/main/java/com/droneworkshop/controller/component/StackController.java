@@ -2,6 +2,8 @@ package com.droneworkshop.controller.component;
 
 import com.droneworkshop.model.component.Stack;
 import com.droneworkshop.service.component.StackService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,9 +19,11 @@ public class StackController {
         this.stackService = stackService;
     }
 
-    @GetMapping("/stack")
-    public List<Stack> getAllStacks() {
-        return stackService.getAllStacks();
+    @GetMapping(value = "/stack", params = {"page", "size"})
+    public Page<Stack> getAllStacks(
+            Pageable pageable
+    ) {
+        return stackService.getAllStacks(pageable);
     }
 
     @GetMapping("/stack/{id}")

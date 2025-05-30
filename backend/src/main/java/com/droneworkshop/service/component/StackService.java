@@ -2,6 +2,8 @@ package com.droneworkshop.service.component;
 
 import com.droneworkshop.model.component.Stack;
 import com.droneworkshop.repository.component.StackRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +20,8 @@ public class StackService {
         return stackRepository.findById(id).orElse(null);
     }
 
-    public List<Stack> getAllStacks() {
-        return stackRepository.findAll();
+    public Page<Stack> getAllStacks(Pageable pageable) {
+        return stackRepository.findAll(pageable);
     }
 
     public List<Stack> getStacksByModelStartingWith(String modelPrefix) {

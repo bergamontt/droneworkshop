@@ -2,6 +2,8 @@ package com.droneworkshop.controller.component;
 
 import com.droneworkshop.model.component.Frame;
 import com.droneworkshop.service.component.FrameService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,9 +19,11 @@ public class FrameController {
         this.frameService = frameService;
     }
 
-    @GetMapping("/frame")
-    public List<Frame> getAllFrames() {
-        return frameService.getAllFrames();
+    @GetMapping(value = "/frame", params = {"page", "size"})
+    public Page<Frame> getAllFrames(
+            Pageable pageable
+    ) {
+        return frameService.getAllFrames(pageable);
     }
 
     @GetMapping("/frame/{id}")

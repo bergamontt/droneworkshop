@@ -2,6 +2,8 @@ package com.droneworkshop.controller.component;
 
 import com.droneworkshop.model.component.Motor;
 import com.droneworkshop.service.component.MotorService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,9 +19,11 @@ public class MotorController {
         this.motorService = motorService;
     }
 
-    @GetMapping("/motor")
-    public List<Motor> getAllMotors() {
-        return motorService.getAllMotors();
+    @GetMapping(value = "/motor", params = {"page", "size"})
+    public Page<Motor> getAllMotors(
+            Pageable pageable
+    ) {
+        return motorService.getAllMotors(pageable);
     }
 
     @GetMapping("/motor/{id}")

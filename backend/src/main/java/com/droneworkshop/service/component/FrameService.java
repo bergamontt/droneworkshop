@@ -2,6 +2,8 @@ package com.droneworkshop.service.component;
 
 import com.droneworkshop.model.component.Frame;
 import com.droneworkshop.repository.component.FrameRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +20,8 @@ public class FrameService {
         return frameRepository.findById(id).orElse(null);
     }
 
-    public List<Frame> getAllFrames() {
-        return frameRepository.findAll();
+    public Page<Frame> getAllFrames(Pageable pageable) {
+        return frameRepository.findAll(pageable);
     }
 
     public List<Frame> getFramesByModelStartingWith(String modelPrefix) {

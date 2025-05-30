@@ -15,14 +15,16 @@ import SidebarLabel from './SidebarLabel.jsx'
 function ComponentsSidebar() {
     
     const sidebarContainerStyles = {
-        "display": "flex", "width": "100%", "height": "100%"
+        "display": "flex",
+        "width": "100%",
+        "height": "fit-content"
     }
     
     const navigate = useNavigate();
 
     return (
     <div style={sidebarContainerStyles}>
-        <div>
+        <div style={{"position" : "sticky", "top": 140, "alignSelf": "flex-start"}}>
             <NavLink
                 label={<SidebarLabel text="ANTENNAS" />}
                 leftSection={<SidebarIcon link={antenna}/>}

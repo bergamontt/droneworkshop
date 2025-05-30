@@ -1,7 +1,8 @@
 import api from './api.jsx'
+import {elementsPerPage, defaultPage} from './ServiceConfig.jsx'
 
-export const getAllVTX = async () => {
-    const response = await api.get('/vtx');
+export const getAllVTX = async (page = defaultPage, size = elementsPerPage) => {
+    const response = await api.get(`/vtx?page=${page}&size=${size}`);
     return response.data;
 }
 

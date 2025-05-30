@@ -2,6 +2,8 @@ package com.droneworkshop.controller.component;
 
 import com.droneworkshop.model.component.Battery;
 import com.droneworkshop.service.component.BatteryService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,9 +19,11 @@ public class BatteryController {
         this.batteryService = batteryService;
     }
 
-    @GetMapping("/battery")
-    public List<Battery> getAllBatteries() {
-        return batteryService.getAllBatteries();
+    @GetMapping(value = "/battery", params = {"page", "size"})
+    public Page<Battery> getAllBatteries(
+            Pageable pageable
+    ) {
+        return batteryService.getAllBatteries(pageable);
     }
 
     @GetMapping("/battery/{id}")

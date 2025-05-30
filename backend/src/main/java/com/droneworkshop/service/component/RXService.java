@@ -2,6 +2,8 @@ package com.droneworkshop.service.component;
 
 import com.droneworkshop.model.component.RX;
 import com.droneworkshop.repository.component.RXRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +20,8 @@ public class RXService {
         return rxRepository.findById(id).orElse(null);
     }
 
-    public List<RX> getAllRXs() {
-        return rxRepository.findAll();
+    public Page<RX> getAllRXs(Pageable pageable) {
+        return rxRepository.findAll(pageable);
     }
 
     public List<RX> getRXsByModelStartingWith(String modelPrefix) {

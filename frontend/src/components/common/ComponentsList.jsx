@@ -3,6 +3,7 @@ import ComponentsElement from './ComponentsElement';
 
 function ComponentsList(props) {
     if (!props.data) return(<></>);
+    const content = props.data.content;
     return (
         <Flex
             mih={50}
@@ -12,7 +13,7 @@ function ComponentsList(props) {
             direction="row"
             wrap="wrap"
         >
-            {props.data.map((component) => (
+            {content.map((component) => (
                 <ComponentsElement
                     id={component.id}
                     name={props.name}

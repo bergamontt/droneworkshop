@@ -2,6 +2,8 @@ package com.droneworkshop.controller.component;
 
 import com.droneworkshop.model.component.Antenna;
 import com.droneworkshop.service.component.AntennaService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,9 +19,11 @@ public class AntennaController {
         this.antennaService = antennaService;
     }
 
-    @GetMapping("/antenna")
-    public List<Antenna> getAllAntennas() {
-        return antennaService.getAllAntennas();
+    @GetMapping(value = "/antenna", params = {"page", "size"})
+    public Page<Antenna> getAllAntennas(
+            Pageable pageable
+    ) {
+        return antennaService.getAllAntennas(pageable);
     }
 
     @GetMapping("/antenna/{id}")

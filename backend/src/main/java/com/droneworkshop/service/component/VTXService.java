@@ -2,6 +2,8 @@ package com.droneworkshop.service.component;
 
 import com.droneworkshop.model.component.VTX;
 import com.droneworkshop.repository.component.VTXRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +20,8 @@ public class VTXService {
         return vtxRepository.findById(id).orElse(null);
     }
 
-    public List<VTX> getAllVTXs() {
-        return vtxRepository.findAll();
+    public Page<VTX> getAllVTXs(Pageable pageable) {
+        return vtxRepository.findAll(pageable);
     }
 
     public List<VTX> getVTXsByModelStartingWith(String modelPrefix) {

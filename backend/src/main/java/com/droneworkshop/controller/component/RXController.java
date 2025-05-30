@@ -2,6 +2,8 @@ package com.droneworkshop.controller.component;
 
 import com.droneworkshop.model.component.RX;
 import com.droneworkshop.service.component.RXService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,9 +19,11 @@ public class RXController {
         this.rxService = rxService;
     }
 
-    @GetMapping("/rx")
-    public List<RX> getAllRXs() {
-        return rxService.getAllRXs();
+    @GetMapping(value = "/rx", params = {"page", "size"})
+    public Page<RX> getAllRXs(
+            Pageable pageable
+    ) {
+        return rxService.getAllRXs(pageable);
     }
 
     @GetMapping("/rx/{id}")

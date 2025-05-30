@@ -2,6 +2,8 @@ package com.droneworkshop.service.component;
 
 import com.droneworkshop.model.component.Battery;
 import com.droneworkshop.repository.component.BatteryRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +20,8 @@ public class BatteryService {
         return batteryRepository.findById(id).orElse(null);
     }
 
-    public List<Battery> getAllBatteries() {
-        return batteryRepository.findAll();
+    public Page<Battery> getAllBatteries(Pageable pageable) {
+        return batteryRepository.findAll(pageable);
     }
 
     public List<Battery> getBatteriesByModelStartingWith(String modelPrefix) {
