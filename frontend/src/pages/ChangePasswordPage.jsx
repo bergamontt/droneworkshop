@@ -11,6 +11,7 @@ import {useState} from 'react';
 import {useFetch} from "../hooks/useFetch.jsx";
 import {getCurrentUser, updateUserPassword} from "../services/UserService.jsx";
 import {useNavigate} from "react-router-dom";
+import {jwtService} from "../services/JWTService.jsx";
 
 export default function ChangePasswordPage() {
     const navigate = useNavigate();
@@ -21,7 +22,8 @@ export default function ChangePasswordPage() {
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
 
-    if (!user) return <></>;
+    if (!jwtService.isLoggedIn())
+        navigate('/log-in');
 
     const handleChangePassword = async () => {
         setMessage('');

@@ -14,6 +14,7 @@ import {
 import { useEffect, useState } from 'react';
 import { updateUserInfo, getCurrentUser } from '../services/UserService.jsx';
 import { useFetch } from '../hooks/useFetch.jsx';
+import { jwtService } from "../services/JWTService.jsx"
 import { useNavigate } from 'react-router-dom';
 
 export default function ManageProfilePage() {
@@ -34,7 +35,8 @@ export default function ManageProfilePage() {
         }
     }, [user]);
 
-    if (!user) return <></>;
+    if (!jwtService.isLoggedIn())
+        navigate('/log-in');
 
     const handleSave = async () => {
         setSaving(true);

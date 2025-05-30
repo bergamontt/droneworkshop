@@ -1,32 +1,32 @@
 import { useState, useEffect } from 'react';
+import { jwtService } from "../services/JWTService.jsx"
 
 export const useJWT = () => {
-    const [token, setTokenState] = useState(() => {
-        return localStorage.getItem('jwt') || null;
-    });
+    const [token, setTokenState] = useState(jwtService.getToken());
 
     const setToken = (newToken) => {
-        if (newToken) {
-            localStorage.setItem('jwt', newToken);
-            setTokenState(newToken);
-        } else {
-            localStorage.removeItem('jwt');
-            setTokenState(null);
-        }
+        jwtService.setToken(newToken);
+        setTokenState(jwtService.getToken());
     };
 
     const getToken = () => {
-        return localStorage.getItem('jwt');
+        const t = jwtService.getToken();
+        if (t !== token) setTokenState(t);
+        return t;
+    };
+
+    const isLoggedIn = () => {
+        return getToken() !== null;
     };
 
     useEffect(() => {
         const syncToken = () => {
-            setTokenState(localStorage.getItem('jwt'));
+            setTokenState(jwtService.getToken());
         };
 
         window.addEventListener('storage', syncToken);
         return () => window.removeEventListener('storage', syncToken);
     }, []);
 
-    return { token, setToken, getToken };
-}
+    return { token: getToken(), setToken, getToken, isLoggedIn };
+};

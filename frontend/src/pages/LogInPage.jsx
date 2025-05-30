@@ -1,10 +1,14 @@
 import LogInForm from "../components/authentification/LogInForm.jsx";
 import {Anchor} from "@mantine/core";
 import {useNavigate} from "react-router-dom";
+import { jwtService } from "../services/JWTService.jsx"
 import '../styles/authentification/LogInPage.css';
 
 export default function LogInPage() {
     const navigate = useNavigate();
+
+    if(jwtService.isLoggedIn())
+        navigate("/profile");
 
     return(
         <div className="login-page-container">

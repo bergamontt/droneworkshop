@@ -1,12 +1,22 @@
 import logo from '../../assets/droneworkshop.png';
 import login from '../../assets/login.svg'
+import logout from '../../assets/logout.svg'
+import pfp from '../../assets/profile_picture.svg';
 import '../../styles/Header.css';
 import {NavLink} from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import {Link} from "react-router";
+import {useJWT} from "../../hooks/useJWT.jsx"
+import {jwtService} from "../../services/JWTService.jsx";
 
 function Header() {
     const navigate = useNavigate();
+
+    const logOut = () => {
+        jwtService.setToken(null);
+        navigate('/log-in');
+    }
+
     return(
         <section className="nav-container">
             <article className='nav-main-container'>
@@ -30,13 +40,34 @@ function Header() {
                     />
                 </ul>
             </article>
-            <Link to='/log-in'>
-                <img
-                    src={login}
-                    alt="Log In"
-                    className="nav-login"
-                />
-            </Link>
+            {
+                useJWT().isLoggedIn() ? (
+                    <div className="nav-auth-container">
+                        <Link to='/profile'>
+                            <img
+                                src={pfp}
+                                alt="To Profile"
+                                className="nav-login"
+                            />
+                        </Link>
+                        <button className="nav-logout-button" onClick={logOut}>
+                            <img
+                                src={logout}
+                                alt="Log Out"
+                                className="nav-logout-icon"
+                            />
+                        </button>
+                    </div>
+                ) : (
+                    <Link to='/log-in'>
+                        <img
+                            src={login}
+                            alt="Log In"
+                            className="nav-login"
+                        />
+                    </Link>
+                )
+            }
         </section>
     );
 }
