@@ -19,6 +19,9 @@ public class Distributor {
     @Column(nullable = false)
     private Integer price;
 
+    @Column(nullable = false)
+    private boolean isAvailable;
+
     @ManyToOne
     @JoinColumn(name = "frame_id")
     private Frame frame;
