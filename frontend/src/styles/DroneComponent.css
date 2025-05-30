@@ -88,3 +88,8 @@
     font-size: 1.4em;
     font-weight: 700;
 }
+
+.component-stock {
+    width: 100%;
+    text-align: left;
+}

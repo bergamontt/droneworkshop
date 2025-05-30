@@ -17,7 +17,7 @@ function AttributeTable(props) {
                 if (!isMappedAttribute(key)) return;
                 return (<>
                     <span className='component-attribute'>
-                        <span style={{"font-weight": "700"}}>
+                        <span style={{"fontWeight": "700"}}>
                             {getAttributeName(key)}
                         </span>
                         <span>
