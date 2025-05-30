@@ -26,7 +26,7 @@ export default function LogInForm() {
         setLoading(true);
 
         try {
-            const { data: token } = login(username, password);
+            const token = await login(username, password);
             setToken(token)
         } catch (err) {
             setError(err.message || 'Something went wrong');
