@@ -27,7 +27,8 @@ export default function LogInForm() {
 
         try {
             const token = await login(username, password);
-            setToken(token)
+            setToken(token);
+            navigate("/profile")
         } catch (err) {
             setError(err.message || 'Something went wrong');
         } finally {

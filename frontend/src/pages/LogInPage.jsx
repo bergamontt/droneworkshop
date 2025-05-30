@@ -7,7 +7,7 @@ export default function LogInPage() {
     const navigate = useNavigate();
 
     return(
-        <section className="login-page-container">
+        <div className="login-page-container">
             <div className="login-form-container">
                 <span className="login-title">
                     Welcome back!
@@ -16,9 +16,9 @@ export default function LogInPage() {
                 <LogInForm />
 
                 <p className="login-subtitle">
-                <span>
-                    Do not have an account yet?
-                </span>
+                    <span>
+                        Do not have an account yet?
+                    </span>
                     <Anchor
                         component="button"
                         underline="hover"
@@ -26,6 +26,6 @@ export default function LogInPage() {
                     >Create account</Anchor>
                 </p>
             </div>
-        </section>
+        </div>
     );
 }

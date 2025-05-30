@@ -55,6 +55,12 @@ public class UserService implements UserDetailsService{
         return userRepository.findById(username).orElse(null);
     }
 
+    public User getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUsername = authentication.getName();
+        return userRepository.findById(currentUsername).orElse(null);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findById(username).orElse(null);
@@ -68,9 +74,7 @@ public class UserService implements UserDetailsService{
     }
 
     private void checkIfCurrentUser(String username) throws AuthenticationException {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentUsername = authentication.getName();
-        if(!username.equals(currentUsername)){
+        if(!username.equals(getCurrentUser().getUsername())){
             throw new AuthenticationCredentialsNotFoundException("Invalid user credentials.");
         }
     }

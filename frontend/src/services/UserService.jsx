@@ -16,7 +16,7 @@ export const updateUserInfo = async (user) => {
 };
 
 export const updateUserPassword = async (username, password) => {
-    const response = await api.patch(`/user/${username}`, { password });
+    const response = await api.patch(`/user/${username}`, password);
     return response.data;
 };
 
@@ -26,10 +26,11 @@ export const login = async (username, password) => {
 };
 
 export const getUserByUsername = async (username) => {
-    try {
-        const response = await api.get(`/user/${username}`);
-        return response.data;
-    } catch (error) {
-        throw new Error("Failed to fetch user: " + error.message);
-    }
+    const response = await api.get(`/user/${username}`);
+    return response.data;
 };
+
+export const getCurrentUser = async () => {
+    const response = await api.get('/user');
+    return response.data;
+}

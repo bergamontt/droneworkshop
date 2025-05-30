@@ -27,8 +27,8 @@ export default function RegisterForm() {
             if (password !== confirmPassword) {
                 setError('Passwords do not match');
             } else {
-                await registerUser({username, password, email})
-                navigate("/log-in")
+                await registerUser({username, password, email});
+                navigate("/log-in");
             }
         } catch (err) {
             setError(err.message || 'Something went wrong');

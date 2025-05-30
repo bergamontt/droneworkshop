@@ -11,6 +11,8 @@ import { getAllVTX, getVTXById } from '../services/VTXService';
 import Tutorials from "./Tutorials.jsx";
 import LogInPage from './LogInPage.jsx';
 import RegisterPage from './RegisterPage.jsx';
+import ManageProfilePage from './ManageProfilePage.jsx';
+import ChangePasswordPage from "./ChangePasswordPage.jsx";
 import DroneComponents from "./DroneComponents.jsx";
 import DroneComponent from './DroneComponent.jsx';
 import ComponentsSidebar from "../components/common/ComponentsSidebar.jsx";
@@ -53,6 +55,8 @@ function AppRoutes() {
 
             <Route path="/log-in" element={<LogInPage />}/>
             <Route path="/register" element={<RegisterPage />}/>
+            <Route path="/profile" element={<ManageProfilePage />}/>
+            <Route path="/change-password" element={<ChangePasswordPage />}/>
         </Routes>
     );
 }

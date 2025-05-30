@@ -40,4 +40,9 @@ public class UserController {
     public User getUserByUsername(@PathVariable String username) {
         return userService.getUserByUsername(username);
     }
+
+    @GetMapping
+    public User getCurrentUser() {
+        return userService.getCurrentUser();
+    }
 }
