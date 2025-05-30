@@ -22,7 +22,7 @@ export default function RegisterPage() {
                     <Anchor
                         component="button"
                         underline="hover"
-                        onClick={() => navigate("/register")}
+                        onClick={() => navigate("/log-in")}
                     >Log in</Anchor>
                 </p>
             </div>

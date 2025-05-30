@@ -30,7 +30,7 @@ function Header() {
                     />
                 </ul>
             </article>
-            <Link to='/login'>
+            <Link to='/log-in'>
                 <img
                     src={login}
                     alt="Log In"

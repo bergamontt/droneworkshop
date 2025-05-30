@@ -51,7 +51,7 @@ function AppRoutes() {
 
             <Route path="/tutorials" element={<Tutorials />}/>
 
-            <Route path="/login" element={<LogInPage />}/>
+            <Route path="/log-in" element={<LogInPage />}/>
             <Route path="/register" element={<RegisterPage />}/>
         </Routes>
     );

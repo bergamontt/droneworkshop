@@ -31,8 +31,8 @@ public class UserController {
         userService.updateUser(user);
     }
 
-    @PatchMapping("/password")
-    public void updateUserPassword(@RequestBody String username, @RequestBody String password) {
+    @PatchMapping("/{username}")
+    public void updateUserPassword(@PathVariable String username, @RequestBody String password) {
         userService.updateUserPassword(username, password);
     }
 

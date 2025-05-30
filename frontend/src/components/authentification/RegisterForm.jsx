@@ -5,9 +5,13 @@ import {
     TextInput,
 } from '@mantine/core';
 import { useState } from 'react';
+import {registerUser} from "../../services/UserService.jsx";
+import {useNavigate} from "react-router-dom";
 import '../../styles/authentification/RegisterForm.css';
 
 export default function RegisterForm() {
+    const navigate = useNavigate();
+
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -21,11 +25,11 @@ export default function RegisterForm() {
 
         try {
             if (password !== confirmPassword) {
-                throw new Error('Passwords do not match');
+                setError('Passwords do not match');
+            } else {
+                await registerUser({username, password, email})
+                navigate("/log-in")
             }
-
-            throw new Error('Registration failed');
-
         } catch (err) {
             setError(err.message || 'Something went wrong');
         } finally {
@@ -48,6 +52,7 @@ export default function RegisterForm() {
                 placeholder="you@your.mail"
                 value={email}
                 onChange={(event) => setEmail(event.currentTarget.value)}
+                required
                 radius="md"
             />
             <PasswordInput

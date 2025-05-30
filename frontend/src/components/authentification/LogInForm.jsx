@@ -8,10 +8,13 @@ import {
 } from '@mantine/core';
 import {useNavigate} from "react-router-dom";
 import {useState} from 'react';
+import {useJWT} from "../../hooks/useJWT.jsx";
+import {login} from "../../services/UserService.jsx";
 import '../../styles/authentification/LogInForm.css';
 
 export default function LogInForm() {
     const navigate = useNavigate();
+    const {setToken} = useJWT();
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -23,7 +26,8 @@ export default function LogInForm() {
         setLoading(true);
 
         try {
-            throw new Error('Invalid credentials');
+            const { data: token } = login(username, password);
+            setToken(token)
         } catch (err) {
             setError(err.message || 'Something went wrong');
         } finally {

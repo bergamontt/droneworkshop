@@ -51,6 +51,7 @@ public class UserService implements UserDetailsService{
     }
 
     public User getUserByUsername(String username) {
+        checkIfCurrentUser(username);
         return userRepository.findById(username).orElse(null);
     }
 

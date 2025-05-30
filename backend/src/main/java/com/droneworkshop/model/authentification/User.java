@@ -18,12 +18,6 @@ public class User {
     @Column(nullable = false, length = 254, name="e_mail")
     private String email;
 
-    @Column(length = 13)
-    private String phoneNum;
-
     @Column(length = 70)
     private String bio;
-
-    @Column(nullable = false)
-    private Integer rating;
 }
