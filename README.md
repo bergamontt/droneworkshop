@@ -30,7 +30,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd drone-builder-app
+  cd droneworkshop
 ```
 
 Start the Backend
