@@ -1,15 +1,11 @@
 package com.droneworkshop.controller.component;
 
+import com.droneworkshop.dto.filter.FrameFilterDto;
 import com.droneworkshop.model.component.Frame;
 import com.droneworkshop.service.component.FrameService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class FrameController {
@@ -19,11 +15,12 @@ public class FrameController {
         this.frameService = frameService;
     }
 
-    @GetMapping(value = "/frame", params = {"page", "size"})
+    @GetMapping(value = "/frame")
     public Page<Frame> getAllFrames(
+            @ModelAttribute FrameFilterDto filter,
             Pageable pageable
     ) {
-        return frameService.getAllFrames(pageable);
+        return frameService.getFilteredFrames(filter, pageable);
     }
 
     @GetMapping("/frame/{id}")
@@ -33,10 +30,4 @@ public class FrameController {
         return frameService.getFrameById(id);
     }
 
-    @GetMapping(value = "/frame", params = {"modelPrefix"})
-    public List<Frame> getFramesByModelPrefix(
-            @RequestParam String modelPrefix
-    ) {
-        return frameService.getFramesByModelStartingWith(modelPrefix);
-    }
 }

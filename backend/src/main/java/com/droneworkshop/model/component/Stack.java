@@ -3,6 +3,9 @@ package com.droneworkshop.model.component;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Entity
 public class Stack {
@@ -40,4 +43,7 @@ public class Stack {
 
     @Column(length = 100)
     private String photoLink;
+
+    @OneToMany(mappedBy = "stack")
+    private List<Distributor> distributors = new ArrayList<>();
 }

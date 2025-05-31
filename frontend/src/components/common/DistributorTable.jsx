@@ -54,7 +54,7 @@ function DistributorTable() {
                 </Grid.Col>
             </Grid>
             <div style={{"dispaly" : "flex",
-                         "justify-content" : "center"
+                         "justifyContent" : "center"
                         }}>
                 <img 
                     src={link}

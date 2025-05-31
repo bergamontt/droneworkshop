@@ -1,15 +1,11 @@
 package com.droneworkshop.controller.component;
 
+import com.droneworkshop.dto.filter.CameraFilterDto;
 import com.droneworkshop.model.component.Camera;
 import com.droneworkshop.service.component.CameraService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CameraController {
@@ -19,11 +15,12 @@ public class CameraController {
         this.cameraService = cameraService;
     }
 
-    @GetMapping(value = "/camera", params = {"page", "size"})
+    @GetMapping(value = "/camera")
     public Page<Camera> getAllCameras(
+            @ModelAttribute CameraFilterDto filter,
             Pageable pageable
     ) {
-        return cameraService.getAllCameras(pageable);
+        return cameraService.getFilteredCameras(filter, pageable);
     }
 
     @GetMapping("/camera/{id}")
@@ -33,10 +30,4 @@ public class CameraController {
         return cameraService.getCameraById(id);
     }
 
-    @GetMapping(value = "/camera", params = {"modelPrefix"})
-    public List<Camera> getAllCamerasByModelPrefix(
-            @RequestParam String modelPrefix
-    ) {
-        return cameraService.getCamerasByModelStartingWith(modelPrefix);
-    }
 }

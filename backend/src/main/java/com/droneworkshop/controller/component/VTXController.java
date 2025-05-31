@@ -1,15 +1,11 @@
 package com.droneworkshop.controller.component;
 
+import com.droneworkshop.dto.filter.VTXFilterDto;
 import com.droneworkshop.model.component.VTX;
 import com.droneworkshop.service.component.VTXService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class VTXController {
@@ -19,11 +15,12 @@ public class VTXController {
         this.vtxService = vtxService;
     }
 
-    @GetMapping(value = "/vtx", params = {"page", "size"})
+    @GetMapping(value = "/vtx")
     public Page<VTX> getAllStacks(
+            @ModelAttribute VTXFilterDto filter,
             Pageable pageable
     ) {
-        return vtxService.getAllVTXs(pageable);
+        return vtxService.getFilteredVTXs(filter, pageable);
     }
 
     @GetMapping("/vtx/{id}")
@@ -33,10 +30,4 @@ public class VTXController {
         return vtxService.getVTXById(id);
     }
 
-    @GetMapping(value = "/vtx", params = {"modelPrefix"})
-    public List<VTX> getVTXsByModelPrefix(
-            @RequestParam String modelPrefix
-    ) {
-        return vtxService.getVTXsByModelStartingWith(modelPrefix);
-    }
 }

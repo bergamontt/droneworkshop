@@ -1,15 +1,12 @@
 package com.droneworkshop.controller.component;
 
+import com.droneworkshop.dto.filter.StackFilterDto;
 import com.droneworkshop.model.component.Stack;
 import com.droneworkshop.service.component.StackService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 public class StackController {
@@ -19,11 +16,12 @@ public class StackController {
         this.stackService = stackService;
     }
 
-    @GetMapping(value = "/stack", params = {"page", "size"})
+    @GetMapping(value = "/stack")
     public Page<Stack> getAllStacks(
+            @ModelAttribute StackFilterDto filter,
             Pageable pageable
     ) {
-        return stackService.getAllStacks(pageable);
+        return stackService.getFilteredStacks(filter, pageable);
     }
 
     @GetMapping("/stack/{id}")
@@ -33,10 +31,4 @@ public class StackController {
         return stackService.getStackById(id);
     }
 
-    @GetMapping(value = "/stack", params = {"modelPrefix"})
-    public List<Stack> getStacksByModelPrefix(
-            @RequestParam String modelPrefix
-    ) {
-        return stackService.getStacksByModelStartingWith(modelPrefix);
-    }
 }

@@ -1,15 +1,11 @@
 package com.droneworkshop.controller.component;
 
+import com.droneworkshop.dto.filter.BatteryFilterDto;
 import com.droneworkshop.model.component.Battery;
 import com.droneworkshop.service.component.BatteryService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class BatteryController {
@@ -19,11 +15,12 @@ public class BatteryController {
         this.batteryService = batteryService;
     }
 
-    @GetMapping(value = "/battery", params = {"page", "size"})
+    @GetMapping(value = "/battery")
     public Page<Battery> getAllBatteries(
+            @ModelAttribute BatteryFilterDto filter,
             Pageable pageable
     ) {
-        return batteryService.getAllBatteries(pageable);
+        return batteryService.getFilteredAntennas(filter, pageable);
     }
 
     @GetMapping("/battery/{id}")
@@ -33,10 +30,4 @@ public class BatteryController {
         return batteryService.getBatteryById(id);
     }
 
-    @GetMapping(value = "/battery", params = {"modelPrefix"})
-    public List<Battery> getBatteriesByModelStartingWith(
-            @RequestParam String modelPrefix
-    ) {
-        return batteryService.getBatteriesByModelStartingWith(modelPrefix);
-    }
 }

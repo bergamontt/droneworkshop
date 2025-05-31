@@ -3,6 +3,9 @@ package com.droneworkshop.model.component;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Entity
 public class Motor {
@@ -40,4 +43,7 @@ public class Motor {
 
     @Column(length = 100)
     private String photoLink;
+
+    @OneToMany(mappedBy = "motor")
+    private List<Distributor> distributors = new ArrayList<>();
 }

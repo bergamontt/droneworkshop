@@ -1,15 +1,12 @@
 package com.droneworkshop.controller.component;
 
+import com.droneworkshop.dto.filter.RXFilterDto;
 import com.droneworkshop.model.component.RX;
 import com.droneworkshop.service.component.RXService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 public class RXController {
@@ -19,11 +16,12 @@ public class RXController {
         this.rxService = rxService;
     }
 
-    @GetMapping(value = "/rx", params = {"page", "size"})
+    @GetMapping(value = "/rx")
     public Page<RX> getAllRXs(
+            @ModelAttribute RXFilterDto filter,
             Pageable pageable
     ) {
-        return rxService.getAllRXs(pageable);
+        return rxService.getFilteredRXs(filter, pageable);
     }
 
     @GetMapping("/rx/{id}")
@@ -33,10 +31,4 @@ public class RXController {
         return rxService.getRXById(id);
     }
 
-    @GetMapping(value = "/rx", params = {"modelPrefix"})
-    public List<RX> getRXsByModelPrefix(
-            @RequestParam String modelPrefix
-    ) {
-        return rxService.getRXsByModelStartingWith(modelPrefix);
-    }
 }

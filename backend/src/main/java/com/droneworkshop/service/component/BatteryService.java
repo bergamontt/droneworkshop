@@ -1,12 +1,18 @@
 package com.droneworkshop.service.component;
 
+import com.droneworkshop.dto.filter.BatteryFilterDto;
+import com.droneworkshop.model.component.Antenna;
 import com.droneworkshop.model.component.Battery;
 import com.droneworkshop.repository.component.BatteryRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.droneworkshop.specification.BatterySpec.buildSpecification;
+
 
 @Service
 public class BatteryService {
@@ -20,11 +26,9 @@ public class BatteryService {
         return batteryRepository.findById(id).orElse(null);
     }
 
-    public Page<Battery> getAllBatteries(Pageable pageable) {
-        return batteryRepository.findAll(pageable);
+    public Page<Battery> getFilteredAntennas(BatteryFilterDto filter, Pageable pageable) {
+        Specification<Battery> spec = buildSpecification(filter);
+        return batteryRepository.findAll(spec, pageable);
     }
 
-    public List<Battery> getBatteriesByModelStartingWith(String modelPrefix) {
-        return batteryRepository.findByModelStartingWithIgnoreCase(modelPrefix);
-    }
 }

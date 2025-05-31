@@ -1,0 +1,23 @@
+package com.droneworkshop.specification;
+
+import com.droneworkshop.dto.filter.PropellerFilterDto;
+import com.droneworkshop.model.component.Propeller;
+import com.droneworkshop.repository.component.PropellerRepository;
+import org.springframework.data.jpa.domain.Specification;
+
+public class PropellerSpec {
+    public static Specification<Propeller> buildSpecification(PropellerFilterDto filter) {
+        Specification<Propeller> spec = null;
+
+        if (filter.getModelPrefix() != null && !filter.getModelPrefix().isEmpty()) {
+            spec = PropellerRepository.Specs.byModelPrefix(filter.getModelPrefix());
+        }
+
+        if (filter.getMinPrice() != null || filter.getMaxPrice() != null) {
+            spec = spec == null ? PropellerRepository.Specs.byDistributorPriceBetween(filter.getMinPrice(), filter.getMaxPrice())
+                    : spec.and(PropellerRepository.Specs.byDistributorPriceBetween(filter.getMinPrice(), filter.getMaxPrice()));
+        }
+
+        return spec != null ? spec : (root, query, builder) -> builder.conjunction();
+    }
+}

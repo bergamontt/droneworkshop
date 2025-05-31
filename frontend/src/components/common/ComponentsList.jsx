@@ -4,6 +4,7 @@ import ComponentsElement from './ComponentsElement';
 function ComponentsList(props) {
     if (!props.data) return(<></>);
     const content = props.data.content;
+    if (!content) return <></>;
     return (
         <Flex
             mih={50}

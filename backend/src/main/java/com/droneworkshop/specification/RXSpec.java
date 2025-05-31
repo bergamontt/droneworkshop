@@ -1,0 +1,23 @@
+package com.droneworkshop.specification;
+
+import com.droneworkshop.dto.filter.RXFilterDto;
+import com.droneworkshop.model.component.RX;
+import com.droneworkshop.repository.component.RXRepository;
+import org.springframework.data.jpa.domain.Specification;
+
+public class RXSpec {
+    public static Specification<RX> buildSpecification(RXFilterDto filter) {
+        Specification<RX> spec = null;
+
+        if (filter.getModelPrefix() != null && !filter.getModelPrefix().isEmpty()) {
+            spec = RXRepository.Specs.byModelPrefix(filter.getModelPrefix());
+        }
+
+        if (filter.getMinPrice() != null || filter.getMaxPrice() != null) {
+            spec = spec == null ? RXRepository.Specs.byDistributorPriceBetween(filter.getMinPrice(), filter.getMaxPrice())
+                    : spec.and(RXRepository.Specs.byDistributorPriceBetween(filter.getMinPrice(), filter.getMaxPrice()));
+        }
+
+        return spec != null ? spec : (root, query, builder) -> builder.conjunction();
+    }
+}

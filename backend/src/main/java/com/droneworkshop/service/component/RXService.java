@@ -1,12 +1,16 @@
 package com.droneworkshop.service.component;
 
+import com.droneworkshop.dto.filter.RXFilterDto;
 import com.droneworkshop.model.component.RX;
 import com.droneworkshop.repository.component.RXRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.droneworkshop.specification.RXSpec.buildSpecification;
 
 @Service
 public class RXService {
@@ -20,11 +24,9 @@ public class RXService {
         return rxRepository.findById(id).orElse(null);
     }
 
-    public Page<RX> getAllRXs(Pageable pageable) {
-        return rxRepository.findAll(pageable);
+    public Page<RX> getFilteredRXs(RXFilterDto filter, Pageable pageable) {
+        Specification<RX> spec = buildSpecification(filter);
+        return rxRepository.findAll(spec, pageable);
     }
 
-    public List<RX> getRXsByModelStartingWith(String modelPrefix) {
-        return rxRepository.findByModelStartingWithIgnoreCase(modelPrefix);
-    }
 }

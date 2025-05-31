@@ -6,36 +6,69 @@ import Searchbar from '../components/common/Searchbar.jsx';
 import '../styles/DroneComponents.css'
 
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, ActionIcon  } from '@mantine/core';
+import { Modal, ActionIcon } from '@mantine/core';
 import filter from '../assets/filter.svg';
+
+import { RangeSlider, Text } from '@mantine/core';
+import { elementsPerPage } from '../services/ServiceConfig.jsx';
 
 function DroneComponents(props) {
 
-    useEffect(() => {
-        setPage(1); 
-    }, [props.fetch, props.name]); 
-
     const [activePage, setPage] = useState(1);
-    const { data: components } = useFetch(props.fetch, activePage - 1);
+    const [modelPrefix, setModelPrefix] = useState('');
     const [opened, { open, close }] = useDisclosure(false);
-    
-    if (!components) return <div style={{"backgroundColor": "rgba(109, 128, 125, 0.5)"}}/>;
-    
-    const total = components.totalPages || 1;
 
-    const handleChange = (page) => {
+    useEffect(() => {
+        setPage(1);
+        setModelPrefix('');
+    }, [props.name]); 
+    
+    const filters = {
+        modelPrefix
+    };
+
+    const { data: components } = useFetch(
+        () => props.fetch(activePage - 1, elementsPerPage, filters),
+        [activePage, modelPrefix]
+    );
+
+    const handlePageChange = (page) => {
         setPage(page)
     }
+
+    const handleModelPrefixChange = (value) => {
+        setModelPrefix(value);
+        setPage(1);
+    }
+    
+    if (!components) return <div style={{"backgroundColor": "rgba(109, 128, 125, 0.5)"}}/>;
+    const total = components.totalPages || 1;
 
     return(
 
         <section className='components-page-container'>
             <article className='components-main-container'>
                 <div className='components-filter-container'>
-                    <Searchbar placeholder="Search"/>
+                    <Searchbar
+                        placeholder="Search"
+                        onChange={handleModelPrefixChange}
+                    />
                     
-                    <Modal opened={opened} onClose={close} title="Filters" centered>
-                        {}
+                    <Modal opened={opened} onClose={close} title="Фільтри" centered size="auto">
+                        <div style={{"padding": "2em", "paddingTop": "0", "width": "30rem"}}>
+                            <Text size="md" mt="xl">Ціна</Text>
+                            <RangeSlider 
+                                color="blue"
+                                min={10}
+                                max={4000}
+                                defaultValue={[10, 4000]}
+                                step={50}
+                                marks={[
+                                    { value: 10, label: '10грн' },
+                                    { value: 4000, label: '4000грн' },
+                                ]}
+                            />
+                        </div>
                     </Modal>
 
                     <ActionIcon
@@ -51,7 +84,7 @@ function DroneComponents(props) {
                 
                 <ComponentsList data={components} name={props.name}/>
                 <Center style={{"padding" : "1.5em"}}>
-                    <Pagination total={total} value={activePage} onChange={handleChange} size="md"/>
+                    <Pagination total={total} value={activePage} onChange={handlePageChange} size="md"/>
                 </Center>
 
             </article>

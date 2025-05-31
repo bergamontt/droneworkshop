@@ -3,6 +3,9 @@ package com.droneworkshop.model.component;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Entity
 public class Frame {
@@ -37,4 +40,7 @@ public class Frame {
 
     @Column(length = 100)
     private String photoLink;
+
+    @OneToMany(mappedBy = "frame")
+    private List<Distributor> distributors = new ArrayList<>();
 }

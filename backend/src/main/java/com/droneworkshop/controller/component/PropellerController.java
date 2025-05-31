@@ -1,15 +1,12 @@
 package com.droneworkshop.controller.component;
 
+import com.droneworkshop.dto.filter.PropellerFilterDto;
 import com.droneworkshop.model.component.Propeller;
 import com.droneworkshop.service.component.PropellerService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 public class PropellerController {
@@ -19,11 +16,12 @@ public class PropellerController {
         this.propellerService = propellerService;
     }
 
-    @GetMapping(value = "/propeller", params = {"page", "size"})
+    @GetMapping(value = "/propeller")
     public Page<Propeller> getAllPropellers(
+            @ModelAttribute PropellerFilterDto filter,
             Pageable pageable
     ) {
-        return propellerService.getAllPropellers(pageable);
+        return propellerService.getFilteredPropellers(filter, pageable);
     }
 
     @GetMapping("/propeller/{id}")
@@ -31,12 +29,5 @@ public class PropellerController {
             @PathVariable int id
     ) {
         return propellerService.getPropellerById(id);
-    }
-
-    @GetMapping(value = "/propeller", params = {"modelPrefix"})
-    public List<Propeller> getPropellersByModelPrefix(
-            @RequestParam String modelPrefix
-    ) {
-        return propellerService.getPropellersByModelStartingWith(modelPrefix);
     }
 }

@@ -1,12 +1,16 @@
 package com.droneworkshop.service.component;
 
+import com.droneworkshop.dto.filter.PropellerFilterDto;
 import com.droneworkshop.model.component.Propeller;
 import com.droneworkshop.repository.component.PropellerRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.droneworkshop.specification.PropellerSpec.buildSpecification;
 
 @Service
 public class PropellerService {
@@ -20,11 +24,9 @@ public class PropellerService {
         return propellerRepository.findById(id).orElse(null);
     }
 
-    public Page<Propeller> getAllPropellers(Pageable pageable) {
-        return propellerRepository.findAll(pageable);
+    public Page<Propeller> getFilteredPropellers(PropellerFilterDto filter, Pageable pageable) {
+        Specification<Propeller> spec = buildSpecification(filter);
+        return propellerRepository.findAll(spec, pageable);
     }
 
-    public List<Propeller> getPropellersByModelStartingWith(String modelPrefix) {
-        return propellerRepository.findByModelStartingWithIgnoreCase(modelPrefix);
-    }
 }

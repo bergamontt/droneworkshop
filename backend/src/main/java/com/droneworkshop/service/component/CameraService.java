@@ -1,12 +1,16 @@
 package com.droneworkshop.service.component;
 
+import com.droneworkshop.dto.filter.CameraFilterDto;
 import com.droneworkshop.model.component.Camera;
 import com.droneworkshop.repository.component.CameraRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.droneworkshop.specification.CameraSpec.buildSpecification;
 
 @Service
 public class CameraService {
@@ -20,11 +24,9 @@ public class CameraService {
         return cameraRepository.findById(id).orElse(null);
     }
 
-    public Page<Camera> getAllCameras(Pageable pageable) {
-        return cameraRepository.findAll(pageable);
+    public Page<Camera> getFilteredCameras(CameraFilterDto filter, Pageable pageable) {
+        Specification<Camera> spec = buildSpecification(filter);
+        return cameraRepository.findAll(spec, pageable);
     }
 
-    public List<Camera> getCamerasByModelStartingWith(String modelPrefix) {
-        return cameraRepository.findByModelStartingWithIgnoreCase(modelPrefix);
-    }
 }

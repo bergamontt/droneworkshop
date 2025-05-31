@@ -1,15 +1,11 @@
 package com.droneworkshop.controller.component;
 
+import com.droneworkshop.dto.filter.AntennaFilterDto;
 import com.droneworkshop.model.component.Antenna;
 import com.droneworkshop.service.component.AntennaService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AntennaController {
@@ -19,11 +15,12 @@ public class AntennaController {
         this.antennaService = antennaService;
     }
 
-    @GetMapping(value = "/antenna", params = {"page", "size"})
-    public Page<Antenna> getAllAntennas(
+    @GetMapping("/antenna")
+    public Page<Antenna> getFilteredAntennasPaged(
+            @ModelAttribute AntennaFilterDto filter,
             Pageable pageable
     ) {
-        return antennaService.getAllAntennas(pageable);
+        return antennaService.getFilteredAntennas(filter, pageable);
     }
 
     @GetMapping("/antenna/{id}")
@@ -33,10 +30,4 @@ public class AntennaController {
         return antennaService.getAntennaById(id);
     }
 
-    @GetMapping(value = "/antenna", params = {"modelPrefix"})
-    public List<Antenna> getAntennasByModelStartingWith(
-            @RequestParam String modelPrefix
-    ) {
-        return antennaService.getAntennasByModelStartingWith(modelPrefix);
-    }
 }
