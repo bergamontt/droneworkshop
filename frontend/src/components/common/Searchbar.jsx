@@ -1,20 +1,22 @@
 import { TextInput } from '@mantine/core';
+import search from '../../assets/search.svg'
 
 function Searchbar(props) {
 
-    const searchbarStyles = {
-        "padding": "1em 8.5em",
+    const searchBarStyles = {
+        "width" : "100%"
     }
 
     return (
-        <div style={searchbarStyles}>
+        <div style={searchBarStyles}>
             <TextInput
-            label={props.label}
-            description={props.description}
-            placeholder={props.placeholder}
-            mt="md"
-            size="md"
-        />
+                label={props.label}
+                leftSection={<img src={search} style={{"height": "50%"}}/>}
+                description={props.description}
+                placeholder={props.placeholder}
+                size="md"
+                width="md"
+            />
         </div>
     );
 }

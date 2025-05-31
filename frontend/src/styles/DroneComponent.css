@@ -3,6 +3,7 @@
     background-color: rgba(109, 128, 125, 0.5);
     display: flex;
     padding: 1em;
+    min-height: 100vh;
 }
 
 .component-data-contaner {
