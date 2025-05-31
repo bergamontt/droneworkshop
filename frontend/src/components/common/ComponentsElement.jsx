@@ -9,7 +9,11 @@ function ComponentsElement(props) {
     }
 
     return(
-        <div className="component-element-container" onClick={handleClick}>
+        <div
+            className="component-element-container"
+            onClick={handleClick}
+            style={{ cursor: 'pointer' }}
+        >
             <figure className='component-photo-container'>
                 <img src={props.photoLink} alt={props.model} className="component-element-photo" />
             </figure>

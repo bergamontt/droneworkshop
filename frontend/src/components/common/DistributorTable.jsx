@@ -2,10 +2,13 @@ import { Divider, Grid, Badge } from '@mantine/core';
 import link from '../../assets/link.svg'
 import '../../styles/DroneComponent.css'
 
-
 function DistributorTable({distributors}) {
 
     if (!distributors) return <></>;
+
+    const handleClick = (link) => {
+        window.open(link, '_blank', 'noopener,noreferrer');
+    };
 
     const getStockBadge = (available) => {
         return (
@@ -23,7 +26,11 @@ function DistributorTable({distributors}) {
     }
 
     const rows = distributors.map((element) => (<>
-        <div className='component-attribute'>
+        <div
+            className='component-attribute'
+            onClick={() => handleClick(element.distributorLink)}
+            style={{ cursor: 'pointer' }}
+        >
             <Grid w={"100%"}>
                 <Grid.Col span={4}>
                     <span style={{"fontWeight": "700"}}>
@@ -41,12 +48,11 @@ function DistributorTable({distributors}) {
                     </div>
                 </Grid.Col>
             </Grid>
-            <div style={{"dispaly" : "flex",
+            <div style={{"display" : "flex",
                          "justifyContent" : "center"
                         }}>
                 <img 
                     src={link}
-                    href={element.distributorLink}
                     style={{"height" : "1.2em"}}
                 />
             </div>
