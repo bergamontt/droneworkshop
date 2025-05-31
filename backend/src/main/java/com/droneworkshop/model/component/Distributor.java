@@ -22,39 +22,30 @@ public class Distributor {
     @Column(nullable = false)
     private boolean isAvailable;
 
-    @ManyToOne
-    @JoinColumn(name = "frame_id")
-    private Frame frame;
+    @Column(name = "frame_id")
+    private Integer frame;
 
-    @ManyToOne
-    @JoinColumn(name = "propeller_id")
-    private Propeller propeller;
+    @Column(name = "propeller_id")
+    private Integer propeller;
 
-    @ManyToOne
-    @JoinColumn(name = "camera_id")
-    private Camera camera;
+    @Column(name = "camera_id")
+    private Integer camera;
 
-    @ManyToOne
-    @JoinColumn(name = "vtx_id")
-    private VTX vtx;
+    @Column(name = "vtx_id")
+    private Integer vtx;
 
-    @ManyToOne
-    @JoinColumn(name = "rx_id")
-    private RX rx;
+    @Column(name = "rx_id")
+    private Integer rx;
 
-    @ManyToOne
-    @JoinColumn(name = "antenna_id")
-    private Antenna antenna;
+    @Column(name = "antenna_id")
+    private Integer antenna;
 
-    @ManyToOne
-    @JoinColumn(name = "battery_id")
-    private Battery battery;
+    @Column(name = "battery_id")
+    private Integer battery;
 
-    @ManyToOne
-    @JoinColumn(name = "motor_id")
-    private Motor motor;
+    @Column(name = "motor_id")
+    private Integer motor;
 
-    @ManyToOne
-    @JoinColumn(name = "stack_id")
-    private Stack stack;
+    @Column(name = "stack_id")
+    private Integer stack;
 }

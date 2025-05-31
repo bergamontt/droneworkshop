@@ -2,39 +2,27 @@ import { Divider, Grid, Badge } from '@mantine/core';
 import link from '../../assets/link.svg'
 import '../../styles/DroneComponent.css'
 
-function DistributorTable() {
 
-    const elements = [
-        {
-            "distributorName": "Aliexpress",
-            "distributorLink": "#",
-            "instock": true,
-            "price": "300$"
-        },
-        {
-            "distributorName": "DarkUKMA",
-            "distributorLink": "#",
-            "instock": false,
-            "price": "100$"
-        }
-    ];
+function DistributorTable({distributors}) {
 
-    const getStockBadge = (inStock) => {
+    if (!distributors) return <></>;
+
+    const getStockBadge = (available) => {
         return (
             <Badge
                 size="lg"
                 variant="gradient"
-                gradient={inStock 
+                gradient={available 
                     ? { from: 'teal', to: 'lime', deg: 90 }
                     : { from: 'gray', to: 'rgba(196, 190, 190, 1)', deg: 90 }
                 }
             >
-                {inStock ? "Є в наявності" : "Немає в наявності"}
+                {available ? "Є в наявності" : "Немає в наявності"}
             </Badge>
         );
     }
 
-    const rows = elements.map((element) => (<>
+    const rows = distributors.map((element) => (<>
         <div className='component-attribute'>
             <Grid w={"100%"}>
                 <Grid.Col span={4}>
@@ -44,12 +32,12 @@ function DistributorTable() {
                 </Grid.Col>
                 <Grid.Col span={4}>
                     <span>
-                        {getStockBadge(element.instock)}
+                        {getStockBadge(element.available)}
                     </span>
                 </Grid.Col>
                 <Grid.Col span={4}>
                     <div style={{"textAlign": "center"}}>
-                        {element.price}
+                        {element.price}грн
                     </div>
                 </Grid.Col>
             </Grid>

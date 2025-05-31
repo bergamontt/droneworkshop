@@ -1,4 +1,4 @@
-import { useFetch } from '../hooks/useFetch.jsx';
+import { useFetchUnique } from '../hooks/useFetchUnique.jsx'
 import { useState, useEffect } from 'react';
 import { Pagination, Center } from '@mantine/core';
 import ComponentsList from '../components/common/ComponentsList.jsx'
@@ -19,17 +19,12 @@ function DroneComponents(props) {
     const [opened, { open, close }] = useDisclosure(false);
 
     useEffect(() => {
-        setPage(1);
         setModelPrefix('');
     }, [props.name]); 
     
-    const filters = {
-        modelPrefix
-    };
-
-    const { data: components } = useFetch(
-        () => props.fetch(activePage - 1, elementsPerPage, filters),
-        [activePage, modelPrefix]
+    const { data: components } = useFetchUnique(
+        () => props.fetch(activePage - 1, elementsPerPage, { modelPrefix }),
+        [props.fetch, activePage, modelPrefix]
     );
 
     const handlePageChange = (page) => {
@@ -37,8 +32,8 @@ function DroneComponents(props) {
     }
 
     const handleModelPrefixChange = (value) => {
-        setModelPrefix(value);
         setPage(1);
+        setModelPrefix(value);
     }
     
     if (!components) return <div style={{"backgroundColor": "rgba(109, 128, 125, 0.5)"}}/>;

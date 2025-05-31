@@ -1,6 +1,6 @@
 import { useFetch } from '../hooks/useFetch.jsx';
 import { useParams } from 'react-router-dom';
-import { Divider, Tabs, Badge  } from '@mantine/core';
+import { Divider, Tabs  } from '@mantine/core';
 import AttributeTable from '../components/common/AttributeTable.jsx';
 import DistributorTable from '../components/common/DistributorTable.jsx';
 import cart from '../assets/cart.svg'
@@ -50,7 +50,7 @@ function DroneComponent(props) {
                         </Tabs.Panel>
 
                         <Tabs.Panel value="shops">
-                            <DistributorTable/>
+                            <DistributorTable distributors={component.distributors}/>
                         </Tabs.Panel>
 
                     </Tabs>

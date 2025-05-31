@@ -23,31 +23,31 @@ function AppRoutes() {
             <Route path='/' element={<></>}/>
 
             <Route path="/drone_components" element={<ComponentsSidebar />}>
-                <Route path="antenna" element={<DroneComponents fetch={getAllAntennas} name="antenna" />}/>
+                <Route path="antenna" key="antenna" element={<DroneComponents fetch={getAllAntennas} name="antenna" />}/>
                 <Route path="antenna/:componentId" element={<DroneComponent fetch={getAntennaById} />}/>
                 
-                <Route path="battery" element={<DroneComponents fetch={getAllBatteries} name="battery" />}/>
+                <Route path="battery" key="battery" element={<DroneComponents fetch={getAllBatteries} name="battery" />}/>
                 <Route path="battery/:componentId" element={<DroneComponent fetch={getBatteryById} />}/>
 
-                <Route path="camera" element={<DroneComponents fetch={getAllCameras} name="camera" />}/>
+                <Route path="camera" key="camera" element={<DroneComponents fetch={getAllCameras} name="camera" />}/>
                 <Route path="camera/:componentId" element={<DroneComponent fetch={getCameraById} />}/>
                 
-                <Route path="frame" element={<DroneComponents fetch={getAllFrames} name="frame" />}/>
+                <Route path="frame" key="frame" element={<DroneComponents fetch={getAllFrames} name="frame" />}/>
                 <Route path="frame/:componentId" element={<DroneComponent fetch={getFrameById} />}/>
                 
-                <Route path="motor" element={<DroneComponents fetch={getAllMotors} name="motor" />}/>
+                <Route path="motor" key="motor" element={<DroneComponents fetch={getAllMotors} name="motor" />}/>
                 <Route path="motor/:componentId" element={<DroneComponent fetch={getMotorById} />}/>
                 
-                <Route path="propeller" element={<DroneComponents fetch={getAllPropellers} name="propeller" />}/>
+                <Route path="propeller" key="propeller" element={<DroneComponents fetch={getAllPropellers} name="propeller" />}/>
                 <Route path="propeller/:componentId" element={<DroneComponent fetch={getPropellerById} />}/>
                 
-                <Route path="rx" element={<DroneComponents fetch={getAllRX} name="rx" />}/>
+                <Route path="rx" key="rx" element={<DroneComponents fetch={getAllRX} name="rx" />}/>
                 <Route path="rx/:componentId" element={<DroneComponent fetch={getRXById} />}/>
                 
-                <Route path="stack" element={<DroneComponents fetch={getAllStacks} name="stack" />}/>
+                <Route path="stack" key="stack" element={<DroneComponents fetch={getAllStacks} name="stack" />}/>
                 <Route path="stack/:componentId" element={<DroneComponent fetch={getStackById} />}/>
 
-                <Route path="vtx" element={<DroneComponents fetch={getAllVTX} name="vtx" />}/>
+                <Route path="vtx" key="vtx" element={<DroneComponents fetch={getAllVTX} name="vtx" />}/>
                 <Route path="vtx/:componentId" element={<DroneComponent fetch={getVTXById} />}/>
             </Route>
 

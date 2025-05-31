@@ -1,7 +1,6 @@
-import { TextInput, ActionIcon  } from '@mantine/core';
+import { TextInput, Kbd } from '@mantine/core';
 import { useState } from 'react';
 import search from '../../assets/search.svg'
-import send from '../../assets/send.svg'
 
 function Searchbar(props) {
 
@@ -15,8 +14,10 @@ function Searchbar(props) {
         setModelPrefix(e.target.value);
     }
 
-    const handleClick = () => {
-        props.onChange(modelPrefix);
+    const handleKeyDown = (e) => {
+        if(e.keyCode === 13) {
+            props.onChange(modelPrefix);
+        }
     }
 
     return (
@@ -24,12 +25,13 @@ function Searchbar(props) {
             <TextInput
                 label={props.label}
                 leftSection={<img src={search} style={{"height": "50%"}}/>}
-                rightSection={<ActionIcon variant="subtle" onClick={handleClick}>
-                                <img src={send} style={{"height": "70%"}}/>
-                              </ActionIcon>}
+                rightSection={<div style={{"display" : "flex", "marginRight" : "1.5em"}}>
+                                <Kbd>Enter</Kbd>
+                             </div>}
                 description={props.description}
                 placeholder={props.placeholder}
                 onChange={handleSearchbar}
+                onKeyDown={handleKeyDown}
                 size="md"
                 width="md"
             />
