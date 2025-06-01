@@ -16,6 +16,8 @@ import ChangePasswordPage from "./authentification/ChangePasswordPage.jsx";
 import DroneComponents from "./DroneComponents.jsx";
 import DroneComponent from './DroneComponent.jsx';
 import ComponentsSidebar from "../components/common/ComponentsSidebar.jsx";
+import ForumMainPage from "./forum/ForumMainPage.jsx";
+import ForumPostPage from "./forum/ForumPostPage.jsx";
 
 function AppRoutes() {
     return(
@@ -57,6 +59,9 @@ function AppRoutes() {
             <Route path="/register" element={<RegisterPage />}/>
             <Route path="/profile" element={<ManageProfilePage />}/>
             <Route path="/change-password" element={<ChangePasswordPage />}/>
+
+            <Route path="/forum" element={<ForumMainPage />}/>
+            <Route path="/forum/:postId" element={<ForumPostPage />}/>
         </Routes>
     );
 }
