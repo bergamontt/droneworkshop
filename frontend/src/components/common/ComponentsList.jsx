@@ -21,6 +21,7 @@ function ComponentsList(props) {
                     photoLink={component.photoLink}
                     model={component.model}
                     manufacturer={component.manufacturer}
+                    startingPrice={component.startingPrice}
                 />
             ))}
         </Flex>

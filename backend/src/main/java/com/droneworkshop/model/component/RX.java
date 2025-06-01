@@ -6,6 +6,8 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.droneworkshop.utils.ComponentUtils.findStartingPrice;
+
 @Data
 @Entity
 public class RX {
@@ -35,6 +37,13 @@ public class RX {
     @Column(length = 100)
     private String photoLink;
 
+    @Transient
+    private Integer startingPrice;
+
     @OneToMany(mappedBy = "rx")
     private List<Distributor> distributors = new ArrayList<>();
+
+    public Integer getStartingPrice() {
+        return findStartingPrice(distributors);
+    }
 }

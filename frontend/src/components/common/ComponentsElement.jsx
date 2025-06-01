@@ -18,13 +18,18 @@ function ComponentsElement(props) {
                 <img src={props.photoLink} alt={props.model} className="component-element-photo" />
             </figure>
             <div className='component-text-container'>
-                <span className="component-element-model">
-                    {props.model}
-                </span>
-                <span className="component-element-desc">
-                    Manufacturer: {props.manufacturer ?? "-"}
-                </span>
+                <div className="component-main-text">
+                    <span className="component-element-model">
+                        {props.model}
+                    </span>
+                    <span className="component-element-desc">
+                        Виробник: {props.manufacturer ?? "-"}
+                    </span>
+                </div>
             </div>
+            <span className="component-element-price">
+                Від {props.startingPrice}грн
+            </span>
         </div>
     );
 }

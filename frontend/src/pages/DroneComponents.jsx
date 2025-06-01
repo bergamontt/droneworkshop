@@ -14,12 +14,18 @@ import { elementsPerPage } from '../services/ServiceConfig.jsx';
 
 function DroneComponents(props) {
 
+    const minPrice = 10;
+    const maxPrice = 10000;
+    const midPrice = (minPrice + maxPrice) / 2;
+
     const [activePage, setPage] = useState(1);
     const [modelPrefix, setModelPrefix] = useState('');
+    const [priceRange, setPriceRange] = useState([minPrice, maxPrice]);
     const [opened, { open, close }] = useDisclosure(false);
 
     useEffect(() => {
         setModelPrefix('');
+        setPage(1);
     }, [props.name]); 
     
     const { data: components } = useFetchUnique(
@@ -54,13 +60,14 @@ function DroneComponents(props) {
                             <Text size="md" mt="xl">Ціна</Text>
                             <RangeSlider 
                                 color="blue"
-                                min={10}
-                                max={4000}
-                                defaultValue={[10, 4000]}
-                                step={50}
+                                min={minPrice}
+                                max={maxPrice}
+                                defaultValue={[minPrice, maxPrice]}
+                                step={100}
                                 marks={[
-                                    { value: 10, label: '10грн' },
-                                    { value: 4000, label: '4000грн' },
+                                    { value: minPrice, label: `${minPrice}грн` },
+                                    { value: midPrice, label: `${midPrice}грн`},
+                                    { value: maxPrice, label: `${maxPrice}грн` },
                                 ]}
                             />
                         </div>
