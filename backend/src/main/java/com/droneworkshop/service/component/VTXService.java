@@ -29,4 +29,12 @@ public class VTXService {
         return vtxRepository.findAll(spec, pageable);
     }
 
+    public List<String> getDistinctDistributorNames() {
+        return vtxRepository.findDistinctDistributorNames();
+    }
+
+    public List<String> getDistinctManufacturers() {
+        return vtxRepository.findDistinctManufacturers();
+    }
+
 }

@@ -29,4 +29,12 @@ public class CameraService {
         return cameraRepository.findAll(spec, pageable);
     }
 
+    public List<String> getDistinctDistributorNames() {
+        return cameraRepository.findDistinctDistributorNames();
+    }
+
+    public List<String> getDistinctManufacturers() {
+        return cameraRepository.findDistinctManufacturers();
+    }
+
 }

@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class MotorController {
     private final MotorService motorService;
@@ -28,6 +30,16 @@ public class MotorController {
             @PathVariable int id
     ) {
         return motorService.getMotorById(id);
+    }
+
+    @GetMapping("/motor/manufacturers")
+    public List<String> getMotorManufacturers() {
+        return motorService.getDistinctManufacturers();
+    }
+
+    @GetMapping("/motor/distributors")
+    public List<String> getMotorDistributors() {
+        return motorService.getDistinctDistributorNames();
     }
 
 }

@@ -18,6 +18,16 @@ public class FrameSpec {
                     : spec.and(FrameRepository.Specs.byDistributorPriceBetween(filter.getMinPrice(), filter.getMaxPrice()));
         }
 
+        if (filter.getManufacturerNames() != null && !filter.getManufacturerNames().isEmpty()) {
+            spec = spec == null ? FrameRepository.Specs.byManufacturerNames(filter.getManufacturerNames())
+                    : spec.and(FrameRepository.Specs.byManufacturerNames(filter.getManufacturerNames()));
+        }
+
+        if (filter.getDistributorNames() != null && !filter.getDistributorNames().isEmpty()) {
+            spec = spec == null ? FrameRepository.Specs.byDistributorNames(filter.getDistributorNames())
+                    : spec.and(FrameRepository.Specs.byDistributorNames(filter.getDistributorNames()));
+        }
+
         return spec != null ? spec : (root, query, builder) -> builder.conjunction();
     }
 }

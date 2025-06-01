@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class AntennaController {
     private final AntennaService antennaService;
@@ -28,6 +30,16 @@ public class AntennaController {
             @PathVariable int id
     ) {
         return antennaService.getAntennaById(id);
+    }
+
+    @GetMapping("/antenna/manufacturers")
+    public List<String> getAntennaManufacturers() {
+        return antennaService.getDistinctManufacturers();
+    }
+
+    @GetMapping("/antenna/distributors")
+    public List<String> getAntennaDistributors() {
+        return antennaService.getDistinctDistributorNames();
     }
 
 }

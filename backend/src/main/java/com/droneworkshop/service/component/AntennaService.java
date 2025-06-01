@@ -29,4 +29,12 @@ public class AntennaService {
         return antennaRepository.findAll(AntennaRepository.Specs.orderByModel(spec), pageable);
     }
 
+    public List<String> getDistinctDistributorNames() {
+        return antennaRepository.findDistinctDistributorNames();
+    }
+
+    public List<String> getDistinctManufacturers() {
+        return antennaRepository.findDistinctManufacturers();
+    }
+
 }

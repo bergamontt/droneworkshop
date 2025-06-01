@@ -18,6 +18,16 @@ public class BatterySpec {
                     : spec.and(BatteryRepository.Specs.byDistributorPriceBetween(filter.getMinPrice(), filter.getMaxPrice()));
         }
 
+        if (filter.getManufacturerNames() != null && !filter.getManufacturerNames().isEmpty()) {
+            spec = spec == null ? BatteryRepository.Specs.byManufacturerNames(filter.getManufacturerNames())
+                    : spec.and(BatteryRepository.Specs.byManufacturerNames(filter.getManufacturerNames()));
+        }
+
+        if (filter.getDistributorNames() != null && !filter.getDistributorNames().isEmpty()) {
+            spec = spec == null ? BatteryRepository.Specs.byDistributorNames(filter.getDistributorNames())
+                    : spec.and(BatteryRepository.Specs.byDistributorNames(filter.getDistributorNames()));
+        }
+
         return spec != null ? spec : (root, query, builder) -> builder.conjunction();
     }
 }

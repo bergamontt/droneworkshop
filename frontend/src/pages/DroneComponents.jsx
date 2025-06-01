@@ -1,26 +1,22 @@
+import { ActionIcon, Pagination, Center } from '@mantine/core';
 import { useFetchUnique } from '../hooks/useFetchUnique.jsx'
 import { useState, useEffect } from 'react';
-import { Pagination, Center } from '@mantine/core';
-import ComponentsList from '../components/common/ComponentsList.jsx'
-import Searchbar from '../components/common/Searchbar.jsx';
-import '../styles/DroneComponents.css'
-
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, ActionIcon } from '@mantine/core';
-import filter from '../assets/filter.svg';
-
-import { RangeSlider, Text } from '@mantine/core';
 import { elementsPerPage } from '../services/ServiceConfig.jsx';
+import ComponentsList from '../components/common/ComponentsList.jsx'
+import FilterModel from '../components/common/FilterModel.jsx'
+import Searchbar from '../components/common/Searchbar.jsx';
+import filter from '../assets/filter.svg';
+import '../styles/DroneComponents.css'
 
 function DroneComponents(props) {
 
-    const minPrice = 10;
-    const maxPrice = 10000;
-    const midPrice = (minPrice + maxPrice) / 2;
+    const minDefaultPrice = 10;
+    const maxDefaultPrice = 10000;
 
     const [activePage, setPage] = useState(1);
     const [modelPrefix, setModelPrefix] = useState('');
-    const [priceRange, setPriceRange] = useState([minPrice, maxPrice]);
+    const [priceRange, setPriceRange] = useState({ minPrice: minDefaultPrice, maxPrice: maxDefaultPrice });
     const [opened, { open, close }] = useDisclosure(false);
 
     useEffect(() => {
@@ -29,8 +25,12 @@ function DroneComponents(props) {
     }, [props.name]); 
     
     const { data: components } = useFetchUnique(
-        () => props.fetch(activePage - 1, elementsPerPage, { modelPrefix }),
-        [props.fetch, activePage, modelPrefix]
+        () => props.fetch(activePage - 1, elementsPerPage, {
+            modelPrefix,
+            minPrice: priceRange.minPrice,
+            maxPrice: priceRange.maxPrice,
+        }),
+        [props.fetch, activePage, modelPrefix, priceRange.minPrice, priceRange.maxPrice]
     );
 
     const handlePageChange = (page) => {
@@ -40,6 +40,11 @@ function DroneComponents(props) {
     const handleModelPrefixChange = (value) => {
         setPage(1);
         setModelPrefix(value);
+    }
+
+    const handlePriceRangeChange = (value) => {
+        setPage(1);
+        setPriceRange({ minPrice: value[0], maxPrice: value[1] });
     }
     
     if (!components) return <div style={{"backgroundColor": "rgba(109, 128, 125, 0.5)"}}/>;
@@ -55,23 +60,13 @@ function DroneComponents(props) {
                         onChange={handleModelPrefixChange}
                     />
                     
-                    <Modal opened={opened} onClose={close} title="Фільтри" centered size="auto">
-                        <div style={{"padding": "2em", "paddingTop": "0", "width": "30rem"}}>
-                            <Text size="md" mt="xl">Ціна</Text>
-                            <RangeSlider 
-                                color="blue"
-                                min={minPrice}
-                                max={maxPrice}
-                                defaultValue={[minPrice, maxPrice]}
-                                step={100}
-                                marks={[
-                                    { value: minPrice, label: `${minPrice}грн` },
-                                    { value: midPrice, label: `${midPrice}грн`},
-                                    { value: maxPrice, label: `${maxPrice}грн` },
-                                ]}
-                            />
-                        </div>
-                    </Modal>
+                    <FilterModel
+                        minPrice={minDefaultPrice}
+                        maxPrice={maxDefaultPrice}
+                        opened={opened}
+                        close={close}
+                        onSave={handlePriceRangeChange}
+                    />
 
                     <ActionIcon
                         aria-label="Filter"

@@ -29,4 +29,11 @@ public class MotorService {
         return motorRepository.findAll(spec, pageable);
     }
 
+    public List<String> getDistinctDistributorNames() {
+        return motorRepository.findDistinctDistributorNames();
+    }
+
+    public List<String> getDistinctManufacturers() {
+        return motorRepository.findDistinctManufacturers();
+    }
 }

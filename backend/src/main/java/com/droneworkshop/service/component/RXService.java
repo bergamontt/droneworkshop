@@ -29,4 +29,12 @@ public class RXService {
         return rxRepository.findAll(spec, pageable);
     }
 
+    public List<String> getDistinctDistributorNames() {
+        return rxRepository.findDistinctDistributorNames();
+    }
+
+    public List<String> getDistinctManufacturers() {
+        return rxRepository.findDistinctManufacturers();
+    }
+
 }

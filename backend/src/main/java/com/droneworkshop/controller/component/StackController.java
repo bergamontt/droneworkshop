@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 public class StackController {
@@ -29,6 +31,16 @@ public class StackController {
             @PathVariable int id
     ) {
         return stackService.getStackById(id);
+    }
+
+    @GetMapping("/stack/manufacturers")
+    public List<String> getStackManufacturers() {
+        return stackService.getDistinctManufacturers();
+    }
+
+    @GetMapping("/stack/distributors")
+    public List<String> getStackDistributors() {
+        return stackService.getDistinctDistributorNames();
     }
 
 }

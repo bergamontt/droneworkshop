@@ -18,6 +18,16 @@ public class MotorSpec {
                     : spec.and(MotorRepository.Specs.byDistributorPriceBetween(filter.getMinPrice(), filter.getMaxPrice()));
         }
 
+        if (filter.getManufacturerNames() != null && !filter.getManufacturerNames().isEmpty()) {
+            spec = spec == null ? MotorRepository.Specs.byManufacturerNames(filter.getManufacturerNames())
+                    : spec.and(MotorRepository.Specs.byManufacturerNames(filter.getManufacturerNames()));
+        }
+
+        if (filter.getDistributorNames() != null && !filter.getDistributorNames().isEmpty()) {
+            spec = spec == null ? MotorRepository.Specs.byDistributorNames(filter.getDistributorNames())
+                    : spec.and(MotorRepository.Specs.byDistributorNames(filter.getDistributorNames()));
+        }
+
         return spec != null ? spec : (root, query, builder) -> builder.conjunction();
     }
 }

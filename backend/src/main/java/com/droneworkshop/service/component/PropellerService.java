@@ -29,4 +29,11 @@ public class PropellerService {
         return propellerRepository.findAll(spec, pageable);
     }
 
+    public List<String> getDistinctDistributorNames() {
+        return propellerRepository.findDistinctDistributorNames();
+    }
+
+    public List<String> getDistinctManufacturers() {
+        return propellerRepository.findDistinctManufacturers();
+    }
 }

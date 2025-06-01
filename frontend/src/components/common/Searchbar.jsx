@@ -4,13 +4,9 @@ import search from '../../assets/search.svg'
 
 function Searchbar(props) {
 
-    const searchBarStyles = {
-        "width" : "100%"
-    }
-
     const [modelPrefix, setModelPrefix] = useState('');
 
-    const handleSearchbar = (e) => {
+    const handleChange = (e) => {
         setModelPrefix(e.target.value);
     }
 
@@ -21,7 +17,7 @@ function Searchbar(props) {
     }
 
     return (
-        <div style={searchBarStyles}>
+        <div style={{width : "100%"}}>
             <TextInput
                 label={props.label}
                 leftSection={<img src={search} style={{"height": "50%"}}/>}
@@ -30,7 +26,7 @@ function Searchbar(props) {
                              </div>}
                 description={props.description}
                 placeholder={props.placeholder}
-                onChange={handleSearchbar}
+                onChange={handleChange}
                 onKeyDown={handleKeyDown}
                 size="md"
                 width="md"

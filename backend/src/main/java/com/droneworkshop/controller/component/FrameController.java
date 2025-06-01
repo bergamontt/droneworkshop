@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class FrameController {
     private final FrameService frameService;
@@ -15,7 +17,7 @@ public class FrameController {
         this.frameService = frameService;
     }
 
-    @GetMapping(value = "/frame")
+    @GetMapping("/frame")
     public Page<Frame> getAllFrames(
             @ModelAttribute FrameFilterDto filter,
             Pageable pageable
@@ -28,6 +30,16 @@ public class FrameController {
             @PathVariable int id
     ) {
         return frameService.getFrameById(id);
+    }
+
+    @GetMapping("/frame/manufacturers")
+    public List<String> getFrameManufacturers() {
+        return frameService.getDistinctManufacturers();
+    }
+
+    @GetMapping("/frame/distributors")
+    public List<String> getFrameDistributors() {
+        return frameService.getDistinctManufacturers();
     }
 
 }

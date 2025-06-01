@@ -18,6 +18,16 @@ public class AntennaSpec {
                     : spec.and(AntennaRepository.Specs.byDistributorPriceBetween(filter.getMinPrice(), filter.getMaxPrice()));
         }
 
+        if (filter.getManufacturerNames() != null && !filter.getManufacturerNames().isEmpty()) {
+            spec = spec == null ? AntennaRepository.Specs.byManufacturerNames(filter.getManufacturerNames())
+                    : spec.and(AntennaRepository.Specs.byManufacturerNames(filter.getManufacturerNames()));
+        }
+
+        if (filter.getDistributorNames() != null && !filter.getDistributorNames().isEmpty()) {
+            spec = spec == null ? AntennaRepository.Specs.byDistributorNames(filter.getDistributorNames())
+                    : spec.and(AntennaRepository.Specs.byDistributorNames(filter.getDistributorNames()));
+        }
+
         return spec != null ? spec : (root, query, builder) -> builder.conjunction();
     }
 }

@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 public class PropellerController {
@@ -29,5 +31,15 @@ public class PropellerController {
             @PathVariable int id
     ) {
         return propellerService.getPropellerById(id);
+    }
+
+    @GetMapping("/propeller/manufacturers")
+    public List<String> getPropellerManufacturers() {
+        return propellerService.getDistinctManufacturers();
+    }
+
+    @GetMapping("/propeller/distributors")
+    public List<String> getPropellerDistributors() {
+        return propellerService.getDistinctDistributorNames();
     }
 }

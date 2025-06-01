@@ -29,4 +29,12 @@ public class FrameService {
         return frameRepository.findAll(spec, pageable);
     }
 
+    public List<String> getDistinctDistributorNames() {
+        return frameRepository.findDistinctDistributorNames();
+    }
+
+    public List<String> getDistinctManufacturers() {
+        return frameRepository.findDistinctManufacturers();
+    }
+
 }

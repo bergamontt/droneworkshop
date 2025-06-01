@@ -18,6 +18,16 @@ public class PropellerSpec {
                     : spec.and(PropellerRepository.Specs.byDistributorPriceBetween(filter.getMinPrice(), filter.getMaxPrice()));
         }
 
+        if (filter.getManufacturerNames() != null && !filter.getManufacturerNames().isEmpty()) {
+            spec = spec == null ? PropellerRepository.Specs.byManufacturerNames(filter.getManufacturerNames())
+                    : spec.and(PropellerRepository.Specs.byManufacturerNames(filter.getManufacturerNames()));
+        }
+
+        if (filter.getDistributorNames() != null && !filter.getDistributorNames().isEmpty()) {
+            spec = spec == null ? PropellerRepository.Specs.byDistributorNames(filter.getDistributorNames())
+                    : spec.and(PropellerRepository.Specs.byDistributorNames(filter.getDistributorNames()));
+        }
+
         return spec != null ? spec : (root, query, builder) -> builder.conjunction();
     }
 }

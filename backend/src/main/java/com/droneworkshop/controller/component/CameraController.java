@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class CameraController {
     private final CameraService cameraService;
@@ -28,6 +30,16 @@ public class CameraController {
             @PathVariable int id
     ) {
         return cameraService.getCameraById(id);
+    }
+
+    @GetMapping("/camera/manufacturers")
+    public List<String> getCameraManufacturers() {
+        return cameraService.getDistinctManufacturers();
+    }
+
+    @GetMapping("/camera/distributors")
+    public List<String> getCameraDistributors() {
+        return cameraService.getDistinctDistributorNames();
     }
 
 }

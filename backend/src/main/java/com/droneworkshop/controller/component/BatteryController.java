@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class BatteryController {
     private final BatteryService batteryService;
@@ -28,6 +30,16 @@ public class BatteryController {
             @PathVariable int id
     ) {
         return batteryService.getBatteryById(id);
+    }
+
+    @GetMapping("/battery/manufacturers")
+    public List<String> getBatteryManufacturers() {
+        return batteryService.getDistinctManufacturers();
+    }
+
+    @GetMapping("/battery/distributors")
+    public List<String> getBatteryDistributors() {
+        return batteryService.getDistinctDistributorNames();
     }
 
 }

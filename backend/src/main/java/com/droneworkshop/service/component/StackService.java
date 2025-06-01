@@ -29,4 +29,12 @@ public class StackService {
         return stackRepository.findAll(spec, pageable);
     }
 
+    public List<String> getDistinctDistributorNames() {
+        return stackRepository.findDistinctDistributorNames();
+    }
+
+    public List<String> getDistinctManufacturers() {
+        return stackRepository.findDistinctManufacturers();
+    }
+
 }
