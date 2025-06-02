@@ -6,7 +6,8 @@ export const getAllMotors = async (
     size = elementsPerPage,
     filters = {}
 ) => {
-    const { modelPrefix, minPrice, maxPrice } = filters;
+
+    const { modelPrefix, minPrice, maxPrice, manufacturerNames, distributorNames } = filters;
     const params = new URLSearchParams({
         page,
         size,
@@ -14,6 +15,15 @@ export const getAllMotors = async (
         ...(minPrice !== undefined && { minPrice }),
         ...(maxPrice !== undefined && { maxPrice }),
     });
+
+    if (manufacturerNames && Array.isArray(manufacturerNames) && manufacturerNames.length > 0) {
+        manufacturerNames.forEach(name => params.append('manufacturerNames', name));
+    }
+
+    if (distributorNames && Array.isArray(distributorNames) && distributorNames.length > 0) {
+        distributorNames.forEach(name => params.append('distributorNames', name));
+    }
+
     const response = await api.get(`/motor?${params.toString()}`);
     return response.data;
 };
