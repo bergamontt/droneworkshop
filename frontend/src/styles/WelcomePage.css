@@ -1,0 +1,23 @@
+.slogan-main-container {
+    position: absolute;
+    top: 42%;
+    left: 72%;
+    transform: translateX(-50%);
+    text-align: left;
+    z-index: 10;
+    padding: 0.5em;
+}
+
+.slogan-main {
+    font-family: 'Roboto', sans-serif; 
+    font-size: 200%;
+    font-weight: bold;
+    color: #333;
+    background-color: transparent;
+    line-height: 1.1em;
+}
+
+.slogan-additional {
+    font-family: 'Roboto', sans-serif; 
+    color: #525252;
+}
