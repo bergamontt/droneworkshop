@@ -38,7 +38,7 @@ function ForumMainPage() {
             <Container size="md">
                 <Stack spacing="xl">
                     <Searchbar
-                        placeholder="Search posts by title..."
+                        placeholder="Знайти пост за назвою..."
                         onChange={handlePostPrefixChange}
                     />
 

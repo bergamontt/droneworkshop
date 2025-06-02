@@ -11,7 +11,6 @@ import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import { useFetchUnique } from "../../hooks/useFetchUnique.jsx";
 import { elementsPerPage } from "../../services/ServiceConfig.jsx";
-import PostsList from "../../components/forum/PostsList.jsx";
 
 export default function ForumPostPage() {
     const navigate = useNavigate();
@@ -49,7 +48,7 @@ export default function ForumPostPage() {
                         variant="light"
                         color="gray"
                     >
-                        ← Back to Forum
+                        ← До форуму
                     </Button>
 
                     <Paper
@@ -58,30 +57,34 @@ export default function ForumPostPage() {
                         shadow="xs"
                         mb="lg"
                         style={{ backgroundColor: 'white'
-                        }}>
+                    }}>
                         <Stack spacing="xs" margin="auto">
-                            <Group spacing="sm">
-                                <Avatar radius="xl" color="blue" size="md">
-                                    {post.user?.username?.charAt(0).toUpperCase() ?? null}
-                                </Avatar>
-                                <div>
-                                    <Text fw={500} size="sm">
-                                        {post.user?.username ?? "Deleted user"}
-                                    </Text>
-                                    <Text size="xs" c="dimmed">
-                                        {format(post.createdAt, 'dd.MM.yyyy, HH:mm')}
-                                    </Text>
-                                </div>
+                            <Group spacing="sm" justify="space-between">
+                                <Title order={3}>{post.topic}</Title>
+                                <Text size="xs" c="dimmed">
+                                    {format(post.createdAt, 'dd.MM.yyyy, HH:mm')}
+                                </Text>
                             </Group>
 
-                            <Divider my="sm" mt="xs"/>
+                            <Divider/>
 
-                            <Title order={3}>{post.topic}</Title>
-                            <Text size="md" mt="sm">{post.description}</Text>
+                            <Group spacing="xs" align="flex-start">
+                                <Stack spacing="sm" gap="xs">
+                                    <Avatar radius="xl" color="blue" size="md">
+                                        {post.user?.username?.charAt(0)?.toUpperCase() ?? null}
+                                    </Avatar>
+                                    <div>
+                                        <Text fw={500} size="sm">{post.user?.username ?? "Deleted user"}</Text>
+                                    </div>
+                                </Stack>
+                                <Group p="xs">
+                                    <Text size="sm">{post.description}</Text>
+                                </Group>
+                            </Group>
                         </Stack>
                     </Paper>
 
-                    <Text size="lg" fw={600} mb="xs">Replies ({totalReplies})</Text>
+                    <Text size="lg" fw={600} mb="xs">Відповіді ({totalReplies})</Text>
                     <ReplyList replies={replies} />
 
                     <Center mt="xl">
