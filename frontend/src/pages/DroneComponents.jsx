@@ -11,26 +11,50 @@ import '../styles/DroneComponents.css'
 
 function DroneComponents(props) {
 
-    const minDefaultPrice = 10;
+    const minDefaultPrice = 1;
     const maxDefaultPrice = 10000;
 
     const [activePage, setPage] = useState(1);
     const [modelPrefix, setModelPrefix] = useState('');
     const [priceRange, setPriceRange] = useState({ minPrice: minDefaultPrice, maxPrice: maxDefaultPrice });
+    const [manufacturerNames, setManufacturerNames] = useState([]);
+    const [distributorNames, setDistributorNames] = useState([]);
+    const [allManufacturers, setAllManufacturers] = useState([]);
+    const [allDistributors, setAllDistributors] = useState([]);
     const [opened, { open, close }] = useDisclosure(false);
 
     useEffect(() => {
+        const fetchLists = async () => {
+            try {
+                const manufacturers = await props.fetchManufacturers();
+                const distributors = await props.fetchDistributors();
+                setAllManufacturers(manufacturers.map(m => ({ value: m, label: m })));
+                setAllDistributors(distributors.map(d => ({ value: d, label: d })));
+            } catch (e) { /* empty */ }
+        };
+        fetchLists();
+    }, [props.name]);
+
+    useEffect(() => {
         setModelPrefix('');
+        setManufacturerNames([]);
+        setDistributorNames([]);
+        setAllDistributors([]);
+        setAllManufacturers([]);
+        setPriceRange({ minPrice: minDefaultPrice, maxPrice: maxDefaultPrice });
         setPage(1);
-    }, [props.name]); 
+    }, [props.name]);
     
     const { data: components } = useFetchUnique(
         () => props.fetch(activePage - 1, elementsPerPage, {
             modelPrefix,
             minPrice: priceRange.minPrice,
             maxPrice: priceRange.maxPrice,
+            manufacturerNames,
+            distributorNames
         }),
-        [props.fetch, activePage, modelPrefix, priceRange.minPrice, priceRange.maxPrice]
+        [props.fetch, activePage, modelPrefix, priceRange.minPrice,
+            priceRange.maxPrice, manufacturerNames, distributorNames]
     );
 
     const handlePageChange = (page) => {
@@ -42,10 +66,12 @@ function DroneComponents(props) {
         setModelPrefix(value);
     }
 
-    const handlePriceRangeChange = (value) => {
+    const handleFiltersChange = ({ priceRange, manufacturerNames, distributorNames }) => {
         setPage(1);
-        setPriceRange({ minPrice: value[0], maxPrice: value[1] });
-    }
+        setPriceRange(priceRange);
+        setManufacturerNames(manufacturerNames);
+        setDistributorNames(distributorNames);
+    };
     
     if (!components) return <div style={{"backgroundColor": "rgba(109, 128, 125, 0.5)"}}/>;
     const total = components.totalPages || 1;
@@ -56,16 +82,19 @@ function DroneComponents(props) {
             <article className='components-main-container'>
                 <div className='components-filter-container'>
                     <Searchbar
-                        placeholder="Search"
+                        placeholder="Пошук..."
                         onChange={handleModelPrefixChange}
                     />
                     
                     <FilterModel
+                        name={props.name}
                         minPrice={minDefaultPrice}
                         maxPrice={maxDefaultPrice}
                         opened={opened}
                         close={close}
-                        onSave={handlePriceRangeChange}
+                        onSave={handleFiltersChange}
+                        allManufacturerNames={allManufacturers}
+                        allDistributorNames={allDistributors}
                     />
 
                     <ActionIcon
@@ -81,7 +110,12 @@ function DroneComponents(props) {
                 
                 <ComponentsList data={components} name={props.name}/>
                 <Center style={{"padding" : "1.5em"}}>
-                    <Pagination total={total} value={activePage} onChange={handlePageChange} size="md"/>
+                    <Pagination 
+                        total={total} 
+                        value={activePage} 
+                        onChange={handlePageChange} 
+                        size="md"
+                    />
                 </Center>
 
             </article>

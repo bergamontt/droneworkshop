@@ -32,3 +32,13 @@ export const getStackById = async (id) => {
     const response = await api.get(`/stack/${id}`);
     return response.data;
 }
+
+export const getStackManufacturers = async () => {
+    const response = await api.get(`/stack/manufacturers`);
+    return response.data;
+}
+
+export const getStackDistributors = async () => {
+    const response = await api.get(`/stack/distributors`);
+    return response.data;
+}

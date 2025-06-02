@@ -32,3 +32,13 @@ export const getVTXById = async (id) => {
     const response = await api.get(`/vtx/${id}`);
     return response.data;
 }
+
+export const getVTXManufacturers = async () => {
+    const response = await api.get(`/vtx/manufacturers`);
+    return response.data;
+}
+
+export const getVTXDistributors = async () => {
+    const response = await api.get(`/vtx/distributors`);
+    return response.data;
+}

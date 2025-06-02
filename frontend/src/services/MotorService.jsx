@@ -32,3 +32,13 @@ export const getMotorById = async (id) => {
     const response = await api.get(`/motor/${id}`);
     return response.data;
 }
+
+export const getMotorManufacturers = async () => {
+    const response = await api.get(`/motor/manufacturers`);
+    return response.data;
+}
+
+export const getMotorDistributors = async () => {
+    const response = await api.get(`/motor/distributors`);
+    return response.data;
+}

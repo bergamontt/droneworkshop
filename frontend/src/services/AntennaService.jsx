@@ -32,3 +32,13 @@ export const getAntennaById = async (id) => {
     const response = await api.get(`/antenna/${id}`);
     return response.data;
 }
+
+export const getAntennaManufacturers = async () => {
+    const response = await api.get(`/antenna/manufacturers`);
+    return response.data;
+}
+
+export const getAntennaDistributors = async () => {
+    const response = await api.get(`/antenna/distributors`);
+    return response.data;
+}

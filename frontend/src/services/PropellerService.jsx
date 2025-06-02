@@ -32,3 +32,13 @@ export const getPropellerById = async (id) => {
     const response = await api.get(`/propeller/${id}`);
     return response.data;
 }
+
+export const getPropellerManufacturers = async () => {
+    const response = await api.get(`/propeller/manufacturers`);
+    return response.data;
+}
+
+export const getPropellerDistributors = async () => {
+    const response = await api.get(`/propeller/distributors`);
+    return response.data;
+}

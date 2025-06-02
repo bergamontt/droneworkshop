@@ -32,3 +32,13 @@ export const getFrameById = async (id) => {
     const response = await api.get(`/frame/${id}`);
     return response.data;
 }
+
+export const getFrameManufacturers = async () => {
+    const response = await api.get(`/frame/manufacturers`);
+    return response.data;
+}
+
+export const getFrameDistributors = async () => {
+    const response = await api.get(`/frame/distributors`);
+    return response.data;
+}

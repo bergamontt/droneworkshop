@@ -32,3 +32,13 @@ export const getRXById = async (id) => {
     const response = await api.get(`/rx/${id}`);
     return response.data;
 }
+
+export const getRXManufacturers = async () => {
+    const response = await api.get(`/rx/manufacturers`);
+    return response.data;
+}
+
+export const getRXDistributors = async () => {
+    const response = await api.get(`/rx/distributors`);
+    return response.data;
+}

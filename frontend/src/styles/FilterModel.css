@@ -1,0 +1,14 @@
+.filter-component-wrapper { 
+    width: 30rem;
+    padding: 0.4em 2em;
+}
+
+.price-component-wrapper {
+    width: 30rem;
+    padding: 1.3em 2em;
+}
+
+.number-input-wrapper {
+    display: flex;
+    padding: 1em 0em;
+}

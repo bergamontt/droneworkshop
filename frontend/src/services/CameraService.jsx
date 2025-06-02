@@ -32,3 +32,13 @@ export const getCameraById = async (id) => {
     const response = await api.get(`/camera/${id}`);
     return response.data;
 }
+
+export const getCameraManufacturers = async () => {
+    const response = await api.get(`/camera/manufacturers`);
+    return response.data;
+}
+
+export const getCameraDistributors = async () => {
+    const response = await api.get(`/camera/distributors`);
+    return response.data;
+}

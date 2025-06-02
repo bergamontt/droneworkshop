@@ -32,3 +32,13 @@ export const getBatteryById = async (id) => {
     const response = await api.get(`/battery/${id}`);
     return response.data;
 }
+
+export const getBatteryManufacturers = async () => {
+    const response = await api.get(`/battery/manufacturers`);
+    return response.data;
+}
+
+export const getBatteryDistributors = async () => {
+    const response = await api.get(`/battery/distributors`);
+    return response.data;
+}

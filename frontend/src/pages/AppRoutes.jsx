@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-import { getAllAntennas, getAntennaById } from '../services/AntennaService';
-import { getAllBatteries, getBatteryById } from '../services/BatteryService.jsx';
-import { getAllCameras, getCameraById } from '../services/CameraService.jsx';
-import { getAllFrames, getFrameById } from '../services/FrameService.jsx';
-import { getAllMotors, getMotorById } from '../services/MotorService.jsx';
-import { getAllPropellers, getPropellerById } from '../services/PropellerService.jsx';
-import { getAllRX, getRXById } from '../services/RXService';
-import { getAllStacks, getStackById } from '../services/StackService';
-import { getAllVTX, getVTXById } from '../services/VTXService';
+import { getAllAntennas, getAntennaById, getAntennaDistributors, getAntennaManufacturers } from '../services/AntennaService';
+import { getAllBatteries, getBatteryById, getBatteryDistributors, getBatteryManufacturers } from '../services/BatteryService.jsx';
+import { getAllCameras, getCameraById, getCameraDistributors, getCameraManufacturers } from '../services/CameraService.jsx';
+import { getAllFrames, getFrameById, getFrameDistributors, getFrameManufacturers } from '../services/FrameService.jsx';
+import { getAllMotors, getMotorById, getMotorDistributors, getMotorManufacturers } from '../services/MotorService.jsx';
+import { getAllPropellers, getPropellerById, getPropellerDistributors, getPropellerManufacturers } from '../services/PropellerService.jsx';
+import { getAllRX, getRXById, getRXDistributors, getRXManufacturers } from '../services/RXService';
+import { getAllStacks, getStackById, getStackDistributors, getStackManufacturers } from '../services/StackService';
+import { getAllVTX, getVTXById, getVTXDistributors, getVTXManufacturers } from '../services/VTXService';
 import Tutorials from "./Tutorials.jsx";
 import LogInPage from './authentification/LogInPage.jsx';
 import RegisterPage from './authentification/RegisterPage.jsx';
@@ -25,31 +25,92 @@ function AppRoutes() {
             <Route path='/' element={<></>}/>
 
             <Route path="/drone_components" element={<ComponentsSidebar />}>
-                <Route path="antenna" key="antenna" element={<DroneComponents fetch={getAllAntennas} name="antenna" />}/>
+                <Route path="antenna" key="antenna" element={
+                    <DroneComponents 
+                        fetch={getAllAntennas}
+                        fetchManufacturers={getAntennaManufacturers} 
+                        fetchDistributors={getAntennaDistributors} 
+                        name="antenna"
+                    />}
+                />
                 <Route path="antenna/:componentId" element={<DroneComponent fetch={getAntennaById} />}/>
                 
-                <Route path="battery" key="battery" element={<DroneComponents fetch={getAllBatteries} name="battery" />}/>
+                <Route path="battery" key="battery" element={
+                    <DroneComponents 
+                        fetch={getAllBatteries}
+                        fetchManufacturers={getBatteryManufacturers} 
+                        fetchDistributors={getBatteryDistributors} 
+                        name="battery"
+                    />}
+                />
                 <Route path="battery/:componentId" element={<DroneComponent fetch={getBatteryById} />}/>
 
-                <Route path="camera" key="camera" element={<DroneComponents fetch={getAllCameras} name="camera" />}/>
+                <Route path="camera" key="camera" element={
+                    <DroneComponents 
+                        fetch={getAllCameras}
+                        fetchManufacturers={getCameraManufacturers} 
+                        fetchDistributors={getCameraDistributors}  
+                        name="camera" 
+                    />}
+                />
                 <Route path="camera/:componentId" element={<DroneComponent fetch={getCameraById} />}/>
                 
-                <Route path="frame" key="frame" element={<DroneComponents fetch={getAllFrames} name="frame" />}/>
+                <Route path="frame" key="frame" element={
+                    <DroneComponents 
+                        fetch={getAllFrames}
+                        fetchManufacturers={getFrameManufacturers} 
+                        fetchDistributors={getFrameDistributors}  
+                        name="frame" />}
+                    />
                 <Route path="frame/:componentId" element={<DroneComponent fetch={getFrameById} />}/>
                 
-                <Route path="motor" key="motor" element={<DroneComponents fetch={getAllMotors} name="motor" />}/>
+                <Route path="motor" key="motor" element={
+                    <DroneComponents 
+                        fetch={getAllMotors}
+                        fetchManufacturers={getMotorManufacturers} 
+                        fetchDistributors={getMotorDistributors}  
+                        name="motor" />}
+                    />
                 <Route path="motor/:componentId" element={<DroneComponent fetch={getMotorById} />}/>
                 
-                <Route path="propeller" key="propeller" element={<DroneComponents fetch={getAllPropellers} name="propeller" />}/>
+                <Route path="propeller" key="propeller" element={
+                    <DroneComponents 
+                        fetch={getAllPropellers}
+                        fetchManufacturers={getPropellerManufacturers} 
+                        fetchDistributors={getPropellerDistributors}  
+                        name="propeller" 
+                    />}
+                />
                 <Route path="propeller/:componentId" element={<DroneComponent fetch={getPropellerById} />}/>
                 
-                <Route path="rx" key="rx" element={<DroneComponents fetch={getAllRX} name="rx" />}/>
+                <Route path="rx" key="rx" element={
+                    <DroneComponents 
+                        fetch={getAllRX} 
+                        fetchManufacturers={getRXManufacturers} 
+                        fetchDistributors={getRXDistributors}  
+                        name="rx" 
+                    />}
+                />
                 <Route path="rx/:componentId" element={<DroneComponent fetch={getRXById} />}/>
                 
-                <Route path="stack" key="stack" element={<DroneComponents fetch={getAllStacks} name="stack" />}/>
+                <Route path="stack" key="stack" element={
+                    <DroneComponents 
+                        fetch={getAllStacks} 
+                        fetchManufacturers={getStackManufacturers} 
+                        fetchDistributors={getStackDistributors}  
+                        name="stack" 
+                    />}
+                />
                 <Route path="stack/:componentId" element={<DroneComponent fetch={getStackById} />}/>
 
-                <Route path="vtx" key="vtx" element={<DroneComponents fetch={getAllVTX} name="vtx" />}/>
+                <Route path="vtx" key="vtx" element={
+                    <DroneComponents 
+                        fetch={getAllVTX} 
+                        fetchManufacturers={getVTXManufacturers} 
+                        fetchDistributors={getVTXDistributors}  
+                        name="vtx" 
+                    />}
+                />
                 <Route path="vtx/:componentId" element={<DroneComponent fetch={getVTXById} />}/>
             </Route>
 
