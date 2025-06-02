@@ -4,6 +4,8 @@ import com.droneworkshop.model.authentification.User;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.sql.Timestamp;
+
 @Data
 @Entity
 public class Post {
@@ -20,4 +22,7 @@ public class Post {
 
     @Column(nullable = false, length = 5000)
     private String description;
+
+    @Column(nullable = false)
+    private Timestamp createdAt;
 }

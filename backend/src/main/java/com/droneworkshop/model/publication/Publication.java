@@ -3,6 +3,8 @@ package com.droneworkshop.model.publication;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.sql.Timestamp;
+
 @Data
 @Entity
 public class Publication {
@@ -16,4 +18,7 @@ public class Publication {
 
     @Column(nullable = false)
     private Integer numOfViews;
+
+    @Column(nullable = false)
+    private Timestamp createdAt;
 }
