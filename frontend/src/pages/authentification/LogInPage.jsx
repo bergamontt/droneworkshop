@@ -14,20 +14,20 @@ export default function LogInPage() {
         <div className="login-page-container">
             <div className="login-form-container">
                 <span className="login-title">
-                    Welcome back!
+                    Вхід в акаунт
                 </span>
 
                 <LogInForm />
 
                 <p className="login-subtitle">
                     <span>
-                        Do not have an account yet?
+                        Немає акаунта?
                     </span>
                     <Anchor
                         component="button"
                         underline="hover"
                         onClick={() => navigate("/register")}
-                    >Create account</Anchor>
+                    >Створити акаунт</Anchor>
                 </p>
             </div>
         </div>

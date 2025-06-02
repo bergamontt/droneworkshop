@@ -31,15 +31,15 @@ export default function ChangePasswordPage() {
 
         try {
             if (newPassword !== confirmPassword) {
-                setMessage('New passwords do not match.');
+                setMessage('Паролі не співпадають');
             } else {
                 await updateUserPassword(user.username, newPassword);
-                setMessage('Password changed successfully.');
+                setMessage('Пароль успішно змінено!');
                 setNewPassword('');
                 setConfirmPassword('');
             }
-        } catch (err) {
-            setMessage(err.message || 'Failed to change password.');
+        } catch {
+            setMessage('Не вдалося оновити пароль');
         } finally {
             setLoading(false);
         }
@@ -55,11 +55,12 @@ export default function ChangePasswordPage() {
                     fontFamily: "'WDXL Lubrifont TC', Arial, sans-serif",
                     fontWeight: "500",
                     fontSize: "72px",
-                }}>Change Password</Title>
+                }}>Зміна паролю</Title>
 
                 <Paper withBorder shadow="sm" p={30} mt={30} radius="md">
                     <PasswordInput
-                        label="New Password"
+                        label="Пароль"
+                        placeholder="Новий пароль"
                         value={newPassword}
                         onChange={(e) => setNewPassword(e.currentTarget.value)}
                         required
@@ -67,7 +68,8 @@ export default function ChangePasswordPage() {
                         radius="md"
                     />
                     <PasswordInput
-                        label="Confirm New Password"
+                        label="Підтвердження паролю"
+                        placeholder="Підтвердження нового паролю"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.currentTarget.value)}
                         required
@@ -88,7 +90,7 @@ export default function ChangePasswordPage() {
                         loading={loading}
                         disabled={!newPassword || !confirmPassword}
                     >
-                        Change Password
+                        Змінити пароль
                     </Button>
 
                     <Group justify="flex-start" mt="xs">
@@ -97,7 +99,7 @@ export default function ChangePasswordPage() {
                             size="sm"
                             onClick={() => navigate("/profile")}
                         >
-                            To profile page
+                            До сторінки профілю
                         </Anchor>
                     </Group>
                 </Paper>

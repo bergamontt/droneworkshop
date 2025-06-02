@@ -29,8 +29,8 @@ export default function LogInForm() {
             const token = await login(username, password);
             setToken(token);
             navigate("/profile")
-        } catch (err) {
-            setError(err.message || 'Something went wrong');
+        } catch {
+            setError('Не вдалося ввійти в акаунт');
         } finally {
             setLoading(false);
         }
@@ -39,16 +39,16 @@ export default function LogInForm() {
     return (
         <div className="login-form">
             <TextInput
-                label="Username"
-                placeholder="Your username"
+                label="Логін"
+                placeholder="Ваш логін"
                 value={username}
                 onChange={(event) => setUsername(event.currentTarget.value)}
                 required
                 radius="md"
             />
             <PasswordInput
-                label="Password"
-                placeholder="Your password"
+                label="Пароль"
+                placeholder="Пароль"
                 value={password}
                 onChange={(event) => setPassword(event.currentTarget.value)}
                 required
@@ -68,7 +68,7 @@ export default function LogInForm() {
                     size="sm"
                     onClick={() => navigate('/restore-password')}
                 >
-                    Forgot password?
+                    Забули пароль?
                 </Anchor>
             </Group>
 
@@ -80,7 +80,7 @@ export default function LogInForm() {
                 loading={loading}
                 disabled={!username || !password}
             >
-                Sign in
+                Ввійти
             </Button>
         </div>
     );

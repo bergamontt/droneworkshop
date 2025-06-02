@@ -10,20 +10,20 @@ export default function RegisterPage() {
         <section className="register-page-container">
             <div className="register-form-container">
                 <span className="register-title">
-                    Create an account
+                    Створити акаунт
                 </span>
 
                 <RegisterForm />
 
                 <p className="login-subtitle">
                 <span>
-                    Already have an account?
+                    Вже є акаунт?
                 </span>
                     <Anchor
                         component="button"
                         underline="hover"
                         onClick={() => navigate("/log-in")}
-                    >Log in</Anchor>
+                    >Увійти</Anchor>
                 </p>
             </div>
         </section>

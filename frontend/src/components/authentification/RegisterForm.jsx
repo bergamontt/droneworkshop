@@ -1,5 +1,5 @@
 import {
-    Button,
+    Button, Checkbox,
     PasswordInput,
     Text,
     TextInput,
@@ -16,6 +16,7 @@ export default function RegisterForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [agreed, setAgreed] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
@@ -25,13 +26,13 @@ export default function RegisterForm() {
 
         try {
             if (password !== confirmPassword) {
-                setError('Passwords do not match');
+                setError('Паролі не співпадають');
             } else {
                 await registerUser({username, password, email});
                 navigate("/log-in");
             }
-        } catch (err) {
-            setError(err.message || 'Something went wrong');
+        } catch {
+            setError('Не вдалося зареєструватися');
         } finally {
             setLoading(false);
         }
@@ -40,24 +41,24 @@ export default function RegisterForm() {
     return (
         <div className="register-form">
             <TextInput
-                label="Username"
-                placeholder="Your username"
+                label="Логін"
+                placeholder="Ваш логін"
                 value={username}
                 onChange={(event) => setUsername(event.currentTarget.value)}
                 required
                 radius="md"
             />
             <TextInput
-                label="Email"
-                placeholder="you@your.mail"
+                label="Електронна пошта"
+                placeholder="Ваша електронна пошта"
                 value={email}
                 onChange={(event) => setEmail(event.currentTarget.value)}
                 required
                 radius="md"
             />
             <PasswordInput
-                label="Password"
-                placeholder="Your password"
+                label="Пароль"
+                placeholder="Ваш пароль"
                 value={password}
                 onChange={(event) => setPassword(event.currentTarget.value)}
                 required
@@ -65,13 +66,19 @@ export default function RegisterForm() {
                 radius="md"
             />
             <PasswordInput
-                label="Confirm Password"
-                placeholder="Confirm your password"
+                label="Підтвердження пароля"
+                placeholder="Підтвердження пароля"
                 value={confirmPassword}
                 onChange={(event) => setConfirmPassword(event.currentTarget.value)}
                 required
                 mt="md"
                 radius="md"
+            />
+
+            <Checkbox
+                mt="md"
+                onChange={() => setAgreed(!agreed)}
+                label="Я погоджуюся продати свою душу компанії"
             />
 
             {error && (
@@ -86,9 +93,9 @@ export default function RegisterForm() {
                 radius="md"
                 onClick={handleSubmit}
                 loading={loading}
-                disabled={!username || !password || !confirmPassword}
+                disabled={!username || !password || !confirmPassword || !agreed}
             >
-                Sign up
+                Зареєструватися
             </Button>
         </div>
     );

@@ -45,9 +45,9 @@ export default function ManageProfilePage() {
             user.email = email;
             user.bio = bio;
             await updateUserInfo(user);
-            setMessage('Changes saved successfully!');
+            setMessage('Інформація успішно оновлена!');
         } catch {
-            setMessage('Error saving new information.');
+            setMessage('Не вдалося оновити інформацію');
         } finally {
             setSaving(false);
         }
@@ -77,25 +77,25 @@ export default function ManageProfilePage() {
                                 {username}
                             </Title>
                             <Text size="sm" c="dimmed" mb="md">
-                                Manage your profile information.
+                                Керуйте своїм профілем
                             </Text>
 
                             <Stack spacing="sm">
                                 <TextInput
-                                    label="Email"
+                                    label="Електронна пошта"
                                     value={email}
                                     onChange={(e) => setEmail(e.currentTarget.value)}
                                     required
                                     radius="md"
-                                    placeholder="your@email.com"
+                                    placeholder="Ваша електронна пошта"
                                 />
 
                                 <TextInput
-                                    label="Biography"
+                                    label="Опис"
                                     value={bio}
                                     onChange={(e) => setBio(e.currentTarget.value)}
                                     radius="md"
-                                    placeholder="Something about yourself"
+                                    placeholder="Напишіть щось про себе"
                                 />
 
                                 <Group justify="flex-start" mt="xs">
@@ -104,7 +104,7 @@ export default function ManageProfilePage() {
                                         size="sm"
                                         onClick={() => navigate("/change-password")}
                                     >
-                                        Change Password
+                                        Змінити пароль
                                     </Anchor>
                                 </Group>
 
@@ -124,7 +124,7 @@ export default function ManageProfilePage() {
                                     radius="md"
                                     color="blue"
                                 >
-                                    Save Changes
+                                    Зберегти зміни
                                 </Button>
                             </Stack>
                         </Grid.Col>
