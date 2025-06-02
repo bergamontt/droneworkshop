@@ -1,4 +1,5 @@
-import { Paper, Text, Title, Group, Avatar, Grid, Badge } from "@mantine/core";
+import { Paper, Text, Title, Group, Avatar, Grid } from "@mantine/core";
+import { format } from 'date-fns';
 import '../../styles/TutorialsSection.css';
 import {useNavigate} from "react-router-dom";
 
@@ -27,12 +28,17 @@ export default function PostElement({ post }) {
                     </Text>
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, sm: 3 }}>
-                    <Group justify="center">
+                    <Group justify="center" mb="sm">
                         <Avatar radius="xl" color="blue" size="sm">
                             {post.user?.username.charAt(0).toUpperCase() ?? null}
                         </Avatar>
                         <Text size="sm" c="gray">
                             {post.user?.username ?? "Deleted user"}
+                        </Text>
+                    </Group>
+                    <Group justify="center">
+                        <Text size="sm" c="dimmed">
+                            {format(post.createdAt, 'dd.MM.yyyy, HH:mm')}
                         </Text>
                     </Group>
                 </Grid.Col>

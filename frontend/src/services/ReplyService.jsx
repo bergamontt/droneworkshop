@@ -1,11 +1,19 @@
 import api from './api.jsx'
+import {defaultPage, elementsPerPage} from "./ServiceConfig.jsx";
 
-export const getRepliesByPostId = async (postId) => {
-    const response = await api.get('/reply', {
-        params: { postId }
+export const getRepliesByPostId = async (
+    page = defaultPage,
+    size = elementsPerPage,
+    postId
+) => {
+    const params = new URLSearchParams({
+        page,
+        size,
+        ...(postId && { postId }),
     });
+    const response = await api.get(`/reply?${params.toString()}`);
     return response.data;
-}
+};
 
 export const getReplyById = async (id) => {
     const response = await api.get(`/reply/${id}`);
