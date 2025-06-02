@@ -1,13 +1,11 @@
 package com.droneworkshop.controller.forum;
 
+import com.droneworkshop.dto.filter.ReplyFilterDto;
 import com.droneworkshop.model.forum.Reply;
 import com.droneworkshop.service.forum.ReplyService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ReplyController {
@@ -17,11 +15,10 @@ public class ReplyController {
         this.replyService = replyService;
     }
 
-    @GetMapping(value = "/reply", params = {"postId"})
-    public List<Reply> getRepliesByPostId(
-            @RequestParam int postId
+    @GetMapping(value = "/reply")
+    public Page<Reply> getAllReplies(@ModelAttribute ReplyFilterDto filter, Pageable pageable
     ) {
-        return replyService.getRepliesByPostId(postId);
+        return replyService.getFilteredReplies(filter, pageable);
     }
 
     @GetMapping("/reply/{id}")

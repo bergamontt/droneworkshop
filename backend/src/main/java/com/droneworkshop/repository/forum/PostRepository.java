@@ -16,5 +16,13 @@ public interface PostRepository extends JpaRepository<Post, Integer>, JpaSpecifi
                 return builder.like(root.get("topic"), postPrefix + "%");
             };
         }
+
+        static Specification<Post> orderByTime(Specification<Post> spec) {
+            return (root, query, builder) -> {
+                assert query != null;
+                query.orderBy(builder.desc(root.get("createdAt")));
+                return spec.toPredicate(root, query, builder);
+            };
+        }
     }
 }

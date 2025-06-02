@@ -24,6 +24,6 @@ public class PostService {
 
     public Page<Post> getFilteredPosts(PostFilterDto filter, Pageable pageable) {
         Specification<Post> spec = buildSpecification(filter);
-        return postRepository.findAll(spec, pageable);
+        return postRepository.findAll(PostRepository.Specs.orderByTime(spec), pageable);
     }
 }
