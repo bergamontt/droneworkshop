@@ -19,6 +19,7 @@ import ComponentsSidebar from "../components/common/ComponentsSidebar.jsx";
 import ForumMainPage from "./forum/ForumMainPage.jsx";
 import ForumPostPage from "./forum/ForumPostPage.jsx";
 import WelcomePage from './WelcomePage.jsx'
+import WritePostPage from "./forum/WritePostPage.jsx";
 
 function AppRoutes() {
     return(
@@ -124,6 +125,7 @@ function AppRoutes() {
 
             <Route path="/forum" element={<ForumMainPage />}/>
             <Route path="/forum/:postId" element={<ForumPostPage />}/>
+            <Route path="/write-post" element={<WritePostPage />}/>
         </Routes>
     );
 }

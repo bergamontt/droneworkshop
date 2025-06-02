@@ -11,6 +11,8 @@ import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import { useFetchUnique } from "../../hooks/useFetchUnique.jsx";
 import { elementsPerPage } from "../../services/ServiceConfig.jsx";
+import {jwtService} from "../../services/JWTService.jsx";
+import ReplyCreationPanel from "../../components/forum/ReplyCreationPanel.jsx";
 
 export default function ForumPostPage() {
     const navigate = useNavigate();
@@ -92,6 +94,9 @@ export default function ForumPostPage() {
                     </Center>
                 </Paper>
             </Container>
+            {
+                jwtService.isLoggedIn() && <ReplyCreationPanel post={post} />
+            }
         </div>
     );
 }
