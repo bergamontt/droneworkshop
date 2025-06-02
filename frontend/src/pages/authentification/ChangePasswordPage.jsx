@@ -78,7 +78,7 @@ export default function ChangePasswordPage() {
                     />
 
                     {message && (
-                        <Text mt="md" c={message.includes('successfully') ? 'green' : 'red'}>
+                        <Text mt="md" c={message.includes('успішно') ? 'green' : 'red'}>
                             {message}
                         </Text>
                     )}

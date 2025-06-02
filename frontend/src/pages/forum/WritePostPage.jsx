@@ -81,7 +81,7 @@ export default function WritePostPage() {
                         />
 
                         {message && (
-                            <Text c={message.includes('successfully') ? 'green' : 'red'}>
+                            <Text c='green'>
                                 {message}
                             </Text>
                         )}

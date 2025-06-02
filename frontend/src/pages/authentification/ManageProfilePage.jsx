@@ -110,7 +110,7 @@ export default function ManageProfilePage() {
 
                                 {message && (
                                     <Text
-                                        c={message.includes('successfully') ? 'teal' : 'red'}
+                                        c={message.includes('успішно') ? 'teal' : 'red'}
                                         size="sm"
                                     >
                                         {message}

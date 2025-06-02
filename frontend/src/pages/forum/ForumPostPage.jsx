@@ -12,12 +12,14 @@ import { useEffect, useState } from "react";
 import { useFetchUnique } from "../../hooks/useFetchUnique.jsx";
 import { elementsPerPage } from "../../services/ServiceConfig.jsx";
 import {jwtService} from "../../services/JWTService.jsx";
-import ReplyCreationPanel from "../../components/forum/ReplyCreationPanel.jsx";
+import ReplyCreationWindow from "../../components/forum/ReplyCreationWindow.jsx";
+import {useDisclosure} from "@mantine/hooks";
 
 export default function ForumPostPage() {
     const navigate = useNavigate();
     const { postId } = useParams();
     const [activePage, setPage] = useState(1);
+    const [opened, { open, close }] = useDisclosure(false);
 
     useEffect(() => setPage(1), []);
 
@@ -94,9 +96,19 @@ export default function ForumPostPage() {
                     </Center>
                 </Paper>
             </Container>
-            {
-                jwtService.isLoggedIn() && <ReplyCreationPanel post={post} />
-            }
+            <Button
+                onClick={() => {
+                    jwtService.isLoggedIn() ? open() : navigate("/log-in")
+                }}
+                style={{
+                    position: 'fixed',
+                    bottom: '1rem',
+                    right: '1rem',
+                }}
+            >
+                + Відповісти
+            </Button>
+            <ReplyCreationWindow post={post} opened={opened} close={close}/>
         </div>
     );
 }
