@@ -18,12 +18,13 @@ import DroneComponent from './DroneComponent.jsx';
 import ComponentsSidebar from "../components/common/ComponentsSidebar.jsx";
 import ForumMainPage from "./forum/ForumMainPage.jsx";
 import ForumPostPage from "./forum/ForumPostPage.jsx";
+import WelcomePage from './WelcomePage.jsx'
 import WritePostPage from "./forum/WritePostPage.jsx";
 
 function AppRoutes() {
     return(
         <Routes>
-            <Route path='/' element={<></>}/>
+            <Route path='/' element={<WelcomePage/>}/>
 
             <Route path="/drone_components" element={<ComponentsSidebar />}>
                 <Route path="antenna" key="antenna" element={
