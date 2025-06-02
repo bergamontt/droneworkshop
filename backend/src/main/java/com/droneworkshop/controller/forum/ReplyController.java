@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/reply")
 public class ReplyController {
     private final ReplyService replyService;
 
@@ -15,13 +16,18 @@ public class ReplyController {
         this.replyService = replyService;
     }
 
-    @GetMapping(value = "/reply")
+    @PostMapping
+    public void addReply(@RequestBody Reply reply) {
+        replyService.addReply(reply);
+    }
+
+    @GetMapping
     public Page<Reply> getAllReplies(@ModelAttribute ReplyFilterDto filter, Pageable pageable
     ) {
         return replyService.getFilteredReplies(filter, pageable);
     }
 
-    @GetMapping("/reply/{id}")
+    @GetMapping("/{id}")
     public Reply getReplyById(
             @PathVariable int id
     ) {

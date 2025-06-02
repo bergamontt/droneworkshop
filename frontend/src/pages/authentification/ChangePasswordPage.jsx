@@ -55,7 +55,7 @@ export default function ChangePasswordPage() {
                     fontFamily: "'WDXL Lubrifont TC', Arial, sans-serif",
                     fontWeight: "500",
                     fontSize: "72px",
-                }}>Зміна паролю</Title>
+                }}>Зміна пароля</Title>
 
                 <Paper withBorder shadow="sm" p={30} mt={30} radius="md">
                     <PasswordInput
@@ -68,8 +68,8 @@ export default function ChangePasswordPage() {
                         radius="md"
                     />
                     <PasswordInput
-                        label="Підтвердження паролю"
-                        placeholder="Підтвердження нового паролю"
+                        label="Підтвердження пароля"
+                        placeholder="Підтвердження нового пароля"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.currentTarget.value)}
                         required

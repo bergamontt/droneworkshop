@@ -19,3 +19,8 @@ export const getReplyById = async (id) => {
     const response = await api.get(`/reply/${id}`);
     return response.data;
 };
+
+export const addReply = async (reply) => {
+    const response = await api.post('/reply', reply);
+    return response.data;
+}

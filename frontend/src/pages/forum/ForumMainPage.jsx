@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
-import { Pagination, Center, Container, Stack, Paper } from '@mantine/core';
+import { Pagination, Center, Container, Stack, Paper, Button } from '@mantine/core';
 import Searchbar from '../../components/common/Searchbar.jsx';
 import PostsList from '../../components/forum/PostsList.jsx';
 import { getAllPosts } from '../../services/PostService.jsx';
 import { useFetchUnique } from '../../hooks/useFetchUnique.jsx';
+import {jwtService} from "../../services/JWTService.jsx";
 import { elementsPerPage } from '../../services/ServiceConfig.jsx';
+import { useNavigate } from "react-router-dom";
 
 function ForumMainPage() {
+    const navigate = useNavigate();
+
     const [activePage, setPage] = useState(1);
     const [postPrefix, setPostPrefix] = useState('');
 
@@ -51,6 +55,19 @@ function ForumMainPage() {
                     </Center>
                 </Stack>
             </Container>
+
+            <Button
+                onClick={() => {
+                    jwtService.isLoggedIn() ? navigate("/write-post") : navigate("/log-in")
+                }}
+                style={{
+                    position: 'fixed',
+                    bottom: '1rem',
+                    right: '1rem',
+                }}
+            >
+                + Написати пост
+            </Button>
         </div>
     );
 }
