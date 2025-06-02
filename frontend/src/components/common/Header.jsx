@@ -23,19 +23,19 @@ function Header() {
                 <img src={logo} alt={"DRONE WORKSHOP"} className="nav-logo"/>
                 <ul className='nav-category-container'>
                     <NavLink
-                        label={<span className='nav-category'>COMPONENTS</span>}
+                        label={<span className='nav-category'>КОМПОНЕНТИ</span>}
                         onClick={() => navigate('/drone_components/antenna')}
                     />
                     <NavLink
-                        label={<span className='nav-category'>SCHEMAS</span>}
+                        label={<span className='nav-category'>СХЕМИ</span>}
                         onClick={() => navigate('/schemas')}
                     />
                     <NavLink
-                        label={<span className='nav-category'>FORUM</span>}
+                        label={<span className='nav-category'>ФОРУМ</span>}
                         onClick={() => navigate('/forum')}
                     />
                     <NavLink
-                        label={<span className='nav-category'>TUTORIAL</span>}
+                        label={<span className='nav-category'>ТУТОРІАЛИ</span>}
                         onClick={() => navigate('/tutorials')}
                     />
                 </ul>

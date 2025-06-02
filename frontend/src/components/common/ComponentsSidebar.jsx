@@ -26,32 +26,32 @@ function ComponentsSidebar() {
     <div style={sidebarContainerStyles}>
         <div>
             <NavLink
-                label={<SidebarLabel text="ANTENNAS" />}
+                label={<SidebarLabel text="АНТЕНИ" />}
                 leftSection={<SidebarIcon link={antenna}/>}
                 onClick={() => navigate('/drone_components/antenna')}
             />
             <NavLink
-                label={<SidebarLabel text="BATTERIES" />}
+                label={<SidebarLabel text="БАТКИ" />}
                 leftSection={<SidebarIcon link={battery}/>}
                 onClick={() => navigate('/drone_components/battery')}
             />
             <NavLink
-                label={<SidebarLabel text="CAMERAS" />}
+                label={<SidebarLabel text="КАМЕРИ" />}
                 leftSection={<SidebarIcon link={camera}/>}
                 onClick={() => navigate('/drone_components/camera')}
             />
             <NavLink
-                label={<SidebarLabel text="FRAMES" />}
+                label={<SidebarLabel text="РАМИ" />}
                 leftSection={<SidebarIcon link={frame}/>}
                 onClick={() => navigate('/drone_components/frame')}
             />
             <NavLink
-                label={<SidebarLabel text="MOTORS" />}
+                label={<SidebarLabel text="МОТОРИ" />}
                 leftSection={<SidebarIcon link={motor}/>}
                 onClick={() => navigate('/drone_components/motor')}
             />
             <NavLink
-                label={<SidebarLabel text="PROPELLERS" />}
+                label={<SidebarLabel text="ПРОПЕЛЛЕРИ" />}
                 leftSection={<SidebarIcon link={propeller}/>}
                 onClick={() => navigate('/drone_components/propeller')}
             />
@@ -61,7 +61,7 @@ function ComponentsSidebar() {
                 onClick={() => navigate('/drone_components/rx')}
             />
             <NavLink
-                label={<SidebarLabel text="STACK" />}
+                label={<SidebarLabel text="КОНТРОЛЕРИ" />}
                 leftSection={<SidebarIcon link={stack}/>}
                 onClick={() => navigate('/drone_components/stack')}
             />
