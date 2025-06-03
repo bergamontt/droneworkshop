@@ -51,7 +51,7 @@ function ComponentsSidebar() {
                 onClick={() => navigate('/drone_components/motor')}
             />
             <NavLink
-                label={<SidebarLabel text="ПРОПЕЛЛЕРИ" />}
+                label={<SidebarLabel text="ПРОПЕЛЕРИ" />}
                 leftSection={<SidebarIcon link={propeller}/>}
                 onClick={() => navigate('/drone_components/propeller')}
             />
@@ -61,7 +61,7 @@ function ComponentsSidebar() {
                 onClick={() => navigate('/drone_components/rx')}
             />
             <NavLink
-                label={<SidebarLabel text="КОНТРОЛЕРИ" />}
+                label={<SidebarLabel text="СТЕКИ" />}
                 leftSection={<SidebarIcon link={stack}/>}
                 onClick={() => navigate('/drone_components/stack')}
             />

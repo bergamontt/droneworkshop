@@ -19,8 +19,8 @@ export const getAttributeMetric = (key, value) => {
         case "cableConnector": return value;
         case "propellersInches": return `${value}"`;
         case "material": return value;
-        case "camMountSize": return `${value} дюйми`;
-        case "motorMountSize": return value;
+        case "camMountSize": return `${value}мм`;
+        case "motorMountSize": return `${value}мм`;
         case "mountSize": return `${value}мм`;
         case "tvl": return `${value}TVL`;
         case "aspectRatio": return value;

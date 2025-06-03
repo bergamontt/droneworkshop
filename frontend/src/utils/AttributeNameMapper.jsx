@@ -19,8 +19,8 @@ export const getAttributeName = (key) => {
         case "propellersInches": return "Розмір пропелерів";
         case "material": return "Матеріал";
         case "camMountSize": return "Розмір кріплення камери";
-        case "motorMountSize": return "Отвір для кріплення двигуна";
-        case "mountSize": return "Розмір";
+        case "motorMountSize": return "Розмір кріплення моторів";
+        case "mountSize": return "Розмір кріплення";
         case "tvl": return "Горизонтальна роздільна здатність";
         case "aspectRatio": return "Співвідношення сторін";
         case "videoFormat": return "Система сигналу";
@@ -28,7 +28,7 @@ export const getAttributeName = (key) => {
         case "rangeS": return "Рекомендована батарея";
         case "maxCurrent": return "Максимальний струм";
         case "maxPower": return "Максимальна потужність";
-        case "sizeInches": return "Крок";
+        case "sizeInches": return "Діаметр";
         case "protocol": return "Протокол";
         case "workingCurrent": return "Постійний струм";
     }
