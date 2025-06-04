@@ -1,6 +1,8 @@
 import { NavLink } from '@mantine/core';
 import { Outlet, useNavigate } from "react-router-dom";
-import antenna from '../../assets/antenna.svg'
+import antennas from '../../assets/antennas.svg';
+import rx_antenna from '../../assets/rx_antenna.svg';
+import vtx_antenna from '../../assets/vtx_antenna.svg';
 import battery from '../../assets/battery.svg'
 import camera from '../../assets/camera.svg'
 import frame from '../../assets/frame.svg'
@@ -27,16 +29,16 @@ function ComponentsSidebar() {
         <div>
             <NavLink
                 label={<SidebarLabel text="АНТЕНИ" />}
-                leftSection={<SidebarIcon link={antenna}/>}
+                leftSection={<SidebarIcon link={antennas}/>}
                 onClick={() => navigate('/drone_components/antenna')}
             >
                 <NavLink
-                    leftSection={<SidebarIcon link={antenna}/>}
+                    leftSection={<SidebarIcon link={rx_antenna}/>}
                     label={<SidebarLabel text="RX АНТЕНИ" />}
                     onClick={() => navigate('/drone_components/antenna_rx')}
                 />
                 <NavLink 
-                    leftSection={<SidebarIcon link={antenna}/>}
+                    leftSection={<SidebarIcon link={vtx_antenna}/>}
                     label={<SidebarLabel text="VTX АНТЕНИ" />} 
                     onClick={() => navigate('/drone_components/antenna_vtx')}
                 />
