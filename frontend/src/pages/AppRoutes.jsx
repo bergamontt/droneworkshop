@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { getAllAntennas, getAntennaById, getAntennaDistributors, getAntennaManufacturers } from '../services/AntennaService';
+import { getAllAntennas, getAllRXAntennas, getAllVTXAntennas, getAntennaById, getAntennaDistributors, getAntennaManufacturers } from '../services/AntennaService';
 import { getAllBatteries, getBatteryById, getBatteryDistributors, getBatteryManufacturers } from '../services/BatteryService.jsx';
 import { getAllCameras, getCameraById, getCameraDistributors, getCameraManufacturers } from '../services/CameraService.jsx';
 import { getAllFrames, getFrameById, getFrameDistributors, getFrameManufacturers } from '../services/FrameService.jsx';
@@ -27,6 +27,7 @@ function AppRoutes() {
             <Route path='/' element={<WelcomePage/>}/>
 
             <Route path="/drone_components" element={<ComponentsSidebar />}>
+
                 <Route path="antenna" key="antenna" element={
                     <DroneComponents 
                         fetch={getAllAntennas}
@@ -36,7 +37,25 @@ function AppRoutes() {
                     />}
                 />
                 <Route path="antenna/:componentId" element={<DroneComponent fetch={getAntennaById} />}/>
-                
+
+                <Route path="antenna_rx" key="antenna_rx" element={
+                    <DroneComponents 
+                        fetch={getAllRXAntennas}
+                        fetchManufacturers={getAntennaManufacturers} 
+                        fetchDistributors={getAntennaDistributors} 
+                        name="antenna"
+                    />}
+                />
+
+                <Route path="antenna_vtx" key="antenna_vtx" element={
+                    <DroneComponents 
+                        fetch={getAllVTXAntennas}
+                        fetchManufacturers={getAntennaManufacturers} 
+                        fetchDistributors={getAntennaDistributors} 
+                        name="antenna"
+                    />}
+                />
+
                 <Route path="battery" key="battery" element={
                     <DroneComponents 
                         fetch={getAllBatteries}

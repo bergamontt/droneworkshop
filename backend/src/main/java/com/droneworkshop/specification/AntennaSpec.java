@@ -6,7 +6,7 @@ import com.droneworkshop.repository.component.AntennaRepository;
 import org.springframework.data.jpa.domain.Specification;
 
 public class AntennaSpec {
-    public static Specification<Antenna> buildSpecification(AntennaFilterDto filter) {
+    public static Specification<Antenna> buildSpecification(AntennaFilterDto filter, String antennaType) {
         Specification<Antenna> spec = null;
 
         if (filter.getModelPrefix() != null && !filter.getModelPrefix().isEmpty()) {
@@ -26,6 +26,11 @@ public class AntennaSpec {
         if (filter.getDistributorNames() != null && !filter.getDistributorNames().isEmpty()) {
             spec = spec == null ? AntennaRepository.Specs.byDistributorNames(filter.getDistributorNames())
                     : spec.and(AntennaRepository.Specs.byDistributorNames(filter.getDistributorNames()));
+        }
+
+        if (antennaType != null && !antennaType.isEmpty()) {
+            spec = spec == null ? AntennaRepository.Specs.byAntennaType(antennaType)
+                    : spec.and(AntennaRepository.Specs.byAntennaType(antennaType));
         }
 
         return spec != null ? spec : (root, query, builder) -> builder.conjunction();

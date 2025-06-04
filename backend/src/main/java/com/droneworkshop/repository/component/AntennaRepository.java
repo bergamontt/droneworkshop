@@ -60,6 +60,15 @@ public interface AntennaRepository extends JpaRepository<Antenna, Integer>, JpaS
             };
         }
 
+        static Specification<Antenna> byAntennaType(String antennaType) {
+            return (root, query, builder) -> {
+                if (antennaType == null || antennaType.isEmpty()) {
+                    return builder.conjunction();
+                }
+                return builder.equal(root.get("antennaType"), antennaType);
+            };
+        }
+
         static Specification<Antenna> orderByModel(Specification<Antenna> spec) {
             return (root, query, builder) -> {
                 assert query != null;

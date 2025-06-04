@@ -22,7 +22,23 @@ public class AntennaController {
             @ModelAttribute AntennaFilterDto filter,
             Pageable pageable
     ) {
-        return antennaService.getFilteredAntennas(filter, pageable);
+        return antennaService.getFilteredAntennas(filter, pageable, null);
+    }
+
+    @GetMapping("/antenna_rx")
+    public Page<Antenna> getFilteredRXAntennasPaged(
+            @ModelAttribute AntennaFilterDto filter,
+            Pageable pageable
+    ) {
+        return antennaService.getFilteredAntennas(filter, pageable, "RX");
+    }
+
+    @GetMapping("/antenna_vtx")
+    public Page<Antenna> getFilteredVTXAntennasPaged(
+            @ModelAttribute AntennaFilterDto filter,
+            Pageable pageable
+    ) {
+        return antennaService.getFilteredAntennas(filter, pageable, "VTX");
     }
 
     @GetMapping("/antenna/{id}")

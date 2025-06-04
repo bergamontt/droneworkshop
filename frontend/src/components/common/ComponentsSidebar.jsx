@@ -29,7 +29,18 @@ function ComponentsSidebar() {
                 label={<SidebarLabel text="АНТЕНИ" />}
                 leftSection={<SidebarIcon link={antenna}/>}
                 onClick={() => navigate('/drone_components/antenna')}
-            />
+            >
+                <NavLink
+                    leftSection={<SidebarIcon link={antenna}/>}
+                    label={<SidebarLabel text="RX АНТЕНИ" />}
+                    onClick={() => navigate('/drone_components/antenna_rx')}
+                />
+                <NavLink 
+                    leftSection={<SidebarIcon link={antenna}/>}
+                    label={<SidebarLabel text="VTX АНТЕНИ" />} 
+                    onClick={() => navigate('/drone_components/antenna_vtx')}
+                />
+            </NavLink>
             <NavLink
                 label={<SidebarLabel text="БАТКИ" />}
                 leftSection={<SidebarIcon link={battery}/>}

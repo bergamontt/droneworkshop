@@ -6,6 +6,46 @@ export const getAllAntennas = async (
     size = elementsPerPage,
     filters = {}
 ) => {
+    return getFilteredAntennas('antenna', page, size, filters);
+};
+
+export const getAllRXAntennas  = async (
+    page = defaultPage,
+    size = elementsPerPage,
+    filters = {}
+) => {
+    return getFilteredAntennas('antenna_rx', page, size, filters);
+};
+
+export const getAllVTXAntennas  = async (
+    page = defaultPage,
+    size = elementsPerPage,
+    filters = {}
+) => {
+    return getFilteredAntennas('antenna_vtx', page, size, filters);
+};
+
+export const getAntennaById = async (id) => {
+    const response = await api.get(`/antenna/${id}`);
+    return response.data;
+}
+
+export const getAntennaManufacturers = async () => {
+    const response = await api.get(`/antenna/manufacturers`);
+    return response.data;
+}
+
+export const getAntennaDistributors = async () => {
+    const response = await api.get(`/antenna/distributors`);
+    return response.data;
+}
+
+const getFilteredAntennas = async (
+    path,    
+    page = defaultPage,
+    size = elementsPerPage,
+    filters = {}
+) => {
     
     const { modelPrefix, minPrice, maxPrice, manufacturerNames, distributorNames } = filters;
     const params = new URLSearchParams({
@@ -24,21 +64,6 @@ export const getAllAntennas = async (
         distributorNames.forEach(name => params.append('distributorNames', name));
     }
 
-    const response = await api.get(`/antenna?${params.toString()}`);
-    return response.data;
-};
-
-export const getAntennaById = async (id) => {
-    const response = await api.get(`/antenna/${id}`);
-    return response.data;
-}
-
-export const getAntennaManufacturers = async () => {
-    const response = await api.get(`/antenna/manufacturers`);
-    return response.data;
-}
-
-export const getAntennaDistributors = async () => {
-    const response = await api.get(`/antenna/distributors`);
+    const response = await api.get(`/${path}?${params.toString()}`);
     return response.data;
 }
