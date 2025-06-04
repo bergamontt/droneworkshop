@@ -24,4 +24,10 @@
     top: 20%;
     align-self: flex-start;
     height: fit-content;
+
+    margin-right: 1rem;
+}
+
+[data-heading] {
+  scroll-margin-top: 180px; 
 }

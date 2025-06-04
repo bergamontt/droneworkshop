@@ -32,7 +32,7 @@ function Header() {
                     />
                     <NavLink
                         label={<span className='nav-category'>ФОРУМ</span>}
-                        onClick={() => navigate('/forum')}
+                        onClick={() => navigate('/forum/main')}
                     />
                     <NavLink
                         label={<span className='nav-category'>ТУТОРІАЛИ</span>}

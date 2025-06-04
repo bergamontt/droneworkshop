@@ -39,22 +39,12 @@ export default function ForumPostPage() {
     return (
         <div style={{
             minHeight: '100vh',
-            backgroundColor: 'rgba(109, 128, 125, 0.5)',
+            width: "100%",
             paddingTop: '2rem',
             paddingBottom: '4rem'
         }}>
             <Container size="md">
                 <Paper p="lg" shadow="sm" radius="lg" withBorder>
-                    <Button
-                        onClick={() => navigate("/forum")}
-                        radius="md"
-                        mb="lg"
-                        variant="light"
-                        color="gray"
-                    >
-                        ← До форуму
-                    </Button>
-
                     <Paper
                         withBorder p="lg"
                         radius="md"

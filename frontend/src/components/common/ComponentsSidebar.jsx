@@ -17,16 +17,16 @@ import SidebarLabel from './SidebarLabel.jsx'
 function ComponentsSidebar() {
     
     const sidebarContainerStyles = {
-        "display": "flex",
-        "width": "100%",
-        "height": "100%"
+        display: "flex",
+        width: "100%",
+        height: "100%"
     }
     
     const navigate = useNavigate();
 
     return (
     <div style={sidebarContainerStyles}>
-        <div>
+        <div style={{position: "sticky", top: "120px", height: "fit-content"}}>
             <NavLink
                 label={<SidebarLabel text="АНТЕНИ" />}
                 leftSection={<SidebarIcon link={antennas}/>}

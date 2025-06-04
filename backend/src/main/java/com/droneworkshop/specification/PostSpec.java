@@ -13,6 +13,11 @@ public class PostSpec {
             spec = PostRepository.Specs.byPostPrefix(filter.getPostPrefix());
         }
 
+        if (filter.getUsername() != null && !filter.getUsername().isEmpty()) {
+            spec = spec == null ? PostRepository.Specs.byUsername(filter.getUsername())
+                    : spec.and(PostRepository.Specs.byUsername(filter.getUsername()));
+        }
+
         return spec != null ? spec : (root, query, builder) -> builder.conjunction();
     }
 }

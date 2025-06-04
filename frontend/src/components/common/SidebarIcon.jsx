@@ -1,10 +1,13 @@
 
 function SidebarIcon(props) {
-    const style = {
-        "height": "3.5em"
-    }
     return(
-        <img src={props.link} alt={"Component icon"} style={style}/>
+        <img 
+            src={props.link} 
+            alt={"Component icon"} 
+            style={{
+                height: `${props.size || "3.5em"}`
+            }}
+        />
     );
 }
 

@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 export default function PostElement({ post }) {
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate(`/forum/${post.postId}`);
+        navigate(`/forum/main/${post.postId}`);
     }
 
     if (!post) return <></>;

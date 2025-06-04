@@ -17,6 +17,15 @@ public interface PostRepository extends JpaRepository<Post, Integer>, JpaSpecifi
             };
         }
 
+        static Specification<Post> byUsername(String username) {
+            return (root, query, builder) -> {
+                if (username == null || username.isEmpty()) {
+                    return builder.conjunction();
+                }
+                return builder.equal(root.join("user").get("username"), username);
+            };
+        }
+
         static Specification<Post> orderByTime(Specification<Post> spec) {
             return (root, query, builder) -> {
                 assert query != null;

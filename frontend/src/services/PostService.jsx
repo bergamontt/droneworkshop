@@ -6,11 +6,12 @@ export const getAllPosts = async (
     size = elementsPerPage,
     filters = {}
 ) => {
-    const { postPrefix } = filters;
+    const { postPrefix, username } = filters;
     const params = new URLSearchParams({
         page,
         size,
         ...(postPrefix && { postPrefix }),
+        ...(username && { username })
     });
     const response = await api.get(`/post?${params.toString()}`);
     return response.data;

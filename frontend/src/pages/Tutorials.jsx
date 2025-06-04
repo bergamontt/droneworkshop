@@ -29,7 +29,7 @@ function Tutorials() {
                     }}
                     getControlProps={({ data }) => ({
                         onClick: () => {
-                            data.getNode().scrollIntoView()
+                            data.getNode().scrollIntoView({ behavior: 'smooth'});
                         },
                         children: data.value,
                     })}
