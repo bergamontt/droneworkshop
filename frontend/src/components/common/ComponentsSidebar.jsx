@@ -26,7 +26,7 @@ function ComponentsSidebar() {
 
     return (
     <div style={sidebarContainerStyles}>
-        <div style={{position: "sticky", top: "120px", height: "fit-content"}}>
+        <div>
             <NavLink
                 label={<SidebarLabel text="АНТЕНИ" />}
                 leftSection={<SidebarIcon link={antennas}/>}
