@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.droneworkshop.model.component.AntennaType.RX;
+import static com.droneworkshop.model.component.AntennaType.VTX;
+
 @RestController
 public class AntennaController {
     private final AntennaService antennaService;
@@ -22,7 +25,7 @@ public class AntennaController {
             @ModelAttribute AntennaFilterDto filter,
             Pageable pageable
     ) {
-        return antennaService.getFilteredAntennas(filter, pageable, null);
+        return antennaService.getFilteredAntennas(filter, pageable);
     }
 
     @GetMapping("/antenna_rx")
@@ -30,7 +33,8 @@ public class AntennaController {
             @ModelAttribute AntennaFilterDto filter,
             Pageable pageable
     ) {
-        return antennaService.getFilteredAntennas(filter, pageable, "RX");
+        filter.setAntennaType(RX);
+        return antennaService.getFilteredAntennas(filter, pageable);
     }
 
     @GetMapping("/antenna_vtx")
@@ -38,7 +42,8 @@ public class AntennaController {
             @ModelAttribute AntennaFilterDto filter,
             Pageable pageable
     ) {
-        return antennaService.getFilteredAntennas(filter, pageable, "VTX");
+        filter.setAntennaType(VTX);
+        return antennaService.getFilteredAntennas(filter, pageable);
     }
 
     @GetMapping("/antenna/{id}")

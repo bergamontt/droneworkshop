@@ -24,8 +24,8 @@ public class AntennaService {
         return antennaRepository.findById(id).orElse(null);
     }
 
-    public Page<Antenna> getFilteredAntennas(AntennaFilterDto filter, Pageable pageable, String antennaType) {
-        Specification<Antenna> spec = buildSpecification(filter, antennaType);
+    public Page<Antenna> getFilteredAntennas(AntennaFilterDto filter, Pageable pageable) {
+        Specification<Antenna> spec = buildSpecification(filter);
         return antennaRepository.findAll(AntennaRepository.Specs.orderByModel(spec), pageable);
     }
 

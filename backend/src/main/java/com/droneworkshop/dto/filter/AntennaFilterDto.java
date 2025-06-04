@@ -11,4 +11,5 @@ public class AntennaFilterDto {
     private String modelPrefix;
     private List<String> manufacturerNames;
     private List<String> distributorNames;
+    private String antennaType;
 }
