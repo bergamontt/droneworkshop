@@ -21,6 +21,8 @@ import ForumPostPage from "./forum/ForumPostPage.jsx";
 import WelcomePage from './WelcomePage.jsx'
 import WritePostPage from "./forum/WritePostPage.jsx";
 import ForumSidebar from "../components/common/ForumSidebar.jsx";
+import Workshop from '../pages/Workshop.jsx'
+import WorkshopLayout from '../components/workshop/WorkshopLayout.jsx'
 
 function AppRoutes() {
     return(
@@ -149,6 +151,10 @@ function AppRoutes() {
                 <Route path="/forum/personal" element={<ForumMainPage personal={true} />} />
             </Route>
             <Route path="/write-post" element={<WritePostPage />}/>
+            
+            <Route path="/workshop" element={<WorkshopLayout />} >
+                <Route path="main" element={<Workshop />} />
+            </Route>
 
         </Routes>
     );
