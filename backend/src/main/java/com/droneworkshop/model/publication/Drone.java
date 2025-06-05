@@ -4,6 +4,7 @@ import com.droneworkshop.model.authentification.User;
 import com.droneworkshop.model.component.*;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @Entity
@@ -18,6 +19,9 @@ public class Drone {
     @ManyToOne
     @JoinColumn(name = "username")
     private User user;
+
+    @Column
+    private byte[] photo;
 
     @ManyToOne
     @JoinColumn(name = "frame_id", nullable = false)
