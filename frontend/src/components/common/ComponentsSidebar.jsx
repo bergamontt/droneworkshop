@@ -13,10 +13,11 @@ import rx from '../../assets/rx.svg'
 import vtx from '../../assets/vtx.svg'
 import SidebarIcon from './SidebarIcon.jsx'
 import SidebarLabel from './SidebarLabel.jsx'
+import '../../styles/ComponentsSidebar.css'
 
 function ComponentsSidebar() {
     
-    const sidebarContainerStyles = {
+    const componentsContainerStyles = {
         display: "flex",
         width: "100%",
         height: "100%"
@@ -25,8 +26,8 @@ function ComponentsSidebar() {
     const navigate = useNavigate();
 
     return (
-    <div style={sidebarContainerStyles}>
-        <div>
+    <div style={componentsContainerStyles}>
+        <div className='components-sidebar-container'>
             <NavLink
                 label={<SidebarLabel text="АНТЕНИ" />}
                 leftSection={<SidebarIcon link={antennas}/>}
