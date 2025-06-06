@@ -80,36 +80,39 @@ function DroneComponents(props) {
 
         <section className='components-page-container'>
             <article className='components-main-container'>
-                <div className='components-filter-container'>
-                    <Searchbar
-                        placeholder="Пошук..."
-                        onChange={handleModelPrefixChange}
-                    />
-                    
-                    <FilterModel
-                        name={props.name}
-                        minPrice={minDefaultPrice}
-                        maxPrice={maxDefaultPrice}
-                        opened={opened}
-                        close={close}
-                        onSave={handleFiltersChange}
-                        allManufacturerNames={allManufacturers}
-                        allDistributorNames={allDistributors}
-                    />
+                <div>
+                    <div className='components-filter-container'>
+                        <Searchbar
+                            placeholder="Пошук..."
+                            onChange={handleModelPrefixChange}
+                        />
+                        
+                        <FilterModel
+                            name={props.name}
+                            minPrice={minDefaultPrice}
+                            maxPrice={maxDefaultPrice}
+                            opened={opened}
+                            close={close}
+                            onSave={handleFiltersChange}
+                            allManufacturerNames={allManufacturers}
+                            allDistributorNames={allDistributors}
+                        />
 
-                    <ActionIcon
-                        aria-label="Filter"
-                        variant="light"
-                        color="lightgray"
-                        onClick={open}
-                        size="xl"
-                    >
-                        <img src={filter} style={{"height": "50%"}}/>
-                    </ActionIcon>
+                        <ActionIcon
+                            aria-label="Filter"
+                            variant="light"
+                            color="lightgray"
+                            onClick={open}
+                            size="xl"
+                        >
+                            <img src={filter} style={{"height": "50%"}}/>
+                        </ActionIcon>
+                    </div>
+                    
+                    <ComponentsList data={components} name={props.name}/>
                 </div>
-                
-                <ComponentsList data={components} name={props.name}/>
-                <Center style={{"padding" : "1.5em"}}>
+
+                <Center style={{"padding" : "1.5em", "backgroundColor": "rgb(174, 177, 180)"}}>
                     <Pagination 
                         total={total} 
                         value={activePage} 
