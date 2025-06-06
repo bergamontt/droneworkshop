@@ -69,3 +69,8 @@
     font-family: 'Open Sans', sans-serif;
     color: #6b7280;
 }
+
+.workshop-searchbar-container {
+    padding: 1em;
+    background-color: white;
+}

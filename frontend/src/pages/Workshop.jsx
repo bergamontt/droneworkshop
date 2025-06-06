@@ -1,5 +1,6 @@
 import { Flex, Center, Pagination } from '@mantine/core';
 import WorkshopList from '../components/workshop/WorkshopList';
+import Searchbar from '../components/common/Searchbar'
 import '../styles/Workshop.css'
 
 function Workshop() {
@@ -17,9 +18,14 @@ function Workshop() {
 
     return(
         <section className="workshop-main-wrapper">
-            <Flex>
-                <WorkshopList data={data} />
-            </Flex>
+            <article className='workshop-data-container'>
+                <div className='workshop-searchbar-container'>
+                    <Searchbar />
+                </div>
+                <Flex>
+                    <WorkshopList data={data} />
+                </Flex>
+            </article>
             <Center style={{"padding" : "1.5em"}}>
                 <Pagination 
                     total={1} 

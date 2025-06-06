@@ -1,4 +1,5 @@
 import { NavLink, Button } from '@mantine/core';
+import { useNavigate } from "react-router-dom";
 import SidebarIcon from '../common/SidebarIcon';
 import SidebarLabel from '../common/SidebarLabel';
 import home from '../../assets/home.svg'
@@ -7,12 +8,14 @@ import schema from '../../assets/schema.svg'
 import '../../styles/Workshop.css'
 
 function WorkshopSidebar() {
+    const navigate = useNavigate();
     return(
         <section className='workshop-sidebar-container'>
             <article>
                 <NavLink
                     label={<SidebarLabel text="ГОЛОВНА" />}
                     leftSection={<SidebarIcon link={home} size={"1.5em"}/>}
+                    onClick={() => navigate('/workshop/main')}
                 ></NavLink>
                 <NavLink
                     label={<SidebarLabel text="ВЛАСНI СПИСКИ" />}
