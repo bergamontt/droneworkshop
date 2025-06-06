@@ -1,7 +1,6 @@
 .component-element-container {
     text-align: center;
     width: 300px;
-    height: 400px;
     padding: 1em;
     display: grid;
     grid-template-rows: 70% auto 7%;

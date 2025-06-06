@@ -1,4 +1,4 @@
-import { ActionIcon, Pagination, Center, Flex } from '@mantine/core';
+import { ActionIcon, Pagination, Center } from '@mantine/core';
 import { useFetchUnique } from '../hooks/useFetchUnique.jsx'
 import { useState, useEffect } from 'react';
 import { useDisclosure } from '@mantine/hooks';
@@ -108,10 +108,8 @@ function DroneComponents(props) {
                             <img src={filter} style={{"height": "50%"}}/>
                         </ActionIcon>
                     </div>
-                    <Flex>
-                        <ComponentsList data={components} name={props.name}/>
-                    </Flex>
                     
+                    <ComponentsList data={components} name={props.name} detailName={props.detailName}/>
                 </div>
 
                 <Center style={{"padding" : "1.5em", "backgroundColor": "rgb(174, 177, 180)"}}>

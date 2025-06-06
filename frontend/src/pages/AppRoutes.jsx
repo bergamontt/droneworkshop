@@ -23,7 +23,7 @@ import WritePostPage from "./forum/WritePostPage.jsx";
 import ForumSidebar from "../components/common/ForumSidebar.jsx";
 import Workshop from '../pages/Workshop.jsx'
 import WorkshopLayout from '../components/workshop/WorkshopLayout.jsx'
-import Schema from "../components/workshop/Schema.jsx";
+import SchemaPage from "./SchemaPage.jsx";
 
 function AppRoutes() {
     return(
@@ -48,6 +48,7 @@ function AppRoutes() {
                         fetchManufacturers={getAntennaManufacturers} 
                         fetchDistributors={getAntennaDistributors} 
                         name="antenna"
+                        detailName="rx_antenna"
                     />}
                 />
 
@@ -57,6 +58,7 @@ function AppRoutes() {
                         fetchManufacturers={getAntennaManufacturers} 
                         fetchDistributors={getAntennaDistributors} 
                         name="antenna"
+                        detailName="vtx_antenna"
                     />}
                 />
 
@@ -66,6 +68,7 @@ function AppRoutes() {
                         fetchManufacturers={getBatteryManufacturers} 
                         fetchDistributors={getBatteryDistributors} 
                         name="battery"
+                        detailName="battery"
                     />}
                 />
                 <Route path="battery/:componentId" element={<DroneComponent fetch={getBatteryById} />}/>
@@ -75,7 +78,8 @@ function AppRoutes() {
                         fetch={getAllCameras}
                         fetchManufacturers={getCameraManufacturers} 
                         fetchDistributors={getCameraDistributors}  
-                        name="camera" 
+                        name="camera"
+                        detailName="camera"
                     />}
                 />
                 <Route path="camera/:componentId" element={<DroneComponent fetch={getCameraById} />}/>
@@ -85,8 +89,10 @@ function AppRoutes() {
                         fetch={getAllFrames}
                         fetchManufacturers={getFrameManufacturers} 
                         fetchDistributors={getFrameDistributors}  
-                        name="frame" />}
-                    />
+                        name="frame"
+                        detailName="frame"
+                    />}
+                />
                 <Route path="frame/:componentId" element={<DroneComponent fetch={getFrameById} />}/>
                 
                 <Route path="motor" key="motor" element={
@@ -94,8 +100,10 @@ function AppRoutes() {
                         fetch={getAllMotors}
                         fetchManufacturers={getMotorManufacturers} 
                         fetchDistributors={getMotorDistributors}  
-                        name="motor" />}
-                    />
+                        name="motor"
+                        detailName="motor"
+                    />}
+                />
                 <Route path="motor/:componentId" element={<DroneComponent fetch={getMotorById} />}/>
                 
                 <Route path="propeller" key="propeller" element={
@@ -103,7 +111,8 @@ function AppRoutes() {
                         fetch={getAllPropellers}
                         fetchManufacturers={getPropellerManufacturers} 
                         fetchDistributors={getPropellerDistributors}  
-                        name="propeller" 
+                        name="propeller"
+                        detailName="propeller"
                     />}
                 />
                 <Route path="propeller/:componentId" element={<DroneComponent fetch={getPropellerById} />}/>
@@ -113,7 +122,8 @@ function AppRoutes() {
                         fetch={getAllRX} 
                         fetchManufacturers={getRXManufacturers} 
                         fetchDistributors={getRXDistributors}  
-                        name="rx" 
+                        name="rx"
+                        detailName="rx"
                     />}
                 />
                 <Route path="rx/:componentId" element={<DroneComponent fetch={getRXById} />}/>
@@ -123,7 +133,8 @@ function AppRoutes() {
                         fetch={getAllStacks} 
                         fetchManufacturers={getStackManufacturers} 
                         fetchDistributors={getStackDistributors}  
-                        name="stack" 
+                        name="stack"
+                        detailName="stack"
                     />}
                 />
                 <Route path="stack/:componentId" element={<DroneComponent fetch={getStackById} />}/>
@@ -133,7 +144,8 @@ function AppRoutes() {
                         fetch={getAllVTX} 
                         fetchManufacturers={getVTXManufacturers} 
                         fetchDistributors={getVTXDistributors}  
-                        name="vtx" 
+                        name="vtx"
+                        detailName="vtx"
                     />}
                 />
                 <Route path="vtx/:componentId" element={<DroneComponent fetch={getVTXById} />}/>
@@ -155,9 +167,9 @@ function AppRoutes() {
             
             <Route path="/workshop" element={<WorkshopLayout />} >
                 <Route path="main" element={<Workshop />} />
-                <Route path="schema" element={<Schema />} />
             </Route>
 
+            <Route path="/schemas" element={<SchemaPage />}/>
         </Routes>
     );
 }

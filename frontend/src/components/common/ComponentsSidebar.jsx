@@ -31,7 +31,6 @@ function ComponentsSidebar() {
             <NavLink
                 label={<SidebarLabel text="АНТЕНИ" />}
                 leftSection={<SidebarIcon link={antennas}/>}
-                onClick={() => navigate('/drone_components/antenna')}
             >
                 <NavLink
                     leftSection={<SidebarIcon link={rx_antenna}/>}
