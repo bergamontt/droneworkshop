@@ -28,7 +28,7 @@ function WorkshopSidebar() {
             </article>
             <Button
                 onClick={() => {
-                    jwtService.isLoggedIn() ? navigate("#required") : navigate("/log-in")
+                    navigate("/create-schema")
                 }}
                 fullWidth
             >

@@ -27,8 +27,8 @@ function Header() {
                         onClick={() => navigate('/drone_components/antenna_rx')}
                     />
                     <NavLink
-                        label={<span className='nav-category'>СХЕМИ</span>}
-                        onClick={() => navigate('/schemas')}
+                        label={<span className='nav-category'>МАЙСТЕРНЯ</span>}
+                        onClick={() => navigate('/workshop/main')}
                     />
                     <NavLink
                         label={<span className='nav-category'>ФОРУМ</span>}

@@ -24,6 +24,7 @@ import ForumSidebar from "../components/common/ForumSidebar.jsx";
 import Workshop from '../pages/Workshop.jsx'
 import WorkshopLayout from '../components/workshop/WorkshopLayout.jsx'
 import SchemaPage from "./SchemaPage.jsx";
+import Schema from "../components/workshop/Schema.jsx";
 
 function AppRoutes() {
     return(
@@ -167,9 +168,11 @@ function AppRoutes() {
             
             <Route path="/workshop" element={<WorkshopLayout />} >
                 <Route path="main" element={<Workshop />} />
+                <Route path="schema" element={<Schema />} />
             </Route>
 
-            <Route path="/schemas" element={<SchemaPage />}/>
+            <Route path="/create-schema" element={<SchemaPage />}/>
+        
         </Routes>
     );
 }
