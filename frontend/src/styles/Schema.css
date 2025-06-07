@@ -40,8 +40,15 @@
 }
 
 .schema-photo {
-    height: 100%;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    transition: transform 0.3s ease;
+}
+
+.schema-photo:hover {
+    transform: scale(1.05);
 }
 
 .schema-components-wrapper, .schema-features-wrapper {
@@ -92,4 +99,19 @@
 
 .schema-component-model {
     padding: 0em 0.6em;
+}
+
+.creator-username {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3em;
+    padding-left: 1em;
+}
+
+.creator-data-container {
+    display: flex;
+    align-items: center;
+    padding: 0.8em 1em;
+    padding-bottom: 0em;
+    margin-top: 0.5em;
+    padding-left: 0em;
 }

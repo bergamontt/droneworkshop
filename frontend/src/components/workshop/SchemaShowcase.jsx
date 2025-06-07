@@ -1,4 +1,4 @@
-import { Divider, Paper, Tabs } from '@mantine/core';
+import { Divider, Paper, Tabs, Avatar } from '@mantine/core';
 import SchemaComponents from './SchemaComponents';
 import SchemaFeatures from './SchemaFeatures';
 import defaultPhoto from '../../assets/default.jpg'
@@ -16,6 +16,15 @@ function SchemaShowcase() {
                     <figure className='schema-photo-container'>
                         <img src={defaultPhoto} className='schema-photo'/>
                     </figure>
+                    <Divider size={"sm"}/>
+                    <dev className='creator-data-container'>
+                        <Avatar radius="xl" color="blue" size="md" >
+                            B
+                        </Avatar>
+                        <span className='creator-username'>
+                            bob-dev
+                        </span>
+                    </dev>
                 </Paper>
             </article>
             <article className='schema-list-data'>

@@ -5,6 +5,7 @@ import SidebarLabel from '../common/SidebarLabel';
 import home from '../../assets/home.svg'
 import heart from '../../assets/heart.svg'
 import schema from '../../assets/schema.svg'
+import privateSchema from '../../assets/private.svg'
 import '../../styles/Workshop.css'
 
 function WorkshopSidebar() {
@@ -18,8 +19,12 @@ function WorkshopSidebar() {
                     onClick={() => navigate('/workshop/main')}
                 ></NavLink>
                 <NavLink
-                    label={<SidebarLabel text="ВЛАСНI СПИСКИ" />}
+                    label={<SidebarLabel text="ВЛАСНI СХЕМИ" />}
                     leftSection={<SidebarIcon link={schema} size={"1.5em"}/>}
+                ></NavLink>
+                <NavLink
+                    label={<SidebarLabel text="НЕОПУБЛIКОВАНЕ" />}
+                    leftSection={<SidebarIcon link={privateSchema} size={"1.5em"}/>}
                 ></NavLink>
                 <NavLink
                     label={<SidebarLabel text="ВПОДОБАНЕ" />}
