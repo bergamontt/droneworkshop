@@ -1,7 +1,6 @@
 import { Stack } from '@mantine/core';
-import {getAntennaById} from "../../services/AntennaService.jsx";
-import { listSelectService } from "../../services/ListSelectService.jsx";
 import SelectedDetail from "./SelectedDetail.jsx";
+import {getAntennaById} from "../../services/AntennaService.jsx";
 import {getBatteryById} from "../../services/BatteryService.jsx";
 import {getCameraById} from "../../services/CameraService.jsx";
 import {getFrameById} from "../../services/FrameService.jsx";
@@ -11,81 +10,92 @@ import {getRXById} from "../../services/RXService.jsx";
 import {getStackById} from "../../services/StackService.jsx";
 import {getVTXById} from "../../services/VTXService.jsx";
 
-export default function DetailSelectionPanel() {
+export default function DetailSelectionPanel({getSelectedDetailId, selectDetailId}) {
+    console.log("render", getSelectedDetailId("antenna_rx"))
     return (
         <Stack style={{
             backgroundColor: 'rgba(109, 128, 125, 0.5)',
             padding: '1rem'}}
         >
             <SelectedDetail
+                id={getSelectedDetailId("antenna_rx")}
                 fetch={getAntennaById}
-                getDetailId={listSelectService.getRxAntennaId}
                 detailsLink={"/drone_components/antenna_rx"}
                 detailLinkPrefix={"/drone_components/antenna"}
                 name={"АНТЕНА RX"}
+                deselect={() => selectDetailId("antenna_rx", null)}
             />
             <SelectedDetail
+                id={getSelectedDetailId("antenna_vtx")}
                 fetch={getAntennaById}
-                getDetailId={listSelectService.getVtxAntennaId}
                 detailsLink={"/drone_components/antenna_vtx"}
                 detailLinkPrefix={"/drone_components/antenna"}
                 name={"АНТЕНА VTX"}
+                deselect={() => selectDetailId("antenna_vtx", null)}
             />
             <SelectedDetail
+                id={getSelectedDetailId("battery")}
                 fetch={getBatteryById}
-                getDetailId={listSelectService.getBatteryId}
                 detailsLink={"/drone_components/battery"}
                 detailLinkPrefix={"/drone_components/battery"}
                 name={"БАТАРЕЯ"}
+                deselect={() => selectDetailId("battery", null)}
             />
             <SelectedDetail
+                id={getSelectedDetailId("camera")}
                 fetch={getCameraById}
-                getDetailId={listSelectService.getCameraId}
                 detailsLink={"/drone_components/camera"}
                 detailLinkPrefix={"/drone_components/camera"}
                 name={"КАМЕРА"}
+                deselect={() => selectDetailId("camera", null)}
             />
             <SelectedDetail
+                id={getSelectedDetailId("frame")}
                 fetch={getFrameById}
-                getDetailId={listSelectService.getFrameId}
                 detailsLink={"/drone_components/frame"}
                 detailLinkPrefix={"/drone_components/frame"}
                 name={"РАМА"}
+                deselect={() => selectDetailId("frame", null)}
             />
             <SelectedDetail
+                id={getSelectedDetailId("motor")}
                 fetch={getMotorById}
-                getDetailId={listSelectService.getMotorId}
                 detailsLink={"/drone_components/motor"}
                 detailLinkPrefix={"/drone_components/motor"}
                 name={"МОТОРИ"}
+                deselect={() => selectDetailId("motor", null)}
             />
             <SelectedDetail
+                id={getSelectedDetailId("propeller")}
                 fetch={getPropellerById}
-                getDetailId={listSelectService.getPropellerId}
                 detailsLink={"/drone_components/propeller"}
                 detailLinkPrefix={"/drone_components/propeller"}
                 name={"ПРОПЕЛЕРИ"}
+                deselect={() => selectDetailId("propeller", null)}
             />
             <SelectedDetail
+                id={getSelectedDetailId("rx")}
                 fetch={getRXById}
-                getDetailId={listSelectService.getRxId}
                 detailsLink={"/drone_components/rx"}
                 detailLinkPrefix={"/drone_components/rx"}
                 name={"RX"}
+                deselect={() => selectDetailId("rx", null)}
             />
             <SelectedDetail
+                id={getSelectedDetailId("stack")}
                 fetch={getStackById}
-                getDetailId={listSelectService.getStackId}
                 detailsLink={"/drone_components/stack"}
                 detailLinkPrefix={"/drone_components/stack"}
                 name={"СТЕК"}
+                deselect={() => selectDetailId("stack", null)}
             />
             <SelectedDetail
+                id={getSelectedDetailId("vtx")}
                 fetch={getVTXById}
-                getDetailId={listSelectService.getVtxId}
                 detailsLink={"/drone_components/vtx"}
                 detailLinkPrefix={"/drone_components/vtx"}
                 name={"VTX"}
+                deselect={() => selectDetailId("vtx", null)}
             />
         </Stack>
     );

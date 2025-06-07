@@ -7,8 +7,8 @@ import {useListSelect} from "../hooks/useListSelect.jsx";
 import DetailSelectionFooter from "../components/list_selection/DetailSelectionFooter.jsx";
 
 export default function SchemaPage() {
-    const { isSelecting, startSelecting, finishSelecting } = useListSelect();
-
+    const { isSelecting, startSelecting, finishSelecting,
+        getSelectedDetailId, selectDetailId} = useListSelect();
     const [collapsed, setCollapsed] = useState(false);
     const toggle = () => setCollapsed((prev) => !prev);
 
@@ -59,7 +59,12 @@ export default function SchemaPage() {
                                 backgroundColor: 'rgba(109, 128, 125, 0.5)',
                             }}
                         >
-                            {!collapsed && <DetailSelectionPanel />}
+                            {!collapsed &&
+                                <DetailSelectionPanel
+                                    getSelectedDetailId={getSelectedDetailId}
+                                    selectDetailId={selectDetailId}
+                                />
+                            }
                         </Paper>
                     </>
                 }
@@ -68,6 +73,7 @@ export default function SchemaPage() {
                     startSelecting={startSelecting}
                     finishSelecting={finishSelecting}
                     isSelecting={isSelecting}
+                    getSelectedDetailId={getSelectedDetailId}
                 />
             </Group>
         </div>

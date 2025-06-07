@@ -22,19 +22,19 @@ export const listSelectService = {
     },
 
     setRxAntennaId(value) {
-        localStorage.setItem('rx_antenna', value);
+        localStorage.setItem('antenna_rx', value);
     },
 
     getRxAntennaId() {
-        return localStorage.getItem('rx_antenna');
+        return Number(localStorage.getItem('antenna_rx'));
     },
 
     setVtxAntennaId(value) {
-        localStorage.setItem('vtx_antenna', value);
+        localStorage.setItem('antenna_vtx', value);
     },
 
     getVtxAntennaId() {
-        return localStorage.getItem('vtx_antenna');
+        return Number(localStorage.getItem('antenna_vtx'));
     },
 
     setBatteryId(value) {
@@ -42,7 +42,7 @@ export const listSelectService = {
     },
 
     getBatteryId() {
-        return localStorage.getItem('battery');
+        return Number(localStorage.getItem('battery'));
     },
 
     setCameraId(value) {
@@ -50,7 +50,7 @@ export const listSelectService = {
     },
 
     getCameraId() {
-        return localStorage.getItem('camera');
+        return Number(localStorage.getItem('camera'));
     },
 
     setFrameId(value) {
@@ -58,7 +58,7 @@ export const listSelectService = {
     },
 
     getFrameId() {
-        return localStorage.getItem('frame');
+        return Number(localStorage.getItem('frame'));
     },
 
     setMotorId(value) {
@@ -66,7 +66,7 @@ export const listSelectService = {
     },
 
     getMotorId() {
-        return localStorage.getItem('motor');
+        return Number(localStorage.getItem('motor'));
     },
 
     setPropellerId(value) {
@@ -74,7 +74,7 @@ export const listSelectService = {
     },
 
     getPropellerId() {
-        return localStorage.getItem('propeller');
+        return Number(localStorage.getItem('propeller'));
     },
 
     setRxId(value) {
@@ -82,7 +82,7 @@ export const listSelectService = {
     },
 
     getRxId() {
-        return localStorage.getItem('rx');
+        return Number(localStorage.getItem('rx'));
     },
 
     setStackId(value) {
@@ -90,7 +90,7 @@ export const listSelectService = {
     },
 
     getStackId() {
-        return localStorage.getItem('stack');
+        return Number(localStorage.getItem('stack'));
     },
 
     setVtxId(value) {
@@ -98,6 +98,6 @@ export const listSelectService = {
     },
 
     getVtxId() {
-        return localStorage.getItem('vtx');
+        return Number(localStorage.getItem('vtx'));
     }
 };

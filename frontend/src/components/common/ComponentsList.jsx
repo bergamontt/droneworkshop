@@ -3,12 +3,11 @@ import ComponentsElement from './ComponentsElement';
 import {useListSelect} from "../../hooks/useListSelect.jsx";
 
 function ComponentsList(props) {
-    const { isSelecting, getSelectedDetailId, selectDetail } = useListSelect();
-    console.log(props.detailName)
+    const { isSelecting, getSelectedDetailId, selectDetailId } = useListSelect();
     const selectedDetailId = getSelectedDetailId(props.detailName);
 
     const select = (id) => {
-        selectDetail(props.detailName, id);
+        selectDetailId(props.detailName, id);
     }
 
     if (!props.data) return(<></>);

@@ -1,14 +1,12 @@
-import {Group, NavLink, Paper, Text } from '@mantine/core';
+import {CloseButton, Group, NavLink, Paper, Text} from '@mantine/core';
 import {useNavigate} from "react-router-dom";
 import addCross from "../../assets/add_plus_square.svg";
 import {useFetch} from "../../hooks/useFetch.jsx";
 
-export default function SelectedDetail({fetch, getDetailId, detailsLink, detailLinkPrefix, name}) {
+export default function SelectedDetail({fetch, id, detailsLink, detailLinkPrefix, name, deselect}) {
     const navigate = useNavigate();
-
-    const detailId = getDetailId();
-    const { data: detail } = useFetch(fetch, detailId);
-
+    const {data: detail} = useFetch(fetch, id);
+    console.log(id, detail);
     return (
         <Paper
             withBorder
@@ -18,8 +16,24 @@ export default function SelectedDetail({fetch, getDetailId, detailsLink, detailL
                 height: '6rem',
                 width: '18rem',
                 overflow: 'hidden',
+                position: 'relative',
             }}
         >
+            {detail &&
+                <CloseButton
+                    size="sm"
+                    style={{
+                        position: 'absolute',
+                        top: 5,
+                        right: 5,
+                        zIndex: 10,
+                    }}
+                    variant="subtle"
+                    color="gray"
+                    onClick={deselect}
+                />
+            }
+
             <Group
                 p="xs"
                 style={{
@@ -62,7 +76,7 @@ export default function SelectedDetail({fetch, getDetailId, detailsLink, detailL
                         />
                     }
                     onClick={() =>
-                        navigate(detail ? `${detailLinkPrefix}/${detailId}` : detailsLink)
+                        navigate(detail ? `${detailLinkPrefix}/${detail.id}` : detailsLink)
                     }
                 />
             </Group>

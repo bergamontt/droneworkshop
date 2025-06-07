@@ -8,6 +8,8 @@ export const useFetch = (fetchFunction, params = null) => {
     useEffect(() => {
         const fetchData = () => {
             setLoading(true);
+            setData(null);
+            setError(null);
             fetchFunction(params)
             .then(result => {
                 setData(result);

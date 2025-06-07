@@ -1,9 +1,23 @@
-import {Button, Group, Paper, Text, TextInput} from "@mantine/core";
-import {useState} from "react";
+import {Button, Group, Paper, Text} from "@mantine/core";
+import DroneSavingWindow from "./DroneSavingWindow.jsx";
+import {useDisclosure} from "@mantine/hooks";
+import {droneValidationService} from "../../services/DroneValidationService.jsx";
 
-export default function DetailSelectionFooter({ isSelecting, startSelecting, finishSelecting }) {
-    const [droneName, setDroneName] = useState("");
-    const nameTooLong = droneName.length > 24;
+export default function DetailSelectionFooter({ isSelecting, startSelecting, finishSelecting, getSelectedDetailId}) {
+    const [opened, { open, close }] = useDisclosure(false);
+    const idsList = {
+        rxAntennaId: getSelectedDetailId("antenna_rx"),
+        vtxAntennaId: getSelectedDetailId("antenna_vtx"),
+        batteryId: getSelectedDetailId("battery"),
+        cameraId: getSelectedDetailId("camera"),
+        frameId: getSelectedDetailId("frame"),
+        motorId: getSelectedDetailId("motor"),
+        propellerId: getSelectedDetailId("propeller"),
+        rxId: getSelectedDetailId("rx"),
+        stackId: getSelectedDetailId("stack"),
+        vtxId: getSelectedDetailId("vtx"),
+    }
+    const droneValid = droneValidationService.isValid(idsList);
 
     return (
         <Paper
@@ -34,18 +48,6 @@ export default function DetailSelectionFooter({ isSelecting, startSelecting, fin
                     {isSelecting ? 'Припинити збірку' : 'Зібрати дрон'}
                 </Button>
 
-                <TextInput
-                    value={droneName}
-                    onChange={(e) => setDroneName(e.currentTarget.value)}
-                    error={nameTooLong ? 'Довжина назви не має перевищувати 24 символи' : null}
-                    radius="md"
-                    placeholder="Назва дрона"
-                    size="sm"
-                    style={{ minWidth: 200, maxWidth: 250 }}
-                    disabled={!isSelecting}
-                    maxLength={24}
-                />
-
                 <Group gap="xs" wrap="nowrap">
                     <Text size="sm">Маса:</Text>
                     <Text size="sm" w={60} ta="center">
@@ -68,11 +70,14 @@ export default function DetailSelectionFooter({ isSelecting, startSelecting, fin
                     size="sm"
                     radius="md"
                     color="blue"
-                    disabled={!droneName}
+                    onClick={open}
+                    disabled={!droneValid}
                 >
                     Зберегти дрон
                 </Button>
             </Group>
+
+            <DroneSavingWindow opened={opened} close={close} idsList={idsList} />
         </Paper>
     );
 }

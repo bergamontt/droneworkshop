@@ -6,10 +6,6 @@ export default function ComponentsElement(props) {
     const navigate = useNavigate();
     const isSelected = props.selectedId?.toString() === props.id.toString();
 
-    console.log("Selected: " + props.selectedId);
-    console.log("My: " + props.id.toString());
-    console.log(isSelected);
-
     const handleClick = () => {
         navigate(`/drone_components/${props.name}/${props.id}`);
     }

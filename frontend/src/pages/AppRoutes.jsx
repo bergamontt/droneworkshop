@@ -49,7 +49,7 @@ function AppRoutes() {
                         fetchManufacturers={getAntennaManufacturers} 
                         fetchDistributors={getAntennaDistributors} 
                         name="antenna"
-                        detailName="rx_antenna"
+                        detailName="antenna_rx"
                     />}
                 />
 
@@ -59,7 +59,7 @@ function AppRoutes() {
                         fetchManufacturers={getAntennaManufacturers} 
                         fetchDistributors={getAntennaDistributors} 
                         name="antenna"
-                        detailName="vtx_antenna"
+                        detailName="antenna_vtx"
                     />}
                 />
 

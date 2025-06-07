@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { listSelectService } from "../services/ListSelectService.jsx";
+import {useEffect, useState} from 'react';
+import {listSelectService} from "../services/ListSelectService.jsx";
 
 export const useListSelect = () => {
     const [isSelecting, setIsSelecting] = useState(listSelectService.isSelecting());
@@ -22,15 +22,25 @@ export const useListSelect = () => {
     const finishSelecting = () => {
         listSelectService.finishSelecting();
         setIsSelecting(false);
+        setRxAntennaId(listSelectService.getRxAntennaId());
+        setVtxAntennaId(listSelectService.getVtxAntennaId());
+        setBatteryId(listSelectService.getBatteryId());
+        setCameraId(listSelectService.getCameraId());
+        setFrameId(listSelectService.getFrameId());
+        setMotorId(listSelectService.getMotorId());
+        setPropellerId(listSelectService.getPropellerId());
+        setRxId(listSelectService.getRxId());
+        setStackId(listSelectService.getStackId());
+        setVtxId(listSelectService.getVtxId());
     };
 
-    const selectDetail = (name, id) => {
+    const selectDetailId = (name, id) => {
         switch (name) {
-            case 'rx_antenna':
+            case 'antenna_rx':
                 setRxAntennaId(id);
                 listSelectService.setRxAntennaId(id);
                 break;
-            case 'vtx_antenna':
+            case 'antenna_vtx':
                 setVtxAntennaId(id);
                 listSelectService.setVtxAntennaId(id);
                 break;
@@ -67,13 +77,13 @@ export const useListSelect = () => {
                 listSelectService.setVtxId(id);
                 break;
         }
-    }
+    };
 
     const getSelectedDetailId = (name) => {
         switch (name) {
-            case 'rx_antenna':
+            case 'antenna_rx':
                 return rxAntennaId;
-            case 'vtx_antenna':
+            case 'antenna_vtx':
                 return vtxAntennaId;
             case 'battery':
                 return batteryId;
@@ -94,7 +104,7 @@ export const useListSelect = () => {
             default:
                 return null;
         }
-    }
+    };
 
     useEffect(() => {
         const handlers = [
@@ -119,5 +129,5 @@ export const useListSelect = () => {
         return () => window.removeEventListener('storage', handleStorage);
     }, []);
 
-    return { isSelecting, startSelecting, finishSelecting, selectDetail, getSelectedDetailId };
+    return { isSelecting, startSelecting, finishSelecting, selectDetailId, getSelectedDetailId };
 }
