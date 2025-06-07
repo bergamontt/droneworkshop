@@ -6,7 +6,6 @@ import {useFetch} from "../../hooks/useFetch.jsx";
 export default function SelectedDetail({fetch, id, detailsLink, detailLinkPrefix, name, deselect}) {
     const navigate = useNavigate();
     const {data: detail} = useFetch(fetch, id);
-    console.log(id, detail);
     return (
         <Paper
             withBorder

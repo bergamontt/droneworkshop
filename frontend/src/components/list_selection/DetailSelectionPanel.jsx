@@ -11,7 +11,6 @@ import {getStackById} from "../../services/StackService.jsx";
 import {getVTXById} from "../../services/VTXService.jsx";
 
 export default function DetailSelectionPanel({getSelectedDetailId, selectDetailId}) {
-    console.log("render", getSelectedDetailId("antenna_rx"))
     return (
         <Stack style={{
             backgroundColor: 'rgba(109, 128, 125, 0.5)',
