@@ -2,12 +2,12 @@ import { useNavigate } from "react-router-dom";
 import defaultPicture from '../../assets/default.jpg'
 import '../../styles/Workshop.css'
 
-function WorkshopElement({id, droneName, username}) {
+function WorkshopElement({name, id, droneName, username}) {
     
     const navigate = useNavigate();
     
     const handleClick = () => {
-        navigate(`/workshop/schema/${id}`);
+        navigate(`/workshop/${name}/${id}`);
     }
     
     return(

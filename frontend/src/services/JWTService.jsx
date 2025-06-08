@@ -41,5 +41,13 @@ export const jwtService = {
 
     isLoggedIn() {
         return this.getToken() !== null;
+    },
+
+    getUsername() {
+        const token = this.getToken();
+        if (!token) return null;
+        const payload = parseJWT(token);
+        return payload?.username ?? null; 
     }
+
 };

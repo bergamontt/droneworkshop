@@ -55,4 +55,5 @@ public class Battery {
     public Integer getStartingPrice() {
         return findStartingPrice(distributors);
     }
+
 }

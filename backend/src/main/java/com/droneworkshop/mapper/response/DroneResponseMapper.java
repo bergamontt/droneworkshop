@@ -14,7 +14,7 @@ public class DroneResponseMapper {
         DroneResponseDto dto = new DroneResponseDto();
         dto.setDroneId(drone.getDroneId());
         dto.setDroneName(drone.getDroneName());
-        dto.setUser(drone.getUser());
+        dto.setUsername(drone.getUsername());
         dto.setFrame(drone.getFrame());
         dto.setPropeller(drone.getPropeller());
         dto.setCamera(drone.getCamera());

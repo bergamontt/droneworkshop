@@ -1,16 +1,14 @@
 package com.droneworkshop.dto.response;
 
-import com.droneworkshop.model.authentification.User;
 import com.droneworkshop.model.component.*;
 import lombok.Data;
-import lombok.Getter;
 import lombok.Setter;
 
 @Data
 public class DroneResponseDto {
     private Integer droneId;
     private String droneName;
-    private User user;
+    private String username;
     private String photoBase64;
     private Frame frame;
     private Propeller propeller;

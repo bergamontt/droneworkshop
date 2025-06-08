@@ -98,7 +98,7 @@
 }
 
 .schema-component-model {
-    padding: 0em 0.6em;
+    padding: 0 0.6em;
 }
 
 .creator-username {
@@ -110,8 +110,11 @@
 .creator-data-container {
     display: flex;
     align-items: center;
-    padding: 0.8em 1em;
-    padding-bottom: 0em;
     margin-top: 0.5em;
-    padding-left: 0em;
+    padding: 0.8em 1em 0 0;
+}
+
+.schema-name-container {
+    display: flex;
+    justify-content: space-between;
 }

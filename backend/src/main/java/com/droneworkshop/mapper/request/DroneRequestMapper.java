@@ -61,7 +61,8 @@ public class DroneRequestMapper {
         }
 
         User user = userRepository.findById(request.getUserId()).orElse(null);
-        drone.setUser(user);
+        assert user != null;
+        drone.setUsername(user.getUsername());
 
         Frame frame = frameRepository.findById(request.getFrameId()).orElse(null);
         drone.setFrame(frame);

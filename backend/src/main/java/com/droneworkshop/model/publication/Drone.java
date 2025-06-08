@@ -16,9 +16,8 @@ public class Drone {
     @Column(nullable = false, length = 24)
     private String droneName;
 
-    @ManyToOne
-    @JoinColumn(name = "username")
-    private User user;
+    @Column(nullable = false)
+    private String username;
 
     @Column
     private byte[] photo;

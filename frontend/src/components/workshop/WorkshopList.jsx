@@ -1,8 +1,12 @@
 import { Flex } from "@mantine/core";
 import WorkshopElement from "./WorkshopElement";
 
-function WorkshopList(props) {
-    if(!props.data) return <></>;
+function WorkshopList({name, data}) {
+    
+    console.log('WorkshopList data:', data);
+
+    if(!data) return <></>;
+
     return (
         <div className="workshop-list-container">
             <Flex
@@ -13,13 +17,16 @@ function WorkshopList(props) {
                 direction="row"
                 wrap="wrap"
             >
-                {props.data.map((schema) => (
+                {data.map((schema) => (
+                    schema &&
                     <WorkshopElement
+                        key={schema.droneId} 
                         droneName={schema.droneName}
-                        username={schema.user.username}
+                        username={schema.username}
+                        name={name}
                         id={schema.droneId}
                     />
-                ))}            
+                ))}       
             </Flex>
         </div>
     );

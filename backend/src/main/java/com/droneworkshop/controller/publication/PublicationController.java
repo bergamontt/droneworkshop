@@ -32,10 +32,10 @@ public class PublicationController {
     }
 
     @PostMapping("/publication")
-    public void createPublication(
+    public Publication createPublication(
             @RequestBody PublicationRequestDto request
     ) {
-        publicationService.createPublication(request);
+        return publicationService.createPublication(request);
     }
 
 }

@@ -8,7 +8,6 @@ import { getAllPropellers, getPropellerById, getPropellerDistributors, getPropel
 import { getAllRX, getRXById, getRXDistributors, getRXManufacturers } from '../services/RXService';
 import { getAllStacks, getStackById, getStackDistributors, getStackManufacturers } from '../services/StackService';
 import { getAllVTX, getVTXById, getVTXDistributors, getVTXManufacturers } from '../services/VTXService';
-import { getAllDrones, getDroneById } from "../services/DroneService.jsx";
 import Tutorials from "./Tutorials.jsx";
 import LogInPage from './authentification/LogInPage.jsx';
 import RegisterPage from './authentification/RegisterPage.jsx';
@@ -22,10 +21,12 @@ import ForumPostPage from "./forum/ForumPostPage.jsx";
 import WelcomePage from './WelcomePage.jsx'
 import WritePostPage from "./forum/WritePostPage.jsx";
 import ForumSidebar from "../components/common/ForumSidebar.jsx";
-import Workshop from '../pages/Workshop.jsx'
 import WorkshopLayout from '../components/workshop/WorkshopLayout.jsx'
 import SchemaPage from "./SchemaPage.jsx";
-import Schema from "../components/workshop/Schema.jsx";
+import PublicationsPage from "./workshop/PublicationsPage.jsx";
+import DronesPage from "./workshop/DronesPage.jsx";
+import DronePage from "./workshop/DronePage.jsx";
+import PublicationPage from "./workshop/PublicationPage.jsx";
 
 function AppRoutes() {
     return(
@@ -168,27 +169,11 @@ function AppRoutes() {
             <Route path="/write-post" element={<WritePostPage />}/>
             
             <Route path="/workshop" element={<WorkshopLayout />} >
-                <Route path="main" element={
-                    <Workshop
-                        fetch={getAllDrones}
-                        personal={true}
-                        published={false}
-                    />}
-                />
-                <Route path="schema/:schemaId" element={
-                    <Schema
-                        fetch={getDroneById}
-                        personal={true}
-                        published={false}
-                    />}
-                />
-                <Route path="drone" element={
-                    <Workshop
-                        fetch={getAllDrones}
-                        personal={true}
-                        published={false}
-                    />}
-                />
+                <Route path="main" element={<PublicationsPage/>}/>
+                <Route path="published" element={<PublicationsPage personal={true} />}/>
+                <Route path="drone/:droneId" element={<DronePage />}/>
+                <Route path="publication/:publicationId" element={<PublicationPage />}/>
+                <Route path="unpublished" element={<DronesPage/>} />
             </Route>
 
             <Route path="/create-schema" element={<SchemaPage />}/>

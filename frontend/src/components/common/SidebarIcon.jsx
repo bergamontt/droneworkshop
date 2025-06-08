@@ -1,10 +1,10 @@
 
-function SidebarIcon(props) {
+function SidebarIcon({link, size}) {
     return(
         <img 
-            src={props.link}  
+            src={link}  
             style={{
-                height: `${props.size || "3.5em"}`
+                height: `${size || "3.5em"}`
             }}
         />
     );

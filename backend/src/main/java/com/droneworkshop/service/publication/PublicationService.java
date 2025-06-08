@@ -33,13 +33,14 @@ public class PublicationService {
 
     public Page<Publication> getFilteredPublications(PublicationFilterDto filter, Pageable pageable) {
         Specification<Publication> spec = buildSpecification(filter);
+
         return publicationRepository.findAll(spec, pageable);
     }
 
-    public void createPublication(PublicationRequestDto request) {
+    public Publication createPublication(PublicationRequestDto request) {
         Drone drone = droneRepository.findById(request.getDroneId()).orElse(null);
         Publication publication = PublicationRequestMapper.mapRequestToEntity(drone);
-        publicationRepository.save(publication);
+        return publicationRepository.save(publication);
     }
 
 }
