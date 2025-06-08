@@ -3,6 +3,8 @@ package com.droneworkshop.dto.response;
 import com.droneworkshop.model.authentification.User;
 import com.droneworkshop.model.component.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
 public class DroneResponseDto {
@@ -20,4 +22,6 @@ public class DroneResponseDto {
     private Battery battery;
     private Motor motor;
     private Stack stack;
+    @Setter
+    private boolean isPublished;
 }

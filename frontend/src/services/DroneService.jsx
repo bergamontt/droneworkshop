@@ -6,14 +6,14 @@ export const getAllDrones = async (
     size = elementsPerPage,
     filters = {}
 ) => {
-    const { dronePrefix, username } = filters;
+    const { droneNamePrefix, username } = filters;
     const params = new URLSearchParams({
         page,
         size,
-        ...(dronePrefix && { dronePrefix }),
+        ...(droneNamePrefix && { droneNamePrefix }),
         ...(username && { username })
     });
-    const response = await api.get(`/post?${params.toString()}`);
+    const response = await api.get(`/drone?${params.toString()}`);
     return response.data;
 };
 

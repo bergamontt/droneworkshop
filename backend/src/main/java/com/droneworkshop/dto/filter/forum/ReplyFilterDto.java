@@ -1,4 +1,4 @@
-package com.droneworkshop.dto.filter;
+package com.droneworkshop.dto.filter.forum;
 
 import lombok.Data;
 

@@ -2,6 +2,7 @@ package com.droneworkshop.mapper.response;
 
 import com.droneworkshop.dto.response.DroneResponseDto;
 import com.droneworkshop.model.publication.Drone;
+import com.droneworkshop.repository.publication.PublicationRepository;
 
 import java.util.Base64;
 

@@ -1,6 +1,6 @@
-package com.droneworkshop.specification;
+package com.droneworkshop.specification.model;
 
-import com.droneworkshop.dto.filter.MotorFilterDto;
+import com.droneworkshop.dto.filter.model.MotorFilterDto;
 import com.droneworkshop.model.component.Motor;
 import com.droneworkshop.repository.component.MotorRepository;
 import org.springframework.data.jpa.domain.Specification;

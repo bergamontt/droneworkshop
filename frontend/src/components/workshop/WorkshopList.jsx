@@ -16,7 +16,8 @@ function WorkshopList(props) {
                 {props.data.map((schema) => (
                     <WorkshopElement
                         droneName={schema.droneName}
-                        username={schema.username}
+                        username={schema.user.username}
+                        id={schema.droneId}
                     />
                 ))}            
             </Flex>

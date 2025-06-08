@@ -1,6 +1,6 @@
 package com.droneworkshop.controller.component;
 
-import com.droneworkshop.dto.filter.BatteryFilterDto;
+import com.droneworkshop.dto.filter.model.BatteryFilterDto;
 import com.droneworkshop.model.component.Battery;
 import com.droneworkshop.service.component.BatteryService;
 import org.springframework.data.domain.Page;

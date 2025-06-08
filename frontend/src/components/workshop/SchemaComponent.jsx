@@ -2,7 +2,7 @@ import { Divider } from '@mantine/core';
 import defaultPhoto from '../../assets/default.jpg'
 import '../../styles/Schema.css'
 
-function SchemaComponent({type, model}) {
+function SchemaComponent({type, model, photoLink}) {
     return(
         <article className='schema-component-wrapper'>
             <span className='schema-component'>
@@ -14,7 +14,8 @@ function SchemaComponent({type, model}) {
                         {model}
                     </span>
                     <img 
-                        src={defaultPhoto} 
+                        src={photoLink} 
+                        alt={defaultPhoto}
                         className='schema-component-photo'
                     />
                 </div>

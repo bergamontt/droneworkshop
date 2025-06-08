@@ -1,12 +1,12 @@
 package com.droneworkshop.controller.publication;
 
+import com.droneworkshop.dto.filter.publication.PublicationFilterDto;
+import com.droneworkshop.dto.request.PublicationRequestDto;
 import com.droneworkshop.model.publication.Publication;
 import com.droneworkshop.service.publication.PublicationService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PublicationController {
@@ -17,14 +17,25 @@ public class PublicationController {
     }
 
     @GetMapping("/publication")
-    public List<Publication> getAllPublications() {
-        return publicationService.getAllPublications();
+    public Page<Publication> getAllPublications(
+            @ModelAttribute PublicationFilterDto filter,
+            Pageable pageable
+    ) {
+        return publicationService.getFilteredPublications(filter, pageable);
     }
 
     @GetMapping("/publication/{id}")
     public Publication getPublication(
-            @PathVariable int id
+            @PathVariable Integer id
     ) {
         return publicationService.getPublicationById(id);
     }
+
+    @PostMapping("/publication")
+    public void createPublication(
+            @RequestBody PublicationRequestDto request
+    ) {
+        publicationService.createPublication(request);
+    }
+
 }

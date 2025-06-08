@@ -1,6 +1,6 @@
 package com.droneworkshop.controller.component;
 
-import com.droneworkshop.dto.filter.StackFilterDto;
+import com.droneworkshop.dto.filter.model.StackFilterDto;
 import com.droneworkshop.model.component.Stack;
 import com.droneworkshop.service.component.StackService;
 import org.springframework.data.domain.Page;

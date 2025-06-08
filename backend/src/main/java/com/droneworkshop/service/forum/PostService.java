@@ -1,18 +1,15 @@
 package com.droneworkshop.service.forum;
 
-import com.droneworkshop.dto.filter.PostFilterDto;
-import com.droneworkshop.model.authentification.User;
+import com.droneworkshop.dto.filter.forum.PostFilterDto;
 import com.droneworkshop.model.forum.Post;
 import com.droneworkshop.repository.forum.PostRepository;
 import com.droneworkshop.service.authentification.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import static com.droneworkshop.specification.PostSpec.buildSpecification;
+import static com.droneworkshop.specification.forum.PostSpec.buildSpecification;
 
 @Service
 public class PostService {

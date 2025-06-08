@@ -1,48 +1,58 @@
 import SchemaComponent from './SchemaComponent';
 import '../../styles/Schema.css'
 
-function SchemaComponents() {
+function SchemaComponents({schema}) {
     return (
         <section className="schema-components-wrapper">
             <SchemaComponent
                 type={"RX Антена"}
-                model={"Жаба"}
+                model={schema.rxAntenna.model}
+                photoLink={schema.rxAntenna.photoLink}
             />
             <SchemaComponent
                 type={"VTX Антена"}
-                model={"Ананас"}
+                model={schema.vtxAntenna.model}
+                photoLink={schema.vtxAntenna.photoLink}
             />
             <SchemaComponent
                 type={"Батка"}
-                model={"Скунс"}
+                model={schema.battery.model}
+                photoLink={schema.battery.photoLink}
             />
             <SchemaComponent
                 type={"Камера"}
-                model={"Окунь"}
+                model={schema.camera.model}
+                photoLink={schema.camera.photoLink}
             />
             <SchemaComponent
                 type={"Рама"}
-                model={"Опудало"}
+                model={schema.frame.model}
+                photoLink={schema.frame.photoLink}
             />
             <SchemaComponent
                 type={"Мотор"}
-                model={"Горох"}
+                model={schema.motor.model}
+                photoLink={schema.motor.photoLink}
             />
             <SchemaComponent
                 type={"Пропелери"}
-                model={"Лелека"}
+                model={schema.propeller.model}
+                photoLink={schema.propeller.photoLink}
             />
             <SchemaComponent
                 type={"RX"}
-                model={"Фіалка"}
+                model={schema.rx.model}
+                photoLink={schema.rx.photoLink}
             />
             <SchemaComponent
                 type={"Стек"}
-                model={"Оверфлоу"}
+                model={schema.stack.model}
+                photoLink={schema.stack.photoLink}
             />
             <SchemaComponent
                 type={"VTX"}
-                model={"Пепсі"}
+                model={schema.vtx.model}
+                photoLink={schema.vtx.photoLink}
             />
         </section>
     );

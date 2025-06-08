@@ -1,6 +1,6 @@
 package com.droneworkshop.controller.component;
 
-import com.droneworkshop.dto.filter.CameraFilterDto;
+import com.droneworkshop.dto.filter.model.CameraFilterDto;
 import com.droneworkshop.model.component.Camera;
 import com.droneworkshop.service.component.CameraService;
 import org.springframework.data.domain.Page;

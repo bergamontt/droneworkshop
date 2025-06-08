@@ -25,7 +25,7 @@ function ForumMainPage({personal = false}) {
         setPage(1);
     }, []);
 
-    const { data: posts, isLoading: isPostsLoading, error: postsError } = useFetchUnique(
+    const { data: posts } = useFetchUnique(
         () =>
         getAllPosts(activePage - 1, elementsPerPage, {
             postPrefix,
@@ -36,6 +36,7 @@ function ForumMainPage({personal = false}) {
     );
 
     const handlePageChange = (page) => setPage(page);
+    
     const handlePostPrefixChange = (value) => {
         setPage(1);
         setPostPrefix(value);
@@ -56,7 +57,11 @@ function ForumMainPage({personal = false}) {
                 <PostsList posts={posts} />
 
                 <Center>
-                    <Pagination total={total} value={activePage} onChange={handlePageChange} />
+                    <Pagination 
+                        total={total} 
+                        value={activePage} 
+                        onChange={handlePageChange}
+                    />
                 </Center>
                 </Stack>
             </div>

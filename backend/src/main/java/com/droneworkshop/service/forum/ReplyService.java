@@ -1,6 +1,6 @@
 package com.droneworkshop.service.forum;
 
-import com.droneworkshop.dto.filter.ReplyFilterDto;
+import com.droneworkshop.dto.filter.forum.ReplyFilterDto;
 import com.droneworkshop.model.forum.Reply;
 import com.droneworkshop.repository.forum.ReplyRepository;
 import com.droneworkshop.service.authentification.UserService;
@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import static com.droneworkshop.specification.ReplySpec.buildSpecification;
+import static com.droneworkshop.specification.forum.ReplySpec.buildSpecification;
 
 @Service
 public class ReplyService {

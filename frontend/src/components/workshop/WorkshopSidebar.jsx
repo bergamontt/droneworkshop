@@ -25,6 +25,7 @@ function WorkshopSidebar() {
                 <NavLink
                     label={<SidebarLabel text="НЕОПУБЛIКОВАНЕ" />}
                     leftSection={<SidebarIcon link={privateSchema} size={"1.5em"}/>}
+                    onClick={() => navigate('/workshop/drone')}
                 ></NavLink>
                 <NavLink
                     label={<SidebarLabel text="ВПОДОБАНЕ" />}

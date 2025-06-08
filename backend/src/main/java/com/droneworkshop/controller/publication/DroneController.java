@@ -1,5 +1,6 @@
 package com.droneworkshop.controller.publication;
 
+import com.droneworkshop.dto.filter.publication.DroneFilterDto;
 import com.droneworkshop.dto.request.DroneRequestDto;
 import com.droneworkshop.dto.response.DroneResponseDto;
 import com.droneworkshop.service.publication.DroneService;
@@ -17,14 +18,17 @@ public class DroneController {
 
     @GetMapping("/drone/{id}")
     public DroneResponseDto getDroneById(
-            @PathVariable int id
+            @PathVariable Integer id
     ) {
         return droneService.getDroneById(id);
     }
 
     @GetMapping("/drone")
-    public Page<DroneResponseDto> getAllDrones(Pageable pageable) {
-        return droneService.getAllDrones(pageable);
+    public Page<DroneResponseDto> getAllDrones(
+            @ModelAttribute DroneFilterDto filter,
+            Pageable pageable
+    ) {
+        return droneService.getAllDrones(filter, pageable);
     }
 
     @PostMapping("/drone")

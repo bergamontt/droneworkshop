@@ -1,6 +1,6 @@
-package com.droneworkshop.specification;
+package com.droneworkshop.specification.model;
 
-import com.droneworkshop.dto.filter.PropellerFilterDto;
+import com.droneworkshop.dto.filter.model.PropellerFilterDto;
 import com.droneworkshop.model.component.Propeller;
 import com.droneworkshop.repository.component.PropellerRepository;
 import org.springframework.data.jpa.domain.Specification;

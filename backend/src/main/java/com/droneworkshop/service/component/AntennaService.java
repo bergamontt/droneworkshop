@@ -1,6 +1,6 @@
 package com.droneworkshop.service.component;
 
-import com.droneworkshop.dto.filter.AntennaFilterDto;
+import com.droneworkshop.dto.filter.model.AntennaFilterDto;
 import com.droneworkshop.model.component.Antenna;
 import com.droneworkshop.repository.component.AntennaRepository;
 import org.springframework.data.domain.Page;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.droneworkshop.specification.AntennaSpec.buildSpecification;
+import static com.droneworkshop.specification.model.AntennaSpec.buildSpecification;
 
 @Service
 public class AntennaService {

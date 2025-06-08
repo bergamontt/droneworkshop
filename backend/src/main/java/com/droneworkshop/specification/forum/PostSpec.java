@@ -1,6 +1,6 @@
-package com.droneworkshop.specification;
+package com.droneworkshop.specification.forum;
 
-import com.droneworkshop.dto.filter.PostFilterDto;
+import com.droneworkshop.dto.filter.forum.PostFilterDto;
 import com.droneworkshop.model.forum.Post;
 import com.droneworkshop.repository.forum.PostRepository;
 import org.springframework.data.jpa.domain.Specification;

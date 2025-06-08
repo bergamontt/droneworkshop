@@ -1,6 +1,6 @@
-package com.droneworkshop.specification;
+package com.droneworkshop.specification.model;
 
-import com.droneworkshop.dto.filter.RXFilterDto;
+import com.droneworkshop.dto.filter.model.RXFilterDto;
 import com.droneworkshop.model.component.RX;
 import com.droneworkshop.repository.component.RXRepository;
 import org.springframework.data.jpa.domain.Specification;

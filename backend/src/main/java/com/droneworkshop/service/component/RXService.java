@@ -1,6 +1,6 @@
 package com.droneworkshop.service.component;
 
-import com.droneworkshop.dto.filter.RXFilterDto;
+import com.droneworkshop.dto.filter.model.RXFilterDto;
 import com.droneworkshop.model.component.RX;
 import com.droneworkshop.repository.component.RXRepository;
 import org.springframework.data.domain.Page;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.droneworkshop.specification.RXSpec.buildSpecification;
+import static com.droneworkshop.specification.model.RXSpec.buildSpecification;
 
 @Service
 public class RXService {

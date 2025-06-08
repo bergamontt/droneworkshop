@@ -1,6 +1,6 @@
 package com.droneworkshop.controller.forum;
 
-import com.droneworkshop.dto.filter.PostFilterDto;
+import com.droneworkshop.dto.filter.forum.PostFilterDto;
 import com.droneworkshop.model.forum.Post;
 import com.droneworkshop.service.forum.PostService;
 import org.springframework.data.domain.Page;

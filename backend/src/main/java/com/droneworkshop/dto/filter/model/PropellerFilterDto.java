@@ -1,11 +1,11 @@
-package com.droneworkshop.dto.filter;
+package com.droneworkshop.dto.filter.model;
 
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class VTXFilterDto {
+public class PropellerFilterDto {
     private Integer minPrice;
     private Integer maxPrice;
     private String modelPrefix;

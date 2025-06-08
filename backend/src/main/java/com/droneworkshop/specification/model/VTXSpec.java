@@ -1,6 +1,6 @@
-package com.droneworkshop.specification;
+package com.droneworkshop.specification.model;
 
-import com.droneworkshop.dto.filter.VTXFilterDto;
+import com.droneworkshop.dto.filter.model.VTXFilterDto;
 import com.droneworkshop.model.component.VTX;
 import com.droneworkshop.repository.component.VTXRepository;
 import org.springframework.data.jpa.domain.Specification;

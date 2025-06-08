@@ -1,6 +1,6 @@
 package com.droneworkshop.controller.component;
 
-import com.droneworkshop.dto.filter.PropellerFilterDto;
+import com.droneworkshop.dto.filter.model.PropellerFilterDto;
 import com.droneworkshop.model.component.Propeller;
 import com.droneworkshop.service.component.PropellerService;
 import org.springframework.data.domain.Page;

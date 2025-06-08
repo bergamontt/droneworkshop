@@ -2,11 +2,14 @@ import { useNavigate } from "react-router-dom";
 import defaultPicture from '../../assets/default.jpg'
 import '../../styles/Workshop.css'
 
-function WorkshopElement({droneName, username}) {
+function WorkshopElement({id, droneName, username}) {
+    
     const navigate = useNavigate();
+    
     const handleClick = () => {
-        navigate(``);
+        navigate(`/workshop/schema/${id}`);
     }
+    
     return(
         <section 
             className="workshop-element-container"

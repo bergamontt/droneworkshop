@@ -1,6 +1,6 @@
 package com.droneworkshop.controller.component;
 
-import com.droneworkshop.dto.filter.MotorFilterDto;
+import com.droneworkshop.dto.filter.model.MotorFilterDto;
 import com.droneworkshop.model.component.Motor;
 import com.droneworkshop.service.component.MotorService;
 import org.springframework.data.domain.Page;

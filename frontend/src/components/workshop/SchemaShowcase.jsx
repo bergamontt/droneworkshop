@@ -6,12 +6,13 @@ import components from '../../assets/components.svg'
 import list from '../../assets/list.svg'
 import '../../styles/Schema.css'
 
-function SchemaShowcase() {
+function SchemaShowcase({schema}) {
+    if(!schema) return (<></>);
     return(
         <section className='schema-data-container'>
             <article className='schema-main-data'>
                 <Paper shadow="xs" radius="md" withBorder p="xl">
-                    <span className='schema-name'>Бойовий гусь</span>
+                    <span className='schema-name'>{schema.droneName}</span>
                     <Divider size={"sm"}/>
                     <figure className='schema-photo-container'>
                         <img src={defaultPhoto} className='schema-photo'/>
@@ -19,10 +20,10 @@ function SchemaShowcase() {
                     <Divider size={"sm"}/>
                     <dev className='creator-data-container'>
                         <Avatar radius="xl" color="blue" size="md" >
-                            B
+                            {schema.user?.username?.charAt(0)?.toUpperCase() ?? null}
                         </Avatar>
                         <span className='creator-username'>
-                            bob-dev
+                            {schema.user?.username ?? "Deleted user"}
                         </span>
                     </dev>
                 </Paper>
@@ -47,7 +48,7 @@ function SchemaShowcase() {
                         </Tabs.List>
 
                         <Tabs.Panel value="components">
-                            <SchemaComponents />
+                            <SchemaComponents schema={schema}/>
                         </Tabs.Panel>
 
                         <Tabs.Panel value="features">

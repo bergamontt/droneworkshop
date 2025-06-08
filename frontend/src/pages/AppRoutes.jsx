@@ -8,6 +8,7 @@ import { getAllPropellers, getPropellerById, getPropellerDistributors, getPropel
 import { getAllRX, getRXById, getRXDistributors, getRXManufacturers } from '../services/RXService';
 import { getAllStacks, getStackById, getStackDistributors, getStackManufacturers } from '../services/StackService';
 import { getAllVTX, getVTXById, getVTXDistributors, getVTXManufacturers } from '../services/VTXService';
+import { getAllDrones, getDroneById } from "../services/DroneService.jsx";
 import Tutorials from "./Tutorials.jsx";
 import LogInPage from './authentification/LogInPage.jsx';
 import RegisterPage from './authentification/RegisterPage.jsx';
@@ -167,8 +168,27 @@ function AppRoutes() {
             <Route path="/write-post" element={<WritePostPage />}/>
             
             <Route path="/workshop" element={<WorkshopLayout />} >
-                <Route path="main" element={<Workshop />} />
-                <Route path="schema" element={<Schema />} />
+                <Route path="main" element={
+                    <Workshop
+                        fetch={getAllDrones}
+                        personal={true}
+                        published={false}
+                    />}
+                />
+                <Route path="schema/:schemaId" element={
+                    <Schema
+                        fetch={getDroneById}
+                        personal={true}
+                        published={false}
+                    />}
+                />
+                <Route path="drone" element={
+                    <Workshop
+                        fetch={getAllDrones}
+                        personal={true}
+                        published={false}
+                    />}
+                />
             </Route>
 
             <Route path="/create-schema" element={<SchemaPage />}/>

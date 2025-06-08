@@ -1,6 +1,6 @@
-package com.droneworkshop.specification;
+package com.droneworkshop.specification.model;
 
-import com.droneworkshop.dto.filter.BatteryFilterDto;
+import com.droneworkshop.dto.filter.model.BatteryFilterDto;
 import com.droneworkshop.model.component.Battery;
 import com.droneworkshop.repository.component.BatteryRepository;
 import org.springframework.data.jpa.domain.Specification;

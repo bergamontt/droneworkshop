@@ -1,6 +1,6 @@
 package com.droneworkshop.service.component;
 
-import com.droneworkshop.dto.filter.CameraFilterDto;
+import com.droneworkshop.dto.filter.model.CameraFilterDto;
 import com.droneworkshop.model.component.Camera;
 import com.droneworkshop.repository.component.CameraRepository;
 import org.springframework.data.domain.Page;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.droneworkshop.specification.CameraSpec.buildSpecification;
+import static com.droneworkshop.specification.model.CameraSpec.buildSpecification;
 
 @Service
 public class CameraService {

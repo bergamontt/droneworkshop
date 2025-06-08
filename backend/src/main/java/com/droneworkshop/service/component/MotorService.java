@@ -1,6 +1,6 @@
 package com.droneworkshop.service.component;
 
-import com.droneworkshop.dto.filter.MotorFilterDto;
+import com.droneworkshop.dto.filter.model.MotorFilterDto;
 import com.droneworkshop.model.component.Motor;
 import com.droneworkshop.repository.component.MotorRepository;
 import org.springframework.data.domain.Page;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.droneworkshop.specification.MotorSpec.buildSpecification;
+import static com.droneworkshop.specification.model.MotorSpec.buildSpecification;
 
 @Service
 public class MotorService {

@@ -1,6 +1,6 @@
 package com.droneworkshop.controller.component;
 
-import com.droneworkshop.dto.filter.RXFilterDto;
+import com.droneworkshop.dto.filter.model.RXFilterDto;
 import com.droneworkshop.model.component.RX;
 import com.droneworkshop.service.component.RXService;
 import org.springframework.data.domain.Page;

@@ -1,6 +1,6 @@
 package com.droneworkshop.controller.component;
 
-import com.droneworkshop.dto.filter.VTXFilterDto;
+import com.droneworkshop.dto.filter.model.VTXFilterDto;
 import com.droneworkshop.model.component.VTX;
 import com.droneworkshop.service.component.VTXService;
 import org.springframework.data.domain.Page;

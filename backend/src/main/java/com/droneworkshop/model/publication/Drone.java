@@ -20,7 +20,6 @@ public class Drone {
     @JoinColumn(name = "username")
     private User user;
 
-    @Lob
     @Column
     private byte[] photo;
 

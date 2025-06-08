@@ -1,6 +1,6 @@
 package com.droneworkshop.service.component;
 
-import com.droneworkshop.dto.filter.PropellerFilterDto;
+import com.droneworkshop.dto.filter.model.PropellerFilterDto;
 import com.droneworkshop.model.component.Propeller;
 import com.droneworkshop.repository.component.PropellerRepository;
 import org.springframework.data.domain.Page;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.droneworkshop.specification.PropellerSpec.buildSpecification;
+import static com.droneworkshop.specification.model.PropellerSpec.buildSpecification;
 
 @Service
 public class PropellerService {

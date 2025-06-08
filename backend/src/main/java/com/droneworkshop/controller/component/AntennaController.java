@@ -1,6 +1,6 @@
 package com.droneworkshop.controller.component;
 
-import com.droneworkshop.dto.filter.AntennaFilterDto;
+import com.droneworkshop.dto.filter.model.AntennaFilterDto;
 import com.droneworkshop.model.component.Antenna;
 import com.droneworkshop.service.component.AntennaService;
 import org.springframework.data.domain.Page;

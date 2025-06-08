@@ -1,6 +1,6 @@
-package com.droneworkshop.specification;
+package com.droneworkshop.specification.model;
 
-import com.droneworkshop.dto.filter.AntennaFilterDto;
+import com.droneworkshop.dto.filter.model.AntennaFilterDto;
 import com.droneworkshop.model.component.Antenna;
 import com.droneworkshop.repository.component.AntennaRepository;
 import org.springframework.data.jpa.domain.Specification;
