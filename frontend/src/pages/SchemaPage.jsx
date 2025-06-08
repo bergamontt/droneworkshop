@@ -5,6 +5,7 @@ import {Button, Group, Paper} from "@mantine/core";
 import {useState} from "react";
 import {useListSelect} from "../hooks/useListSelect.jsx";
 import DetailSelectionFooter from "../components/list_selection/DetailSelectionFooter.jsx";
+import DroneShowcase from "../components/model/DroneShowcase.jsx";
 
 export default function SchemaPage() {
     const { isSelecting, startSelecting, finishSelecting,
@@ -13,13 +14,21 @@ export default function SchemaPage() {
     const toggle = () => setCollapsed((prev) => !prev);
 
     return (
-        <div style={{
-            minHeight: '100vh',
-            overflowY: 'auto',
-            backgroundColor: 'rgba(109, 128, 125, 0.5)',
-        }}>
-            <Group justify="flex-end" gap="0">
-                {isSelecting &&
+        <div
+            style={{
+                minHeight: '100vh',
+                overflowY: 'auto',
+                backgroundColor: 'rgba(109, 128, 125, 0.5)',
+                display: 'flex',
+                flexDirection: 'row',
+            }}
+        >
+            <div style={{ flex: 1 }}>
+                <DroneShowcase />
+            </div>
+
+            <Group justify="flex-end" gap="0" style={{ position: 'relative', zIndex: 1 }}>
+                {isSelecting && (
                     <>
                         <Button
                             color="gray"
@@ -38,10 +47,8 @@ export default function SchemaPage() {
                         >
                             <img
                                 src={collapsed ? open_arrow : close_arrow}
-                                alt={collapsed ? "Open tab" : "Close tab"}
-                                style={{
-                                    height: "1.5em"
-                                }}
+                                alt={collapsed ? 'Open tab' : 'Close tab'}
+                                style={{ height: '1.5em' }}
                             />
                         </Button>
 
@@ -59,15 +66,15 @@ export default function SchemaPage() {
                                 backgroundColor: 'rgba(109, 128, 125, 0.5)',
                             }}
                         >
-                            {!collapsed &&
+                            {!collapsed && (
                                 <DetailSelectionPanel
                                     getSelectedDetailId={getSelectedDetailId}
                                     selectDetailId={selectDetailId}
                                 />
-                            }
+                            )}
                         </Paper>
                     </>
-                }
+                )}
 
                 <DetailSelectionFooter
                     startSelecting={startSelecting}
