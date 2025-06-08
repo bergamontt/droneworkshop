@@ -26,6 +26,8 @@ export const getAllVTXAntennas  = async (
 };
 
 export const getAntennaById = async (id) => {
+    if (id === null || id === undefined || Number.isNaN(id))
+        return {data: null};
     const response = await api.get(`/antenna/${id}`);
     return response.data;
 }

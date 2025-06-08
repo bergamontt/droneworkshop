@@ -1,16 +1,15 @@
 import { useFetchUnique } from '../../hooks/useFetchUnique.jsx'
 import { getAllDrones } from '../../services/DroneService.jsx';
-import { jwtService } from '../../services/JWTService.jsx';
 import { elementsPerPage } from '../../services/ServiceConfig.jsx';
 import { useState, useEffect } from 'react';
 import WorkshopWrapper from '../../components/workshop/WorkshopWrapper.jsx';
 import '../../styles/Workshop.css'
+import {useJWT} from "../../hooks/useJWT.jsx";
 
 function DronesPage() {
-
+    const { currentUsername } = useJWT();
     const [activePage, setPage] = useState(1);
     const [droneNamePrefix, setDroneNamePrefix] = useState('');
-    const username = jwtService.isLoggedIn() ? jwtService.getUsername() : undefined;
 
     useEffect(() => {
         setDroneNamePrefix('');
@@ -20,7 +19,7 @@ function DronesPage() {
     const { data: drones } = useFetchUnique(
         () => getAllDrones(activePage - 1, elementsPerPage, {
             droneNamePrefix,
-            username: username,
+            username: currentUsername,
             isPublished: false
         }),[]
     );

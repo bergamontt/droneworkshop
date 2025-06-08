@@ -8,21 +8,20 @@ import {
     Title,
 } from '@mantine/core';
 import {useState} from 'react';
-import {useFetch} from "../../hooks/useFetch.jsx";
-import {getCurrentUser, updateUserPassword} from "../../services/UserService.jsx";
+import {useJWT} from "../../hooks/useJWT.jsx";
+import {updateUserPassword} from "../../services/UserService.jsx";
 import {useNavigate} from "react-router-dom";
-import {jwtService} from "../../services/JWTService.jsx";
 
 export default function ChangePasswordPage() {
+    const {currentUsername, isLoggedIn} = useJWT();
     const navigate = useNavigate();
-    const { data: user } = useFetch(getCurrentUser);
 
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
 
-    if (!jwtService.isLoggedIn())
+    if (!isLoggedIn)
         navigate('/log-in');
 
     const handleChangePassword = async () => {
@@ -33,7 +32,7 @@ export default function ChangePasswordPage() {
             if (newPassword !== confirmPassword) {
                 setMessage('Паролі не співпадають');
             } else {
-                await updateUserPassword(user.username, newPassword);
+                await updateUserPassword(currentUsername, newPassword);
                 setMessage('Пароль успішно змінено!');
                 setNewPassword('');
                 setConfirmPassword('');

@@ -18,6 +18,8 @@ export const getAllPosts = async (
 };
 
 export const getPostById = async (id) => {
+    if (id === null || id === undefined || Number.isNaN(id))
+        return {data: null};
     const response = await api.get(`/post/${id}`);
     return response.data;
 };

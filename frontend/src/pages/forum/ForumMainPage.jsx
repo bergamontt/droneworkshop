@@ -2,23 +2,16 @@ import { useState, useEffect } from 'react';
 import { Pagination, Center, Stack } from '@mantine/core';
 import Searchbar from '../../components/common/Searchbar.jsx';
 import PostsList from '../../components/forum/PostsList.jsx';
-import { jwtService } from '../../services/JWTService.jsx';
 import { getAllPosts } from '../../services/PostService.jsx';
 import { useFetchUnique } from '../../hooks/useFetchUnique.jsx';
+import { useJWT } from "../../hooks/useJWT.jsx";
 import { elementsPerPage } from '../../services/ServiceConfig.jsx';
-import { getCurrentUser } from '../../services/UserService.jsx';
 import '../../styles/Forum.css';
 
 function ForumMainPage({personal = false}) {
-
+    const { currentUsername } = useJWT();
     const [activePage, setPage] = useState(1);
     const [postPrefix, setPostPrefix] = useState('');
-
-    const { data: user } = useFetchUnique(
-        getCurrentUser,
-        [getCurrentUser],
-        { enabled: personal && jwtService.isLoggedIn() } 
-    );
 
     useEffect(() => {
         setPostPrefix('');
@@ -29,10 +22,10 @@ function ForumMainPage({personal = false}) {
         () =>
         getAllPosts(activePage - 1, elementsPerPage, {
             postPrefix,
-            username: personal && user?.username ? user.username : undefined,
+            username: personal && currentUsername ? currentUsername : undefined,
         }),
-        [activePage, postPrefix, personal, user?.username],
-        { enabled: !personal || (personal && !!user?.username) }
+        [activePage, postPrefix, personal, currentUsername],
+        { enabled: !personal || (personal && !!currentUsername) }
     );
 
     const handlePageChange = (page) => setPage(page);

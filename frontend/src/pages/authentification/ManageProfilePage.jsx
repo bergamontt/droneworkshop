@@ -12,14 +12,15 @@ import {
     Grid,
 } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import { updateUserInfo, getCurrentUser } from '../../services/UserService.jsx';
+import {getUserByUsername, updateUserInfo} from '../../services/UserService.jsx';
 import { useFetch } from '../../hooks/useFetch.jsx';
-import { jwtService } from "../../services/JWTService.jsx"
-import { useNavigate } from 'react-router-dom';
+import { useJWT } from "../../hooks/useJWT.jsx";
+import {useNavigate} from 'react-router-dom';
 
 export default function ManageProfilePage() {
     const navigate = useNavigate();
-    const { data: user } = useFetch(getCurrentUser);
+    const {currentUsername, isLoggedIn} = useJWT();
+    const { data: user } = useFetch(getUserByUsername, currentUsername);
 
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -35,7 +36,7 @@ export default function ManageProfilePage() {
         }
     }, [user]);
 
-    if (!jwtService.isLoggedIn())
+    if (!isLoggedIn)
         navigate('/log-in');
 
     const handleSave = async () => {

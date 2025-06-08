@@ -3,6 +3,7 @@ import {
     Pagination, Center, Button, Divider
 } from '@mantine/core';
 import { useFetch } from '../../hooks/useFetch.jsx';
+import { useJWT } from "../../hooks/useJWT.jsx";
 import { getPostById } from "../../services/PostService.jsx";
 import { getRepliesByPostId } from "../../services/ReplyService.jsx";
 import ReplyList from "../../components/forum/ReplyList.jsx";
@@ -11,11 +12,11 @@ import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import { useFetchUnique } from "../../hooks/useFetchUnique.jsx";
 import { elementsPerPage } from "../../services/ServiceConfig.jsx";
-import {jwtService} from "../../services/JWTService.jsx";
 import ReplyCreationWindow from "../../components/forum/ReplyCreationWindow.jsx";
 import {useDisclosure} from "@mantine/hooks";
 
 export default function ForumPostPage() {
+    const {isLoggedIn} = useJWT();
     const navigate = useNavigate();
     const { postId } = useParams();
     const [activePage, setPage] = useState(1);
@@ -88,7 +89,7 @@ export default function ForumPostPage() {
             </Container>
             <Button
                 onClick={() => {
-                    jwtService.isLoggedIn() ? open() : navigate("/log-in")
+                    isLoggedIn ? open() : navigate("/log-in");
                 }}
                 style={{
                     position: 'fixed',

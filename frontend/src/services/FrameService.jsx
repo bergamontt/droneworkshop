@@ -29,6 +29,8 @@ export const getAllFrames = async (
 };
 
 export const getFrameById = async (id) => {
+    if (id === null || id === undefined || Number.isNaN(id))
+        return {data: null};
     const response = await api.get(`/frame/${id}`);
     return response.data;
 }

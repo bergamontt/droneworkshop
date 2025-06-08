@@ -1,13 +1,22 @@
-import axios from 'axios'
-
-const token = localStorage.getItem('jwt');
+import axios from 'axios';
 
 const api = axios.create({
     baseURL: 'http://localhost:8080',
     headers: {
         'Content-Type': 'application/json',
-        Authorization: token ? `Bearer ${token}` : undefined,
     },
 });
 
-export default api
+api.interceptors.request.use((config) => {
+    const token = localStorage.getItem('jwt');
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    } else {
+        delete config.headers.Authorization;
+    }
+    return config;
+}, (error) => {
+    return Promise.reject(error);
+});
+
+export default api;

@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import {Container, Stack, Button, Title, Paper, Group, Textarea, Text} from '@mantine/core';
-import {jwtService} from "../../services/JWTService.jsx";
+import {useJWT} from "../../hooks/useJWT.jsx";
 import { useNavigate } from "react-router-dom";
 import { addPost } from "../../services/PostService.jsx";
 
 export default function WritePostPage() {
+    const {isLoggedIn} = useJWT();
     const navigate = useNavigate();
 
     const [topic, setTopic] = useState('');
@@ -14,7 +15,7 @@ export default function WritePostPage() {
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
 
-    if (!jwtService.isLoggedIn())
+    if (isLoggedIn)
         navigate('/log-in');
 
     const handlePostSubmission = async () => {

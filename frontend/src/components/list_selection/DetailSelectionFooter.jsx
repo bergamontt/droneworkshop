@@ -1,9 +1,13 @@
 import {Button, Group, Paper, Text} from "@mantine/core";
 import DroneSavingWindow from "./DroneSavingWindow.jsx";
 import {useDisclosure} from "@mantine/hooks";
+import { useJWT } from "../../hooks/useJWT.jsx";
 import {droneValidationService} from "../../services/DroneValidationService.jsx";
+import {useNavigate} from "react-router-dom";
 
 export default function DetailSelectionFooter({ isSelecting, startSelecting, finishSelecting, getSelectedDetailId}) {
+    const { isLoggedIn } = useJWT();
+    const navigate = useNavigate();
     const [opened, { open, close }] = useDisclosure(false);
     const idsList = {
         rxAntennaId: getSelectedDetailId("antenna_rx"),
@@ -70,14 +74,19 @@ export default function DetailSelectionFooter({ isSelecting, startSelecting, fin
                     size="sm"
                     radius="md"
                     color="blue"
-                    onClick={open}
+                    onClick={() => isLoggedIn ? open() : navigate('/log-in')}
                     disabled={!droneValid}
                 >
                     Зберегти дрон
                 </Button>
             </Group>
 
-            <DroneSavingWindow opened={opened} close={close} idsList={idsList} />
+            <DroneSavingWindow
+                opened={opened}
+                close={close}
+                idsList={idsList}
+                finishSelecting={finishSelecting}
+            />
         </Paper>
     );
 }

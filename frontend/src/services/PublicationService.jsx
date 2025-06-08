@@ -22,6 +22,8 @@ export const getAllPublications = async (
 };
 
 export const getPublicationById = async (id) => {
+    if (id === null || id === undefined || Number.isNaN(id))
+        return {data: null};
     const response = await api.get(`/publication/${id}`);
     return response.data; 
 };

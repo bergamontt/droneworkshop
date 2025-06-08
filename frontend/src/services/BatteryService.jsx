@@ -29,6 +29,8 @@ export const getAllBatteries = async (
 };
 
 export const getBatteryById = async (id) => {
+    if (id === null || id === undefined || Number.isNaN(id))
+        return {data: null};
     const response = await api.get(`/battery/${id}`);
     return response.data;
 }

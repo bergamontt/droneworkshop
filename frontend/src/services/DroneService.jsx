@@ -19,6 +19,8 @@ export const getAllDrones = async (
 };
 
 export const getDroneById = async (id) => {
+    if (id === null || id === undefined || Number.isNaN(id))
+        return {data: null};
     const response = await api.get(`/drone/${id}`);
     return response.data;
 };

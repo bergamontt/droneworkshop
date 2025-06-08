@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {Button, Group, Modal, Textarea, Text, Stack} from '@mantine/core';
 import { addDrone } from "../../services/DroneService.jsx";
 
-export default function DroneSavingWindow({opened, close, idsList}) {
+export default function DroneSavingWindow({opened, close, idsList, finishSelecting}) {
     const [name, setName] = useState('');
     const nameTooLong = name.length > 24;
     const [loading, setLoading] = useState(false);
@@ -18,6 +18,7 @@ export default function DroneSavingWindow({opened, close, idsList}) {
             await addDrone(drone);
             setName('');
             setMessage('');
+            finishSelecting();
             close();
         } catch {
             setMessage('Не вдалося зберегти дрон');

@@ -29,6 +29,8 @@ export const getAllMotors = async (
 };
 
 export const getMotorById = async (id) => {
+    if (id === null || id === undefined || Number.isNaN(id))
+        return {data: null};
     const response = await api.get(`/motor/${id}`);
     return response.data;
 }

@@ -1,6 +1,6 @@
 import { NavLink, Button } from '@mantine/core';
 import { Outlet, useNavigate } from "react-router-dom";
-import {jwtService} from "../../services/JWTService.jsx";
+import { useJWT } from "../../hooks/useJWT.jsx";
 import home from '../../assets/home.svg';
 import questions from '../../assets/questions.svg';
 import SidebarIcon from './SidebarIcon.jsx'
@@ -8,6 +8,7 @@ import SidebarLabel from './SidebarLabel.jsx'
 import '../../styles/Forum.css';
 
 function ForumSidebar() {
+    const {isLoggedIn} = useJWT();
     const navigate = useNavigate();
     return(
         <div className='forum-page-container'>
@@ -28,7 +29,7 @@ function ForumSidebar() {
                     <div className='button-container'>
                         <Button
                             onClick={() => {
-                                jwtService.isLoggedIn() ? navigate("/write-post") : navigate("/log-in")
+                                isLoggedIn ? navigate("/write-post") : navigate("/log-in")
                             }}
                             fullWidth
                         >

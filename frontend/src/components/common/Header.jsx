@@ -7,20 +7,22 @@ import {NavLink} from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import {Link} from "react-router";
 import {useJWT} from "../../hooks/useJWT.jsx"
-import {jwtService} from "../../services/JWTService.jsx";
 
 function Header() {
+    const { isLoggedIn, setToken } = useJWT();
     const navigate = useNavigate();
 
     const logOut = () => {
-        jwtService.setToken(null);
+        setToken(null);
         navigate('/log-in');
     }
 
     return(
         <section className="nav-container">
             <article className='nav-main-container'>
-                <img src={logo} alt={"DRONE WORKSHOP"} className="nav-logo"/>
+                <img src={logo} alt={"DRONE WORKSHOP"} className="nav-logo"
+                     onClick={() => navigate('/')} style={{cursor: "pointer"}}
+                />
                 <ul className='nav-category-container'>
                     <NavLink
                         label={<span className='nav-category'>КОМПОНЕНТИ</span>}
@@ -41,7 +43,7 @@ function Header() {
                 </ul>
             </article>
             {
-                useJWT().isLoggedIn() ? (
+                isLoggedIn ? (
                     <div className="nav-auth-container">
                         <Link to='/profile'>
                             <img
