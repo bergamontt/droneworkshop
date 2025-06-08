@@ -6,16 +6,16 @@ import { Environment, OrbitControls } from '@react-three/drei';
 
 function Model() {
     
-    const gltf = useLoader(GLTFLoader, '/model/drone_v1.gltf');
+    const gltf = useLoader(GLTFLoader, '/model/drone_v3.glb');
     const modelRef = useRef();
 
     return (
         <primitive
             ref={modelRef}
             object={gltf.scene}
-            scale={[10, 10, 10]} 
+            scale={[1, 1, 1]}
             position={[0, 0, 0]} 
-            rotation={[0, 0, 0]}
+            rotation={[0, 0, 5.5]}
         />
     );
 }
@@ -23,7 +23,7 @@ function Model() {
 function DroneShowcase() {
     return (
         <Canvas
-            camera={{ position: [0, 2, 5], fov: 45 }}
+            camera={{ position: [0, -400, 200], fov: 45 }}
             style={{ height: '100vh', width: '100%' }}
             gl={{ antialias: true, powerPreference: 'high-performance' }}
             frameloop="demand"
