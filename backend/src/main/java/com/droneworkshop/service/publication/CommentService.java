@@ -1,11 +1,14 @@
 package com.droneworkshop.service.publication;
 
+import com.droneworkshop.dto.filter.publication.CommentFilterDto;
 import com.droneworkshop.dto.request.CommentRequestDto;
 import com.droneworkshop.mapper.request.CommentRequestMapper;
 import com.droneworkshop.model.publication.Comment;
 import com.droneworkshop.repository.publication.CommentRepository;
+import com.droneworkshop.specification.publication.CommentSpec;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,8 +23,9 @@ public class CommentService {
         return commentRepository.findById(id).orElse(null);
     }
 
-    public Page<Comment> getCommentsByPublicationId(int publicationId, Pageable pageable) {
-        return commentRepository.findCommentsByPublicationId(publicationId, pageable);
+    public Page<Comment> getCommentsByPublicationId(CommentFilterDto filter, Pageable pageable) {
+        Specification<Comment> spec = CommentSpec.buildSpecification(filter);
+        return commentRepository.findAll(CommentRepository.Specs.orderByTime(spec), pageable);
     }
 
     public Comment addComment(CommentRequestDto request) {

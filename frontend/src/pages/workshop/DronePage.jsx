@@ -14,6 +14,7 @@ function DronePage() {
             <article className="schema-main-container">
                 <SchemaShowcase
                     schema={drone}
+                    published={false}
                 />
             </article>
         </section>

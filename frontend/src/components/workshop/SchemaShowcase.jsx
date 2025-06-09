@@ -1,7 +1,7 @@
 import { Divider, Paper, Tabs, Avatar, ActionIcon, Tooltip } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { addPublication } from '../../services/PublicationService';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SidebarIcon from '../common/SidebarIcon'
 import SchemaComponents from './SchemaComponents';
 import SchemaFeatures from './SchemaFeatures';
@@ -11,11 +11,15 @@ import list from '../../assets/list.svg'
 import publish from '../../assets/publish.svg'
 import '../../styles/Schema.css'
 
-function SchemaShowcase({schema}) {
+function SchemaShowcase({schema, published = false}) {
     
     if(!schema) return (<></>);
 
-    const [isPublished, setIsPublished] = useState(schema?.published ?? false);
+    const [isPublished, setIsPublished] = useState(published);
+
+    useEffect(() => {
+        setIsPublished(published);
+    }, [published, schema]);
 
     const handlePublication = async () => {
         try {

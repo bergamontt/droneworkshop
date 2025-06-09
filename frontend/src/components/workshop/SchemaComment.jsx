@@ -1,7 +1,11 @@
 import { Avatar, Divider } from '@mantine/core'
+import { format } from "date-fns";
 import '../../styles/SchemaComments.css'
 
-function SchemaComment() {
+function SchemaComment({comment}) {
+
+    if (!comment) return <></>;
+
     return(
         <article className='schema-comment-container'>
             
@@ -10,23 +14,23 @@ function SchemaComment() {
             <div className='comment-main-container'>
                 <div className='comment-user-container'>
                     <Avatar radius="xl" color="blue" size="md" style>
-                        V
+                        {comment?.username?.charAt(0)?.toUpperCase() ?? null}
                     </Avatar>
                     <span className='comment-creator-username'>
-                        vovan228
+                        {comment?.username ?? "Deleted user"}
                     </span>
                 </div>
 
                 <div className='comment-main-data'>
                     <div className='comment-user-text'>
                         <span>
-                            Я б замінив окуня на карася і була би просто пушка.
+                            {comment.description}
                         </span>
                     </div>
 
                     <div className='comment-date-container'>
                         <span className='comment-date'>
-                            07.06.2025
+                            {format(comment.createdAt, 'dd.MM.yyyy, HH:mm')}
                         </span>
                     </div> 
                 </div>

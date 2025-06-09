@@ -1,5 +1,6 @@
 package com.droneworkshop.controller.publication;
 
+import com.droneworkshop.dto.filter.publication.CommentFilterDto;
 import com.droneworkshop.dto.request.CommentRequestDto;
 import com.droneworkshop.model.publication.Comment;
 import com.droneworkshop.service.publication.CommentService;
@@ -24,10 +25,10 @@ public class CommentController {
 
     @GetMapping(value = "/comment")
     public Page<Comment> getCommentsByPublicationId(
-            @ModelAttribute Integer publicationId,
+            @ModelAttribute CommentFilterDto filter,
             Pageable pageable
     ) {
-        return commentService.getCommentsByPublicationId(publicationId, pageable);
+        return commentService.getCommentsByPublicationId(filter, pageable);
     }
 
     @PostMapping("/comment")

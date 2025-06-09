@@ -1,7 +1,6 @@
 import { useFetch } from '../../hooks/useFetch'
 import { useParams } from 'react-router-dom';
-import { getPublicationById } from '../../services/PublicationService'; 
-import { getCommentsByPublicationtId } from '../../services/CommentService'
+import { getPublicationById } from '../../services/PublicationService';
 import SchemaShowcase from '../../components/workshop/SchemaShowcase';
 import SchemaComments from '../../components/workshop/SchemaComments';
 import '../../styles/Schema.css'
@@ -10,7 +9,6 @@ function PublicationPage() {
 
     const { publicationId } = useParams();
     const { data: publication } = useFetch(getPublicationById, publicationId);
-    const { data: comments } = useFetch(getCommentsByPublicationtId, publicationId);
 
     if(!publication?.drone) return <></>;
     
@@ -21,6 +19,7 @@ function PublicationPage() {
             <article className="schema-main-container">
                 <SchemaShowcase
                     schema={drone}
+                    published={!!drone}
                 />
             </article>
             <article className='schema-comments-container' >
