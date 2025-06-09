@@ -4,6 +4,17 @@ import {useDisclosure} from "@mantine/hooks";
 import { useJWT } from "../../hooks/useJWT.jsx";
 import {droneValidationService} from "../../services/DroneValidationService.jsx";
 import {useNavigate} from "react-router-dom";
+import {getAntennaById} from "../../services/AntennaService.jsx";
+import {useFetch} from "../../hooks/useFetch.jsx";
+import {getBatteryById} from "../../services/BatteryService.jsx";
+import {getCameraById} from "../../services/CameraService.jsx";
+import {getFrameById} from "../../services/FrameService.jsx";
+import {getMotorById} from "../../services/MotorService.jsx";
+import {getPropellerById} from "../../services/PropellerService.jsx";
+import {getRXById} from "../../services/RXService.jsx";
+import {getStackById} from "../../services/StackService.jsx";
+import {getVTXById} from "../../services/VTXService.jsx";
+import {notifications} from "@mantine/notifications";
 
 export default function DetailSelectionFooter({ isSelecting, startSelecting, finishSelecting, getSelectedDetailId}) {
     
@@ -22,7 +33,36 @@ export default function DetailSelectionFooter({ isSelecting, startSelecting, fin
         stackId: getSelectedDetailId("stack"),
         vtxId: getSelectedDetailId("vtx"),
     }
-    const droneValid = droneValidationService.isValid(idsList);
+    const detailsList = {
+        rxAntenna: useFetch(getAntennaById, idsList.rxAntennaId).data,
+        vtxAntenna: useFetch(getAntennaById, idsList.vtxAntennaId).data,
+        battery: useFetch(getBatteryById, idsList.batteryId).data,
+        camera: useFetch(getCameraById, idsList.cameraId).data,
+        frame: useFetch(getFrameById, idsList.frameId).data,
+        motor: useFetch(getMotorById, idsList.motorId).data,
+        propeller: useFetch(getPropellerById, idsList.propellerId).data,
+        rx: useFetch(getRXById, idsList.rxId).data,
+        stack: useFetch(getStackById, idsList.stackId).data,
+        vtx: useFetch(getVTXById, idsList.vtxId).data,
+    }
+
+    const droneValid = droneValidationService.isValid(detailsList);
+    const issues = droneValidationService.getIssues(detailsList);
+
+    let sizeInches;
+    if(detailsList.frame)
+        sizeInches = detailsList.frame.propellersInches;
+    else if(detailsList.propeller)
+        sizeInches = detailsList.propeller.sizeInches;
+    else
+        sizeInches = null;
+
+    let mass = Object.values(detailsList).reduce(
+        (acc, detail) => acc + (detail?.mass || 0), 0);
+
+    let price = Object.values(detailsList).reduce(
+        (acc, detail) => acc + (detail?.startingPrice || 0), 0);
+
 
     return (
         <Paper
@@ -54,21 +94,43 @@ export default function DetailSelectionFooter({ isSelecting, startSelecting, fin
                 </Button>
 
                 <Group gap="xs" wrap="nowrap">
-                    <Text size="sm">Маса:</Text>
+                    <Text size="sm">Приблизна маса:</Text>
                     <Text size="sm" w={60} ta="center">
-                        <b>{isSelecting ? "250 г" : "-"}</b>
+                        <b>{isSelecting ? mass.toFixed(1) + "г" : "-"}</b>
                     </Text>
 
                     <Text size="sm">Розмір:</Text>
                     <Text size="sm" w={40} ta="center">
-                        <b>{isSelecting ? '5"' : "-"}</b>
+                        <b>{isSelecting && sizeInches? sizeInches + '"' : "-"}</b>
                     </Text>
 
-                    <Text size="sm">Ціна:</Text>
+                    <Text size="sm">Мінімальна ціна:</Text>
                     <Text size="sm" w={80} ta="center">
-                        <b>{isSelecting ? "7687 грн" : "-"}</b>
+                        <b>{isSelecting ? price.toFixed(2) + " грн" : "-"}</b>
                     </Text>
                 </Group>
+
+                <Button
+                    w={250}
+                    size="sm"
+                    radius="md"
+                    color="teal"
+                    onClick={() =>(
+                        notifications.show({
+                            color: 'red',
+                            title: 'Проблеми з дроном:',
+                            message:
+                                <ul style={{ margin: 0, paddingLeft: 20 }}>
+                                    {issues.map((msg, index) => (
+                                        <li key={index}>{msg}</li>
+                                    ))}
+                                </ul>,
+                        })
+                    )}
+                    disabled={droneValid}
+                >
+                    Отримати список проблем
+                </Button>
 
                 <Button
                     w={140}
