@@ -24,7 +24,7 @@ export default function SchemaPage() {
             }}
         >
             <div style={{ flex: 1 }}>
-                <DroneShowcase />
+                <DroneShowcase getSelectedDetailId={getSelectedDetailId} />
             </div>
 
             <Group justify="flex-end" gap="0" style={{ position: 'relative', zIndex: 1 }}>

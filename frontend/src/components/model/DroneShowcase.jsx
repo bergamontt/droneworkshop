@@ -1,12 +1,10 @@
-import { useLoader } from '@react-three/fiber';
+import {invalidate, useLoader} from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas } from '@react-three/fiber';
 import {Suspense, useEffect, useRef} from 'react';
 import { Environment, OrbitControls } from '@react-three/drei';
-import {useListSelect} from "../../hooks/useListSelect.jsx";
 
-function Model() {
-    const { getSelectedDetailId } = useListSelect();
+function Model({getSelectedDetailId}) {
     const gltf = useLoader(GLTFLoader, '/model/drone_v4.glb');
     const modelRef = useRef();
 
@@ -27,12 +25,14 @@ function Model() {
         ];
         modelRef.current.traverse((child) => {
             if (child.isMesh && detailList.includes(child.name.toLowerCase())) {
-                if (getSelectedDetailId(child.name.toLowerCase()))
+                const detailId = getSelectedDetailId(child.name.toLowerCase());
+                if (detailId)
                     markSelected(child);
                 else
                     markUnselected(child);
             }
         });
+        invalidate();
     }, [getSelectedDetailId, gltf]);
 
     return (
@@ -46,7 +46,7 @@ function Model() {
     );
 }
 
-function DroneShowcase() {
+function DroneShowcase({getSelectedDetailId}) {
     return (
         <Canvas
             camera={{ position: [0, -400, 200], fov: 45 }}
@@ -62,7 +62,7 @@ function DroneShowcase() {
                 backgroundBlurriness={0.7}
             /> 
             <Suspense fallback={null}>
-                <Model />
+                <Model getSelectedDetailId={getSelectedDetailId} />
             </Suspense>
             <OrbitControls
                 enablePan={false}
