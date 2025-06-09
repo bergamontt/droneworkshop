@@ -1,35 +1,64 @@
-import {invalidate, useLoader} from '@react-three/fiber';
+import { invalidate, useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas } from '@react-three/fiber';
-import {Suspense, useEffect, useRef} from 'react';
+import { Suspense, useEffect, useRef } from 'react';
 import { Environment, OrbitControls } from '@react-three/drei';
 
-function Model({getSelectedDetailId}) {
-    const gltf = useLoader(GLTFLoader, '/model/drone_v4.glb');
+function Model({ getSelectedDetailId }) {
+    
+    const gltf = useLoader(GLTFLoader, '/model/drone_v4.gltf');
     const modelRef = useRef();
 
     const markSelected = (child) => {
         child.material = child.material.clone();
-        child.material.color.set('rgba(30,30,30,0.27)');
-    }
+        //child.material.color.set('rgba(30,30,30,0.27)');
+    };
 
     const markUnselected = (child) => {
         child.material = child.material.clone();
         child.material.color.set('#ff0000');
-    }
+    };
+
+    const handlePointerOver = (child) => {
+        child.material = child.material.clone();
+        child.material.emissive.set('white'); 
+        child.material.emissiveIntensity = 0.5; 
+        invalidate();
+    };
+
+    const handlePointerOut = (child, wasSelected) => {
+        child.material = child.material.clone();
+        child.material.emissive.set('black'); 
+        child.material.emissiveIntensity = 0;
+        if (wasSelected) {
+            markSelected(child);
+        } else {
+            markUnselected(child);
+        }
+        invalidate();
+    };
 
     useEffect(() => {
+        
         if (!modelRef.current) return;
-        const detailList = ["antenna_rx", "antenna_vtx", "battery",
-            "camera", "frame", "motor", "propeller", "rx", "stack", "vtx",
+        
+        const detailList = [
+            'antenna_rx', 'antenna_vtx', 'battery',
+            'camera', 'frame', 'motor', 'propeller', 'rx', 'stack', 'vtx',
         ];
+
         modelRef.current.traverse((child) => {
             if (child.isMesh && detailList.includes(child.name.toLowerCase())) {
                 const detailId = getSelectedDetailId(child.name.toLowerCase());
-                if (detailId)
+               
+                if (detailId) {
                     markSelected(child);
-                else
+                } else {
                     markUnselected(child);
+                }
+               
+                child.userData.onPointerOver = () => handlePointerOver(child);
+                child.userData.onPointerOut = () => handlePointerOut(child, !!detailId);
             }
         });
         invalidate();
@@ -41,12 +70,29 @@ function Model({getSelectedDetailId}) {
             object={gltf.scene}
             scale={[1, 1, 1]}
             position={[0, 0, 0]}
-            rotation={[0, 0, 5.5]}
+            rotation={[0, 0, 0]}
+            
+            onPointerOver={(e) => {
+                e.stopPropagation();
+                const child = e.object;
+                if (child.userData.onPointerOver) {
+                    child.userData.onPointerOver();
+                }
+            }}
+            
+            onPointerOut={(e) => {
+                e.stopPropagation();
+                const child = e.object;
+                if (child.userData.onPointerOut) {
+                    child.userData.onPointerOut();
+                }
+            }}
+
         />
     );
 }
 
-function DroneShowcase({getSelectedDetailId}) {
+function DroneShowcase({ getSelectedDetailId }) {
     return (
         <Canvas
             camera={{ position: [0, -400, 200], fov: 45 }}
@@ -70,7 +116,7 @@ function DroneShowcase({getSelectedDetailId}) {
                 enableRotate={true}
             />
         </Canvas>
-  );
+    );
 }
 
 export default DroneShowcase;
