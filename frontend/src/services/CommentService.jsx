@@ -16,6 +16,5 @@ export const getCommentsByPublicationtId = async (
 };
 
 export const addComment = async (comment) => {
-    const response = await api.post('/comment', comment);
-    return response.data;
+    await api.post('/comment', comment);
 }

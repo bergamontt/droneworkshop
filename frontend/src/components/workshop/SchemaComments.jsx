@@ -1,5 +1,7 @@
 import SchemaComment from './SchemaComment';
-import { Divider, Pagination, Center } from '@mantine/core'
+import CommentModal from './CommentModal';
+import { Divider, Pagination, Center, Modal, Button, Space } from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks';
 import { useFetchUnique } from '../../hooks/useFetchUnique';
 import { getCommentsByPublicationtId } from '../../services/CommentService';
 import { elementsPerPage } from '../../services/ServiceConfig';
@@ -8,6 +10,7 @@ import '../../styles/SchemaComments.css'
 
 function SchemaComments({publicationId}) {
     
+    const [opened, { open, close }] = useDisclosure(false);
     const [activePage, setPage] = useState(1);
 
     const { data: comments } = useFetchUnique(
@@ -20,25 +23,45 @@ function SchemaComments({publicationId}) {
 
     return(
         <section className="schema-comments-container">
+            
             <article className="comments-count-container">
+                
                 <span className="comments-count">
                     Коментарі ({comments?.content?.length})
                 </span>
+
+                <Modal
+                    opened={opened}
+                    onClose={close}
+                    title="Меню створення коментаря"
+                    centered
+                >
+                    <CommentModal 
+                        publicationId={publicationId}
+                    />
+                </Modal>
+
+                <Button
+                    variant="light"
+                    onClick={open}
+                >
+                    + Написати коментарій
+                </Button>
+
             </article>
+            
             <article className="comments-container">
-                {
-                    comments?.content?.map((comment) =>
-                        (<SchemaComment
-                            comment={comment}
-                        />))
-                }
-                {
-                    comments?.content?.length > 0 &&
-                    <Divider size={"sm"}/>
-                }
+                {comments?.content?.length > 0 &&
+                    <Space h="md" />}
+                {comments?.content?.map((comment) =>
+                    (<SchemaComment
+                        comment={comment}
+                    />))}
+                {comments?.content?.length > 0 &&
+                    <Divider size={"sm"}/>}
             </article>
-            {
-                comments?.content?.length > 0 &&
+            
+            {comments?.content?.length > 0 &&
                 <Center mt="xl">
                     <Pagination 
                         total={totalPages} 
@@ -46,8 +69,8 @@ function SchemaComments({publicationId}) {
                         onChange={setPage} 
                         size="md" 
                     />
-                </Center>
-            }
+                </Center>}
+
         </section>
     );
 }

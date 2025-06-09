@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class CommentRequestDto {
     private String username;
-    private int publicationId;
+    private Integer publicationId;
     private String description;
 }

@@ -10,7 +10,8 @@
 }
 
 .comments-count-container {
-    padding-bottom: 2em;
+    display: flex;
+    justify-content: space-between;
 }
 
 .comments-count {
@@ -43,7 +44,7 @@
 .comment-creator-username {
     font-family: 'Roboto', sans-serif;
     font-size: 0.8em;
-    padding: 0em;
+    padding: 0;
     padding-top: 0.5em;
 }
 

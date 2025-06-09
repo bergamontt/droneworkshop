@@ -23,7 +23,9 @@ function PublicationPage() {
                 />
             </article>
             <article className='schema-comments-container' >
-                <SchemaComments />
+                <SchemaComments 
+                    publicationId={publicationId}
+                />
             </article> 
         </section>
     );

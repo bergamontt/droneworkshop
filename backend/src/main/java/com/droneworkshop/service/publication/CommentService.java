@@ -28,9 +28,9 @@ public class CommentService {
         return commentRepository.findAll(CommentRepository.Specs.orderByTime(spec), pageable);
     }
 
-    public Comment addComment(CommentRequestDto request) {
+    public void addComment(CommentRequestDto request) {
         Comment comment = CommentRequestMapper.mapRequestToEntity(request);
-        return commentRepository.save(comment);
+        commentRepository.save(comment);
     }
 
 }

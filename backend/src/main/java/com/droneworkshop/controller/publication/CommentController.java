@@ -32,10 +32,11 @@ public class CommentController {
     }
 
     @PostMapping("/comment")
-    public Comment createComment(
-            @ModelAttribute CommentRequestDto request
+    public void createComment(
+            @RequestBody CommentRequestDto request
     ) {
-        return commentService.addComment(request);
+        System.out.println("Received CommentRequestDto: " + request);
+        commentService.addComment(request);
     }
 
 }
