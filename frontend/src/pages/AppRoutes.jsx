@@ -169,7 +169,7 @@ function AppRoutes() {
             <Route path="/write-post" element={<WritePostPage />}/>
             
             <Route path="/workshop" element={<WorkshopLayout />} >
-                <Route path="main" element={<PublicationsPage/>}/>
+                <Route path="main" element={<PublicationsPage personal={false} />}/>
                 <Route path="published" element={<PublicationsPage personal={true} />}/>
                 <Route path="drone/:droneId" element={<DronePage />}/>
                 <Route path="publication/:publicationId" element={<PublicationPage />}/>

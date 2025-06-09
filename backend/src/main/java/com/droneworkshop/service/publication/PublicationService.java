@@ -33,8 +33,7 @@ public class PublicationService {
 
     public Page<Publication> getFilteredPublications(PublicationFilterDto filter, Pageable pageable) {
         Specification<Publication> spec = buildSpecification(filter);
-
-        return publicationRepository.findAll(spec, pageable);
+        return publicationRepository.findAll(PublicationRepository.Specs.orderByDroneName(spec), pageable);
     }
 
     public Publication createPublication(PublicationRequestDto request) {

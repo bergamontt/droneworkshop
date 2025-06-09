@@ -1,10 +1,11 @@
 package com.droneworkshop.controller.publication;
 
+import com.droneworkshop.dto.request.CommentRequestDto;
 import com.droneworkshop.model.publication.Comment;
 import com.droneworkshop.service.publication.CommentService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CommentController {
@@ -20,4 +21,20 @@ public class CommentController {
     ) {
         return commentService.getCommentById(id);
     }
+
+    @GetMapping(value = "/comment")
+    public Page<Comment> getCommentsByPublicationId(
+            @ModelAttribute Integer publicationId,
+            Pageable pageable
+    ) {
+        return commentService.getCommentsByPublicationId(publicationId, pageable);
+    }
+
+    @PostMapping("/comment")
+    public Comment createComment(
+            @ModelAttribute CommentRequestDto request
+    ) {
+        return commentService.addComment(request);
+    }
+
 }

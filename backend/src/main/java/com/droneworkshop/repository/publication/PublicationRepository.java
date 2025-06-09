@@ -24,7 +24,7 @@ public interface PublicationRepository extends JpaRepository<Publication, Intege
                 if (username == null || username.isEmpty()) {
                     return builder.conjunction();
                 }
-                return builder.equal(root.join("drone").join("user").get("username"), username);
+                return builder.equal(root.join("drone").get("username"), username);
             };
         }
 

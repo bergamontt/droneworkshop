@@ -1,6 +1,5 @@
 package com.droneworkshop.model.publication;
 
-import com.droneworkshop.model.authentification.User;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -13,13 +12,11 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer commentId;
 
-    @ManyToOne
-    @JoinColumn(name = "username")
-    private User user;
+    @Column(nullable = false)
+    private String username;
 
-    @ManyToOne
-    @JoinColumn(name = "publication_id", nullable = false)
-    private Publication publication;
+    @Column(nullable = false)
+    private int publicationId;
 
     @Column(nullable = false, length = 2000)
     private String description;

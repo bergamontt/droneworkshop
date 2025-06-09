@@ -21,10 +21,15 @@ function DronesPage() {
             droneNamePrefix,
             username: currentUsername,
             isPublished: false
-        }),[]
+        }),[droneNamePrefix, currentUsername]
     );
 
     const handlePageChange = (page) => setPage(page);
+
+    const handleDronePrefixChange = (value) => {
+        setPage(1);
+        setDroneNamePrefix(value);
+    };
 
     if (!drones?.content) return <></>;
     
@@ -37,6 +42,7 @@ function DronesPage() {
             total={total}
             activePage={activePage}
             handlePageChange={handlePageChange}
+            handleDronePrefixChange={handleDronePrefixChange}
             name={"drone"}
         />
     );

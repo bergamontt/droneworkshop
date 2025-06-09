@@ -2,8 +2,6 @@ import { Flex } from "@mantine/core";
 import WorkshopElement from "./WorkshopElement";
 
 function WorkshopList({name, data}) {
-    
-    console.log('WorkshopList data:', data);
 
     if(!data) return <></>;
 

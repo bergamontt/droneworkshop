@@ -17,8 +17,8 @@ export const getAllPublications = async (
         ...(droneNamePrefix && { droneNamePrefix }),
         ...(username && { username })
     });
-        const response = await api.get(`/publication?${params.toString()}`);
-        return response.data; 
+    const response = await api.get(`/publication?${params.toString()}`);
+    return response.data; 
 };
 
 export const getPublicationById = async (id) => {

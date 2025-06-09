@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import WorkshopWrapper from '../../components/workshop/WorkshopWrapper.jsx';
 import '../../styles/Workshop.css'
 
+
 function PublicationsPage({personal = false}) {
     const { currentUsername } = useJWT();
     const [activePage, setPage] = useState(1);
@@ -14,16 +15,21 @@ function PublicationsPage({personal = false}) {
     useEffect(() => {
         setDroneNamePrefix('');
         setPage(1);
-    }, [personal]);
+    }, []);
 
     const { data: publications } = useFetchUnique(
         () => getAllPublications(activePage - 1, elementsPerPage, {
             droneNamePrefix,
-            username: personal && currentUsername,
-        }),[personal]
+            username: personal ? currentUsername : undefined,
+        }),[activePage, droneNamePrefix, personal, currentUsername]
     );
 
     const handlePageChange = (page) => setPage(page);
+
+    const handleDronePrefixChange = (value) => {
+        setPage(1);
+        setDroneNamePrefix(value);
+    };
 
     if (!publications?.content) return <></>;
 
@@ -34,14 +40,13 @@ function PublicationsPage({personal = false}) {
 
     if (!drones) return <></>;
 
-    console.log(drones);
-
     return(
         <WorkshopWrapper
             data={drones}
             total={total}
             activePage={activePage}
             handlePageChange={handlePageChange}
+            handlePrefixChange={handleDronePrefixChange}
             name={"publication"}
         />
     );

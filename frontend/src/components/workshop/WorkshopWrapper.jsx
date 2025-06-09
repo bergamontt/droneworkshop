@@ -3,12 +3,15 @@ import WorkshopList from '../workshop/WorkshopList';
 import Searchbar from '../common/Searchbar'
 import '../../styles/Workshop.css'
 
-function WorkshopWrapper ({name, data, total, activePage, handlePageChange}) {
+function WorkshopWrapper ({name, data, total, activePage, handlePageChange, handlePrefixChange}) {
     return(
         <section className="workshop-main-wrapper">
             <article className='workshop-data-container'>
                 <div className='workshop-searchbar-container'>
-                    <Searchbar />
+                    <Searchbar
+                        placeholder="Пошук..."
+                        onChange={handlePrefixChange}
+                    />
                 </div>
                 <Flex>
                     <WorkshopList

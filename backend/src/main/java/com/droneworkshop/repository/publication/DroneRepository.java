@@ -25,7 +25,7 @@ public interface DroneRepository extends JpaRepository<Drone, Integer>, JpaSpeci
                 if (username == null || username.isEmpty()) {
                     return builder.conjunction();
                 }
-                return builder.equal(root.join("user").get("username"), username);
+                return builder.equal(root.get("username"), username);
             };
         }
 
