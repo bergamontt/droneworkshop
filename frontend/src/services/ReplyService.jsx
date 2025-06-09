@@ -17,7 +17,7 @@ export const getRepliesByPostId = async (
 
 export const getReplyById = async (id) => {
     if (id === null || id === undefined || Number.isNaN(id))
-        return {data: null};
+        return null;
     const response = await api.get(`/reply/${id}`);
     return response.data;
 };

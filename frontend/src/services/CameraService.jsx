@@ -30,7 +30,7 @@ export const getAllCameras = async (
 
 export const getCameraById = async (id) => {
     if (id === null || id === undefined || Number.isNaN(id))
-        return {data: null};
+        return null;
     const response = await api.get(`/camera/${id}`);
     return response.data;
 }

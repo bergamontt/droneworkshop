@@ -30,7 +30,7 @@ export const getAllStacks = async (
 
 export const getStackById = async (id) => {
     if (id === null || id === undefined || Number.isNaN(id))
-        return {data: null};
+        return null;
     const response = await api.get(`/stack/${id}`);
     return response.data;
 }

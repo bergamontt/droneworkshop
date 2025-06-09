@@ -30,7 +30,7 @@ export const getAllRX = async (
 
 export const getRXById = async (id) => {
     if (id === null || id === undefined || Number.isNaN(id))
-        return {data: null};
+        return null;
     const response = await api.get(`/rx/${id}`);
     return response.data;
 }

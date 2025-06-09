@@ -30,7 +30,7 @@ export const getAllPropellers = async (
 
 export const getPropellerById = async (id) => {
     if (id === null || id === undefined || Number.isNaN(id))
-        return {data: null};
+        return null;
     const response = await api.get(`/propeller/${id}`);
     return response.data;
 }
