@@ -70,7 +70,7 @@ function Model() {
 
 function WelcomePage() {
     return (
-        <div style={{ height: '100vh', position: 'relative' }}>
+        <div style={{ height: 'calc(100vh - 120px)', position: 'relative' }}>
             <div style={{ height: '100%' }}>
                 <Canvas
                     camera={{ position: [0.2, 0.7, 4], fov: 60 }}

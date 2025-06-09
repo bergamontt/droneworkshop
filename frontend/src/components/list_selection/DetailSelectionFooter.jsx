@@ -6,6 +6,7 @@ import {droneValidationService} from "../../services/DroneValidationService.jsx"
 import {useNavigate} from "react-router-dom";
 
 export default function DetailSelectionFooter({ isSelecting, startSelecting, finishSelecting, getSelectedDetailId}) {
+    
     const { isLoggedIn } = useJWT();
     const navigate = useNavigate();
     const [opened, { open, close }] = useDisclosure(false);
@@ -35,7 +36,7 @@ export default function DetailSelectionFooter({ isSelecting, startSelecting, fin
                 left: 0,
                 width: '100vw',
                 height: '70px',
-                backgroundColor: 'rgba(109, 128, 125, 1)',
+                backgroundColor: 'rgb(101, 101, 101)',
                 zIndex: 1000,
                 display: 'flex',
                 alignItems: 'center',

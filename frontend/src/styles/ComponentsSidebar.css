@@ -1,7 +1,7 @@
 .components-sidebar-container {
     width: 320px;
-    max-height: calc(100vh - 120px); /* Ensures sidebar fits within viewport height, accounting for top offset */
-    position: sticky; /* Changed from sticky to fixed */
-    top: 120px; /* Maintains the same top offset */
-    overflow-y: auto; /* Enables vertical scrolling when content overflows */
+    max-height: calc(100vh - 120px); 
+    position: sticky; 
+    top: 120px; 
+    overflow-y: auto; 
 }
