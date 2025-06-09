@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Group, Modal, Textarea, Text, Stack, FileInput } from '@mantine/core';
+import SidebarIcon from '../common/SidebarIcon.jsx'
+import filePicture from '../../assets/file.svg'
 import { addDrone } from "../../services/DroneService.jsx";
-import { IconFileCv } from '@tabler/icons-react';
 
 export default function DroneSavingWindow({ opened, close, idsList, finishSelecting }) {
     const [name, setName] = useState('');
@@ -10,8 +11,6 @@ export default function DroneSavingWindow({ opened, close, idsList, finishSelect
     const [message, setMessage] = useState('');
     const [file, setFile] = useState();
     const drone = idsList;
-
-    const fileIcon = <IconFileCv size={18} stroke={1.5} />;
 
     const handleFileChange = (newFile) => {
         if (!newFile) {
@@ -89,9 +88,9 @@ export default function DroneSavingWindow({ opened, close, idsList, finishSelect
                     accept="image/png,image/jpeg,image/webp"
                     label="Фотографія дрона"
                     placeholder="Додати фото"
+                    leftSection={<SidebarIcon link={filePicture} size="1em"/>}
                     clearable
                     onChange={handleFileChange}
-                    leftSection={fileIcon}
                 />
                 {file &&
                     <img

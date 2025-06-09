@@ -56,7 +56,7 @@ export default function ManageProfilePage() {
 
     return (
         <div style={{
-            minHeight: '100vh',
+            minHeight: 'calc(100vh - 120px)',
             backgroundColor: 'rgba(109, 128, 125, 0.5)',
             padding: '2rem' }}
         >

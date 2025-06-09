@@ -23,6 +23,7 @@ function WorkshopList({name, data}) {
                         username={schema.username}
                         name={name}
                         id={schema.droneId}
+                        photoBase64={schema.photoBase64}
                     />
                 ))}       
             </Flex>

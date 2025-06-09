@@ -1,7 +1,5 @@
 import {
-    Anchor,
     Button,
-    Group,
     PasswordInput,
     Text,
     TextInput,
@@ -61,16 +59,6 @@ export default function LogInForm() {
                     {error}
                 </Text>
             )}
-
-            <Group justify="space-between" mt="lg">
-                <Anchor
-                    component="button"
-                    size="sm"
-                    onClick={() => navigate('/restore-password')}
-                >
-                    Забули пароль?
-                </Anchor>
-            </Group>
 
             <Button
                 fullWidth

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import defaultPicture from '../../assets/default.jpg'
 import '../../styles/Workshop.css'
 
-function WorkshopElement({name, id, droneName, username}) {
+function WorkshopElement({name, id, droneName, username, photoBase64}) {
     
     const navigate = useNavigate();
     
@@ -16,7 +16,7 @@ function WorkshopElement({name, id, droneName, username}) {
             onClick={handleClick}
         >
             <figure className="workshop-photo-container">
-                <img src={defaultPicture} className='workshop-photo'/>
+                <img src={photoBase64 ? photoBase64 : defaultPicture} className='workshop-photo'/>
             </figure>
             <article className='workshop-drone-text'>
                 <span className='workshop-drone-name'>{droneName}</span>

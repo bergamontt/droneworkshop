@@ -63,7 +63,7 @@ function SchemaShowcase({schema, published = false}) {
                     <Divider size={"sm"}/>
                     
                     <figure className='schema-photo-container'>
-                        <img src={defaultPhoto} className='schema-photo'/>
+                        <img src={schema.photoBase64 ? schema.photoBase64 : defaultPhoto} className='schema-photo'/>
                     </figure>
                     
                     <Divider size={"sm"}/>
