@@ -4,6 +4,7 @@ import { Canvas } from '@react-three/fiber';
 import { Suspense, useEffect, useRef } from 'react';
 import { Environment, OrbitControls } from '@react-three/drei';
 
+
 function Model({ getSelectedDetailId }) {
     
     const gltf = useLoader(GLTFLoader, '/model/drone_v4.gltf');
@@ -11,12 +12,14 @@ function Model({ getSelectedDetailId }) {
 
     const markSelected = (child) => {
         child.material = child.material.clone();
-        //child.material.color.set('rgba(30,30,30,0.27)');
+        child.material.transparent = false;
+        child.material.opacity = 1;
     };
 
     const markUnselected = (child) => {
         child.material = child.material.clone();
-        child.material.color.set('#ff0000');
+        child.material.transparent = true;
+        child.material.opacity = 0.2;
     };
 
     const handlePointerOver = (child) => {
