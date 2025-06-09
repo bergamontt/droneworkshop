@@ -26,9 +26,30 @@ export const getDroneById = async (id) => {
 };
 
 export const addDrone = async (drone) => {
-    const params = new URLSearchParams({
-        ...(drone)
+    console.log(drone);
+    const formData = new FormData();
+    formData.append('droneName', drone.droneName);
+    if(drone.photo)
+        formData.append('photo', drone.photo);
+    const fields = [
+        'userId',
+        'frameId',
+        'propellerId',
+        'cameraId',
+        'vtxId',
+        'rxId',
+        'vtxAntennaId',
+        'rxAntennaId',
+        'batteryId',
+        'motorId',
+        'stackId'
+    ];
+    fields.forEach((field) => {
+        if (drone[field] !== undefined && drone[field] !== null) {
+            formData.append(field, drone[field]);
+        }
     });
-    const response = await api.post(`/drone?${params.toString()}`);
+
+    const response = await api.post('/drone', formData);
     return response.data;
 }
