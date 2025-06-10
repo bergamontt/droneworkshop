@@ -38,4 +38,11 @@ public class PublicationController {
         return publicationService.createPublication(request);
     }
 
+    @GetMapping("/publication_drone/{droneId}")
+    public Publication getPublicationByDrone(
+            @PathVariable Integer droneId
+    ) {
+        return publicationService.getPublicationByDroneId(droneId);
+    }
+
 }

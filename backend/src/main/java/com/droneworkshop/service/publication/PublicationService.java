@@ -42,4 +42,8 @@ public class PublicationService {
         return publicationRepository.save(publication);
     }
 
+    public Publication getPublicationByDroneId(Integer droneId) {
+        return publicationRepository.findByDroneDroneId(droneId);
+    }
+
 }

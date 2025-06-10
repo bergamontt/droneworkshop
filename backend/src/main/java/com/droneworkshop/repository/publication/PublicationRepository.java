@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 public interface PublicationRepository extends JpaRepository<Publication, Integer>, JpaSpecificationExecutor<Publication> {
 
     boolean existsByDroneDroneId(Integer droneId);
+    Publication findByDroneDroneId(Integer droneId);
 
     interface Specs {
         static Specification<Publication> byDroneNamePrefix(String droneNamePrefix) {

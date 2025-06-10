@@ -27,3 +27,10 @@ export const getPublicationById = async (id) => {
     const response = await api.get(`/publication/${id}`);
     return response.data; 
 };
+
+export const getPublicationByDroneId = async (droneId) => {
+    if (droneId === null || droneId === undefined || Number.isNaN(droneId))
+        return null;
+    const response = await api.get(`/publication_drone/${droneId}`);
+    return response.data; 
+};

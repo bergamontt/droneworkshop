@@ -1,6 +1,6 @@
 import { useFetch } from '../../hooks/useFetch'
 import { useParams } from 'react-router-dom';
-import { getPublicationById } from '../../services/PublicationService';
+import { getPublicationByDroneId } from '../../services/PublicationService';
 import SchemaShowcase from '../../components/workshop/SchemaShowcase';
 import SchemaComments from '../../components/workshop/SchemaComments';
 import '../../styles/Schema.css'
@@ -8,7 +8,7 @@ import '../../styles/Schema.css'
 function PublicationPage() {
 
     const { publicationId } = useParams();
-    const { data: publication } = useFetch(getPublicationById, publicationId);
+    const { data: publication } = useFetch(getPublicationByDroneId, publicationId);
 
     if(!publication?.drone) return <div style={{"backgroundColor": "rgba(109, 128, 125, 0.5)"}}/>;
     
@@ -24,7 +24,7 @@ function PublicationPage() {
             </article>
             <article className='schema-comments-container' >
                 <SchemaComments 
-                    publicationId={publicationId}
+                    publicationId={publication?.publicationId}
                 />
             </article> 
         </section>
