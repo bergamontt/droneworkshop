@@ -9,7 +9,7 @@ import '../styles/DroneComponent.css'
 import {useListSelect} from "../hooks/useListSelect.jsx";
 
 function DroneComponent(props) {
-    const { getSelectedDetailId, selectDetailId } = useListSelect();
+    const { isSelecting, getSelectedDetailId, selectDetailId } = useListSelect();
     const selectedDetailId = getSelectedDetailId(props.name);
 
     const { componentId } = useParams();
@@ -33,15 +33,18 @@ function DroneComponent(props) {
                         <Divider size="sm"/>
                     </div>
                     <img src={component.photoLink} className="component-photo" />
-                    <Button
-                        size="lg"
-                        variant="filled"
-                        color="green"
-                        onClick={select}
-                        disabled={isSelected}
-                    >
-                        {isSelected ? "Деталь обрано" : "Додати до схеми"}
-                    </Button>
+                    {isSelecting &&
+                        <Button
+                            size="lg"
+                            variant="filled"
+                            color="green"
+                            onClick={select}
+                            disabled={isSelected}
+                            style={{marginRight: 'auto'}}
+                        >
+                            {isSelected ? "Деталь обрано" : "Додати до схеми"}
+                        </Button>
+                    }
                 </div>
             </article>
             <article className='component-data-contaner'>

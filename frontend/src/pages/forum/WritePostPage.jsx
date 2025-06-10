@@ -15,7 +15,7 @@ export default function WritePostPage() {
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
 
-    if (isLoggedIn)
+    if (!isLoggedIn)
         navigate('/log-in');
 
     const handlePostSubmission = async () => {

@@ -1,4 +1,4 @@
-import {Button, Group, Paper, Text} from "@mantine/core";
+import {Button, Group, Paper, ScrollArea, Text} from "@mantine/core";
 import DroneSavingWindow from "./DroneSavingWindow.jsx";
 import {useDisclosure} from "@mantine/hooks";
 import { useJWT } from "../../hooks/useJWT.jsx";
@@ -50,16 +50,13 @@ export default function DetailSelectionFooter({ isSelecting, startSelecting, fin
     const issues = droneValidationService.getIssues(detailsList);
 
     const showIssues = () => {
-        notifications.show({
-            color: 'red',
-            title: 'Проблеми з дроном:',
-            message:
-                <ul style={{ margin: 0, paddingLeft: 20 }}>
-                    {issues.map((msg, index) => (
-                        <li key={index}>{msg}</li>
-                    ))}
-                </ul>,
-        })
+        for(let issue of issues) {
+            notifications.show({
+                color: 'red',
+                title: 'Проблема з дроном',
+                message: issue,
+            })
+        }
     }
 
     let sizeInches;
