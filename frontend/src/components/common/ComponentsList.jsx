@@ -4,10 +4,10 @@ import {useListSelect} from "../../hooks/useListSelect.jsx";
 
 function ComponentsList(props) {
     const { isSelecting, getSelectedDetailId, selectDetailId } = useListSelect();
-    const selectedDetailId = getSelectedDetailId(props.detailName);
+    const selectedDetailId = getSelectedDetailId(props.name);
 
     const select = (id) => {
-        selectDetailId(props.detailName, id);
+        selectDetailId(props.name, id);
     }
 
     if (!props.data) return(<></>);

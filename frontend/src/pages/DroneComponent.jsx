@@ -1,16 +1,24 @@
 import { useFetch } from '../hooks/useFetch.jsx';
 import { useParams } from 'react-router-dom';
-import { Divider, Tabs  } from '@mantine/core';
+import {Button, Divider, Tabs} from '@mantine/core';
 import AttributeTable from '../components/common/AttributeTable.jsx';
 import DistributorTable from '../components/common/DistributorTable.jsx';
 import cart from '../assets/cart.svg'
 import list from '../assets/list.svg'
 import '../styles/DroneComponent.css'
+import {useListSelect} from "../hooks/useListSelect.jsx";
 
 function DroneComponent(props) {
+    const { getSelectedDetailId, selectDetailId } = useListSelect();
+    const selectedDetailId = getSelectedDetailId(props.name);
 
     const { componentId } = useParams();
     const { data: component } = useFetch(props.fetch, componentId);
+
+    const isSelected = selectedDetailId.toString() === componentId.toString();
+    const select = () => {
+        selectDetailId(props.name, componentId);
+    }
     
     if(!component) return (
         <div style={{"backgroundColor": "rgba(109, 128, 125, 0.5)"}}/>
@@ -25,6 +33,15 @@ function DroneComponent(props) {
                         <Divider size="sm"/>
                     </div>
                     <img src={component.photoLink} className="component-photo" />
+                    <Button
+                        size="lg"
+                        variant="filled"
+                        color="green"
+                        onClick={select}
+                        disabled={isSelected}
+                    >
+                        {isSelected ? "Деталь обрано" : "Додати до схеми"}
+                    </Button>
                 </div>
             </article>
             <article className='component-data-contaner'>

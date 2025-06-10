@@ -49,6 +49,19 @@ export default function DetailSelectionFooter({ isSelecting, startSelecting, fin
     const droneValid = droneValidationService.isValid(detailsList);
     const issues = droneValidationService.getIssues(detailsList);
 
+    const showIssues = () => {
+        notifications.show({
+            color: 'red',
+            title: 'Проблеми з дроном:',
+            message:
+                <ul style={{ margin: 0, paddingLeft: 20 }}>
+                    {issues.map((msg, index) => (
+                        <li key={index}>{msg}</li>
+                    ))}
+                </ul>,
+        })
+    }
+
     let sizeInches;
     if(detailsList.frame)
         sizeInches = detailsList.frame.propellersInches;
@@ -111,34 +124,14 @@ export default function DetailSelectionFooter({ isSelecting, startSelecting, fin
                 </Group>
 
                 <Button
-                    w={250}
-                    size="sm"
-                    radius="md"
-                    color="teal"
-                    onClick={() =>(
-                        notifications.show({
-                            color: 'red',
-                            title: 'Проблеми з дроном:',
-                            message:
-                                <ul style={{ margin: 0, paddingLeft: 20 }}>
-                                    {issues.map((msg, index) => (
-                                        <li key={index}>{msg}</li>
-                                    ))}
-                                </ul>,
-                        })
-                    )}
-                    disabled={droneValid}
-                >
-                    Отримати список проблем
-                </Button>
-
-                <Button
                     w={140}
                     size="sm"
                     radius="md"
                     color="blue"
-                    onClick={() => isLoggedIn ? open() : navigate('/log-in')}
-                    disabled={!droneValid}
+                    onClick={() => isLoggedIn ?
+                        (droneValid ? open() : showIssues())
+                        :
+                        navigate('/log-in')}
                 >
                     Зберегти дрон
                 </Button>

@@ -109,7 +109,7 @@ function DroneComponents(props) {
                         </ActionIcon>
                     </div>
                     
-                    <ComponentsList data={components} name={props.name} detailName={props.detailName}/>
+                    <ComponentsList data={components} name={props.name} />
                 </div>
 
                 <Center style={{"padding" : "1.5em", "backgroundColor": "rgb(174, 177, 180)"}}>
