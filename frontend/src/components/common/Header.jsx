@@ -26,7 +26,11 @@ function Header() {
                 <ul className='nav-category-container'>
                     <NavLink
                         label={<span className='nav-category'>КОМПОНЕНТИ</span>}
-                        onClick={() => navigate('/drone_components/antenna_rx')}
+                        onClick={() => navigate('/drone_components/antenna_vtx')}
+                    />
+                    <NavLink
+                        label={<span className='nav-category'>СХЕМИ</span>}
+                        onClick={() => navigate('/create-schema')}
                     />
                     <NavLink
                         label={<span className='nav-category'>МАЙСТЕРНЯ</span>}

@@ -35,7 +35,14 @@ public class DroneController {
     public DroneResponseDto createDrone(
             @ModelAttribute DroneRequestDto request
     ) {
-            return droneService.createDrone(request);
+        return droneService.createDrone(request);
+    }
+
+    @DeleteMapping("/drone/{id}")
+    public void deleteDroneById(
+            @PathVariable Integer id
+    ) {
+        droneService.deleteDrone(id);
     }
 
 }

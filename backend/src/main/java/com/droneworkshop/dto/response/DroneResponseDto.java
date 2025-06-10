@@ -9,7 +9,7 @@ public class DroneResponseDto {
     private Integer droneId;
     private String droneName;
     private String username;
-    private String photoBase64;
+    private String photo;
     private Frame frame;
     private Propeller propeller;
     private Camera camera;

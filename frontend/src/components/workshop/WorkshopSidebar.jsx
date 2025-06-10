@@ -18,7 +18,7 @@ function WorkshopSidebar() {
                     onClick={() => navigate('/workshop/main')}
                 ></NavLink>
                 <NavLink
-                    label={<SidebarLabel text="ВЛАСНI СХЕМИ" />}
+                    label={<SidebarLabel text="ОПУБЛIКОВАНЕ" />}
                     leftSection={<SidebarIcon link={schema} size={"1.5em"}/>}
                     onClick={() => navigate('/workshop/published')}
                 ></NavLink>
@@ -28,14 +28,6 @@ function WorkshopSidebar() {
                     onClick={() => navigate('/workshop/unpublished')}
                 ></NavLink>
             </article>
-            <Button
-                onClick={() => {
-                    navigate("/create-schema")
-                }}
-                fullWidth
-            >
-                + Створити схему
-            </Button>
         </section>
     );
 }

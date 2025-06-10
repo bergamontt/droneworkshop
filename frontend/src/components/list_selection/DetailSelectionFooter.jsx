@@ -116,7 +116,7 @@ export default function DetailSelectionFooter({ isSelecting, startSelecting, fin
 
                     <Text size="sm">Мінімальна ціна:</Text>
                     <Text size="sm" w={80} ta="center">
-                        <b>{isSelecting ? price.toFixed(2) + " грн" : "-"}</b>
+                        <b>{isSelecting ? price.toFixed(2) + "грн" : "-"}</b>
                     </Text>
                 </Group>
 

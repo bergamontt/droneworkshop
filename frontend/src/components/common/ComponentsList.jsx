@@ -1,6 +1,8 @@
-import { Flex } from '@mantine/core';
+import { Flex, Alert } from '@mantine/core';
 import ComponentsElement from './ComponentsElement';
+import SidebarIcon from './SidebarIcon.jsx';
 import {useListSelect} from "../../hooks/useListSelect.jsx";
+import info from '../../assets/info.svg'
 
 function ComponentsList(props) {
     const { isSelecting, getSelectedDetailId, selectDetailId } = useListSelect();
@@ -37,6 +39,18 @@ function ComponentsList(props) {
                     isSelecting={isSelecting}
                 />
             ))}
+            {
+                content.length === 0 &&
+                <Alert
+                    variant="white"
+                    color="blue"
+                    title="За Вашим запитом не було знайдено подібних компонентів."
+                    icon={<SidebarIcon link={info} size="1.5em" />}
+                    style={{width: "500px"}}
+                >
+                    Спробуйте змінити префікс моделі або переналаштуйте фільтри.
+                </Alert>
+            }      
         </Flex>
     )
 }

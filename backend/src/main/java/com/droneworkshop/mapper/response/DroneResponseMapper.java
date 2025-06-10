@@ -2,8 +2,6 @@ package com.droneworkshop.mapper.response;
 
 import com.droneworkshop.dto.response.DroneResponseDto;
 import com.droneworkshop.model.publication.Drone;
-import com.droneworkshop.repository.publication.PublicationRepository;
-
 import java.util.Base64;
 
 public class DroneResponseMapper {
@@ -28,7 +26,7 @@ public class DroneResponseMapper {
 
         if (drone.getPhoto() != null) {
             String base64Image = Base64.getEncoder().encodeToString(drone.getPhoto());
-            dto.setPhotoBase64("data:image/jpeg;base64," + base64Image);
+            dto.setPhoto(base64Image);
         }
 
         return dto;

@@ -15,7 +15,7 @@ export default function ComponentsElement(props) {
             className="component-element-container"
             style={{
                 cursor: 'pointer',
-                height: props.isSelecting ? "450px" : "400px"}}
+                height: props.isSelecting ? "420px" : "380px"}}
         >
             <figure className='component-photo-container' onClick={handleClick}>
                 <img src={props.photoLink} alt={props.model} className="component-element-photo" />
@@ -30,20 +30,22 @@ export default function ComponentsElement(props) {
                     </span>
                 </div>
             </div>
-            <span className="component-element-price" onClick={handleClick}>
-                Від {props.startingPrice}грн
-            </span>
-            {props.isSelecting &&
-                <Button
-                    style={{marginTop:"auto"}}
-                    variant="filled"
-                    color= {isSelected ? "grey" : "green"}
-                    onClick={() => props.select(props.id)}
-                    disabled={isSelected}
-                >
-                    {isSelected ? "Деталь обрано" : "Додати до схеми"}
-                </Button>
-            }
+            <div className="component-selection-wrapper">
+                <span className="component-element-price" onClick={handleClick}>
+                    Від {props.startingPrice}грн
+                </span>
+                {props.isSelecting &&
+                    <Button
+                        className="component-select-button"
+                        variant="filled"
+                        color= {isSelected ? "grey" : "green"}
+                        onClick={() => props.select(props.id)}
+                        disabled={isSelected}
+                    >
+                        {isSelected ? "Деталь обрано" : "Додати до схеми"}
+                    </Button>
+                }
+            </div>
         </div>
     );
 };

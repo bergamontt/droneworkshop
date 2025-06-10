@@ -1,7 +1,7 @@
 import { invalidate, useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas } from '@react-three/fiber';
-import { Suspense, useEffect, useRef } from 'react';
+import { Suspense, useEffect, useRef, useCallback } from 'react';
 import { Environment, OrbitControls } from '@react-three/drei';
 import { useNavigate } from "react-router-dom";
 
@@ -11,38 +11,46 @@ function Model({ getSelectedDetailId }) {
     const modelRef = useRef();
     const navigate = useNavigate();
 
-    const markSelected = (child) => {
-        child.material = child.material.clone();
+    const markSelected = useCallback((child) => {
+        if (!child.userData.baseMaterial) {
+            child.userData.baseMaterial = child.material.clone();
+        }
         child.material.transparent = false;
         child.material.opacity = 1;
-    };
+        child.material.emissive.set('black');
+        child.material.needsUpdate = true;
+    }, []);
 
-    const markUnselected = (child) => {
-        child.material = child.material.clone();
+    const markUnselected = useCallback((child) => {
+        if (!child.userData.baseMaterial) {
+            child.userData.baseMaterial = child.material.clone();
+        }
         child.material.transparent = true;
         child.material.opacity = 0.2;
-    };
+        child.material.emissive.set('black');
+        child.material.needsUpdate = true;
+    }, []);
 
-    const handlePointerOver = (child) => {
+    const handlePointerOver = useCallback((child) => {
         child.material = child.material.clone();
-        child.material.emissive.set('white'); 
+        child.material.emissive.set('white');
         invalidate();
-    };
+    }, []);
 
-    const handlePointerOut = (child, wasSelected) => {
+    const handlePointerOut = useCallback((child, wasSelected) => {
         child.material = child.material.clone();
-        child.material.emissive.set('black'); 
+        child.material.emissive.set('black');
         if (wasSelected) {
             markSelected(child);
         } else {
             markUnselected(child);
         }
         invalidate();
-    };
+    }, [markSelected, markUnselected]);
 
-    const handleClickOn = (child) => {
-        navigate(`/drone_components/${child.name.toLowerCase()}`)
-    }
+    const handleClickOn = useCallback((child) => {
+        navigate(`/drone_components/${child.name.toLowerCase()}`);
+    }, [navigate]);
 
     useEffect(() => {
         
@@ -105,7 +113,7 @@ function Model({ getSelectedDetailId }) {
 function DroneShowcase({ getSelectedDetailId }) {
     return (
         <Canvas
-            camera={{ position: [0, -400, 200], fov: 45 }}
+            camera={{ position: [-150, 300, 350], fov: 45 }}
             style={{ height: '100vh', width: '100%' }}
             gl={{ antialias: true, powerPreference: 'high-performance' }}
             frameloop="demand"
@@ -124,6 +132,8 @@ function DroneShowcase({ getSelectedDetailId }) {
                 enablePan={false}
                 enableZoom={true}
                 enableRotate={true}
+                minDistance={300}
+                maxDistance={600}
             />
         </Canvas>
     );

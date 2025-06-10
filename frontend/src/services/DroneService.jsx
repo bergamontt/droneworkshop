@@ -25,6 +25,12 @@ export const getDroneById = async (id) => {
     return response.data;
 };
 
+export const deleteDroneById = async (id) => {
+    if (id === null || id === undefined || Number.isNaN(id))
+        return null;
+    await api.delete(`/drone/${id}`);
+};
+
 export const addDrone = async (drone) => {
     console.log(drone);
     const formData = new FormData();

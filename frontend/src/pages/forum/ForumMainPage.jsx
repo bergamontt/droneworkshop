@@ -41,21 +41,22 @@ function ForumMainPage({personal = false}) {
         <div className='forum-main-container'>
             <div className='forum-posts-container'>
                 <Stack>
-                
-                <Searchbar
-                    placeholder="Знайти пост за назвою..."
-                    onChange={handlePostPrefixChange}
-                />
-
-                <PostsList posts={posts} />
-
-                <Center>
-                    <Pagination 
-                        total={total} 
-                        value={activePage} 
-                        onChange={handlePageChange}
+                    
+                    <Searchbar
+                        placeholder="Знайти пост за назвою..."
+                        onChange={handlePostPrefixChange}
                     />
-                </Center>
+
+                    <PostsList posts={posts} />
+
+                    <Center>
+                        <Pagination 
+                            total={total} 
+                            value={activePage} 
+                            onChange={handlePageChange}
+                        />
+                    </Center>
+                    
                 </Stack>
             </div>
         </div>

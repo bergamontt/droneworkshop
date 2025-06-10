@@ -65,4 +65,10 @@ public class DroneService {
         return dto;
     }
 
+    public void deleteDrone(Integer id) {
+        Drone drone = droneRepository.findById(id).orElse(null);
+        assert drone != null;
+        droneRepository.delete(drone);
+    }
+
 }

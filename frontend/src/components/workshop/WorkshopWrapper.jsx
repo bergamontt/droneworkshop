@@ -13,7 +13,7 @@ function WorkshopWrapper ({name, data, total, activePage, handlePageChange, hand
                         onChange={handlePrefixChange}
                     />
                 </div>
-                <Flex>
+                <Flex justify={'center'}>
                     <WorkshopList
                         name={name}
                         data={data}
