@@ -11,6 +11,7 @@ import {useState} from 'react';
 import {useJWT} from "../../hooks/useJWT.jsx";
 import {updateUserPassword} from "../../services/UserService.jsx";
 import {useNavigate} from "react-router-dom";
+import {notifications} from "@mantine/notifications";
 
 export default function ChangePasswordPage() {
     const {currentUsername, isLoggedIn} = useJWT();
@@ -33,9 +34,14 @@ export default function ChangePasswordPage() {
                 setMessage('Паролі не співпадають');
             } else {
                 await updateUserPassword(currentUsername, newPassword);
-                setMessage('Пароль успішно змінено!');
+                setMessage('');
                 setNewPassword('');
                 setConfirmPassword('');
+                notifications.show({
+                    color: 'green',
+                    title: 'Успіх',
+                    message: 'Пароль успішно змінено!',
+                })
             }
         } catch {
             setMessage('Не вдалося оновити пароль');

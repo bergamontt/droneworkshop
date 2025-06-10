@@ -15,7 +15,7 @@ function CommentModal({publicationId}) {
             await addComment({publicationId : publicationId, description, username: currentUsername});
             notifications.show({
                 title: 'Успіх!',
-                message: 'Ваш коментар було додано!',
+                message: 'Ваш коментар було додано! Перезавантажте сторінку',
                 color: 'green'
             });
         } catch {

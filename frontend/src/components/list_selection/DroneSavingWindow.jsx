@@ -3,6 +3,7 @@ import { Button, Group, Modal, Textarea, Text, Stack, FileInput } from '@mantine
 import SidebarIcon from '../common/SidebarIcon.jsx'
 import filePicture from '../../assets/file.svg'
 import { addDrone } from "../../services/DroneService.jsx";
+import {notifications} from "@mantine/notifications";
 
 export default function DroneSavingWindow({ opened, close, idsList, finishSelecting }) {
     const [name, setName] = useState('');
@@ -46,6 +47,11 @@ export default function DroneSavingWindow({ opened, close, idsList, finishSelect
             setFile(null);
             finishSelecting();
             close();
+            notifications.show({
+                color: 'green',
+                title: 'Дрон збережено',
+                message: 'Дрон успішно створено! Перевірте майстерню',
+            })
         } catch {
             setMessage('Не вдалося зберегти дрон');
         } finally {

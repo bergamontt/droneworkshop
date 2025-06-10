@@ -9,6 +9,7 @@ import {useState} from 'react';
 import {useJWT} from "../../hooks/useJWT.jsx";
 import {login} from "../../services/UserService.jsx";
 import '../../styles/authentification/LogInForm.css';
+import {notifications} from "@mantine/notifications";
 
 export default function LogInForm() {
     const navigate = useNavigate();
@@ -27,6 +28,11 @@ export default function LogInForm() {
             const token = await login(username, password);
             setToken(token);
             navigate("/profile")
+            notifications.show({
+                color: 'green',
+                title: 'Вхід успішний',
+                message: 'Ви ввійшли в акаунт!',
+            })
         } catch {
             setError('Не вдалося ввійти в акаунт');
         } finally {

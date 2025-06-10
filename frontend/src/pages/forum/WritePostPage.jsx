@@ -3,6 +3,7 @@ import {Container, Stack, Button, Title, Paper, Group, Textarea, Text} from '@ma
 import {useJWT} from "../../hooks/useJWT.jsx";
 import { useNavigate } from "react-router-dom";
 import { addPost } from "../../services/PostService.jsx";
+import {notifications} from "@mantine/notifications";
 
 export default function WritePostPage() {
     const {isLoggedIn} = useJWT();
@@ -24,7 +25,12 @@ export default function WritePostPage() {
 
         try {
             const postId = await addPost({topic, description, createdAt: new Date()});
-            navigate(`/forum/${postId}`);
+            navigate(`/forum/main/${postId}`);
+            notifications.show({
+                color: 'green',
+                title: 'Пост опубліковано',
+                message: 'Пост успішно додано!',
+            })
         } catch {
             setMessage('Не вдалося створити пост');
         } finally {

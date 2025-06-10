@@ -7,6 +7,7 @@ import {NavLink} from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import {Link} from "react-router";
 import {useJWT} from "../../hooks/useJWT.jsx"
+import {notifications} from "@mantine/notifications";
 
 function Header() {
     const { isLoggedIn, setToken } = useJWT();
@@ -15,6 +16,11 @@ function Header() {
     const logOut = () => {
         setToken(null);
         navigate('/log-in');
+        notifications.show({
+            color: 'green',
+            title: 'Вихід успішний',
+            message: 'Ви вийшли з облікового запису',
+        })
     }
 
     return(

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {Button, Group, Modal, Textarea, Text, Stack, Title} from '@mantine/core';
 import { addReply } from "../../services/ReplyService.jsx";
+import {notifications} from "@mantine/notifications";
 
 export default function ReplyCreationWindow({opened, post, close}) {
     const [description, setDescription] = useState('');
@@ -16,6 +17,11 @@ export default function ReplyCreationWindow({opened, post, close}) {
             await addReply({post, description, createdAt: new Date()});
             setDescription('');
             setMessage('');
+            notifications.show({
+                color: 'green',
+                title: 'Коментар опубліковано',
+                message: 'Комендар успішно додано! Перезавантажте сторінку',
+            })
             close();
         } catch {
             setMessage('Не вдалося відповісти на пост');

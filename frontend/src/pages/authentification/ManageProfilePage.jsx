@@ -16,6 +16,7 @@ import {getUserByUsername, updateUserInfo} from '../../services/UserService.jsx'
 import { useFetch } from '../../hooks/useFetch.jsx';
 import { useJWT } from "../../hooks/useJWT.jsx";
 import {useNavigate} from 'react-router-dom';
+import {notifications} from "@mantine/notifications";
 
 export default function ManageProfilePage() {
     const navigate = useNavigate();
@@ -46,7 +47,12 @@ export default function ManageProfilePage() {
             user.email = email;
             user.bio = bio;
             await updateUserInfo(user);
-            setMessage('Інформація успішно оновлена!');
+            setMessage('');
+            notifications.show({
+                color: 'green',
+                title: 'Інформація оновлена',
+                message: 'Профіль успішно оновлено!',
+            })
         } catch {
             setMessage('Не вдалося оновити інформацію');
         } finally {

@@ -8,6 +8,7 @@ import { useState } from 'react';
 import {registerUser} from "../../services/UserService.jsx";
 import {useNavigate} from "react-router-dom";
 import '../../styles/authentification/RegisterForm.css';
+import {notifications} from "@mantine/notifications";
 
 export default function RegisterForm() {
     const navigate = useNavigate();
@@ -30,6 +31,11 @@ export default function RegisterForm() {
             } else {
                 await registerUser({username, password, email});
                 navigate("/log-in");
+                notifications.show({
+                    color: 'green',
+                    title: 'Успіх',
+                    message: 'Профіль створено!',
+                })
             }
         } catch {
             setError('Не вдалося зареєструватися');
