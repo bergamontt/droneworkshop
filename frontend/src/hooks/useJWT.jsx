@@ -23,16 +23,14 @@ const getUsernameFromToken = (token) => {
 };
 
 export const useJWT = () => {
-    const [token, setTokenState] = useState(() => {
+    const getValidToken = () => {
         const t = jwtService.getToken();
         return isTokenExpired(t) ? null : t;
-    });
+    };
 
-    const [currentUsername, setCurrentUsername] = useState(
-        () => getUsernameFromToken(jwtService.getToken()));
-    const [isLoggedIn, setIsLoggedIn] = useState(
-        () => !isTokenExpired(jwtService.getToken()));
-
+    const [token, setTokenState] = useState(getValidToken);
+    const [currentUsername, setCurrentUsername] = useState(() => getUsernameFromToken(token));
+    const [isLoggedIn, setIsLoggedIn] = useState(() => !!token);
     const intervalRef = useRef(null);
 
     const updateStateFromToken = (newToken) => {
@@ -43,12 +41,9 @@ export const useJWT = () => {
     };
 
     const setToken = (newToken) => {
-        if (!newToken || isTokenExpired(newToken)) {
-            jwtService.setToken(null);
-        } else {
-            jwtService.setToken(newToken);
-        }
-        updateStateFromToken(newToken);
+        const validToken = isTokenExpired(newToken) ? null : newToken;
+        jwtService.setToken(validToken);
+        updateStateFromToken(validToken);
     };
 
     useEffect(() => {
@@ -65,13 +60,24 @@ export const useJWT = () => {
 
     useEffect(() => {
         const syncToken = () => {
-            const t = jwtService.getToken();
-            updateStateFromToken(t);
+            const latest = jwtService.getToken();
+            updateStateFromToken(latest);
         };
 
         window.addEventListener('storage', syncToken);
         return () => window.removeEventListener('storage', syncToken);
     }, []);
+
+    useEffect(() => {
+        const observer = setInterval(() => {
+            const current = jwtService.getToken();
+            if (current !== token) {
+                updateStateFromToken(current);
+            }
+        }, 200);
+
+        return () => clearInterval(observer);
+    }, [token]);
 
     return { token, currentUsername, isLoggedIn, setToken };
 };

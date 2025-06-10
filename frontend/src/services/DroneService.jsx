@@ -1,5 +1,4 @@
 import api from './api.jsx'
-import formDataApi from "./formDataApi.jsx";
 import {defaultPage, elementsPerPage} from "./ServiceConfig.jsx";
 
 export const getAllDrones = async (
@@ -57,6 +56,10 @@ export const addDrone = async (drone) => {
         }
     });
 
-    const response = await formDataApi.post('/drone', formData);
+    const response = await api.post('/drone', formData, {
+        headers: {
+            'Content-Type': undefined,
+        },
+    });
     return response.data;
 }
