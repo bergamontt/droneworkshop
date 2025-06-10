@@ -31,7 +31,7 @@ function DronesPage() {
         setDroneNamePrefix(value);
     };
 
-    if (!drones?.content) return <></>;
+    if (!drones?.content) return <div style={{"backgroundColor": "rgba(109, 128, 125, 0.5)"}}/>;
     
     const total = drones?.totalPages || 1;
     const data = drones.content;

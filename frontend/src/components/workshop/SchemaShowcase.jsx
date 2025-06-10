@@ -107,7 +107,7 @@ function SchemaShowcase({schema, published = false}) {
                         </Tabs.Panel>
 
                         <Tabs.Panel value="features">
-                            <SchemaFeatures />
+                            <SchemaFeatures schema={schema}/>
                         </Tabs.Panel>
 
                     </Tabs>

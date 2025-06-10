@@ -3,12 +3,13 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Canvas } from '@react-three/fiber';
 import { Suspense, useEffect, useRef } from 'react';
 import { Environment, OrbitControls } from '@react-three/drei';
-
+import { useNavigate } from "react-router-dom";
 
 function Model({ getSelectedDetailId }) {
     
     const gltf = useLoader(GLTFLoader, '/model/drone_v4.gltf');
     const modelRef = useRef();
+    const navigate = useNavigate();
 
     const markSelected = (child) => {
         child.material = child.material.clone();
@@ -25,14 +26,12 @@ function Model({ getSelectedDetailId }) {
     const handlePointerOver = (child) => {
         child.material = child.material.clone();
         child.material.emissive.set('white'); 
-        child.material.emissiveIntensity = 0.5; 
         invalidate();
     };
 
     const handlePointerOut = (child, wasSelected) => {
         child.material = child.material.clone();
         child.material.emissive.set('black'); 
-        child.material.emissiveIntensity = 0;
         if (wasSelected) {
             markSelected(child);
         } else {
@@ -40,6 +39,10 @@ function Model({ getSelectedDetailId }) {
         }
         invalidate();
     };
+
+    const handleClickOn = (child) => {
+        navigate(`/drone_components/${child.name.toLowerCase()}`)
+    }
 
     useEffect(() => {
         
@@ -74,7 +77,6 @@ function Model({ getSelectedDetailId }) {
             scale={[1, 1, 1]}
             position={[0, 0, 0]}
             rotation={[0, 0, 0]}
-            
             onPointerOver={(e) => {
                 e.stopPropagation();
                 const child = e.object;
@@ -82,7 +84,6 @@ function Model({ getSelectedDetailId }) {
                     child.userData.onPointerOver();
                 }
             }}
-            
             onPointerOut={(e) => {
                 e.stopPropagation();
                 const child = e.object;
@@ -90,7 +91,13 @@ function Model({ getSelectedDetailId }) {
                     child.userData.onPointerOut();
                 }
             }}
-
+            onClick={(e) => {
+                e.stopPropagation();
+                const child = e.object;
+                if (child.isMesh && child.name) {
+                    handleClickOn(child);
+                }
+            }}
         />
     );
 }

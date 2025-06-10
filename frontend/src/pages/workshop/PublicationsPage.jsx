@@ -31,14 +31,14 @@ function PublicationsPage({personal = false}) {
         setDroneNamePrefix(value);
     };
 
-    if (!publications?.content) return <></>;
+    if (!publications?.content) return <div style={{"backgroundColor": "rgba(109, 128, 125, 0.5)"}}/>;
 
     const total = publications?.totalPages || 1;
     const drones = publications.content.map((publication) => {
         return publication.drone
     });
 
-    if (!drones) return <></>;
+    if (!drones) return <div style={{"backgroundColor": "rgba(109, 128, 125, 0.5)"}}/>;
 
     return(
         <WorkshopWrapper

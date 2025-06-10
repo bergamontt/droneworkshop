@@ -4,7 +4,7 @@
 }
 
 .workshop-sidebar-container {
-    width: 340px;
+    max-width: 340px;
     height: calc(100vh - 120px);
     background-color: white;
     display: flex;

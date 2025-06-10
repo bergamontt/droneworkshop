@@ -10,7 +10,7 @@ function PublicationPage() {
     const { publicationId } = useParams();
     const { data: publication } = useFetch(getPublicationById, publicationId);
 
-    if(!publication?.drone) return <></>;
+    if(!publication?.drone) return <div style={{"backgroundColor": "rgba(109, 128, 125, 0.5)"}}/>;
     
     const drone = publication.drone;
 
