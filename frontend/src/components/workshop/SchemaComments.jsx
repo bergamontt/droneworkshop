@@ -1,5 +1,7 @@
 import SchemaComment from './SchemaComment';
 import CommentModal from './CommentModal';
+import { useJWT } from '../../hooks/useJWT';
+import { useNavigate } from 'react-router';
 import { Divider, Pagination, Center, Modal, Button, Space } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks';
 import { useFetchUnique } from '../../hooks/useFetchUnique';
@@ -10,6 +12,8 @@ import '../../styles/SchemaComments.css'
 
 function SchemaComments({publicationId}) {
     
+    const {isLoggedIn} = useJWT();
+    const navigate = useNavigate();
     const [opened, { open, close }] = useDisclosure(false);
     const [activePage, setPage] = useState(1);
 
@@ -43,7 +47,9 @@ function SchemaComments({publicationId}) {
 
                 <Button
                     variant="light"
-                    onClick={open}
+                    onClick={() => {
+                        isLoggedIn ? open() : navigate("/log-in");
+                    }}
                 >
                     + Написати коментарій
                 </Button>

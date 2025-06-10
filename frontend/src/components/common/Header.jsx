@@ -36,7 +36,7 @@ function Header() {
                     />
                     <NavLink
                         label={<span className='nav-category'>СХЕМИ</span>}
-                        onClick={() => navigate('/create-schema')}
+                        onClick={() => {isLoggedIn ? navigate('/create-schema') : navigate("/log-in")}}
                     />
                     <NavLink
                         label={<span className='nav-category'>МАЙСТЕРНЯ</span>}
