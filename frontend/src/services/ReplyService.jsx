@@ -26,3 +26,8 @@ export const addReply = async (reply) => {
     const response = await api.post('/reply', reply);
     return response.data;
 }
+
+export const deleteReply = async (id) => {
+    const response = await api.delete(`/reply/${id}`);
+    return response.data;
+}

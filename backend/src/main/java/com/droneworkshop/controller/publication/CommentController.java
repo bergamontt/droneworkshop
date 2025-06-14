@@ -39,4 +39,10 @@ public class CommentController {
         commentService.addComment(request);
     }
 
+    @DeleteMapping("/comment/{id}")
+    public void deleteCommentById(
+            @PathVariable int id
+    ) {
+        commentService.deleteCommentById(id);
+    }
 }

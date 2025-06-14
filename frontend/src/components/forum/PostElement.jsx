@@ -11,8 +11,6 @@ export default function PostElement({ post }) {
 
     if (!post) return <></>;
 
-    const truncated = (text, len = 100) => text.length > len ? text.substring(0, len) + '...' : text;
-
     return (
         <Paper withBorder shadow="xs" p="md" radius="md">
             <Grid gutter="sm" align="center">
@@ -20,11 +18,12 @@ export default function PostElement({ post }) {
                     <Title order={4} mb={6}
                            onClick={handleClick}
                            style={{ cursor: 'pointer' }}
+                           lineClamp={1}
                     >
-                        {truncated(post.topic, 160)}
+                        {post.topic}
                     </Title>
-                    <Text size="sm" c="dimmed">
-                        {truncated(post.description, 240)}
+                    <Text size="sm" c="dimmed" lineClamp={1}>
+                        {post.description}
                     </Text>
                 </Grid.Col>
                 <Grid.Col span={{ base: 12, sm: 3 }}>

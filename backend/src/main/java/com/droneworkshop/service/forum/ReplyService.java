@@ -1,6 +1,7 @@
 package com.droneworkshop.service.forum;
 
 import com.droneworkshop.dto.filter.forum.ReplyFilterDto;
+import com.droneworkshop.model.authentification.User;
 import com.droneworkshop.model.forum.Reply;
 import com.droneworkshop.repository.forum.ReplyRepository;
 import com.droneworkshop.service.authentification.UserService;
@@ -32,6 +33,14 @@ public class ReplyService {
 
     public Reply getReplyById(int id) {
         return replyRepository.findById(id).orElse(null);
+    }
+
+    public void deleteReplyById(int id) {
+        User user = userService.getCurrentUser();
+        Reply reply = replyRepository.findById(id).orElse(null);
+        assert reply != null;
+        assert reply.getUser().getUsername().equals(user.getUsername());
+        replyRepository.delete(reply);
     }
 
     public Page<Reply> getFilteredReplies(ReplyFilterDto filter, Pageable pageable) {

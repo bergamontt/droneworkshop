@@ -3,7 +3,7 @@ import {useNavigate} from "react-router-dom";
 import addCross from "../../assets/add_plus_square.svg";
 import {useFetch} from "../../hooks/useFetch.jsx";
 
-export default function SelectedDetail({fetch, id, detailsLink, detailLinkPrefix, name, deselect}) {
+export default function SelectedDetail({fetch, id, detailsLink, name, deselect}) {
     const navigate = useNavigate();
     const {data: detail} = useFetch(fetch, id);
     return (
@@ -75,7 +75,7 @@ export default function SelectedDetail({fetch, id, detailsLink, detailLinkPrefix
                         />
                     }
                     onClick={() =>
-                        navigate(detail ? `${detailLinkPrefix}/${detail.id}` : detailsLink)
+                        navigate(detail ? `${detailsLink}/${detail.id}` : detailsLink)
                     }
                 />
             </Group>

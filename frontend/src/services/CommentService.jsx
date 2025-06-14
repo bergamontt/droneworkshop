@@ -18,3 +18,8 @@ export const getCommentsByPublicationtId = async (
 export const addComment = async (comment) => {
     await api.post('/comment', comment);
 }
+
+export const deleteComment = async (id) => {
+    const response = await api.delete(`/comment/${id}`);
+    return response.data;
+}

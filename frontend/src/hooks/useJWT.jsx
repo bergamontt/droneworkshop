@@ -50,13 +50,12 @@ export const useJWT = () => {
         intervalRef.current = setInterval(() => {
             const currentToken = jwtService.getToken();
             if (isTokenExpired(currentToken)) {
-                jwtService.setToken(null);
-                updateStateFromToken(null);
+                setToken(currentToken);
             }
         }, 5000);
 
         return () => clearInterval(intervalRef.current);
-    }, []);
+    });
 
     useEffect(() => {
         const syncToken = () => {

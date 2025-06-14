@@ -33,4 +33,11 @@ public class ReplyController {
     ) {
         return replyService.getReplyById(id);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteReplyById(
+            @PathVariable int id
+    ) {
+        replyService.deleteReplyById(id);
+    }
 }
