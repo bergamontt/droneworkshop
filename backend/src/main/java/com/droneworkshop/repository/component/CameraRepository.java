@@ -26,7 +26,7 @@ public interface CameraRepository extends JpaRepository<Camera, Integer>, JpaSpe
                 if (modelPrefix == null || modelPrefix.isEmpty()) {
                     return builder.conjunction();
                 }
-                return builder.like(root.get("model"), modelPrefix + "%");
+                return builder.like(root.get("model"), "%" + modelPrefix + "%");
             };
         }
 

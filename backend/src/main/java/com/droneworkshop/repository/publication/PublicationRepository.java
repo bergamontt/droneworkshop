@@ -16,7 +16,7 @@ public interface PublicationRepository extends JpaRepository<Publication, Intege
                 if (droneNamePrefix == null || droneNamePrefix.isEmpty()) {
                     return builder.conjunction();
                 }
-                return builder.like(root.join("drone").get("droneName"), droneNamePrefix + "%");
+                return builder.like(root.join("drone").get("droneName"), "%" + droneNamePrefix + "%");
             };
         }
 

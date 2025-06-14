@@ -16,7 +16,7 @@ public interface DroneRepository extends JpaRepository<Drone, Integer>, JpaSpeci
                 if (droneNamePrefix == null || droneNamePrefix.isEmpty()) {
                     return builder.conjunction();
                 }
-                return builder.like(root.get("droneName"), droneNamePrefix + "%");
+                return builder.like(root.get("droneName"), "%" + droneNamePrefix + "%");
             };
         }
 

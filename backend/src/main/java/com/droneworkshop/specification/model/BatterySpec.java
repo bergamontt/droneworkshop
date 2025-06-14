@@ -37,21 +37,17 @@ public class BatterySpec {
                 assert query != null;
                 query.distinct(true);
 
-                // Сортування за найменшою ціною
                 if ("minPrice".equalsIgnoreCase(filter.getSortBy())) {
-                    // Субзапит для отримання мінімальної ціни
                     Subquery<Integer> subquery = query.subquery(Integer.class);
                     var subRoot = subquery.from(Battery.class);
                     Join<Battery, Distributor> subDistributorJoin = subRoot.join("distributors");
                     subquery.select(builder.min(subDistributorJoin.get("price")))
                             .where(builder.equal(subRoot.get("id"), root.get("id")));
 
-                    // Сортування за результатом субзапиту
                     query.orderBy("ASC".equalsIgnoreCase(filter.getSortDirection())
                             ? builder.asc(subquery)
                             : builder.desc(subquery));
                 }
-                // Сортування за моделлю
                 else if ("model".equalsIgnoreCase(filter.getSortBy())) {
                     query.orderBy("ASC".equalsIgnoreCase(filter.getSortDirection())
                             ? builder.asc(root.get("model"))

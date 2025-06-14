@@ -26,7 +26,7 @@ public interface RXRepository extends JpaRepository<RX, Integer>, JpaSpecificati
                 if (modelPrefix == null || modelPrefix.isEmpty()) {
                     return builder.conjunction();
                 }
-                return builder.like(root.get("model"), modelPrefix + "%");
+                return builder.like(root.get("model"), "%" + modelPrefix + "%");
             };
         }
 
