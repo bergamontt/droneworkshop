@@ -60,12 +60,5 @@ public interface RXRepository extends JpaRepository<RX, Integer>, JpaSpecificati
             };
         }
 
-        static Specification<RX> orderByModel(Specification<RX> spec) {
-            return (root, query, builder) -> {
-                assert query != null;
-                query.orderBy(builder.asc(root.get("model")));
-                return spec.toPredicate(root, query, builder);
-            };
-        }
     }
 }

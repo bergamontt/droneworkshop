@@ -60,12 +60,5 @@ public interface CameraRepository extends JpaRepository<Camera, Integer>, JpaSpe
             };
         }
 
-        static Specification<Camera> orderByModel(Specification<Camera> spec) {
-            return (root, query, builder) -> {
-                assert query != null;
-                query.orderBy(builder.asc(root.get("model")));
-                return spec.toPredicate(root, query, builder);
-            };
-        }
     }
 }

@@ -60,12 +60,6 @@ public interface PropellerRepository extends JpaRepository<Propeller, Integer>, 
             };
         }
 
-        static Specification<Propeller> orderByModel(Specification<Propeller> spec) {
-            return (root, query, builder) -> {
-                assert query != null;
-                query.orderBy(builder.asc(root.get("model")));
-                return spec.toPredicate(root, query, builder);
-            };
-        }
+
     }
 }

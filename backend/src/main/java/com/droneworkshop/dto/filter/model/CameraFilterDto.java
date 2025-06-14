@@ -11,4 +11,6 @@ public class CameraFilterDto {
     private String modelPrefix;
     private List<String> manufacturerNames;
     private List<String> distributorNames;
+    private String sortBy;
+    private String sortDirection;
 }

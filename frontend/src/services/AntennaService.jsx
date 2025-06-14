@@ -49,13 +49,15 @@ const getFilteredAntennas = async (
     filters = {}
 ) => {
     
-    const { modelPrefix, minPrice, maxPrice, manufacturerNames, distributorNames } = filters;
+    const { modelPrefix, minPrice, maxPrice, manufacturerNames, distributorNames, sortBy, sortDirection } = filters;
     const params = new URLSearchParams({
         page,
         size,
         ...(modelPrefix && { modelPrefix }),
         ...(minPrice !== undefined && { minPrice }),
         ...(maxPrice !== undefined && { maxPrice }),
+        ...(sortBy && { sortBy }),
+        ...(sortDirection && { sortDirection }),
     });
     
     if (manufacturerNames && Array.isArray(manufacturerNames) && manufacturerNames.length > 0) {

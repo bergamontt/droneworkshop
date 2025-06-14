@@ -60,12 +60,5 @@ public interface MotorRepository extends JpaRepository<Motor, Integer>, JpaSpeci
             };
         }
 
-        static Specification<Motor> orderByModel(Specification<Motor> spec) {
-            return (root, query, builder) -> {
-                assert query != null;
-                query.orderBy(builder.asc(root.get("model")));
-                return spec.toPredicate(root, query, builder);
-            };
-        }
     }
 }

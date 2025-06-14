@@ -25,7 +25,7 @@ public class BatteryService {
         return batteryRepository.findById(id).orElse(null);
     }
 
-    public Page<Battery> getFilteredAntennas(BatteryFilterDto filter, Pageable pageable) {
+    public Page<Battery> getFilteredBatteries(BatteryFilterDto filter, Pageable pageable) {
         Specification<Battery> spec = buildSpecification(filter);
         return batteryRepository.findAll(spec, pageable);
     }

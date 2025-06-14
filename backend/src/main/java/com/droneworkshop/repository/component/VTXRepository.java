@@ -61,12 +61,5 @@ public interface VTXRepository extends JpaRepository<VTX, Integer>, JpaSpecifica
             };
         }
 
-        static Specification<VTX> orderByModel(Specification<VTX> spec) {
-            return (root, query, builder) -> {
-                assert query != null;
-                query.orderBy(builder.asc(root.get("model")));
-                return spec.toPredicate(root, query, builder);
-            };
-        }
     }
 }

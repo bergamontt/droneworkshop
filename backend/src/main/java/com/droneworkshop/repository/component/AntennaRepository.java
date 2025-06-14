@@ -69,12 +69,5 @@ public interface AntennaRepository extends JpaRepository<Antenna, Integer>, JpaS
             };
         }
 
-        static Specification<Antenna> orderByModel(Specification<Antenna> spec) {
-            return (root, query, builder) -> {
-                assert query != null;
-                query.orderBy(builder.asc(root.get("model")));
-                return spec.toPredicate(root, query, builder);
-            };
-        }
     }
 }

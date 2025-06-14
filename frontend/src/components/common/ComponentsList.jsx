@@ -5,6 +5,7 @@ import {useListSelect} from "../../hooks/useListSelect.jsx";
 import info from '../../assets/info.svg'
 
 function ComponentsList(props) {
+    
     const { isSelecting, getSelectedDetailId, selectDetailId } = useListSelect();
     const selectedDetailId = getSelectedDetailId(props.name);
 

@@ -12,4 +12,6 @@ public class AntennaFilterDto {
     private List<String> manufacturerNames;
     private List<String> distributorNames;
     private String antennaType;
+    private String sortBy;
+    private String sortDirection;
 }
