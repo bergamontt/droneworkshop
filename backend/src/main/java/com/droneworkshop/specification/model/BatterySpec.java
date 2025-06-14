@@ -2,7 +2,10 @@ package com.droneworkshop.specification.model;
 
 import com.droneworkshop.dto.filter.model.BatteryFilterDto;
 import com.droneworkshop.model.component.Battery;
+import com.droneworkshop.model.component.Distributor;
 import com.droneworkshop.repository.component.BatteryRepository;
+import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.Subquery;
 import org.springframework.data.jpa.domain.Specification;
 
 public class BatterySpec {
@@ -26,6 +29,37 @@ public class BatterySpec {
         if (filter.getDistributorNames() != null && !filter.getDistributorNames().isEmpty()) {
             spec = spec == null ? BatteryRepository.Specs.byDistributorNames(filter.getDistributorNames())
                     : spec.and(BatteryRepository.Specs.byDistributorNames(filter.getDistributorNames()));
+        }
+
+        if (filter.getSortBy() != null && filter.getSortDirection() != null) {
+            Specification<Battery> finalSpec = spec;
+            return (root, query, builder) -> {
+                assert query != null;
+                query.distinct(true);
+
+                // Сортування за найменшою ціною
+                if ("minPrice".equalsIgnoreCase(filter.getSortBy())) {
+                    // Субзапит для отримання мінімальної ціни
+                    Subquery<Integer> subquery = query.subquery(Integer.class);
+                    var subRoot = subquery.from(Battery.class);
+                    Join<Battery, Distributor> subDistributorJoin = subRoot.join("distributors");
+                    subquery.select(builder.min(subDistributorJoin.get("price")))
+                            .where(builder.equal(subRoot.get("id"), root.get("id")));
+
+                    // Сортування за результатом субзапиту
+                    query.orderBy("ASC".equalsIgnoreCase(filter.getSortDirection())
+                            ? builder.asc(subquery)
+                            : builder.desc(subquery));
+                }
+                // Сортування за моделлю
+                else if ("model".equalsIgnoreCase(filter.getSortBy())) {
+                    query.orderBy("ASC".equalsIgnoreCase(filter.getSortDirection())
+                            ? builder.asc(root.get("model"))
+                            : builder.desc(root.get("model")));
+                }
+
+                return finalSpec != null ? finalSpec.toPredicate(root, query, builder) : builder.conjunction();
+            };
         }
 
         return spec != null ? spec : (root, query, builder) -> builder.conjunction();

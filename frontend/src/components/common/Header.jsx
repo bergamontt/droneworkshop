@@ -35,7 +35,7 @@ function Header() {
                         onClick={() => navigate('/drone_components/antenna_vtx')}
                     />
                     <NavLink
-                        label={<span className='nav-category'>СХЕМИ</span>}
+                        label={<span className='nav-category'>ЗБІРКА</span>}
                         onClick={() => {isLoggedIn ? navigate('/create-schema') : navigate("/log-in")}}
                     />
                     <NavLink

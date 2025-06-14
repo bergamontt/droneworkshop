@@ -22,7 +22,7 @@ public class BatteryController {
             @ModelAttribute BatteryFilterDto filter,
             Pageable pageable
     ) {
-        return batteryService.getFilteredAntennas(filter, pageable);
+        return batteryService.getFilteredBatteries(filter, pageable);
     }
 
     @GetMapping("/battery/{id}")

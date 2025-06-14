@@ -60,12 +60,5 @@ public interface FrameRepository extends JpaRepository<Frame, Integer>, JpaSpeci
             };
         }
 
-        static Specification<Frame> orderByModel(Specification<Frame> spec) {
-            return (root, query, builder) -> {
-                assert query != null;
-                query.orderBy(builder.asc(root.get("model")));
-                return spec.toPredicate(root, query, builder);
-            };
-        }
     }
 }

@@ -61,12 +61,6 @@ public interface StackRepository extends JpaRepository<Stack, Integer>, JpaSpeci
             };
         }
 
-        static Specification<Stack> orderByModel(Specification<Stack> spec) {
-            return (root, query, builder) -> {
-                assert query != null;
-                query.orderBy(builder.asc(root.get("model")));
-                return spec.toPredicate(root, query, builder);
-            };
-        }
+
     }
 }

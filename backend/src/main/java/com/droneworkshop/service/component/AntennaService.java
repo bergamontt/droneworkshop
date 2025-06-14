@@ -26,7 +26,7 @@ public class AntennaService {
 
     public Page<Antenna> getFilteredAntennas(AntennaFilterDto filter, Pageable pageable) {
         Specification<Antenna> spec = buildSpecification(filter);
-        return antennaRepository.findAll(AntennaRepository.Specs.orderByModel(spec), pageable);
+        return antennaRepository.findAll(spec, pageable);
     }
 
     public List<String> getDistinctDistributorNames() {

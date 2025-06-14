@@ -60,12 +60,5 @@ public interface BatteryRepository extends JpaRepository<Battery, Integer>, JpaS
             };
         }
 
-        static Specification<Battery> orderByModel(Specification<Battery> spec) {
-            return (root, query, builder) -> {
-                assert query != null;
-                query.orderBy(builder.asc(root.get("model")));
-                return spec.toPredicate(root, query, builder);
-            };
-        }
     }
 }
