@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import {Container, Stack, Button, Title, Paper, Group, Textarea, Text} from '@mantine/core';
 import {useJWT} from "../../hooks/useJWT.jsx";
 import { useNavigate } from "react-router-dom";
@@ -16,8 +16,11 @@ export default function WritePostPage() {
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
 
-    if (!isLoggedIn)
-        navigate('/log-in');
+    useEffect(() => {
+        if (!isLoggedIn) {
+            navigate('/log-in');
+        }
+    }, [isLoggedIn, navigate]);
 
     const handlePostSubmission = async () => {
         setMessage('');

@@ -15,14 +15,20 @@ export default function PostElement({ post }) {
         <Paper withBorder shadow="xs" p="md" radius="md">
             <Grid gutter="sm" align="center">
                 <Grid.Col span={{ base: 12, sm: 9 }}>
-                    <Title order={4} mb={6}
-                           onClick={handleClick}
-                           style={{ cursor: 'pointer' }}
-                           lineClamp={1}
+                    <Title
+                        order={4} mb={6}
+                        onClick={handleClick}
+                        lineClamp={1}
+                        style={{cursor: 'pointer', wordBreak: 'break-word'}}
                     >
                         {post.topic}
                     </Title>
-                    <Text size="sm" c="dimmed" lineClamp={1}>
+                    <Text
+                        size="sm"
+                        c="dimmed"
+                        lineClamp={1}
+                        style={{wordBreak: 'break-word'}}
+                    >
                         {post.description}
                     </Text>
                 </Grid.Col>

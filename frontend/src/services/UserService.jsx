@@ -26,6 +26,8 @@ export const login = async (username, password) => {
 };
 
 export const getUserByUsername = async (username) => {
+    if (username === null || username === undefined)
+        return null;
     const response = await api.get(`/user/${username}`);
     return response.data;
 };

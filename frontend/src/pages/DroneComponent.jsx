@@ -7,9 +7,11 @@ import cart from '../assets/cart.svg'
 import list from '../assets/list.svg'
 import '../styles/DroneComponent.css'
 import {useListSelect} from "../hooks/useListSelect.jsx";
+import {useJWT} from "../hooks/useJWT.jsx";
 
 function DroneComponent(props) {
     const { isSelecting, getSelectedDetailId, selectDetailId } = useListSelect();
+    const { isLoggedIn } = useJWT();
     const selectedDetailId = getSelectedDetailId(props.name);
 
     const { componentId } = useParams();
@@ -33,7 +35,7 @@ function DroneComponent(props) {
                         <Divider size="sm"/>
                     </div>
                     <img src={component.photoLink} className="component-photo" />
-                    {isSelecting &&
+                    {isSelecting && isLoggedIn &&
                         <Button
                             size="lg"
                             variant="filled"

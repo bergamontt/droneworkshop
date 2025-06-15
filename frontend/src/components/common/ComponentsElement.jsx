@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import '../../styles/ComponentsElement.css'
 import { Button } from "@mantine/core";
+import {useJWT} from "../../hooks/useJWT.jsx";
 
 export default function ComponentsElement(props) {
     const navigate = useNavigate();
     const isSelected = props.selectedId?.toString() === props.id.toString();
+    const { isLoggedIn } = useJWT();
 
     const handleClick = () => {
         navigate(`/drone_components/${props.name}/${props.id}`);
@@ -15,7 +17,7 @@ export default function ComponentsElement(props) {
             className="component-element-container"
             style={{
                 cursor: 'pointer',
-                height: props.isSelecting ? "420px" : "380px"}}
+                height: props.isSelecting && isLoggedIn ? "420px" : "380px"}}
         >
             <figure className='component-photo-container' onClick={handleClick}>
                 <img src={props.photoLink} alt={props.model} className="component-element-photo" />
@@ -34,7 +36,7 @@ export default function ComponentsElement(props) {
                 <span className="component-element-price" onClick={handleClick}>
                     Від {props.startingPrice}грн
                 </span>
-                {props.isSelecting &&
+                {props.isSelecting && isLoggedIn &&
                     <Button
                         className="component-select-button"
                         variant="filled"

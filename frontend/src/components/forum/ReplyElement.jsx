@@ -58,7 +58,7 @@ export default function ReplyElement({ reply }) {
                     <Text fw={500} size="sm">{reply.user?.username ?? "Deleted user"}</Text>
                 </Stack>
                 <Stack style={{ flex: 1 }}>
-                    <Group p="xs" spacing="sm" justify="flex-start">
+                    <Group p="xs" spacing="sm" justify="flex-start" style={{wordBreak: 'break-word'}}>
                         <Text size="sm">{reply.description}</Text>
                     </Group>
                     <Group spacing="sm" justify="flex-end">

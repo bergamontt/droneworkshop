@@ -37,8 +37,11 @@ export default function ManageProfilePage() {
         }
     }, [user]);
 
-    if (!isLoggedIn)
-        navigate('/log-in');
+    useEffect(() => {
+        if (!isLoggedIn) {
+            navigate('/log-in');
+        }
+    }, [isLoggedIn, navigate]);
 
     const handleSave = async () => {
         setSaving(true);

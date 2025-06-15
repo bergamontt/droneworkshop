@@ -59,7 +59,7 @@ function SchemaComment({comment}) {
 
                 <div className='comment-main-data'>
                     <div className='comment-user-text'>
-                        <span>
+                        <span style={{wordBreak: 'break-word'}}>
                             {comment.description}
                         </span>
                     </div>

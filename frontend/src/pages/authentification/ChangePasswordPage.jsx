@@ -7,7 +7,7 @@ import {
     Text,
     Title,
 } from '@mantine/core';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useJWT} from "../../hooks/useJWT.jsx";
 import {updateUserPassword} from "../../services/UserService.jsx";
 import {useNavigate} from "react-router-dom";
@@ -22,8 +22,11 @@ export default function ChangePasswordPage() {
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
 
-    if (!isLoggedIn)
-        navigate('/log-in');
+    useEffect(() => {
+        if (!isLoggedIn) {
+            navigate('/log-in');
+        }
+    }, [isLoggedIn, navigate]);
 
     const handleChangePassword = async () => {
         setMessage('');

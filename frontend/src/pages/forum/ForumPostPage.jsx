@@ -55,7 +55,7 @@ export default function ForumPostPage() {
                     }}>
                         <Stack spacing="xs" margin="auto">
                             <Group spacing="sm" justify="space-between">
-                                <Title order={3}>{post.topic}</Title>
+                                <Title order={3} style={{wordBreak: 'break-word'}}>{post.topic}</Title>
                                 <Text size="xs" c="dimmed">
                                     {format(post.createdAt, 'dd.MM.yyyy, HH:mm')}
                                 </Text>
@@ -73,7 +73,9 @@ export default function ForumPostPage() {
                                     </div>
                                 </Stack>
                                 <Group p="xs">
-                                    <Text size="sm">{post.description}</Text>
+                                    <Text size="sm" style={{wordBreak: 'break-word'}}>
+                                        {post.description}
+                                    </Text>
                                 </Group>
                             </Group>
                         </Stack>

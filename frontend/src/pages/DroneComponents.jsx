@@ -10,6 +10,7 @@ import FilterModel from '../components/common/FilterModel.jsx'
 import Searchbar from '../components/common/Searchbar.jsx';
 import filter from '../assets/filter.svg';
 import '../styles/DroneComponents.css'
+import {useJWT} from "../hooks/useJWT.jsx";
 
 function DroneComponents(props) {
 
@@ -20,6 +21,7 @@ function DroneComponents(props) {
     const [activePage, setPage] = useState(1);
     const [modelPrefix, setModelPrefix] = useState('');
     const { isSelecting } = useListSelect();
+    const { isLoggedIn } = useJWT();
     const [priceRange, setPriceRange] = useState({ minPrice: minDefaultPrice, maxPrice: maxDefaultPrice });
     const [manufacturerNames, setManufacturerNames] = useState([]);
     const [distributorNames, setDistributorNames] = useState([]);
@@ -158,7 +160,7 @@ function DroneComponents(props) {
                         </div>
 
                         {
-                            isSelecting &&
+                            isSelecting && isLoggedIn &&
                             <Button
                                 variant="filled"
                                 style={{marginTop: "0.5em"}}
