@@ -20,6 +20,9 @@ public class Post {
     @Column(nullable = false, length = 300)
     private String topic;
 
+    @Column(nullable = false, length = 300)
+    private String topicLowercase;
+
     @Column(nullable = false, length = 5000)
     private String description;
 

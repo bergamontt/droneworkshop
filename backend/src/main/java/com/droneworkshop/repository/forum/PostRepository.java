@@ -13,7 +13,7 @@ public interface PostRepository extends JpaRepository<Post, Integer>, JpaSpecifi
                 if (postPrefix == null || postPrefix.isEmpty()) {
                     return builder.conjunction();
                 }
-                return builder.like(root.get("topic"), "%" + postPrefix + "%");
+                return builder.like(root.get("topicLowercase"), "%" + postPrefix.toLowerCase() + "%");
             };
         }
 

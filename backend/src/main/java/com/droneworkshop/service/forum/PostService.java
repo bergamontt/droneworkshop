@@ -24,6 +24,7 @@ public class PostService {
 
     public int addPost(Post post) {
         post.setUser(userService.getCurrentUser());
+        post.setTopicLowercase(post.getTopic().toLowerCase());
         postRepository.save(post);
         return post.getPostId();
     }

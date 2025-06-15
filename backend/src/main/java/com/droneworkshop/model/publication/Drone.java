@@ -16,6 +16,9 @@ public class Drone {
     @Column(nullable = false, length = 24)
     private String droneName;
 
+    @Column(nullable = false, length = 24)
+    private String droneNameLowercase;
+
     @Column(nullable = false)
     private String username;
 

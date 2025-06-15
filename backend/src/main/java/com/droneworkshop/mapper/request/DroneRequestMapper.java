@@ -49,6 +49,7 @@ public class DroneRequestMapper {
 
     public void mapRequestToEntity(DroneRequestDto request, Drone drone) {
         drone.setDroneName(request.getDroneName());
+        drone.setDroneNameLowercase(request.getDroneName().toLowerCase());
         drone.setPhoto(null);
 
         MultipartFile photo = request.getPhoto();
