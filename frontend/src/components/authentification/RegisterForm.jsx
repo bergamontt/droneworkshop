@@ -5,13 +5,15 @@ import {
     TextInput,
 } from '@mantine/core';
 import { useState } from 'react';
-import {registerUser} from "../../services/UserService.jsx";
+import {login, registerUser} from "../../services/UserService.jsx";
 import {useNavigate} from "react-router-dom";
 import '../../styles/authentification/RegisterForm.css';
 import {notifications} from "@mantine/notifications";
+import {useJWT} from "../../hooks/useJWT.jsx";
 
 export default function RegisterForm() {
     const navigate = useNavigate();
+    const {setToken} = useJWT();
 
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -30,7 +32,9 @@ export default function RegisterForm() {
                 setError('Паролі не співпадають');
             } else {
                 await registerUser({username, password, email});
-                navigate("/log-in");
+                const token = await login(username, password);
+                setToken(token);
+                navigate("/profile")
                 notifications.show({
                     color: 'green',
                     title: 'Успіх',

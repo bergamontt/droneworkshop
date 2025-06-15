@@ -27,7 +27,7 @@ export default function LogInForm() {
         try {
             const token = await login(username, password);
             setToken(token);
-            navigate("/profile")
+            navigate("/drone_components/antenna_vtx");
             notifications.show({
                 color: 'green',
                 title: 'Вхід успішний',

@@ -22,7 +22,9 @@ function TutorialsSection({category, tutorials}) {
             >
                 {tutorials.map((tutorial) => (
                     <div className="tutorial-element-container">
-                        <a className="tutorial-element-name" href={tutorial.tutorialLink}>{tutorial.tutorialName}</a>
+                        <a className="tutorial-element-name" href={tutorial.tutorialLink} target="_blank">
+                            {tutorial.tutorialName}
+                        </a>
                         <p className="tutorial-element-desc">{tutorial.description}</p>
                     </div>
                 ))}

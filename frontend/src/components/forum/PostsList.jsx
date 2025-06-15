@@ -1,6 +1,7 @@
 import { Stack, Alert, Anchor } from '@mantine/core';
 import info from '../../assets/info.svg'
 import PostElement from "./PostElement.jsx";
+import SidebarIcon from "../common/SidebarIcon.jsx";
 
 export default function PostsList({ posts }) {
     if (!posts) return <></>;
