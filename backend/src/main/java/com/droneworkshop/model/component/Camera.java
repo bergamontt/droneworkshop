@@ -19,6 +19,9 @@ public class Camera {
     @Column(nullable = false, length = 100)
     private String model;
 
+    @Column(nullable = false, length = 100)
+    private String modelLowercase;
+
     @Column(length = 50)
     private String manufacturer;
 

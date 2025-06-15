@@ -27,7 +27,7 @@ public interface VTXRepository extends JpaRepository<VTX, Integer>, JpaSpecifica
                 if (modelPrefix == null || modelPrefix.isEmpty()) {
                     return builder.conjunction();
                 }
-                return builder.like(root.get("model"), "%" + modelPrefix + "%");
+                return builder.like(root.get("modelLowercase"), "%" + modelPrefix.toLowerCase() + "%");
             };
         }
 
