@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { jwtService } from '../services/JWTService.jsx';
 import { jwtDecode } from 'jwt-decode';
 
@@ -31,7 +31,6 @@ export const useJWT = () => {
     const [token, setTokenState] = useState(getValidToken);
     const [currentUsername, setCurrentUsername] = useState(() => getUsernameFromToken(token));
     const [isLoggedIn, setIsLoggedIn] = useState(() => !!token);
-    const intervalRef = useRef(null);
 
     const updateStateFromToken = (newToken) => {
         const validToken = isTokenExpired(newToken) ? null : newToken;
@@ -47,17 +46,6 @@ export const useJWT = () => {
     };
 
     useEffect(() => {
-        intervalRef.current = setInterval(() => {
-            const currentToken = jwtService.getToken();
-            if (isTokenExpired(currentToken)) {
-                setToken(currentToken);
-            }
-        }, 5000);
-
-        return () => clearInterval(intervalRef.current);
-    });
-
-    useEffect(() => {
         const syncToken = () => {
             const latest = jwtService.getToken();
             updateStateFromToken(latest);
@@ -70,7 +58,7 @@ export const useJWT = () => {
     useEffect(() => {
         const observer = setInterval(() => {
             const current = jwtService.getToken();
-            if (current !== token) {
+            if (current !== token || isTokenExpired(current)) {
                 updateStateFromToken(current);
             }
         }, 200);
