@@ -57,8 +57,9 @@ export const useJWT = () => {
 
     useEffect(() => {
         const observer = setInterval(() => {
-            const current = jwtService.getToken();
-            if (current !== token || isTokenExpired(current)) {
+            const current = getValidToken();
+            if (current !== token || !current) {
+                jwtService.setToken(current);
                 updateStateFromToken(current);
             }
         }, 200);
