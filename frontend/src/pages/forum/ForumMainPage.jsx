@@ -43,8 +43,6 @@ function ForumMainPage({personal = false}) {
                 sortBy = 'topic';
                 sortDirection = 'DESC';
                 break;
-            default:
-                break;
         }
 
         return {

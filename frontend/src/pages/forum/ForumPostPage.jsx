@@ -34,12 +34,12 @@ export default function ForumPostPage() {
     const totalReplies = replies?.totalElements ?? 0;
 
     if (!post) {
-        return <div style={{ backgroundColor: "#f0f2f5", minHeight: '100vh' }} />;
+        return <div style={{ backgroundColor: "#f0f2f5", minHeight: 'calc(100vh - 120px)' }} />;
     }
 
     return (
         <div style={{
-            minHeight: '100vh',
+            minHeight: 'calc(100vh - 120px)',
             width: "100%",
             paddingTop: '2rem',
             paddingBottom: '4rem'

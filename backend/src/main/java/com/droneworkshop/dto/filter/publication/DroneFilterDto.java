@@ -7,4 +7,6 @@ public class DroneFilterDto {
     private String username;
     private String droneNamePrefix;
     private Boolean isPublished;
+    private String sortBy;
+    private String sortDirection;
 }

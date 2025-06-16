@@ -23,6 +23,27 @@ public class DroneSpec {
                     : spec.and(DroneRepository.Specs.byIsPublished(filter.getIsPublished()));
         }
 
+        if (filter.getSortBy() != null && filter.getSortDirection() != null) {
+            Specification<Drone> finalSpec = spec;
+            return (root, query, builder) -> {
+                assert query != null;
+                query.distinct(true);
+
+                if ("droneName".equalsIgnoreCase(filter.getSortBy())) {
+                    query.orderBy("ASC".equalsIgnoreCase(filter.getSortDirection())
+                            ? builder.asc(root.get("droneNameLowercase"))
+                            : builder.desc(root.get("droneNameLowercase")));
+                }
+                else if ("createdAt".equalsIgnoreCase(filter.getSortBy())) {
+                    query.orderBy("ASC".equalsIgnoreCase(filter.getSortDirection())
+                            ? builder.asc(root.get("createdAt"))
+                            : builder.desc(root.get("createdAt")));
+                }
+
+                return finalSpec != null ? finalSpec.toPredicate(root, query, builder) : builder.conjunction();
+            };
+        }
+
         return spec != null ? spec : (root, query, builder) -> builder.conjunction();
     }
 }

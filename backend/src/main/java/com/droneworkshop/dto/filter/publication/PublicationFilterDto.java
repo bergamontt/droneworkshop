@@ -6,4 +6,6 @@ import lombok.Data;
 public class PublicationFilterDto {
     private String username;
     private String droneNamePrefix;
+    private String sortBy;
+    private String sortDirection;
 }

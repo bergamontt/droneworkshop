@@ -75,8 +75,6 @@ function DroneComponents(props) {
                 sortBy = 'model';
                 sortDirection = 'DESC';
                 break;
-            default:
-                break;
         }
 
         return {

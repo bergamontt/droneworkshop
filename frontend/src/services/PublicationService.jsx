@@ -10,12 +10,14 @@ export const getAllPublications = async (
     size = elementsPerPage,
     filters = {}
 ) => {
-    const { username, droneNamePrefix } = filters;
+    const { username, droneNamePrefix, sortBy, sortDirection } = filters;
     const params = new URLSearchParams({
         page,
         size,
         ...(droneNamePrefix && { droneNamePrefix }),
-        ...(username && { username })
+        ...(username && { username }),
+        ...(sortBy && { sortBy }),
+        ...(sortDirection && { sortDirection }),
     });
     const response = await api.get(`/publication?${params.toString()}`);
     return response.data; 

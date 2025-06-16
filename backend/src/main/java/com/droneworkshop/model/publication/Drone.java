@@ -1,10 +1,8 @@
 package com.droneworkshop.model.publication;
 
-import com.droneworkshop.model.authentification.User;
 import com.droneworkshop.model.component.*;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Timestamp;
 

@@ -18,6 +18,27 @@ public class PublicationSpec {
                     : spec.and(PublicationRepository.Specs.byUsername(filter.getUsername()));
         }
 
+        if (filter.getSortBy() != null && filter.getSortDirection() != null) {
+            Specification<Publication> finalSpec = spec;
+            return (root, query, builder) -> {
+                assert query != null;
+                query.distinct(true);
+
+                if ("droneName".equalsIgnoreCase(filter.getSortBy())) {
+                    query.orderBy("ASC".equalsIgnoreCase(filter.getSortDirection())
+                            ? builder.asc(root.get("drone").get("droneNameLowercase"))
+                            : builder.desc(root.get("drone").get("droneNameLowercase")));
+                }
+                else if ("createdAt".equalsIgnoreCase(filter.getSortBy())) {
+                    query.orderBy("ASC".equalsIgnoreCase(filter.getSortDirection())
+                            ? builder.asc(root.get("createdAt"))
+                            : builder.desc(root.get("createdAt")));
+                }
+
+                return finalSpec != null ? finalSpec.toPredicate(root, query, builder) : builder.conjunction();
+            };
+        }
+
         return spec != null ? spec : (root, query, builder) -> builder.conjunction();
     }
 }

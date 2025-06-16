@@ -76,4 +76,6 @@
 .workshop-searchbar-container {
     padding: 1em;
     background-color: white;
+    display: flex;
+    flex-direction: row;
 }
