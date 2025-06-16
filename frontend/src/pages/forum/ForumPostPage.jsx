@@ -64,19 +64,19 @@ export default function ForumPostPage() {
                             <Divider/>
 
                             <Group spacing="xs" align="flex-start">
-                                <Stack spacing="sm" gap="xs">
+                                <Stack spacing="sm" align="center" gap="xs" style={{width: "80px"}}>
                                     <Avatar radius="xl" color="blue" size="md">
                                         {post.user?.username?.charAt(0)?.toUpperCase() ?? null}
                                     </Avatar>
-                                    <div>
-                                        <Text fw={500} size="sm">{post.user?.username ?? "Deleted user"}</Text>
-                                    </div>
+                                    <Text fw={500} size="sm" maw="4rem" ta="center" style={{wordBreak: 'break-word'}}>
+                                        {post.user?.username ?? "Deleted user"}
+                                    </Text>
                                 </Stack>
-                                <Group p="xs">
-                                    <Text size="sm" style={{wordBreak: 'break-word'}}>
+                                <Stack style={{ flex: 1 }}>
+                                    <Text m="xs" size="sm" style={{wordBreak: 'break-word'}}>
                                         {post.description}
                                     </Text>
-                                </Group>
+                                </Stack>
                             </Group>
                         </Stack>
                     </Paper>

@@ -51,19 +51,21 @@ export default function ReplyElement({ reply }) {
             )}
 
             <Group spacing="xs" align="flex-start">
-                <Stack spacing="sm" justify="flex-start" gap="xs" style={{width: "80px"}}>
+                <Stack spacing="sm" align="center" gap="xs" style={{width: "80px"}}>
                     <Avatar radius="xl" color="blue" size="md">
                         {reply.user?.username?.charAt(0)?.toUpperCase() ?? null}
                     </Avatar>
-                    <Text fw={500} size="sm">{reply.user?.username ?? "Deleted user"}</Text>
+                    <Text fw={500} size="sm" maw="4rem" ta="center" style={{wordBreak: 'break-word'}}>
+                        {reply.user?.username ?? "Deleted user"}
+                    </Text>
                 </Stack>
                 <Stack style={{ flex: 1 }}>
-                    <Group p="xs" spacing="sm" justify="flex-start" style={{wordBreak: 'break-word'}}>
-                        <Text size="sm">{reply.description}</Text>
-                    </Group>
-                    <Group spacing="sm" justify="flex-end">
-                        <Text size="xs" c="dimmed">{format(reply.createdAt, 'dd.MM.yyyy, HH:mm')}</Text>
-                    </Group>
+                    <Text size="sm" m="xs" style={{wordBreak: 'break-word'}}>
+                        {reply.description}
+                    </Text>
+                    <Text size="xs" c="dimmed" ta="right">
+                        {format(reply.createdAt, 'dd.MM.yyyy, HH:mm')}
+                    </Text>
                 </Stack>
             </Group>
         </Paper>
