@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.sql.Timestamp;
+
 @Data
 @Entity
 public class Drone {
@@ -24,6 +26,9 @@ public class Drone {
 
     @Column
     private byte[] photo;
+
+    @Column(nullable = false)
+    private Timestamp createdAt;
 
     @ManyToOne
     @JoinColumn(name = "frame_id", nullable = false)

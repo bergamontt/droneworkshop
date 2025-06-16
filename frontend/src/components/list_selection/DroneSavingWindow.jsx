@@ -38,6 +38,7 @@ export default function DroneSavingWindow({ opened, close, idsList, finishSelect
         setLoading(true);
         try {
             drone['droneName'] = name;
+            drone['createdAt'] = new Date();
             if(file){
                 drone['photo'] = file;
             }

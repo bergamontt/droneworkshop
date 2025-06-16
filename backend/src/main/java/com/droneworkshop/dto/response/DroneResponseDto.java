@@ -3,12 +3,14 @@ package com.droneworkshop.dto.response;
 import com.droneworkshop.model.component.*;
 import lombok.Data;
 import lombok.Setter;
+import java.sql.Timestamp;
 
 @Data
 public class DroneResponseDto {
     private Integer droneId;
     private String droneName;
     private String username;
+    private Timestamp createdAt;
     private String photo;
     private Frame frame;
     private Propeller propeller;
