@@ -51,7 +51,7 @@ export default function ReplyElement({ reply }) {
             )}
 
             <Group spacing="xs" align="flex-start">
-                <Stack spacing="sm" justify="flex-start" gap="xs">
+                <Stack spacing="sm" justify="flex-start" gap="xs" style={{width: "80px"}}>
                     <Avatar radius="xl" color="blue" size="md">
                         {reply.user?.username?.charAt(0)?.toUpperCase() ?? null}
                     </Avatar>

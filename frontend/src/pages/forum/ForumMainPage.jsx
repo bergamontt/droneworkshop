@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Pagination, Center, Stack, NativeSelect } from '@mantine/core';
+import { Pagination, Center, Stack, NativeSelect, Space } from '@mantine/core';
 import Searchbar from '../../components/common/Searchbar.jsx';
 import PostsList from '../../components/forum/PostsList.jsx';
 import { getAllPosts } from '../../services/PostService.jsx';
@@ -99,6 +99,7 @@ function ForumMainPage({personal = false}) {
                     <PostsList posts={posts} />
                     
                 </Stack>
+                <Space h="md"/>
                 <Center>
                     <Pagination 
                         total={total} 

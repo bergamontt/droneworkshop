@@ -1,5 +1,5 @@
 .forum-page-container {
-    height: calc(100vh - 120px);
+    min-height: calc(100vh - 120px);
     background-color: rgba(109, 128, 125, 0.5);
     display: flex;
     flex-direction: row;
@@ -9,7 +9,7 @@
     background-color: white;
     width: 350px;
     top: 120px;
-    height: calc(100vh - 120px);
+    min-height: calc(100vh - 120px);
     position: sticky;
 }
 
