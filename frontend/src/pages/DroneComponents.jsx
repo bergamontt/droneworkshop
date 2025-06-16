@@ -20,6 +20,7 @@ function DroneComponents(props) {
     const navigate = useNavigate();
     const [activePage, setPage] = useState(1);
     const [modelPrefix, setModelPrefix] = useState('');
+    const [currModelPrefix, setCurrModelPrefix] = useState('');
     const { isSelecting } = useListSelect();
     const { isLoggedIn } = useJWT();
     const [priceRange, setPriceRange] = useState({ minPrice: minDefaultPrice, maxPrice: maxDefaultPrice });
@@ -44,6 +45,7 @@ function DroneComponents(props) {
 
     useEffect(() => {
         setModelPrefix('');
+        setCurrModelPrefix('');
         setManufacturerNames([]);
         setDistributorNames([]);
         setAllDistributors([]);
@@ -78,7 +80,7 @@ function DroneComponents(props) {
         }
 
         return {
-            modelPrefix,
+            modelPrefix: currModelPrefix,
             minPrice: priceRange.minPrice,
             maxPrice: priceRange.maxPrice,
             manufacturerNames,
@@ -90,15 +92,19 @@ function DroneComponents(props) {
     
     const { data: components } = useFetchUnique(
         () => props.fetch(activePage - 1, elementsPerPage, getFilters()),
-        [props.fetch, activePage, modelPrefix, priceRange.minPrice, priceRange.maxPrice, manufacturerNames, distributorNames, sortValue]
+        [props.fetch, activePage, currModelPrefix, priceRange.minPrice, priceRange.maxPrice, manufacturerNames, distributorNames, sortValue]
     );
 
     const handlePageChange = (page) => {
         setPage(page)
     }
 
-    const handleModelPrefixChange = (value) => {
+    const handleCurrModelPrefixChange = (value) => {
         setPage(1);
+        setCurrModelPrefix(value);
+    }
+
+    const handleModelPrefixChange = (value) => {
         setModelPrefix(value);
     }
 
@@ -122,7 +128,9 @@ function DroneComponents(props) {
                         <div className='components-filter-container'>
                             <Searchbar
                                 placeholder="Пошук..."
+                                value={modelPrefix}
                                 onChange={handleModelPrefixChange}
+                                onSearch={handleCurrModelPrefixChange}
                             />
                             
                             <FilterModel

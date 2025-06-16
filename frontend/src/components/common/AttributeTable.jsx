@@ -8,7 +8,7 @@ function AttributeTable(props) {
     const isMappedAttribute = (attribute) => {
         return attribute != "id" && attribute != "model"
             && attribute != "photoLink" && attribute != "distributors"
-            && attribute != "startingPrice";
+            && attribute != "startingPrice" && attribute != "modelLowercase";
     }
     return(
         <div className='tabs-panel-wrapper'>

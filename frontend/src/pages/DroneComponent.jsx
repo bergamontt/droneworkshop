@@ -1,6 +1,7 @@
 import { useFetch } from '../hooks/useFetch.jsx';
 import { useParams } from 'react-router-dom';
-import {Button, Divider, Tabs} from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
+import {Button, Divider, Tabs, Space} from '@mantine/core';
 import AttributeTable from '../components/common/AttributeTable.jsx';
 import DistributorTable from '../components/common/DistributorTable.jsx';
 import cart from '../assets/cart.svg'
@@ -10,10 +11,12 @@ import {useListSelect} from "../hooks/useListSelect.jsx";
 import {useJWT} from "../hooks/useJWT.jsx";
 
 function DroneComponent(props) {
+    
     const { isSelecting, getSelectedDetailId, selectDetailId } = useListSelect();
     const { isLoggedIn } = useJWT();
     const selectedDetailId = getSelectedDetailId(props.name);
 
+    const navigate = useNavigate();
     const { componentId } = useParams();
     const { data: component } = useFetch(props.fetch, componentId);
 
@@ -36,16 +39,22 @@ function DroneComponent(props) {
                     </div>
                     <img src={component.photoLink} className="component-photo" />
                     {isSelecting && isLoggedIn &&
-                        <Button
-                            size="lg"
-                            variant="filled"
-                            color="green"
-                            onClick={select}
-                            disabled={isSelected}
-                            style={{marginRight: 'auto'}}
-                        >
-                            {isSelected ? "Деталь обрано" : "Додати до схеми"}
-                        </Button>
+                        <div className='selecting-component-container'>
+                            <Button
+                                variant="filled"
+                                onClick={() => {navigate('/create-schema')}}
+                            >
+                                 Повернутися до збірки
+                            </Button>
+                            <Button
+                                variant="filled"
+                                color="green"
+                                onClick={select}
+                                disabled={isSelected}
+                            >
+                                {isSelected ? "Деталь обрано" : "Додати до схеми"}
+                            </Button>
+                        </div>
                     }
                 </div>
             </article>

@@ -11,9 +11,11 @@ import '../../styles/Forum.css';
 function ForumMainPage({personal = false}) {
     const { currentUsername } = useJWT();
     const [activePage, setPage] = useState(1);
+    const [currPostPrefix, setCurrPistPrefix ] = useState('');
     const [postPrefix, setPostPrefix] = useState('');
 
     useEffect(() => {
+        setCurrPistPrefix('');
         setPostPrefix('');
         setPage(1);
     }, []);
@@ -21,17 +23,21 @@ function ForumMainPage({personal = false}) {
     const { data: posts } = useFetchUnique(
         () =>
         getAllPosts(activePage - 1, elementsPerPage, {
-            postPrefix,
+            postPrefix : currPostPrefix,
             username: personal && currentUsername ? currentUsername : undefined,
         }),
-        [activePage, postPrefix, personal, currentUsername],
+        [activePage, currPostPrefix, personal, currentUsername],
         { enabled: !personal || (personal && !!currentUsername) }
     );
 
     const handlePageChange = (page) => setPage(page);
     
-    const handlePostPrefixChange = (value) => {
+    const handleCurrPostPrefixChange = (value) => {
         setPage(1);
+        setCurrPistPrefix(value);
+    }
+
+    const handlePostPrefixChange = (value) => {
         setPostPrefix(value);
     };
 
@@ -44,7 +50,9 @@ function ForumMainPage({personal = false}) {
                     
                     <Searchbar
                         placeholder="Знайти пост за назвою..."
+                        value={postPrefix}
                         onChange={handlePostPrefixChange}
+                        onSearch={handleCurrPostPrefixChange}
                     />
 
                     <PostsList posts={posts} />

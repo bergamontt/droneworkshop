@@ -10,24 +10,30 @@ function DronesPage() {
     const { currentUsername } = useJWT();
     const [activePage, setPage] = useState(1);
     const [droneNamePrefix, setDroneNamePrefix] = useState('');
+    const [currDroneNamePrefix, setCurrDroneNamePrefix] = useState('');
 
     useEffect(() => {
+        setCurrDroneNamePrefix('');
         setDroneNamePrefix('');
         setPage(1);
     }, []);
 
     const { data: drones } = useFetchUnique(
         () => getAllDrones(activePage - 1, elementsPerPage, {
-            droneNamePrefix,
+            droneNamePrefix: currDroneNamePrefix,
             username: currentUsername,
             isPublished: false
-        }),[droneNamePrefix, currentUsername]
+        }),[currDroneNamePrefix, currentUsername]
     );
 
     const handlePageChange = (page) => setPage(page);
 
-    const handleDronePrefixChange = (value) => {
+    const handleCurrDronePrefixChange = (value) => {
         setPage(1);
+        setCurrDroneNamePrefix(value);
+    }
+
+    const handleDronePrefixChange = (value) => {
         setDroneNamePrefix(value);
     };
 
@@ -42,7 +48,9 @@ function DronesPage() {
             total={total}
             activePage={activePage}
             handlePageChange={handlePageChange}
-            handleDronePrefixChange={handleDronePrefixChange}
+            onChange={handleDronePrefixChange}
+            onSearch={handleCurrDronePrefixChange}
+            value={droneNamePrefix}
             name={"drone"}
         />
     );

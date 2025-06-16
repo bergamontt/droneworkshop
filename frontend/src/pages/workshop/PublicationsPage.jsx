@@ -11,23 +11,29 @@ function PublicationsPage({personal = false}) {
     const { currentUsername } = useJWT();
     const [activePage, setPage] = useState(1);
     const [droneNamePrefix, setDroneNamePrefix] = useState('');
+    const [currDroneNamePrefix, setCurrDroneNamePrefix] = useState('');
 
     useEffect(() => {
+        setCurrDroneNamePrefix('');
         setDroneNamePrefix('');
         setPage(1);
     }, []);
 
     const { data: publications } = useFetchUnique(
         () => getAllPublications(activePage - 1, elementsPerPage, {
-            droneNamePrefix,
+            droneNamePrefix : currDroneNamePrefix,
             username: personal ? currentUsername : undefined,
-        }),[activePage, droneNamePrefix, personal, currentUsername]
+        }),[activePage, currDroneNamePrefix, personal, currentUsername]
     );
 
     const handlePageChange = (page) => setPage(page);
 
-    const handleDronePrefixChange = (value) => {
+    const handleCurrDronePrefixChange = (value) => {
         setPage(1);
+        setCurrDroneNamePrefix(value);
+    }
+
+    const handleDronePrefixChange = (value) => {
         setDroneNamePrefix(value);
     };
 
@@ -46,7 +52,9 @@ function PublicationsPage({personal = false}) {
             total={total}
             activePage={activePage}
             handlePageChange={handlePageChange}
-            handlePrefixChange={handleDronePrefixChange}
+            onChange={handleDronePrefixChange}
+            onSearch={handleCurrDronePrefixChange}
+            value={droneNamePrefix}
             name={"publication"}
         />
     );
