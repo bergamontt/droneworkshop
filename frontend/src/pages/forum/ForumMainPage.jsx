@@ -97,16 +97,15 @@ function ForumMainPage({personal = false}) {
                     </div>
 
                     <PostsList posts={posts} />
-
-                    <Center>
-                        <Pagination 
-                            total={total} 
-                            value={activePage} 
-                            onChange={handlePageChange}
-                        />
-                    </Center>
                     
                 </Stack>
+                <Center>
+                    <Pagination 
+                        total={total} 
+                        value={activePage} 
+                        onChange={handlePageChange}
+                    />
+                </Center>
             </div>
         </div>
     );

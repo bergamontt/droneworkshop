@@ -1,9 +1,10 @@
-import { ActionIcon, Pagination, Center, Button, NativeSelect } from '@mantine/core';
+import { ActionIcon, Pagination, Center, Button, NativeSelect, Breadcrumbs, Anchor } from '@mantine/core';
 import { useFetchUnique } from '../hooks/useFetchUnique.jsx'
 import { useListSelect } from '../hooks/useListSelect.jsx';
 import { useNavigate } from 'react-router';
 import { useState, useEffect } from 'react';
 import { useDisclosure } from '@mantine/hooks';
+import { getComponentName } from '../utils/ComponentNameMapper.jsx';
 import { elementsPerPage } from '../services/ServiceConfig.jsx';
 import ComponentsList from '../components/common/ComponentsList.jsx'
 import FilterModel from '../components/common/FilterModel.jsx'
@@ -122,7 +123,7 @@ function DroneComponents(props) {
             <article className='components-main-container'>
                 <div className='components-main-wrapper'>
                     <div className='components-function-container'>
-                        
+
                         <div className='components-filter-container'>
                             <Searchbar
                                 placeholder="Пошук..."
@@ -165,19 +166,20 @@ function DroneComponents(props) {
 
                         </div>
 
-                        {
-                            isSelecting && isLoggedIn &&
-                            <Button
-                                variant="filled"
-                                style={{marginTop: "0.5em"}}
-                                onClick={() => {navigate('/create-schema')}}
-                            >
-                                ← Повернутися до збірки
-                            </Button>
-                        }
+                        <div className='drone-components-nav-wrapper'>
+                            <Breadcrumbs separator=">">
+                                {isSelecting &&
+                                <Anchor onClick={() => {navigate('/create-schema', { replace: true })}} target="_blank" c="black">
+                                    Збірка
+                                </Anchor>}
+                                <Anchor target="_blank" c="#005bac">
+                                    {getComponentName(props.name)}
+                                </Anchor>
+                            </Breadcrumbs>
+                        </div>
 
                     </div>
-
+                    
                     <ComponentsList data={components} name={props.name} />
 
                 </div>

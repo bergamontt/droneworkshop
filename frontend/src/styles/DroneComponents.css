@@ -25,3 +25,9 @@
     padding: 1em;
     background-color: white;
 }
+
+.drone-components-nav-wrapper {
+    padding: 0.8em;
+    padding-bottom: 0.1em;
+    padding-left: 0;
+}
