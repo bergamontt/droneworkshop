@@ -6,4 +6,6 @@ import lombok.Data;
 public class PostFilterDto {
     private String postPrefix;
     private String username;
+    private String sortBy;
+    private String sortDirection;
 }

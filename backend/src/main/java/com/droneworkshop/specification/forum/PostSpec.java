@@ -18,6 +18,27 @@ public class PostSpec {
                     : spec.and(PostRepository.Specs.byUsername(filter.getUsername()));
         }
 
+        if (filter.getSortBy() != null && filter.getSortDirection() != null) {
+            Specification<Post> finalSpec = spec;
+            return (root, query, builder) -> {
+                assert query != null;
+                query.distinct(true);
+
+                if ("topic".equalsIgnoreCase(filter.getSortBy())) {
+                    query.orderBy("ASC".equalsIgnoreCase(filter.getSortDirection())
+                            ? builder.asc(root.get("topicLowercase"))
+                            : builder.desc(root.get("topicLowercase")));
+                }
+                else if ("createdAt".equalsIgnoreCase(filter.getSortBy())) {
+                    query.orderBy("ASC".equalsIgnoreCase(filter.getSortDirection())
+                            ? builder.asc(root.get("createdAt"))
+                            : builder.desc(root.get("createdAt")));
+                }
+
+                return finalSpec != null ? finalSpec.toPredicate(root, query, builder) : builder.conjunction();
+            };
+        }
+
         return spec != null ? spec : (root, query, builder) -> builder.conjunction();
     }
 }

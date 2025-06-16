@@ -1,4 +1,4 @@
-import { Stack, Alert, Anchor } from '@mantine/core';
+import { Stack, Alert, Anchor, Center } from '@mantine/core';
 import info from '../../assets/info.svg'
 import PostElement from "./PostElement.jsx";
 import SidebarIcon from "../common/SidebarIcon.jsx";
@@ -15,19 +15,21 @@ export default function PostsList({ posts }) {
             ))}
             {
                 content.length === 0 &&
-                <Alert
-                    variant="white"
-                    color="blue"
-                    title="Опублікованих постів не знайдено"
-                    icon={<SidebarIcon link={info} size="1.5em" />}
-                    style={{width: "500px"}}
-                >
-                    Ви можете створити власний пост-питання на сторінці&nbsp;
-                    <Anchor href="http://localhost:5173/write-post" target="_blank">
-                        написання постів
-                    </Anchor>.
-                    Створивши пост, Ви зможете переглянути його на цій сторінці.
-                </Alert>
+                <Center>
+                    <Alert
+                        variant="white"
+                        color="blue"
+                        title="Опублікованих постів не знайдено"
+                        icon={<SidebarIcon link={info} size="1.5em" />}
+                        style={{width: "500px"}}
+                    >
+                        Ви можете створити власний пост-питання на сторінці&nbsp;
+                        <Anchor href="http://localhost:5173/write-post" target="_blank">
+                            написання постів
+                        </Anchor>.
+                        Створивши пост, Ви зможете переглянути його на цій сторінці.
+                    </Alert>
+                </Center>
             }      
         </Stack>
     );
