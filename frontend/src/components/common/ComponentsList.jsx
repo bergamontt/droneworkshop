@@ -49,7 +49,7 @@ function ComponentsList(props) {
                     icon={<SidebarIcon link={info} size="1.5em" />}
                     style={{width: "500px"}}
                 >
-                    Спробуйте змінити префікс моделі або переналаштуйте фільтри.
+                    Спробуйте змінити опис або переналаштуйте фільтри.
                 </Alert>
             }      
         </Flex>

@@ -1,10 +1,16 @@
 import { Divider } from '@mantine/core';
 import defaultPhoto from '../../assets/default.jpg'
 import '../../styles/Schema.css'
+import {useNavigate} from "react-router-dom";
 
-function SchemaComponent({type, model, photoLink}) {
+function SchemaComponent({type, model, photoLink, componentLink}) {
+    const navigate = useNavigate();
     return(
-        <article className='schema-component-wrapper'>
+        <article
+            className='schema-component-wrapper'
+            style={{cursor: 'pointer'}}
+            onClick={() => {navigate(componentLink)}}
+        >
             <span className='schema-component'>
                 <span className='schema-component-type'>
                     {type}
