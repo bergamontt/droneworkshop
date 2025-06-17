@@ -23,7 +23,7 @@ function SchemaFeatures({schema}) {
         <section className="schema-features-wrapper">
             <SchemaFeature
                 name="Приблизна маса дрона"
-                value={`${getTotalMass(schema)}г`}
+                value={`${getTotalMass(schema).toFixed(2)}г`}
             />
             <SchemaFeature
                 name="Розмір дрона"
@@ -31,7 +31,7 @@ function SchemaFeatures({schema}) {
             />
             <SchemaFeature
                 name="Мінімальна ціна дрона"
-                value={`${getTotalMinPrice(schema)}грн`}
+                value={`${getTotalMinPrice(schema).toFixed(0)}грн`}
             />
         </section>
     );
